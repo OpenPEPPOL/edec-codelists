@@ -36,8 +36,8 @@ public final class CodeListSource
   private final IThrowingConsumer <? super Sheet, Exception> m_aHandler;
 
   public CodeListSource (@Nonnull final String sFilenamePart,
-                       @Nonnull final String sFilenameVersion,
-                       @Nonnull final IThrowingConsumer <? super Sheet, Exception> aHandler)
+                         @Nonnull final String sFilenameVersion,
+                         @Nonnull final IThrowingConsumer <? super Sheet, Exception> aHandler)
   {
     // TODO change absolute path
     m_aFile = new File ("../../documentation/Code Lists/PEPPOL Code Lists - " +

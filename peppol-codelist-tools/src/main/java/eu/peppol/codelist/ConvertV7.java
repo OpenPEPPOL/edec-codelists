@@ -45,8 +45,7 @@ import eu.peppol.codelist.excel.XLSXReadOptions;
 import eu.peppol.codelist.excel.XLSXToGC;
 
 /**
- * Utility class to create the Genericode files from the Excel code list. Also
- * creates Java source files with the predefined identifiers.
+ * Handle V7 code list
  *
  * @author Philip Helger
  */

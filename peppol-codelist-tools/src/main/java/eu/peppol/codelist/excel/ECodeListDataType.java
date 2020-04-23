@@ -20,6 +20,11 @@ import javax.annotation.Nonnull;
 
 import com.helger.commons.annotation.Nonempty;
 
+/**
+ * Defines the data type for a source column
+ * 
+ * @author Philip Helger
+ */
 public enum ECodeListDataType
 {
   STRING ("string"),
