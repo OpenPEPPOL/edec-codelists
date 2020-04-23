@@ -30,12 +30,12 @@ import com.helger.commons.functional.IThrowingConsumer;
  *
  * @author Philip Helger
  */
-public final class CodeListFile
+public final class CodeListSource
 {
   private final File m_aFile;
   private final IThrowingConsumer <? super Sheet, Exception> m_aHandler;
 
-  public CodeListFile (@Nonnull final String sFilenamePart,
+  public CodeListSource (@Nonnull final String sFilenamePart,
                        @Nonnull final String sFilenameVersion,
                        @Nonnull final IThrowingConsumer <? super Sheet, Exception> aHandler)
   {

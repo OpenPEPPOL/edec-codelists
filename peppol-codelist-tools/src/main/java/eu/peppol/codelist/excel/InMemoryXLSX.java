@@ -25,6 +25,7 @@ import com.helger.commons.ValueEnforcer;
 import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.collection.iterate.ArrayIterator;
+import com.helger.peppolid.IProcessIdentifier;
 import com.helger.poi.excel.ExcelReadHelper;
 
 /**
@@ -102,5 +103,14 @@ public class InMemoryXLSX
     }
 
     return new InMemoryXLSX (aShortNameRowData, aPayload);
+  }
+
+  @Nonnull
+  public static InMemoryXLSX createForProcessIDs (@Nonnull final ICommonsList <IProcessIdentifier> aProcIDs)
+  {
+    final ICommonsList <String []> aPayload = new CommonsArrayList <> (aProcIDs.size ());
+    for (final IProcessIdentifier aItem : aProcIDs)
+      aPayload.add (new String [] { aItem.getScheme (), aItem.getValue () });
+    return new InMemoryXLSX (new String [] { "Identifier Scheme", "Identifier Value" }, aPayload);
   }
 }

@@ -18,7 +18,6 @@ package eu.peppol.codelist;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Map;
 
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -33,6 +32,7 @@ import com.helger.commons.io.resource.IReadableResource;
 import com.helger.commons.regex.RegExHelper;
 import com.helger.commons.string.StringHelper;
 import com.helger.commons.string.StringParser;
+import com.helger.commons.url.URLHelper;
 import com.helger.commons.version.Version;
 import com.helger.genericode.v10.CodeListDocument;
 import com.helger.genericode.v10.Row;
@@ -55,12 +55,14 @@ import eu.peppol.codelist.excel.XLSXToGC;
  */
 public final class ConvertV7 extends AbstractConverter
 {
-  private static final Version CODELIST_VERSION = new Version (7);
-  private static final String CODELIST_FILE_SUFFIX = " draft";
-  private static final String FILENAME_SUFFIX = "V7";
-  private static final ICommonsMap <IProcessIdentifier, ICommonsList <String>> KNOWN_PROCESS_IDS = new CommonsLinkedHashMap <> ();
+  private final ICommonsMap <IProcessIdentifier, ICommonsList <String>> m_aProcIDs = new CommonsLinkedHashMap <> ();
 
-  private void _handleDocumentTypes (final Sheet aDocumentSheet) throws URISyntaxException
+  public ConvertV7 ()
+  {
+    super (new Version (7), "created-codelists/v7/", "V7");
+  }
+
+  private void _handleDocumentTypes (final Sheet aDocumentSheet)
   {
     // Create GeneriCode file
     final XLSXReadOptions aReadOptions = new XLSXReadOptions ();
@@ -81,15 +83,15 @@ public final class ConvertV7 extends AbstractConverter
     final CodeListDocument aCodeList = XLSXToGC.convertToSimpleCodeList (aXLSX,
                                                                          aReadOptions.getAllColumns (),
                                                                          sCodeListName,
-                                                                         CODELIST_VERSION,
-                                                                         new URI ("urn:peppol.eu:names:identifier:documenttypes"));
+                                                                         m_aCodeListVersion,
+                                                                         URLHelper.getAsURI ("urn:peppol.eu:names:identifier:documenttypes"));
 
     // Save as XML
     final IMicroDocument aDoc = new MicroDocument ();
     {
       aDoc.appendComment (DO_NOT_EDIT);
       final IMicroElement eRoot = aDoc.appendElement ("root");
-      eRoot.setAttribute ("version", CODELIST_VERSION.getAsString ());
+      eRoot.setAttribute ("version", m_aCodeListVersion.getAsString ());
       for (final Row aRow : aCodeList.getSimpleCodeList ().getRow ())
       {
         final String sProfileCode = CodeListHelper.getGCRowValue (aRow, "profilecode");
@@ -126,18 +128,18 @@ public final class ConvertV7 extends AbstractConverter
           eAgency.appendElement ("process-id")
                  .setAttribute ("scheme", aProcID.getScheme ())
                  .setAttribute ("value", aProcID.getValue ());
-          KNOWN_PROCESS_IDS.computeIfAbsent (aProcID, k -> new CommonsArrayList <> ())
-                           .add (CIdentifier.getURIEncoded (sScheme, sID));
+          m_aProcIDs.computeIfAbsent (aProcID, k -> new CommonsArrayList <> ())
+                    .add (CIdentifier.getURIEncoded (sScheme, sID));
         }
       }
     }
 
     // Write at the end
-    writeGenericodeFile (aCodeList, sCodeListName + FILENAME_SUFFIX + ".gc");
-    writeXMLFile (aDoc, sCodeListName + FILENAME_SUFFIX + ".xml");
+    writeGenericodeFile (aCodeList, sCodeListName);
+    writeXMLFile (aDoc, sCodeListName);
   }
 
-  private void _handleParticipantIdentifierSchemes (final Sheet aParticipantSheet) throws URISyntaxException
+  private void _handleParticipantIdentifierSchemes (final Sheet aParticipantSheet)
   {
     // Read excel file
     final XLSXReadOptions aReadOptions = new XLSXReadOptions ();
@@ -160,15 +162,15 @@ public final class ConvertV7 extends AbstractConverter
     final CodeListDocument aCodeList = XLSXToGC.convertToSimpleCodeList (aXLSX,
                                                                          aReadOptions.getAllColumns (),
                                                                          sCodeListName,
-                                                                         CODELIST_VERSION,
-                                                                         new URI ("urn:peppol.eu:names:identifier:participantidentifierschemes"));
+                                                                         m_aCodeListVersion,
+                                                                         URLHelper.getAsURI ("urn:peppol.eu:names:identifier:participantidentifierschemes"));
 
     // Save data also as XML
     final IMicroDocument aDoc = new MicroDocument ();
     {
       aDoc.appendComment (DO_NOT_EDIT);
       final IMicroElement eRoot = aDoc.appendElement ("root");
-      eRoot.setAttribute ("version", CODELIST_VERSION.getAsString ());
+      eRoot.setAttribute ("version", m_aCodeListVersion.getAsString ());
       for (final Row aRow : aCodeList.getSimpleCodeList ().getRow ())
       {
         final String sSchemeID = CodeListHelper.getGCRowValue (aRow, "schemeid");
@@ -220,11 +222,11 @@ public final class ConvertV7 extends AbstractConverter
     }
 
     // Write at the end
-    writeGenericodeFile (aCodeList, sCodeListName + FILENAME_SUFFIX + ".gc");
-    writeXMLFile (aDoc, sCodeListName + FILENAME_SUFFIX + ".xml");
+    writeGenericodeFile (aCodeList, sCodeListName);
+    writeXMLFile (aDoc, sCodeListName);
   }
 
-  private void _handleTransportProfileIdentifiers (final Sheet aTPSheet) throws URISyntaxException
+  private void _handleTransportProfileIdentifiers (final Sheet aTPSheet)
   {
     final XLSXReadOptions aReadOptions = new XLSXReadOptions ();
     aReadOptions.addColumn ("protocol", true, ECodeListDataType.STRING);
@@ -239,15 +241,15 @@ public final class ConvertV7 extends AbstractConverter
     final CodeListDocument aCodeList = XLSXToGC.convertToSimpleCodeList (aXLSX,
                                                                          aReadOptions.getAllColumns (),
                                                                          sCodeListName,
-                                                                         CODELIST_VERSION,
-                                                                         new URI ("urn:peppol.eu:names:identifier:transportprofile"));
+                                                                         m_aCodeListVersion,
+                                                                         URLHelper.getAsURI ("urn:peppol.eu:names:identifier:transportprofile"));
 
     // Save as XML
     final IMicroDocument aDoc = new MicroDocument ();
     {
       aDoc.appendComment (DO_NOT_EDIT);
       final IMicroElement eRoot = aDoc.appendElement ("root");
-      eRoot.setAttribute ("version", CODELIST_VERSION.getAsString ());
+      eRoot.setAttribute ("version", m_aCodeListVersion.getAsString ());
       for (final Row aRow : aCodeList.getSimpleCodeList ().getRow ())
       {
         final String sProtocol = CodeListHelper.getGCRowValue (aRow, "protocol");
@@ -271,54 +273,59 @@ public final class ConvertV7 extends AbstractConverter
     }
 
     // Write at the end
-    writeGenericodeFile (aCodeList, sCodeListName + FILENAME_SUFFIX + ".gc");
-    writeXMLFile (aDoc, sCodeListName + FILENAME_SUFFIX + ".xml");
+    writeGenericodeFile (aCodeList, sCodeListName);
+    writeXMLFile (aDoc, sCodeListName);
   }
 
-  private void _handleProcessIdentifiers ()
+  private void _handleProcessIdentifiers () throws URISyntaxException
   {
+    final XLSXReadOptions aReadOptions = new XLSXReadOptions ();
+    aReadOptions.addKeyColumn ("scheme", true, ECodeListDataType.STRING);
+    aReadOptions.addKeyColumn ("value", true, ECodeListDataType.STRING);
+
+    final ICommonsList <IProcessIdentifier> aProcIDs = new CommonsArrayList <> (m_aProcIDs.keySet ());
+    final InMemoryXLSX aXLSX = InMemoryXLSX.createForProcessIDs (aProcIDs);
+
     final String sCodeListName = "PeppolProcessIdentifiers";
+    final CodeListDocument aCodeList = XLSXToGC.convertToSimpleCodeList (aXLSX,
+                                                                         aReadOptions.getAllColumns (),
+                                                                         sCodeListName,
+                                                                         m_aCodeListVersion,
+                                                                         new URI ("urn:peppol.eu:names:identifier:process"));
 
     // Save as XML
     final IMicroDocument aDoc = new MicroDocument ();
     {
       aDoc.appendComment (DO_NOT_EDIT);
       final IMicroElement eRoot = aDoc.appendElement ("root");
-      eRoot.setAttribute ("version", CODELIST_VERSION.getAsString ());
-      for (final Map.Entry <IProcessIdentifier, ICommonsList <String>> aEntry : KNOWN_PROCESS_IDS.entrySet ())
+      eRoot.setAttribute ("version", m_aCodeListVersion.getAsString ());
+      for (final IProcessIdentifier aProcID : aProcIDs)
       {
-        final String sScheme = aEntry.getKey ().getScheme ();
-        final String sValue = aEntry.getKey ().getValue ();
-
         final IMicroElement eProcess = eRoot.appendElement ("process");
-        eProcess.setAttribute ("scheme", sScheme);
-        eProcess.setAttribute ("value", sValue);
+        eProcess.setAttribute ("scheme", aProcID.getScheme ());
+        eProcess.setAttribute ("value", aProcID.getValue ());
       }
     }
 
     // Write at the end
-    writeXMLFile (aDoc, sCodeListName + FILENAME_SUFFIX + ".xml");
-  }
-
-  public ConvertV7 ()
-  {
-    super ("created-codelists/v7/");
+    writeGenericodeFile (aCodeList, sCodeListName);
+    writeXMLFile (aDoc, sCodeListName);
   }
 
   @Override
   protected void convert () throws Exception
   {
-    // DocumentType must be before Processes to fill the static list
-    final String sFilenameVersion = CODELIST_VERSION.getAsString (false) + CODELIST_FILE_SUFFIX;
-    for (final CodeListFile aCLF : new CodeListFile [] { new CodeListFile ("Document types",
-                                                                           sFilenameVersion,
-                                                                           this::_handleDocumentTypes),
-                                                         new CodeListFile ("Participant identifier schemes",
-                                                                           sFilenameVersion,
-                                                                           this::_handleParticipantIdentifierSchemes),
-                                                         new CodeListFile ("Transport profiles",
-                                                                           sFilenameVersion,
-                                                                           this::_handleTransportProfileIdentifiers) })
+    final String sFilenameVersion = m_aCodeListVersion.getAsString (false) + " draft";
+
+    for (final CodeListSource aCLF : new CodeListSource [] { new CodeListSource ("Document types",
+                                                                                 sFilenameVersion,
+                                                                                 this::_handleDocumentTypes),
+                                                             new CodeListSource ("Participant identifier schemes",
+                                                                                 sFilenameVersion,
+                                                                                 this::_handleParticipantIdentifierSchemes),
+                                                             new CodeListSource ("Transport profiles",
+                                                                                 sFilenameVersion,
+                                                                                 this::_handleTransportProfileIdentifiers) })
     {
       // Where is the Excel?
       final IReadableResource aExcel = new FileSystemResource (aCLF.getFile ());

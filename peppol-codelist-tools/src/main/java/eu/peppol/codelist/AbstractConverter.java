@@ -29,6 +29,7 @@ import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.file.FileOperationManager;
 import com.helger.commons.string.StringHelper;
+import com.helger.commons.version.Version;
 import com.helger.genericode.CGenericode;
 import com.helger.genericode.Genericode10CodeListMarshaller;
 import com.helger.genericode.v10.CodeListDocument;
@@ -54,12 +55,20 @@ public abstract class AbstractConverter
                                            "Do NOT edit!";
   private static final Logger LOGGER = LoggerFactory.getLogger (AbstractConverter.class);
 
+  protected final Version m_aCodeListVersion;
   private final File m_aResultDir;
+  private final String m_sFilenameSuffix;
 
-  protected AbstractConverter (@Nonnull @Nonempty final String sResultDir)
+  protected AbstractConverter (@Nonnull final Version aCodeListVersion,
+                               @Nonnull @Nonempty final String sResultDir,
+                               @Nonnull final String sFilenameSuffix)
   {
+    ValueEnforcer.notNull (aCodeListVersion, "CodeListVersion");
     ValueEnforcer.notEmpty (sResultDir, "ResultDir");
+    ValueEnforcer.notNull (sFilenameSuffix, "FilenameSuffix");
+    m_aCodeListVersion = aCodeListVersion;
     m_aResultDir = new File (sResultDir);
+    m_sFilenameSuffix = sFilenameSuffix;
 
     // Ensure target directory exists
     FileOperationManager.INSTANCE.createDirRecursiveIfNotExisting (m_aResultDir);
@@ -89,10 +98,11 @@ public abstract class AbstractConverter
    *
    * @param aCodeList
    *        The GC code list
-   * @param sFilename
-   *        The filename to write to, relative to the result directory.
+   * @param sBasename
+   *        The filename to write to, relative to the result directory, no
+   *        extension.
    */
-  protected final void writeGenericodeFile (@Nonnull final CodeListDocument aCodeList, @Nonnull final String sFilename)
+  protected final void writeGenericodeFile (@Nonnull final CodeListDocument aCodeList, @Nonnull final String sBasename)
   {
     final MapBasedNamespaceContext aNsCtx = new MapBasedNamespaceContext ();
     aNsCtx.addMapping ("gc", CGenericode.GENERICODE_10_NAMESPACE_URI);
@@ -102,18 +112,18 @@ public abstract class AbstractConverter
     aMarshaller.setNamespaceContext (aNsCtx);
     aMarshaller.setFormattedOutput (true);
 
-    final File aDstFile = new File (m_aResultDir, sFilename);
+    final File aDstFile = new File (m_aResultDir, sBasename + m_sFilenameSuffix + ".gc");
     if (aMarshaller.write (aCodeList, aDstFile).isFailure ())
       throw new IllegalStateException ("Failed to write file '" + aDstFile.getPath () + "'");
-    LOGGER.info ("Wrote Genericode file '" + sFilename + "'");
+    LOGGER.info ("Wrote Genericode file '" + aDstFile.getPath () + "'");
   }
 
-  protected final void writeXMLFile (@Nonnull final IMicroNode aNode, @Nonnull final String sFilename)
+  protected final void writeXMLFile (@Nonnull final IMicroNode aNode, @Nonnull final String sBasename)
   {
-    final File aDstFile = new File (m_aResultDir, sFilename);
+    final File aDstFile = new File (m_aResultDir, sBasename + m_sFilenameSuffix + ".xml");
     if (MicroWriter.writeToFile (aNode, aDstFile).isFailure ())
       throw new IllegalStateException ("Failed to write file '" + aDstFile.getPath () + "'");
-    LOGGER.info ("Wrote XML file '" + sFilename + "'");
+    LOGGER.info ("Wrote XML file '" + aDstFile.getPath () + "'");
   }
 
   protected void init () throws Exception
