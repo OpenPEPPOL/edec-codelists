@@ -47,6 +47,15 @@ public class XLSXReadOptions implements Serializable
   {}
 
   /**
+   * @return The number of lines to skip before the header row starts.
+   */
+  @Nonnegative
+  public int getLinesToSkip ()
+  {
+    return m_nLinesToSkip;
+  }
+
+  /**
    * Set the number of lines to skip before the header row starts
    *
    * @param nLinesToSkip
@@ -62,13 +71,10 @@ public class XLSXReadOptions implements Serializable
     return this;
   }
 
-  /**
-   * @return The number of lines to skip before the header row starts.
-   */
   @Nonnegative
-  public int getLinesToSkip ()
+  public int getLineIndexShortName ()
   {
-    return m_nLinesToSkip;
+    return m_nLineIndexShortName;
   }
 
   @Nonnull
@@ -78,12 +84,6 @@ public class XLSXReadOptions implements Serializable
 
     m_nLineIndexShortName = nLineIndexShortName;
     return this;
-  }
-
-  @Nonnegative
-  public int getLineIndexShortName ()
-  {
-    return m_nLineIndexShortName;
   }
 
   /**

@@ -23,8 +23,6 @@ import javax.annotation.concurrent.Immutable;
 import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
 
-import org.apache.poi.ss.usermodel.Sheet;
-
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.string.StringHelper;
@@ -42,7 +40,6 @@ import com.helger.genericode.v10.Row;
 import com.helger.genericode.v10.SimpleCodeList;
 import com.helger.genericode.v10.UseType;
 import com.helger.genericode.v10.Value;
-import com.helger.poi.excel.ExcelReadHelper;
 
 import eu.peppol.codelist.AbstractConverter;
 
@@ -63,14 +60,14 @@ public final class XLSXToGC
   {}
 
   @Nonnull
-  public static CodeListDocument convertToSimpleCodeList (@Nonnull final Sheet aExcelSheet,
-                                                          @Nonnull final XLSXReadOptions aReadOptions,
+  public static CodeListDocument convertToSimpleCodeList (@Nonnull final InMemoryXLSX aExcelSheet,
+                                                          @Nonnull final ICommonsList <XLSXColumn> aExcelColumns,
                                                           @Nonnull final String sCodeListName,
                                                           @Nonnull final Version aCodeListVersion,
                                                           @Nonnull final URI aCanonicalUri)
   {
     ValueEnforcer.notNull (aExcelSheet, "ExcelSheet");
-    ValueEnforcer.notNull (aReadOptions, "ReadOptions");
+    ValueEnforcer.notEmptyNoNullValue (aExcelColumns, "aExcelColumns");
 
     final ObjectFactory aFactory = new ObjectFactory ();
     final CodeListDocument ret = aFactory.createCodeListDocument ();
@@ -91,14 +88,11 @@ public final class XLSXToGC
     ret.setIdentification (aIdentification);
 
     // create columns
-    final ICommonsList <XLSXColumn> aExcelColumns = aReadOptions.getAllColumns ();
     final ColumnSet aColumnSet = aFactory.createColumnSet ();
-    for (final XLSXColumn aExcelColumn : aExcelColumns)
+    int nColIndex = 0;
+    for (final String sShortName : aExcelSheet.getShortNames ())
     {
-      // Read short name (required)
-      final String sShortName = aExcelSheet.getRow (aReadOptions.getLineIndexShortName ())
-                                           .getCell (aExcelColumn.getIndex ())
-                                           .getStringCellValue ();
+      final XLSXColumn aExcelColumn = aExcelColumns.get (nColIndex);
 
       // No long name
       final String sLongName = null;
@@ -121,6 +115,7 @@ public final class XLSXToGC
                                                        aColumn);
         aColumnSet.addKeyChoice (aKey);
       }
+      ++nColIndex;
     }
     ret.setColumnSet (aColumnSet);
 
@@ -128,19 +123,13 @@ public final class XLSXToGC
     final SimpleCodeList aSimpleCodeList = aFactory.createSimpleCodeList ();
 
     // Determine the row where reading should start
-    int nRowIndex = aReadOptions.getLinesToSkip ();
-    while (true)
+    for (final String [] aExcelRow : aExcelSheet.getPayload ())
     {
-      // Read a single excel row
-      final org.apache.poi.ss.usermodel.Row aExcelRow = aExcelSheet.getRow (nRowIndex++);
-      if (aExcelRow == null)
-        break;
-
       // Create Genericode row
       final Row aRow = aFactory.createRow ();
       for (final XLSXColumn aExcelColumn : aExcelColumns)
       {
-        final String sValue = ExcelReadHelper.getCellValueString (aExcelRow.getCell (aExcelColumn.getIndex ()));
+        final String sValue = aExcelRow[aExcelColumn.getIndex ()];
         if (StringHelper.hasText (sValue) || aExcelColumn.isRequired ())
         {
           // Create a single value in the current row

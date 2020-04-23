@@ -43,6 +43,7 @@ import com.helger.xml.microdom.IMicroElement;
 import com.helger.xml.microdom.MicroDocument;
 
 import eu.peppol.codelist.excel.ECodeListDataType;
+import eu.peppol.codelist.excel.InMemoryXLSX;
 import eu.peppol.codelist.excel.XLSXReadOptions;
 import eu.peppol.codelist.excel.XLSXToGC;
 
@@ -74,10 +75,11 @@ public final class ConvertV7 extends AbstractConverter
     aReadOptions.addColumn ("bis-version", false, ECodeListDataType.INT);
     aReadOptions.addColumn ("domain-community", true, ECodeListDataType.STRING);
     aReadOptions.addColumn ("process-ids", true, ECodeListDataType.STRING);
+    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aReadOptions, aDocumentSheet);
 
     final String sCodeListName = "PeppolDocumentTypes";
-    final CodeListDocument aCodeList = XLSXToGC.convertToSimpleCodeList (aDocumentSheet,
-                                                                         aReadOptions,
+    final CodeListDocument aCodeList = XLSXToGC.convertToSimpleCodeList (aXLSX,
+                                                                         aReadOptions.getAllColumns (),
                                                                          sCodeListName,
                                                                          CODELIST_VERSION,
                                                                          new URI ("urn:peppol.eu:names:identifier:documenttypes"));
@@ -152,10 +154,11 @@ public final class ConvertV7 extends AbstractConverter
     aReadOptions.addColumn ("examples", false, ECodeListDataType.STRING);
     aReadOptions.addColumn ("validation-rules", false, ECodeListDataType.STRING);
     aReadOptions.addColumn ("usage", false, ECodeListDataType.STRING);
+    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aReadOptions, aParticipantSheet);
 
     final String sCodeListName = "PeppolParticipantIdentifierSchemes";
-    final CodeListDocument aCodeList = XLSXToGC.convertToSimpleCodeList (aParticipantSheet,
-                                                                         aReadOptions,
+    final CodeListDocument aCodeList = XLSXToGC.convertToSimpleCodeList (aXLSX,
+                                                                         aReadOptions.getAllColumns (),
                                                                          sCodeListName,
                                                                          CODELIST_VERSION,
                                                                          new URI ("urn:peppol.eu:names:identifier:participantidentifierschemes"));
@@ -230,10 +233,11 @@ public final class ConvertV7 extends AbstractConverter
     aReadOptions.addColumn ("since", true, ECodeListDataType.STRING);
     aReadOptions.addColumn ("deprecated", true, ECodeListDataType.BOOLEAN);
     aReadOptions.addColumn ("deprecated-since", false, ECodeListDataType.STRING);
+    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aReadOptions, aTPSheet);
 
     final String sCodeListName = "PeppolTransportProfiles";
-    final CodeListDocument aCodeList = XLSXToGC.convertToSimpleCodeList (aTPSheet,
-                                                                         aReadOptions,
+    final CodeListDocument aCodeList = XLSXToGC.convertToSimpleCodeList (aXLSX,
+                                                                         aReadOptions.getAllColumns (),
                                                                          sCodeListName,
                                                                          CODELIST_VERSION,
                                                                          new URI ("urn:peppol.eu:names:identifier:transportprofile"));
