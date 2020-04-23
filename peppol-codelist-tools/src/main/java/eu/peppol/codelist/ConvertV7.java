@@ -18,8 +18,7 @@ package eu.peppol.codelist;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
-import javax.annotation.Nonnull;
+import java.util.Map;
 
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -44,7 +43,6 @@ import com.helger.genericode.v10.Row;
 import com.helger.genericode.v10.UseType;
 import com.helger.peppolid.CIdentifier;
 import com.helger.peppolid.IProcessIdentifier;
-import com.helger.peppolid.factory.PeppolIdentifierFactory;
 import com.helger.xml.microdom.IMicroDocument;
 import com.helger.xml.microdom.IMicroElement;
 import com.helger.xml.microdom.MicroDocument;
@@ -62,25 +60,6 @@ public final class ConvertV7 extends AbstractConverter
   private static final String CODELIST_FILE_SUFFIX = " draft";
   private static final String FILENAME_SUFFIX = "V7";
   private static final ICommonsMap <IProcessIdentifier, ICommonsList <String>> KNOWN_PROCESS_IDS = new CommonsLinkedHashMap <> ();
-
-  @Nonnull
-  private static ICommonsList <IProcessIdentifier> _getProcIDs (@Nonnull final String sProcessIDs)
-  {
-    final ICommonsList <IProcessIdentifier> ret = new CommonsArrayList <> ();
-    for (final String s : StringHelper.getExploded ('\n', StringHelper.replaceAll (sProcessIDs, '\r', '\n')))
-    {
-      final String sProcessID = s.trim ();
-      if (StringHelper.hasNoText (sProcessID))
-        throw new IllegalStateException ("Found empty process ID in '" + sProcessIDs + "'");
-      final IProcessIdentifier aProcID = PeppolIdentifierFactory.INSTANCE.parseProcessIdentifier (sProcessID);
-      if (aProcID == null)
-        throw new IllegalStateException ("Failed to parse process ID '" + sProcessID + "'");
-      ret.add (aProcID);
-    }
-    if (ret.isEmpty ())
-      throw new IllegalStateException ("Found no single process ID in '" + sProcessIDs + "'");
-    return ret;
-  }
 
   private void _handleDocumentTypes (final Sheet aDocumentSheet) throws URISyntaxException
   {
@@ -101,40 +80,41 @@ public final class ConvertV7 extends AbstractConverter
       aReadOptions.addColumn (nCol++, "domain-community", UseType.REQUIRED, "string", false);
       aReadOptions.addColumn (nCol++, "process-ids", UseType.REQUIRED, "string", false);
     }
+    final String sCodeListName = "PeppolDocumentTypes";
     final CodeListDocument aCodeList = ExcelSheetToCodeList10.convertToSimpleCodeList (aDocumentSheet,
                                                                                        aReadOptions,
-                                                                                       "PeppolDocumentTypeIdentifier",
+                                                                                       sCodeListName,
                                                                                        CODELIST_VERSION.getAsString (),
                                                                                        new URI ("urn:peppol.eu:names:identifier:documenttypes"),
-                                                                                       new URI ("urn:peppol.eu:names:identifier:documenttypes-2.0"),
+                                                                                       new URI ("urn:peppol.eu:names:identifier:documenttypes-" +
+                                                                                                CODELIST_VERSION.getAsString ()),
                                                                                        null);
-    writeGenericodeFile (aCodeList, "PeppolDocumentTypeIdentifier" + FILENAME_SUFFIX + ".gc");
 
     // Save as XML
+    final IMicroDocument aDoc = new MicroDocument ();
     {
-      final IMicroDocument aDoc = new MicroDocument ();
       aDoc.appendComment (DO_NOT_EDIT);
       final IMicroElement eRoot = aDoc.appendElement ("root");
       eRoot.setAttribute ("version", CODELIST_VERSION.getAsString ());
       for (final Row aRow : aCodeList.getSimpleCodeList ().getRow ())
       {
-        final String sProfileCode = Helper.getRowValue (aRow, "profilecode");
-        final String sScheme = Helper.getRowValue (aRow, "scheme");
-        final String sID = Helper.getRowValue (aRow, "id");
-        final String sSince = Helper.getRowValue (aRow, "since");
-        final boolean bDeprecated = Helper.parseDeprecated (Helper.getRowValue (aRow, "deprecated"));
-        final String sDeprecatedSince = Helper.getRowValue (aRow, "deprecated-since");
+        final String sProfileCode = CodeListHelper.getGCRowValue (aRow, "profilecode");
+        final String sScheme = CodeListHelper.getGCRowValue (aRow, "scheme");
+        final String sID = CodeListHelper.getGCRowValue (aRow, "id");
+        final String sSince = CodeListHelper.getGCRowValue (aRow, "since");
+        final boolean bDeprecated = CodeListHelper.parseDeprecated (CodeListHelper.getGCRowValue (aRow, "deprecated"));
+        final String sDeprecatedSince = CodeListHelper.getGCRowValue (aRow, "deprecated-since");
         if (bDeprecated && StringHelper.hasNoText (sDeprecatedSince))
           throw new IllegalStateException ("Code list entry is deprecated but there is no deprecated-since entry");
-        final boolean bIssuedByOpenPEPPOL = Helper.parseIssuedByOpenPEPPOL (Helper.getRowValue (aRow,
-                                                                                                "issued-by-openpeppol"));
-        final String sBISVersion = Helper.getRowValue (aRow, "bis-version");
+        final boolean bIssuedByOpenPEPPOL = CodeListHelper.parseIssuedByOpenPEPPOL (CodeListHelper.getGCRowValue (aRow,
+                                                                                                                  "issued-by-openpeppol"));
+        final String sBISVersion = CodeListHelper.getGCRowValue (aRow, "bis-version");
         if (bIssuedByOpenPEPPOL && StringHelper.hasNoText (sBISVersion))
           throw new IllegalStateException ("If issued by OpenPEPPOL, a BIS version is required");
         if (StringHelper.hasText (sBISVersion) && !StringParser.isUnsignedInt (sBISVersion))
           throw new IllegalStateException ("Code list entry has an invalid BIS version number - must be numeric");
-        final String sDomainCommunity = Helper.getRowValue (aRow, "domain-community");
-        final String sProcessIDs = Helper.getRowValue (aRow, "process-ids");
+        final String sDomainCommunity = CodeListHelper.getGCRowValue (aRow, "domain-community");
+        final String sProcessIDs = CodeListHelper.getGCRowValue (aRow, "process-ids");
 
         final IMicroElement eAgency = eRoot.appendElement ("document-type");
         eAgency.setAttribute ("profilecode", sProfileCode);
@@ -146,7 +126,7 @@ public final class ConvertV7 extends AbstractConverter
         eAgency.setAttribute ("issued-by-openpeppol", bIssuedByOpenPEPPOL);
         eAgency.setAttribute ("bis-version", sBISVersion);
         eAgency.setAttribute ("domain-community", sDomainCommunity);
-        final ICommonsList <IProcessIdentifier> aProcIDs = _getProcIDs (sProcessIDs);
+        final ICommonsList <IProcessIdentifier> aProcIDs = getAllProcessIDsFromMultilineString (sProcessIDs);
         for (final IProcessIdentifier aProcID : aProcIDs)
         {
           eAgency.appendElement ("process-id")
@@ -156,8 +136,11 @@ public final class ConvertV7 extends AbstractConverter
                            .add (CIdentifier.getURIEncoded (sScheme, sID));
         }
       }
-      writeXMLFile (aDoc, "PeppolDocumentTypeIdentifier" + FILENAME_SUFFIX + ".xml");
     }
+
+    // Write at the end
+    writeGenericodeFile (aCodeList, sCodeListName + FILENAME_SUFFIX + ".gc");
+    writeXMLFile (aDoc, sCodeListName + FILENAME_SUFFIX + ".xml");
   }
 
   private void _handleParticipantIdentifierSchemes (final Sheet aParticipantSheet) throws URISyntaxException
@@ -182,37 +165,37 @@ public final class ConvertV7 extends AbstractConverter
       aReadOptions.addColumn (nCol++, "usage", UseType.OPTIONAL, "string", false);
     }
 
-    // Convert to GeneriCode
+    final String sCodeListName = "PeppolParticipantIdentifierSchemes";
     final CodeListDocument aCodeList = ExcelSheetToCodeList10.convertToSimpleCodeList (aParticipantSheet,
                                                                                        aReadOptions,
-                                                                                       "PeppolIdentifierIssuingAgencies",
+                                                                                       sCodeListName,
                                                                                        CODELIST_VERSION.getAsString (),
                                                                                        new URI ("urn:peppol.eu:names:identifier:participantidentifierschemes"),
-                                                                                       new URI ("urn:peppol.eu:names:identifier:participantidentifierschemes-2.0"),
+                                                                                       new URI ("urn:peppol.eu:names:identifier:participantidentifierschemes-" +
+                                                                                                CODELIST_VERSION.getAsString ()),
                                                                                        null);
-    writeGenericodeFile (aCodeList, "PeppolParticipantIdentifierSchemes" + FILENAME_SUFFIX + ".gc");
 
     // Save data also as XML
+    final IMicroDocument aDoc = new MicroDocument ();
     {
-      final IMicroDocument aDoc = new MicroDocument ();
       aDoc.appendComment (DO_NOT_EDIT);
       final IMicroElement eRoot = aDoc.appendElement ("root");
       eRoot.setAttribute ("version", CODELIST_VERSION.getAsString ());
       for (final Row aRow : aCodeList.getSimpleCodeList ().getRow ())
       {
-        final String sSchemeID = Helper.getRowValue (aRow, "schemeid");
-        final String sISO6523 = Helper.getRowValue (aRow, "iso6523");
-        final String sCountryCode = Helper.getRowValue (aRow, "country");
-        final String sSchemeName = Helper.getRowValue (aRow, "schemename");
-        final String sIssuingAgency = Helper.getRowValue (aRow, "issuingagency");
-        final String sSince = Helper.getRowValue (aRow, "since");
-        final boolean bDeprecated = Helper.parseDeprecated (Helper.getRowValue (aRow, "deprecated"));
-        final String sDeprecatedSince = Helper.getRowValue (aRow, "deprecated-since");
-        final String sStructure = Helper.getRowValue (aRow, "structure");
-        final String sDisplay = Helper.getRowValue (aRow, "display");
-        final String sExamples = Helper.getRowValue (aRow, "examples");
-        final String sValidationRules = Helper.getRowValue (aRow, "validation-rules");
-        final String sUsage = Helper.getRowValue (aRow, "usage");
+        final String sSchemeID = CodeListHelper.getGCRowValue (aRow, "schemeid");
+        final String sISO6523 = CodeListHelper.getGCRowValue (aRow, "iso6523");
+        final String sCountryCode = CodeListHelper.getGCRowValue (aRow, "country");
+        final String sSchemeName = CodeListHelper.getGCRowValue (aRow, "schemename");
+        final String sIssuingAgency = CodeListHelper.getGCRowValue (aRow, "issuingagency");
+        final String sSince = CodeListHelper.getGCRowValue (aRow, "since");
+        final boolean bDeprecated = CodeListHelper.parseDeprecated (CodeListHelper.getGCRowValue (aRow, "deprecated"));
+        final String sDeprecatedSince = CodeListHelper.getGCRowValue (aRow, "deprecated-since");
+        final String sStructure = CodeListHelper.getGCRowValue (aRow, "structure");
+        final String sDisplay = CodeListHelper.getGCRowValue (aRow, "display");
+        final String sExamples = CodeListHelper.getGCRowValue (aRow, "examples");
+        final String sValidationRules = CodeListHelper.getGCRowValue (aRow, "validation-rules");
+        final String sUsage = CodeListHelper.getGCRowValue (aRow, "usage");
 
         if (StringHelper.hasNoText (sSchemeID))
           throw new IllegalStateException ("schemeID");
@@ -246,62 +229,93 @@ public final class ConvertV7 extends AbstractConverter
         if (StringHelper.hasText (sUsage))
           eAgency.appendElement ("usage").appendText (sUsage);
       }
-      writeXMLFile (aDoc, "PeppolParticipantIdentifierSchemes" + FILENAME_SUFFIX + ".xml");
     }
+
+    // Write at the end
+    writeGenericodeFile (aCodeList, sCodeListName + FILENAME_SUFFIX + ".gc");
+    writeXMLFile (aDoc, sCodeListName + FILENAME_SUFFIX + ".xml");
   }
 
   private void _handleTransportProfileIdentifiers (final Sheet aTPSheet) throws URISyntaxException
   {
     final ExcelReadOptions <UseType> aReadOptions = new ExcelReadOptions <UseType> ().setLinesToSkip (1)
                                                                                      .setLineIndexShortName (0);
-    aReadOptions.addColumn (0, "protocol", UseType.REQUIRED, "string", false);
-    aReadOptions.addColumn (1, "profileversion", UseType.REQUIRED, "string", false);
-    aReadOptions.addColumn (2, "profileid", UseType.REQUIRED, "string", true);
-    aReadOptions.addColumn (3, "since", UseType.REQUIRED, "string", false);
-    aReadOptions.addColumn (4, "deprecated", UseType.REQUIRED, "boolean", false);
-    aReadOptions.addColumn (5, "deprecated-since", UseType.OPTIONAL, "string", false);
+    {
+      int nCol = 0;
+      aReadOptions.addColumn (nCol++, "protocol", UseType.REQUIRED, "string", false);
+      aReadOptions.addColumn (nCol++, "profileversion", UseType.REQUIRED, "string", false);
+      aReadOptions.addColumn (nCol++, "profileid", UseType.REQUIRED, "string", true);
+      aReadOptions.addColumn (nCol++, "since", UseType.REQUIRED, "string", false);
+      aReadOptions.addColumn (nCol++, "deprecated", UseType.REQUIRED, "boolean", false);
+      aReadOptions.addColumn (nCol++, "deprecated-since", UseType.OPTIONAL, "string", false);
+    }
 
+    final String sCodeListName = "PeppolTransportProfiles";
     final CodeListDocument aCodeList = ExcelSheetToCodeList10.convertToSimpleCodeList (aTPSheet,
                                                                                        aReadOptions,
-                                                                                       "PeppolTransportProfileIdentifier",
+                                                                                       sCodeListName,
                                                                                        CODELIST_VERSION.getAsString (),
                                                                                        new URI ("urn:peppol.eu:names:identifier:transportprofile"),
-                                                                                       new URI ("urn:peppol.eu:names:identifier:transportprofile-1.0"),
+                                                                                       new URI ("urn:peppol.eu:names:identifier:transportprofile-" +
+                                                                                                CODELIST_VERSION.getAsString ()),
                                                                                        null);
-    writeGenericodeFile (aCodeList, "PeppolTransportProfileIdentifier" + FILENAME_SUFFIX + ".gc");
 
     // Save as XML
     final IMicroDocument aDoc = new MicroDocument ();
-    aDoc.appendComment (DO_NOT_EDIT);
-    final IMicroElement eRoot = aDoc.appendElement ("root");
-    eRoot.setAttribute ("version", CODELIST_VERSION.getAsString ());
-    for (final Row aRow : aCodeList.getSimpleCodeList ().getRow ())
     {
-      final String sProtocol = Helper.getRowValue (aRow, "protocol");
-      final String sProfileVersion = Helper.getRowValue (aRow, "profileversion");
-      final String sProfileID = Helper.getRowValue (aRow, "profileid");
-      final String sSince = Helper.getRowValue (aRow, "since");
-      final boolean bDeprecated = Helper.parseDeprecated (Helper.getRowValue (aRow, "deprecated"));
-      final String sDeprecatedSince = Helper.getRowValue (aRow, "deprecated-since");
+      aDoc.appendComment (DO_NOT_EDIT);
+      final IMicroElement eRoot = aDoc.appendElement ("root");
+      eRoot.setAttribute ("version", CODELIST_VERSION.getAsString ());
+      for (final Row aRow : aCodeList.getSimpleCodeList ().getRow ())
+      {
+        final String sProtocol = CodeListHelper.getGCRowValue (aRow, "protocol");
+        final String sProfileVersion = CodeListHelper.getGCRowValue (aRow, "profileversion");
+        final String sProfileID = CodeListHelper.getGCRowValue (aRow, "profileid");
+        final String sSince = CodeListHelper.getGCRowValue (aRow, "since");
+        final boolean bDeprecated = CodeListHelper.parseDeprecated (CodeListHelper.getGCRowValue (aRow, "deprecated"));
+        final String sDeprecatedSince = CodeListHelper.getGCRowValue (aRow, "deprecated-since");
 
-      if (bDeprecated && StringHelper.hasNoText (sDeprecatedSince))
-        throw new IllegalStateException ("Code list entry is deprecated but there is no deprecated-since entry");
+        if (bDeprecated && StringHelper.hasNoText (sDeprecatedSince))
+          throw new IllegalStateException ("Code list entry is deprecated but there is no deprecated-since entry");
 
-      final IMicroElement eAgency = eRoot.appendElement ("process");
-      eAgency.setAttribute ("protocol", sProtocol);
-      eAgency.setAttribute ("profileversion", sProfileVersion);
-      eAgency.setAttribute ("profileid", sProfileID);
-      eAgency.setAttribute ("since", sSince);
-      eAgency.setAttribute ("deprecated", bDeprecated);
-      eAgency.setAttribute ("deprecated-since", sDeprecatedSince);
+        final IMicroElement eAgency = eRoot.appendElement ("transport-profile");
+        eAgency.setAttribute ("protocol", sProtocol);
+        eAgency.setAttribute ("profileversion", sProfileVersion);
+        eAgency.setAttribute ("profileid", sProfileID);
+        eAgency.setAttribute ("since", sSince);
+        eAgency.setAttribute ("deprecated", bDeprecated);
+        eAgency.setAttribute ("deprecated-since", sDeprecatedSince);
+      }
     }
-    writeXMLFile (aDoc, "PeppolTransportProfileIdentifier" + FILENAME_SUFFIX + ".xml");
+
+    // Write at the end
+    writeGenericodeFile (aCodeList, sCodeListName + FILENAME_SUFFIX + ".gc");
+    writeXMLFile (aDoc, sCodeListName + FILENAME_SUFFIX + ".xml");
   }
 
-  private static void _handleProcessIdentifiers ()
+  private void _handleProcessIdentifiers ()
   {
-    LOGGER.info ("Handling " + KNOWN_PROCESS_IDS.size () + " Process Identifiers");
-    // TODO
+    final String sCodeListName = "PeppolProcessIdentifiers";
+
+    // Save as XML
+    final IMicroDocument aDoc = new MicroDocument ();
+    {
+      aDoc.appendComment (DO_NOT_EDIT);
+      final IMicroElement eRoot = aDoc.appendElement ("root");
+      eRoot.setAttribute ("version", CODELIST_VERSION.getAsString ());
+      for (final Map.Entry <IProcessIdentifier, ICommonsList <String>> aEntry : KNOWN_PROCESS_IDS.entrySet ())
+      {
+        final String sScheme = aEntry.getKey ().getScheme ();
+        final String sValue = aEntry.getKey ().getValue ();
+
+        final IMicroElement eProcess = eRoot.appendElement ("process");
+        eProcess.setAttribute ("scheme", sScheme);
+        eProcess.setAttribute ("value", sValue);
+      }
+    }
+
+    // Write at the end
+    writeXMLFile (aDoc, sCodeListName + FILENAME_SUFFIX + ".xml");
   }
 
   public ConvertV7 ()

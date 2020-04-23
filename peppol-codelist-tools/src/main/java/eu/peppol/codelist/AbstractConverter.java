@@ -25,11 +25,16 @@ import org.slf4j.LoggerFactory;
 
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.annotation.Nonempty;
+import com.helger.commons.collection.impl.CommonsArrayList;
+import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.file.FileOperationManager;
+import com.helger.commons.string.StringHelper;
 import com.helger.genericode.CGenericode;
 import com.helger.genericode.Genericode10CodeListMarshaller;
 import com.helger.genericode.excel.ExcelSheetToCodeList10;
 import com.helger.genericode.v10.CodeListDocument;
+import com.helger.peppolid.IProcessIdentifier;
+import com.helger.peppolid.factory.PeppolIdentifierFactory;
 import com.helger.xml.microdom.IMicroNode;
 import com.helger.xml.microdom.serialize.MicroWriter;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
@@ -39,9 +44,13 @@ import com.helger.xml.namespace.MapBasedNamespaceContext;
  *
  * @author Philip Helger
  */
-abstract class AbstractConverter
+public abstract class AbstractConverter
 {
-  public static final String DO_NOT_EDIT = "This file was automatically generated.\nDo NOT edit!";
+  public static final String DO_NOT_EDIT = "This is an OpenPeppol EDEC Code List.\n" +
+                                           "Official source: https://docs.peppol.eu/edelivery/codelists/\n" +
+                                           "\n" +
+                                           "This file was automatically generated.\n" +
+                                           "Do NOT edit!";
   private static final Logger LOGGER = LoggerFactory.getLogger (AbstractConverter.class);
 
   private final File m_aResultDir;
@@ -53,6 +62,25 @@ abstract class AbstractConverter
 
     // Ensure target directory exists
     FileOperationManager.INSTANCE.createDirRecursiveIfNotExisting (m_aResultDir);
+  }
+
+  @Nonnull
+  protected static ICommonsList <IProcessIdentifier> getAllProcessIDsFromMultilineString (@Nonnull final String sProcessIDs)
+  {
+    final ICommonsList <IProcessIdentifier> ret = new CommonsArrayList <> ();
+    for (final String s : StringHelper.getExploded ('\n', StringHelper.replaceAll (sProcessIDs, '\r', '\n')))
+    {
+      final String sProcessID = s.trim ();
+      if (StringHelper.hasNoText (sProcessID))
+        throw new IllegalStateException ("Found empty process ID in '" + sProcessIDs + "'");
+      final IProcessIdentifier aProcID = PeppolIdentifierFactory.INSTANCE.parseProcessIdentifier (sProcessID);
+      if (aProcID == null)
+        throw new IllegalStateException ("Failed to parse process ID '" + sProcessID + "'");
+      ret.add (aProcID);
+    }
+    if (ret.isEmpty ())
+      throw new IllegalStateException ("Found no single process ID in '" + sProcessIDs + "'");
+    return ret;
   }
 
   /**
@@ -72,15 +100,18 @@ abstract class AbstractConverter
     final Genericode10CodeListMarshaller aMarshaller = new Genericode10CodeListMarshaller ();
     aMarshaller.setNamespaceContext (aNsCtx);
     aMarshaller.setFormattedOutput (true);
-    if (aMarshaller.write (aCodeList, new File (m_aResultDir, sFilename)).isFailure ())
-      throw new IllegalStateException ("Failed to write file '" + sFilename + "'");
+
+    final File aDstFile = new File (m_aResultDir, sFilename);
+    if (aMarshaller.write (aCodeList, aDstFile).isFailure ())
+      throw new IllegalStateException ("Failed to write file '" + aDstFile.getPath () + "'");
     LOGGER.info ("Wrote Genericode file '" + sFilename + "'");
   }
 
   protected final void writeXMLFile (@Nonnull final IMicroNode aNode, @Nonnull final String sFilename)
   {
-    if (MicroWriter.writeToFile (aNode, new File (m_aResultDir, sFilename)).isFailure ())
-      throw new IllegalStateException ("Failed to write file '" + sFilename + "'");
+    final File aDstFile = new File (m_aResultDir, sFilename);
+    if (MicroWriter.writeToFile (aNode, aDstFile).isFailure ())
+      throw new IllegalStateException ("Failed to write file '" + aDstFile.getPath () + "'");
     LOGGER.info ("Wrote XML file '" + sFilename + "'");
   }
 

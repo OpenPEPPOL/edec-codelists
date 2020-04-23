@@ -14,7 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package eu.peppol.codelist;
+package eu.peppol.codelist.main;
+
+import eu.peppol.codelist.ConvertV7;
 
 /**
  * Utility class to create the Genericode files from the Excel code list.

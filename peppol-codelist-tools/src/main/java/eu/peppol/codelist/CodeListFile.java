@@ -25,7 +25,12 @@ import org.apache.poi.ss.usermodel.Sheet;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.functional.IThrowingConsumer;
 
-final class CodeListFile
+/**
+ * Represent a single CodeList Excel source file.
+ *
+ * @author Philip Helger
+ */
+public final class CodeListFile
 {
   private final File m_aFile;
   private final IThrowingConsumer <? super Sheet, Exception> m_aHandler;
@@ -34,6 +39,7 @@ final class CodeListFile
                        @Nonnull final String sFilenameVersion,
                        @Nonnull final IThrowingConsumer <? super Sheet, Exception> aHandler)
   {
+    // TODO change absolute path
     m_aFile = new File ("../../documentation/Code Lists/PEPPOL Code Lists - " +
                         sFilenamePart +
                         " v" +

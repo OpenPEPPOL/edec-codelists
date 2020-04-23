@@ -29,12 +29,12 @@ import com.helger.genericode.v10.Row;
 import com.helger.peppolid.peppol.doctype.IPeppolDocumentTypeIdentifierParts;
 
 @Immutable
-final class Helper
+public final class CodeListHelper
 {
   private static final boolean DEFAULT_DEPRECATED = false;
   private static final boolean DEFAULT_ISSUED_BY_OPENPEPPOL = false;
 
-  private Helper ()
+  private CodeListHelper ()
   {}
 
   static boolean parseBoolean (final String s, final boolean bFallback)
@@ -68,7 +68,7 @@ final class Helper
   }
 
   @Nullable
-  static String getRowValue (@Nonnull final Row aRow, @Nonnull @Nonempty final String sColumnID)
+  static String getGCRowValue (@Nonnull final Row aRow, @Nonnull @Nonempty final String sColumnID)
   {
     final String sPure = Genericode10Helper.getRowValue (aRow, sColumnID);
     return StringHelper.trim (sPure);
@@ -205,6 +205,33 @@ final class Helper
         return "XRECHNUNG_CREDIT_NOTE_UBL_V11";
       if ("CrossIndustryInvoice".equals (sLocalName))
         return "XRECHNUNG_INVOICE_CII_V11";
+    }
+    if ("urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.2".equals (sCustomizationID))
+    {
+      if ("Invoice".equals (sLocalName))
+        return "XRECHNUNG_INVOICE_UBL_V12";
+      if ("CreditNote".equals (sLocalName))
+        return "XRECHNUNG_CREDIT_NOTE_UBL_V12";
+      if ("CrossIndustryInvoice".equals (sLocalName))
+        return "XRECHNUNG_INVOICE_CII_V12";
+    }
+    if ("urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.3".equals (sCustomizationID))
+    {
+      if ("Invoice".equals (sLocalName))
+        return "XRECHNUNG_INVOICE_UBL_V13";
+      if ("CreditNote".equals (sLocalName))
+        return "XRECHNUNG_CREDIT_NOTE_UBL_V13";
+      if ("CrossIndustryInvoice".equals (sLocalName))
+        return "XRECHNUNG_INVOICE_CII_V13";
+    }
+    if ("urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0".equals (sCustomizationID))
+    {
+      if ("Invoice".equals (sLocalName))
+        return "XRECHNUNG_INVOICE_UBL_V20";
+      if ("CreditNote".equals (sLocalName))
+        return "XRECHNUNG_CREDIT_NOTE_UBL_V20";
+      if ("CrossIndustryInvoice".equals (sLocalName))
+        return "XRECHNUNG_INVOICE_CII_V20";
     }
 
     if ("urn:cen.eu:en16931:2017#conformant#urn:UBL.BE:1.0.0.20180214".equals (sCustomizationID))
