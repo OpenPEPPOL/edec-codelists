@@ -23,8 +23,6 @@ import java.util.Map;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.CommonsLinkedHashMap;
@@ -36,16 +34,17 @@ import com.helger.commons.regex.RegExHelper;
 import com.helger.commons.string.StringHelper;
 import com.helger.commons.string.StringParser;
 import com.helger.commons.version.Version;
-import com.helger.genericode.excel.ExcelReadOptions;
-import com.helger.genericode.excel.ExcelSheetToCodeList10;
 import com.helger.genericode.v10.CodeListDocument;
 import com.helger.genericode.v10.Row;
-import com.helger.genericode.v10.UseType;
 import com.helger.peppolid.CIdentifier;
 import com.helger.peppolid.IProcessIdentifier;
 import com.helger.xml.microdom.IMicroDocument;
 import com.helger.xml.microdom.IMicroElement;
 import com.helger.xml.microdom.MicroDocument;
+
+import eu.peppol.codelist.excel.ECodeListDataType;
+import eu.peppol.codelist.excel.XLSXReadOptions;
+import eu.peppol.codelist.excel.XLSXToGC;
 
 /**
  * Utility class to create the Genericode files from the Excel code list. Also
@@ -55,7 +54,6 @@ import com.helger.xml.microdom.MicroDocument;
  */
 public final class ConvertV7 extends AbstractConverter
 {
-  private static final Logger LOGGER = LoggerFactory.getLogger (ConvertV7.class);
   private static final Version CODELIST_VERSION = new Version (7);
   private static final String CODELIST_FILE_SUFFIX = " draft";
   private static final String FILENAME_SUFFIX = "V7";
@@ -64,31 +62,25 @@ public final class ConvertV7 extends AbstractConverter
   private void _handleDocumentTypes (final Sheet aDocumentSheet) throws URISyntaxException
   {
     // Create GeneriCode file
-    final ExcelReadOptions <UseType> aReadOptions = new ExcelReadOptions <UseType> ().setLinesToSkip (1)
-                                                                                     .setLineIndexShortName (0);
-    {
-      int nCol = 0;
-      aReadOptions.addColumn (nCol++, "profilecode", UseType.OPTIONAL, "string", false);
-      aReadOptions.addColumn (nCol++, "scheme", UseType.REQUIRED, "string", true);
-      aReadOptions.addColumn (nCol++, "id", UseType.REQUIRED, "string", true);
-      aReadOptions.addColumn (nCol++, "since", UseType.REQUIRED, "string", false);
-      aReadOptions.addColumn (nCol++, "deprecated", UseType.REQUIRED, "boolean", false);
-      aReadOptions.addColumn (nCol++, "deprecated-since", UseType.OPTIONAL, "string", false);
-      aReadOptions.addColumn (nCol++, "comment", UseType.OPTIONAL, "string", false);
-      aReadOptions.addColumn (nCol++, "issued-by-openpeppol", UseType.REQUIRED, "boolean", false);
-      aReadOptions.addColumn (nCol++, "bis-version", UseType.OPTIONAL, "int", false);
-      aReadOptions.addColumn (nCol++, "domain-community", UseType.REQUIRED, "string", false);
-      aReadOptions.addColumn (nCol++, "process-ids", UseType.REQUIRED, "string", false);
-    }
+    final XLSXReadOptions aReadOptions = new XLSXReadOptions ();
+    aReadOptions.addColumn ("profilecode", false, ECodeListDataType.STRING);
+    aReadOptions.addKeyColumn ("scheme", true, ECodeListDataType.STRING);
+    aReadOptions.addKeyColumn ("id", true, ECodeListDataType.STRING);
+    aReadOptions.addColumn ("since", true, ECodeListDataType.STRING);
+    aReadOptions.addColumn ("deprecated", true, ECodeListDataType.BOOLEAN);
+    aReadOptions.addColumn ("deprecated-since", false, ECodeListDataType.STRING);
+    aReadOptions.addColumn ("comment", false, ECodeListDataType.STRING);
+    aReadOptions.addColumn ("issued-by-openpeppol", true, ECodeListDataType.BOOLEAN);
+    aReadOptions.addColumn ("bis-version", false, ECodeListDataType.INT);
+    aReadOptions.addColumn ("domain-community", true, ECodeListDataType.STRING);
+    aReadOptions.addColumn ("process-ids", true, ECodeListDataType.STRING);
+
     final String sCodeListName = "PeppolDocumentTypes";
-    final CodeListDocument aCodeList = ExcelSheetToCodeList10.convertToSimpleCodeList (aDocumentSheet,
-                                                                                       aReadOptions,
-                                                                                       sCodeListName,
-                                                                                       CODELIST_VERSION.getAsString (),
-                                                                                       new URI ("urn:peppol.eu:names:identifier:documenttypes"),
-                                                                                       new URI ("urn:peppol.eu:names:identifier:documenttypes-" +
-                                                                                                CODELIST_VERSION.getAsString ()),
-                                                                                       null);
+    final CodeListDocument aCodeList = XLSXToGC.convertToSimpleCodeList (aDocumentSheet,
+                                                                         aReadOptions,
+                                                                         sCodeListName,
+                                                                         CODELIST_VERSION,
+                                                                         new URI ("urn:peppol.eu:names:identifier:documenttypes"));
 
     // Save as XML
     final IMicroDocument aDoc = new MicroDocument ();
@@ -146,34 +138,27 @@ public final class ConvertV7 extends AbstractConverter
   private void _handleParticipantIdentifierSchemes (final Sheet aParticipantSheet) throws URISyntaxException
   {
     // Read excel file
-    final ExcelReadOptions <UseType> aReadOptions = new ExcelReadOptions <UseType> ().setLinesToSkip (1)
-                                                                                     .setLineIndexShortName (0);
-    {
-      int nCol = 0;
-      aReadOptions.addColumn (nCol++, "schemeid", UseType.REQUIRED, "string", true);
-      aReadOptions.addColumn (nCol++, "iso6523", UseType.REQUIRED, "string", true);
-      aReadOptions.addColumn (nCol++, "country", UseType.REQUIRED, "string", true);
-      aReadOptions.addColumn (nCol++, "schemename", UseType.REQUIRED, "string", true);
-      aReadOptions.addColumn (nCol++, "issuingagency", UseType.OPTIONAL, "string", false);
-      aReadOptions.addColumn (nCol++, "since", UseType.REQUIRED, "string", false);
-      aReadOptions.addColumn (nCol++, "deprecated", UseType.REQUIRED, "boolean", false);
-      aReadOptions.addColumn (nCol++, "deprecated-since", UseType.OPTIONAL, "string", false);
-      aReadOptions.addColumn (nCol++, "structure", UseType.OPTIONAL, "string", false);
-      aReadOptions.addColumn (nCol++, "display", UseType.OPTIONAL, "string", false);
-      aReadOptions.addColumn (nCol++, "examples", UseType.OPTIONAL, "string", false);
-      aReadOptions.addColumn (nCol++, "validation-rules", UseType.OPTIONAL, "string", false);
-      aReadOptions.addColumn (nCol++, "usage", UseType.OPTIONAL, "string", false);
-    }
+    final XLSXReadOptions aReadOptions = new XLSXReadOptions ();
+    aReadOptions.addKeyColumn ("schemeid", true, ECodeListDataType.STRING);
+    aReadOptions.addKeyColumn ("iso6523", true, ECodeListDataType.STRING);
+    aReadOptions.addColumn ("country", true, ECodeListDataType.STRING);
+    aReadOptions.addKeyColumn ("schemename", true, ECodeListDataType.STRING);
+    aReadOptions.addColumn ("issuingagency", false, ECodeListDataType.STRING);
+    aReadOptions.addColumn ("since", true, ECodeListDataType.STRING);
+    aReadOptions.addColumn ("deprecated", true, ECodeListDataType.BOOLEAN);
+    aReadOptions.addColumn ("deprecated-since", false, ECodeListDataType.STRING);
+    aReadOptions.addColumn ("structure", false, ECodeListDataType.STRING);
+    aReadOptions.addColumn ("display", false, ECodeListDataType.STRING);
+    aReadOptions.addColumn ("examples", false, ECodeListDataType.STRING);
+    aReadOptions.addColumn ("validation-rules", false, ECodeListDataType.STRING);
+    aReadOptions.addColumn ("usage", false, ECodeListDataType.STRING);
 
     final String sCodeListName = "PeppolParticipantIdentifierSchemes";
-    final CodeListDocument aCodeList = ExcelSheetToCodeList10.convertToSimpleCodeList (aParticipantSheet,
-                                                                                       aReadOptions,
-                                                                                       sCodeListName,
-                                                                                       CODELIST_VERSION.getAsString (),
-                                                                                       new URI ("urn:peppol.eu:names:identifier:participantidentifierschemes"),
-                                                                                       new URI ("urn:peppol.eu:names:identifier:participantidentifierschemes-" +
-                                                                                                CODELIST_VERSION.getAsString ()),
-                                                                                       null);
+    final CodeListDocument aCodeList = XLSXToGC.convertToSimpleCodeList (aParticipantSheet,
+                                                                         aReadOptions,
+                                                                         sCodeListName,
+                                                                         CODELIST_VERSION,
+                                                                         new URI ("urn:peppol.eu:names:identifier:participantidentifierschemes"));
 
     // Save data also as XML
     final IMicroDocument aDoc = new MicroDocument ();
@@ -238,27 +223,20 @@ public final class ConvertV7 extends AbstractConverter
 
   private void _handleTransportProfileIdentifiers (final Sheet aTPSheet) throws URISyntaxException
   {
-    final ExcelReadOptions <UseType> aReadOptions = new ExcelReadOptions <UseType> ().setLinesToSkip (1)
-                                                                                     .setLineIndexShortName (0);
-    {
-      int nCol = 0;
-      aReadOptions.addColumn (nCol++, "protocol", UseType.REQUIRED, "string", false);
-      aReadOptions.addColumn (nCol++, "profileversion", UseType.REQUIRED, "string", false);
-      aReadOptions.addColumn (nCol++, "profileid", UseType.REQUIRED, "string", true);
-      aReadOptions.addColumn (nCol++, "since", UseType.REQUIRED, "string", false);
-      aReadOptions.addColumn (nCol++, "deprecated", UseType.REQUIRED, "boolean", false);
-      aReadOptions.addColumn (nCol++, "deprecated-since", UseType.OPTIONAL, "string", false);
-    }
+    final XLSXReadOptions aReadOptions = new XLSXReadOptions ();
+    aReadOptions.addColumn ("protocol", true, ECodeListDataType.STRING);
+    aReadOptions.addColumn ("profileversion", true, ECodeListDataType.STRING);
+    aReadOptions.addKeyColumn ("profileid", true, ECodeListDataType.STRING);
+    aReadOptions.addColumn ("since", true, ECodeListDataType.STRING);
+    aReadOptions.addColumn ("deprecated", true, ECodeListDataType.BOOLEAN);
+    aReadOptions.addColumn ("deprecated-since", false, ECodeListDataType.STRING);
 
     final String sCodeListName = "PeppolTransportProfiles";
-    final CodeListDocument aCodeList = ExcelSheetToCodeList10.convertToSimpleCodeList (aTPSheet,
-                                                                                       aReadOptions,
-                                                                                       sCodeListName,
-                                                                                       CODELIST_VERSION.getAsString (),
-                                                                                       new URI ("urn:peppol.eu:names:identifier:transportprofile"),
-                                                                                       new URI ("urn:peppol.eu:names:identifier:transportprofile-" +
-                                                                                                CODELIST_VERSION.getAsString ()),
-                                                                                       null);
+    final CodeListDocument aCodeList = XLSXToGC.convertToSimpleCodeList (aTPSheet,
+                                                                         aReadOptions,
+                                                                         sCodeListName,
+                                                                         CODELIST_VERSION,
+                                                                         new URI ("urn:peppol.eu:names:identifier:transportprofile"));
 
     // Save as XML
     final IMicroDocument aDoc = new MicroDocument ();

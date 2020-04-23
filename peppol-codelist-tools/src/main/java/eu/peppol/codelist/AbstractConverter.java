@@ -31,13 +31,14 @@ import com.helger.commons.io.file.FileOperationManager;
 import com.helger.commons.string.StringHelper;
 import com.helger.genericode.CGenericode;
 import com.helger.genericode.Genericode10CodeListMarshaller;
-import com.helger.genericode.excel.ExcelSheetToCodeList10;
 import com.helger.genericode.v10.CodeListDocument;
 import com.helger.peppolid.IProcessIdentifier;
 import com.helger.peppolid.factory.PeppolIdentifierFactory;
 import com.helger.xml.microdom.IMicroNode;
 import com.helger.xml.microdom.serialize.MicroWriter;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
+
+import eu.peppol.codelist.excel.XLSXToGC;
 
 /**
  * Abstract base processor containing only version independent stuff.
@@ -95,7 +96,7 @@ public abstract class AbstractConverter
   {
     final MapBasedNamespaceContext aNsCtx = new MapBasedNamespaceContext ();
     aNsCtx.addMapping ("gc", CGenericode.GENERICODE_10_NAMESPACE_URI);
-    aNsCtx.addMapping ("ext", ExcelSheetToCodeList10.ANNOTATION_NS);
+    aNsCtx.addMapping ("ext", XLSXToGC.ANNOTATION_NS);
 
     final Genericode10CodeListMarshaller aMarshaller = new Genericode10CodeListMarshaller ();
     aMarshaller.setNamespaceContext (aNsCtx);
