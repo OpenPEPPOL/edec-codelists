@@ -19,6 +19,7 @@ package eu.peppol.codelist;
 import java.io.File;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,7 +33,9 @@ import com.helger.commons.string.StringHelper;
 import com.helger.commons.version.Version;
 import com.helger.genericode.CGenericode;
 import com.helger.genericode.Genericode10CodeListMarshaller;
+import com.helger.genericode.Genericode10Helper;
 import com.helger.genericode.v10.CodeListDocument;
+import com.helger.genericode.v10.Row;
 import com.helger.peppolid.IProcessIdentifier;
 import com.helger.peppolid.factory.PeppolIdentifierFactory;
 import com.helger.xml.microdom.IMicroNode;
@@ -54,6 +57,8 @@ public abstract class AbstractConverter
                                            "This file was automatically generated.\n" +
                                            "Do NOT edit!";
   private static final Logger LOGGER = LoggerFactory.getLogger (AbstractConverter.class);
+  private static final boolean DEFAULT_DEPRECATED = false;
+  private static final boolean DEFAULT_ISSUED_BY_OPENPEPPOL = false;
 
   protected final Version m_aCodeListVersion;
   private final File m_aResultDir;
@@ -72,6 +77,30 @@ public abstract class AbstractConverter
 
     // Ensure target directory exists
     FileOperationManager.INSTANCE.createDirRecursiveIfNotExisting (m_aResultDir);
+  }
+
+  static boolean parseBoolean (final String s, final boolean bFallback)
+  {
+    if (StringHelper.hasText (s))
+      return "1".equals (s) || "true".equalsIgnoreCase (s) || "yes".equalsIgnoreCase (s);
+    return bFallback;
+  }
+
+  static boolean parseDeprecated (final String s)
+  {
+    return parseBoolean (s, DEFAULT_DEPRECATED);
+  }
+
+  static boolean parseIssuedByOpenPEPPOL (final String s)
+  {
+    return parseBoolean (s, DEFAULT_ISSUED_BY_OPENPEPPOL);
+  }
+
+  @Nullable
+  static String getGCRowValue (@Nonnull final Row aRow, @Nonnull @Nonempty final String sColumnID)
+  {
+    final String sPure = Genericode10Helper.getRowValue (aRow, sColumnID);
+    return StringHelper.trim (sPure);
   }
 
   @Nonnull

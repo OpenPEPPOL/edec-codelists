@@ -16,9 +16,6 @@
  */
 package eu.peppol.codelist;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -94,23 +91,22 @@ public final class ConvertV7 extends AbstractConverter
       eRoot.setAttribute ("version", m_aCodeListVersion.getAsString ());
       for (final Row aRow : aCodeList.getSimpleCodeList ().getRow ())
       {
-        final String sProfileCode = CodeListHelper.getGCRowValue (aRow, "profilecode");
-        final String sScheme = CodeListHelper.getGCRowValue (aRow, "scheme");
-        final String sID = CodeListHelper.getGCRowValue (aRow, "id");
-        final String sSince = CodeListHelper.getGCRowValue (aRow, "since");
-        final boolean bDeprecated = CodeListHelper.parseDeprecated (CodeListHelper.getGCRowValue (aRow, "deprecated"));
-        final String sDeprecatedSince = CodeListHelper.getGCRowValue (aRow, "deprecated-since");
+        final String sProfileCode = getGCRowValue (aRow, "profilecode");
+        final String sScheme = getGCRowValue (aRow, "scheme");
+        final String sID = getGCRowValue (aRow, "id");
+        final String sSince = getGCRowValue (aRow, "since");
+        final boolean bDeprecated = parseDeprecated (getGCRowValue (aRow, "deprecated"));
+        final String sDeprecatedSince = getGCRowValue (aRow, "deprecated-since");
         if (bDeprecated && StringHelper.hasNoText (sDeprecatedSince))
           throw new IllegalStateException ("Code list entry is deprecated but there is no deprecated-since entry");
-        final boolean bIssuedByOpenPEPPOL = CodeListHelper.parseIssuedByOpenPEPPOL (CodeListHelper.getGCRowValue (aRow,
-                                                                                                                  "issued-by-openpeppol"));
-        final String sBISVersion = CodeListHelper.getGCRowValue (aRow, "bis-version");
+        final boolean bIssuedByOpenPEPPOL = parseIssuedByOpenPEPPOL (getGCRowValue (aRow, "issued-by-openpeppol"));
+        final String sBISVersion = getGCRowValue (aRow, "bis-version");
         if (bIssuedByOpenPEPPOL && StringHelper.hasNoText (sBISVersion))
           throw new IllegalStateException ("If issued by OpenPEPPOL, a BIS version is required");
         if (StringHelper.hasText (sBISVersion) && !StringParser.isUnsignedInt (sBISVersion))
           throw new IllegalStateException ("Code list entry has an invalid BIS version number - must be numeric");
-        final String sDomainCommunity = CodeListHelper.getGCRowValue (aRow, "domain-community");
-        final String sProcessIDs = CodeListHelper.getGCRowValue (aRow, "process-ids");
+        final String sDomainCommunity = getGCRowValue (aRow, "domain-community");
+        final String sProcessIDs = getGCRowValue (aRow, "process-ids");
 
         final IMicroElement eAgency = eRoot.appendElement ("document-type");
         eAgency.setAttribute ("profilecode", sProfileCode);
@@ -173,19 +169,19 @@ public final class ConvertV7 extends AbstractConverter
       eRoot.setAttribute ("version", m_aCodeListVersion.getAsString ());
       for (final Row aRow : aCodeList.getSimpleCodeList ().getRow ())
       {
-        final String sSchemeID = CodeListHelper.getGCRowValue (aRow, "schemeid");
-        final String sISO6523 = CodeListHelper.getGCRowValue (aRow, "iso6523");
-        final String sCountryCode = CodeListHelper.getGCRowValue (aRow, "country");
-        final String sSchemeName = CodeListHelper.getGCRowValue (aRow, "schemename");
-        final String sIssuingAgency = CodeListHelper.getGCRowValue (aRow, "issuingagency");
-        final String sSince = CodeListHelper.getGCRowValue (aRow, "since");
-        final boolean bDeprecated = CodeListHelper.parseDeprecated (CodeListHelper.getGCRowValue (aRow, "deprecated"));
-        final String sDeprecatedSince = CodeListHelper.getGCRowValue (aRow, "deprecated-since");
-        final String sStructure = CodeListHelper.getGCRowValue (aRow, "structure");
-        final String sDisplay = CodeListHelper.getGCRowValue (aRow, "display");
-        final String sExamples = CodeListHelper.getGCRowValue (aRow, "examples");
-        final String sValidationRules = CodeListHelper.getGCRowValue (aRow, "validation-rules");
-        final String sUsage = CodeListHelper.getGCRowValue (aRow, "usage");
+        final String sSchemeID = getGCRowValue (aRow, "schemeid");
+        final String sISO6523 = getGCRowValue (aRow, "iso6523");
+        final String sCountryCode = getGCRowValue (aRow, "country");
+        final String sSchemeName = getGCRowValue (aRow, "schemename");
+        final String sIssuingAgency = getGCRowValue (aRow, "issuingagency");
+        final String sSince = getGCRowValue (aRow, "since");
+        final boolean bDeprecated = parseDeprecated (getGCRowValue (aRow, "deprecated"));
+        final String sDeprecatedSince = getGCRowValue (aRow, "deprecated-since");
+        final String sStructure = getGCRowValue (aRow, "structure");
+        final String sDisplay = getGCRowValue (aRow, "display");
+        final String sExamples = getGCRowValue (aRow, "examples");
+        final String sValidationRules = getGCRowValue (aRow, "validation-rules");
+        final String sUsage = getGCRowValue (aRow, "usage");
 
         if (StringHelper.hasNoText (sSchemeID))
           throw new IllegalStateException ("schemeID");
@@ -252,12 +248,12 @@ public final class ConvertV7 extends AbstractConverter
       eRoot.setAttribute ("version", m_aCodeListVersion.getAsString ());
       for (final Row aRow : aCodeList.getSimpleCodeList ().getRow ())
       {
-        final String sProtocol = CodeListHelper.getGCRowValue (aRow, "protocol");
-        final String sProfileVersion = CodeListHelper.getGCRowValue (aRow, "profileversion");
-        final String sProfileID = CodeListHelper.getGCRowValue (aRow, "profileid");
-        final String sSince = CodeListHelper.getGCRowValue (aRow, "since");
-        final boolean bDeprecated = CodeListHelper.parseDeprecated (CodeListHelper.getGCRowValue (aRow, "deprecated"));
-        final String sDeprecatedSince = CodeListHelper.getGCRowValue (aRow, "deprecated-since");
+        final String sProtocol = getGCRowValue (aRow, "protocol");
+        final String sProfileVersion = getGCRowValue (aRow, "profileversion");
+        final String sProfileID = getGCRowValue (aRow, "profileid");
+        final String sSince = getGCRowValue (aRow, "since");
+        final boolean bDeprecated = parseDeprecated (getGCRowValue (aRow, "deprecated"));
+        final String sDeprecatedSince = getGCRowValue (aRow, "deprecated-since");
 
         if (bDeprecated && StringHelper.hasNoText (sDeprecatedSince))
           throw new IllegalStateException ("Code list entry is deprecated but there is no deprecated-since entry");
@@ -277,7 +273,7 @@ public final class ConvertV7 extends AbstractConverter
     writeXMLFile (aDoc, sCodeListName);
   }
 
-  private void _handleProcessIdentifiers () throws URISyntaxException
+  private void _handleProcessIdentifiers ()
   {
     final XLSXReadOptions aReadOptions = new XLSXReadOptions ();
     aReadOptions.addKeyColumn ("scheme", true, ECodeListDataType.STRING);
@@ -291,7 +287,7 @@ public final class ConvertV7 extends AbstractConverter
                                                                          aReadOptions.getAllColumns (),
                                                                          sCodeListName,
                                                                          m_aCodeListVersion,
-                                                                         new URI ("urn:peppol.eu:names:identifier:process"));
+                                                                         URLHelper.getAsURI ("urn:peppol.eu:names:identifier:process"));
 
     // Save as XML
     final IMicroDocument aDoc = new MicroDocument ();
