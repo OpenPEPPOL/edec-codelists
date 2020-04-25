@@ -43,6 +43,7 @@ import com.helger.xml.microdom.serialize.MicroWriter;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
 
 import eu.peppol.codelist.excel.XLSXToGC;
+import eu.peppol.codelist.field.IHasCodeListField;
 
 /**
  * Abstract base processor containing only version independent stuff.
@@ -97,10 +98,9 @@ public abstract class AbstractConverter
   }
 
   @Nullable
-  static String getGCRowValue (@Nonnull final Row aRow, @Nonnull @Nonempty final String sColumnID)
+  static String getGCRowValue (@Nonnull final Row aRow, @Nonnull final IHasCodeListField aFieldProvider)
   {
-    final String sPure = Genericode10Helper.getRowValue (aRow, sColumnID);
-    return StringHelper.trim (sPure);
+    return Genericode10Helper.getRowValue (aRow, aFieldProvider.field ().getColumnID ());
   }
 
   @Nonnull

@@ -25,6 +25,7 @@ import com.helger.commons.ValueEnforcer;
 import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.collection.iterate.ArrayIterator;
+import com.helger.commons.string.StringHelper;
 import com.helger.peppolid.IProcessIdentifier;
 import com.helger.poi.excel.ExcelReadHelper;
 
@@ -75,7 +76,7 @@ public class InMemoryXLSX
       {
         final int nIndex = aExcelColumn.getIndex ();
         final String sShortName = ExcelReadHelper.getCellValueString (aExcelRow.getCell (nIndex));
-        aShortNameRowData[nIndex] = sShortName;
+        aShortNameRowData[nIndex] = StringHelper.trim (sShortName);
       }
     }
 
@@ -97,7 +98,7 @@ public class InMemoryXLSX
       {
         final int nIndex = aExcelColumn.getIndex ();
         final String sValue = ExcelReadHelper.getCellValueString (aExcelRow.getCell (nIndex));
-        aRowData[nIndex] = sValue;
+        aRowData[nIndex] = StringHelper.trim (sValue);
       }
       aPayload.add (aRowData);
     }

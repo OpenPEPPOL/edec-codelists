@@ -23,10 +23,11 @@ import javax.annotation.Nonnull;
 import javax.annotation.concurrent.NotThreadSafe;
 
 import com.helger.commons.ValueEnforcer;
-import com.helger.commons.annotation.Nonempty;
 import com.helger.commons.annotation.ReturnsMutableCopy;
 import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
+
+import eu.peppol.codelist.field.CodeListField;
 
 /**
  * This class contains the options that are used to read the Excel file.
@@ -86,46 +87,12 @@ public class XLSXReadOptions implements Serializable
     return this;
   }
 
-  /**
-   * Add a single column definition.
-   *
-   * @param sColumnID
-   *        The ID of the column in Genericode.
-   * @param bRequired
-   *        Optional or required?
-   * @param eDataType
-   *        The XSD data type to be used in Genericode. Use "string" if you're
-   *        unsure.
-   * @param bKeyColumn
-   *        <code>true</code> if this is a key column, <code>false</code>
-   *        otherwise. Only required columns can be key columns.
-   * @return this
-   */
   @Nonnull
-  private XLSXReadOptions _addColumn (@Nonnull @Nonempty final String sColumnID,
-                                      final boolean bRequired,
-                                      @Nonnull final ECodeListDataType eDataType,
-                                      final boolean bKeyColumn)
+  public XLSXReadOptions addColumn (@Nonnull final CodeListField aField)
   {
     final int nIndex = m_aColumns.size ();
-    m_aColumns.add (new XLSXColumn (nIndex, sColumnID, bRequired, eDataType, bKeyColumn));
+    m_aColumns.add (new XLSXColumn (nIndex, aField));
     return this;
-  }
-
-  @Nonnull
-  public XLSXReadOptions addColumn (@Nonnull @Nonempty final String sColumnID,
-                                    final boolean bRequired,
-                                    @Nonnull final ECodeListDataType eDataType)
-  {
-    return _addColumn (sColumnID, bRequired, eDataType, false);
-  }
-
-  @Nonnull
-  public XLSXReadOptions addKeyColumn (@Nonnull @Nonempty final String sColumnID,
-                                       final boolean bRequired,
-                                       @Nonnull final ECodeListDataType eDataType)
-  {
-    return _addColumn (sColumnID, bRequired, eDataType, true);
   }
 
   /**

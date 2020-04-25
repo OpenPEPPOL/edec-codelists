@@ -39,10 +39,13 @@ import com.helger.xml.microdom.IMicroDocument;
 import com.helger.xml.microdom.IMicroElement;
 import com.helger.xml.microdom.MicroDocument;
 
-import eu.peppol.codelist.excel.ECodeListDataType;
 import eu.peppol.codelist.excel.InMemoryXLSX;
 import eu.peppol.codelist.excel.XLSXReadOptions;
 import eu.peppol.codelist.excel.XLSXToGC;
+import eu.peppol.codelist.field.EDocTypeField;
+import eu.peppol.codelist.field.EParticipantIDSchemeField;
+import eu.peppol.codelist.field.EProcessIDField;
+import eu.peppol.codelist.field.ETransportProfilesField;
 
 /**
  * Handle V7 code list
@@ -62,17 +65,8 @@ public final class ConvertV7 extends AbstractConverter
   {
     // Create GeneriCode file
     final XLSXReadOptions aReadOptions = new XLSXReadOptions ();
-    aReadOptions.addColumn ("profilecode", false, ECodeListDataType.STRING);
-    aReadOptions.addKeyColumn ("scheme", true, ECodeListDataType.STRING);
-    aReadOptions.addKeyColumn ("id", true, ECodeListDataType.STRING);
-    aReadOptions.addColumn ("since", true, ECodeListDataType.STRING);
-    aReadOptions.addColumn ("deprecated", true, ECodeListDataType.BOOLEAN);
-    aReadOptions.addColumn ("deprecated-since", false, ECodeListDataType.STRING);
-    aReadOptions.addColumn ("comment", false, ECodeListDataType.STRING);
-    aReadOptions.addColumn ("issued-by-openpeppol", true, ECodeListDataType.BOOLEAN);
-    aReadOptions.addColumn ("bis-version", false, ECodeListDataType.INT);
-    aReadOptions.addColumn ("domain-community", true, ECodeListDataType.STRING);
-    aReadOptions.addColumn ("process-ids", true, ECodeListDataType.STRING);
+    for (final EDocTypeField e : EDocTypeField.values ())
+      aReadOptions.addColumn (e.field ());
     final InMemoryXLSX aXLSX = InMemoryXLSX.read (aReadOptions, aDocumentSheet);
 
     final String sCodeListName = "PeppolDocumentTypes";
@@ -90,39 +84,41 @@ public final class ConvertV7 extends AbstractConverter
       eRoot.setAttribute ("version", m_aCodeListVersion.getAsString ());
       for (final Row aRow : aCodeList.getSimpleCodeList ().getRow ())
       {
-        final String sProfileCode = getGCRowValue (aRow, "profilecode");
-        final String sScheme = getGCRowValue (aRow, "scheme");
-        final String sID = getGCRowValue (aRow, "id");
-        final String sSince = getGCRowValue (aRow, "since");
-        final boolean bDeprecated = parseDeprecated (getGCRowValue (aRow, "deprecated"));
-        final String sDeprecatedSince = getGCRowValue (aRow, "deprecated-since");
+        final String sProfileCode = getGCRowValue (aRow, EDocTypeField.NAME);
+        final String sScheme = getGCRowValue (aRow, EDocTypeField.SCHEME);
+        final String sID = getGCRowValue (aRow, EDocTypeField.ID);
+        final String sSince = getGCRowValue (aRow, EDocTypeField.SINCE);
+        final boolean bDeprecated = parseDeprecated (getGCRowValue (aRow, EDocTypeField.DEPRECATED));
+        final String sDeprecatedSince = getGCRowValue (aRow, EDocTypeField.DEPRECATED_SINCE);
+        final boolean bIssuedByOpenPEPPOL = parseIssuedByOpenPEPPOL (getGCRowValue (aRow,
+                                                                                    EDocTypeField.ISSUED_BY_OPENPEPPOL));
+        final String sBISVersion = getGCRowValue (aRow, EDocTypeField.BIS_VERSION);
+        final String sDomainCommunity = getGCRowValue (aRow, EDocTypeField.DOMAIN_COMMUNITY);
+        final String sProcessIDs = getGCRowValue (aRow, EDocTypeField.PROCESS_IDs);
+
         if (bDeprecated && StringHelper.hasNoText (sDeprecatedSince))
           throw new IllegalStateException ("Code list entry is deprecated but there is no deprecated-since entry");
-        final boolean bIssuedByOpenPEPPOL = parseIssuedByOpenPEPPOL (getGCRowValue (aRow, "issued-by-openpeppol"));
-        final String sBISVersion = getGCRowValue (aRow, "bis-version");
         if (bIssuedByOpenPEPPOL && StringHelper.hasNoText (sBISVersion))
           throw new IllegalStateException ("If issued by OpenPEPPOL, a BIS version is required");
         if (StringHelper.hasText (sBISVersion) && !StringParser.isUnsignedInt (sBISVersion))
           throw new IllegalStateException ("Code list entry has an invalid BIS version number - must be numeric");
-        final String sDomainCommunity = getGCRowValue (aRow, "domain-community");
-        final String sProcessIDs = getGCRowValue (aRow, "process-ids");
 
         final IMicroElement eAgency = eRoot.appendElement ("document-type");
-        eAgency.setAttribute ("profilecode", sProfileCode);
-        eAgency.setAttribute ("scheme", sScheme);
-        eAgency.setAttribute ("id", sID);
-        eAgency.setAttribute ("since", sSince);
-        eAgency.setAttribute ("deprecated", bDeprecated);
-        eAgency.setAttribute ("deprecated-since", sDeprecatedSince);
-        eAgency.setAttribute ("issued-by-openpeppol", bIssuedByOpenPEPPOL);
-        eAgency.setAttribute ("bis-version", sBISVersion);
-        eAgency.setAttribute ("domain-community", sDomainCommunity);
+        eAgency.setAttribute (EDocTypeField.NAME.field ().getColumnID (), sProfileCode);
+        eAgency.setAttribute (EDocTypeField.SCHEME.field ().getColumnID (), sScheme);
+        eAgency.setAttribute (EDocTypeField.ID.field ().getColumnID (), sID);
+        eAgency.setAttribute (EDocTypeField.SINCE.field ().getColumnID (), sSince);
+        eAgency.setAttribute (EDocTypeField.DEPRECATED.field ().getColumnID (), bDeprecated);
+        eAgency.setAttribute (EDocTypeField.DEPRECATED_SINCE.field ().getColumnID (), sDeprecatedSince);
+        eAgency.setAttribute (EDocTypeField.ISSUED_BY_OPENPEPPOL.field ().getColumnID (), bIssuedByOpenPEPPOL);
+        eAgency.setAttribute (EDocTypeField.BIS_VERSION.field ().getColumnID (), sBISVersion);
+        eAgency.setAttribute (EDocTypeField.DOMAIN_COMMUNITY.field ().getColumnID (), sDomainCommunity);
         final ICommonsList <IProcessIdentifier> aProcIDs = getAllProcessIDsFromMultilineString (sProcessIDs);
         for (final IProcessIdentifier aProcID : aProcIDs)
         {
           eAgency.appendElement ("process-id")
-                 .setAttribute ("scheme", aProcID.getScheme ())
-                 .setAttribute ("value", aProcID.getValue ());
+                 .setAttribute (EProcessIDField.SCHEME.field ().getColumnID (), aProcID.getScheme ())
+                 .setAttribute (EProcessIDField.VALUE.field ().getColumnID (), aProcID.getValue ());
           m_aProcIDs.computeIfAbsent (aProcID, k -> new CommonsArrayList <> ())
                     .add (CIdentifier.getURIEncoded (sScheme, sID));
         }
@@ -138,19 +134,8 @@ public final class ConvertV7 extends AbstractConverter
   {
     // Read excel file
     final XLSXReadOptions aReadOptions = new XLSXReadOptions ();
-    aReadOptions.addKeyColumn ("schemeid", true, ECodeListDataType.STRING);
-    aReadOptions.addKeyColumn ("iso6523", true, ECodeListDataType.STRING);
-    aReadOptions.addColumn ("country", true, ECodeListDataType.STRING);
-    aReadOptions.addKeyColumn ("schemename", true, ECodeListDataType.STRING);
-    aReadOptions.addColumn ("issuingagency", false, ECodeListDataType.STRING);
-    aReadOptions.addColumn ("since", true, ECodeListDataType.STRING);
-    aReadOptions.addColumn ("deprecated", true, ECodeListDataType.BOOLEAN);
-    aReadOptions.addColumn ("deprecated-since", false, ECodeListDataType.STRING);
-    aReadOptions.addColumn ("structure", false, ECodeListDataType.STRING);
-    aReadOptions.addColumn ("display", false, ECodeListDataType.STRING);
-    aReadOptions.addColumn ("examples", false, ECodeListDataType.STRING);
-    aReadOptions.addColumn ("validation-rules", false, ECodeListDataType.STRING);
-    aReadOptions.addColumn ("usage", false, ECodeListDataType.STRING);
+    for (final EParticipantIDSchemeField e : EParticipantIDSchemeField.values ())
+      aReadOptions.addColumn (e.field ());
     final InMemoryXLSX aXLSX = InMemoryXLSX.read (aReadOptions, aParticipantSheet);
 
     final String sCodeListName = "PeppolParticipantIdentifierSchemes";
@@ -168,19 +153,19 @@ public final class ConvertV7 extends AbstractConverter
       eRoot.setAttribute ("version", m_aCodeListVersion.getAsString ());
       for (final Row aRow : aCodeList.getSimpleCodeList ().getRow ())
       {
-        final String sSchemeID = getGCRowValue (aRow, "schemeid");
-        final String sISO6523 = getGCRowValue (aRow, "iso6523");
-        final String sCountryCode = getGCRowValue (aRow, "country");
-        final String sSchemeName = getGCRowValue (aRow, "schemename");
-        final String sIssuingAgency = getGCRowValue (aRow, "issuingagency");
-        final String sSince = getGCRowValue (aRow, "since");
-        final boolean bDeprecated = parseDeprecated (getGCRowValue (aRow, "deprecated"));
-        final String sDeprecatedSince = getGCRowValue (aRow, "deprecated-since");
-        final String sStructure = getGCRowValue (aRow, "structure");
-        final String sDisplay = getGCRowValue (aRow, "display");
-        final String sExamples = getGCRowValue (aRow, "examples");
-        final String sValidationRules = getGCRowValue (aRow, "validation-rules");
-        final String sUsage = getGCRowValue (aRow, "usage");
+        final String sSchemeID = getGCRowValue (aRow, EParticipantIDSchemeField.SCHEME_ID);
+        final String sISO6523 = getGCRowValue (aRow, EParticipantIDSchemeField.ISO6523);
+        final String sCountryCode = getGCRowValue (aRow, EParticipantIDSchemeField.COUNTRY);
+        final String sSchemeName = getGCRowValue (aRow, EParticipantIDSchemeField.SCHEME_NAME);
+        final String sIssuingAgency = getGCRowValue (aRow, EParticipantIDSchemeField.ISSUING_AGENCY);
+        final String sSince = getGCRowValue (aRow, EParticipantIDSchemeField.SINCE);
+        final boolean bDeprecated = parseDeprecated (getGCRowValue (aRow, EParticipantIDSchemeField.DEPRECATED));
+        final String sDeprecatedSince = getGCRowValue (aRow, EParticipantIDSchemeField.DEPRECATED_SINCE);
+        final String sStructure = getGCRowValue (aRow, EParticipantIDSchemeField.STRUCTURE);
+        final String sDisplay = getGCRowValue (aRow, EParticipantIDSchemeField.DISPLAY);
+        final String sExamples = getGCRowValue (aRow, EParticipantIDSchemeField.EXAMPLES);
+        final String sValidationRules = getGCRowValue (aRow, EParticipantIDSchemeField.VALIDATION_RULES);
+        final String sUsage = getGCRowValue (aRow, EParticipantIDSchemeField.USAGE);
 
         if (StringHelper.hasNoText (sSchemeID))
           throw new IllegalStateException ("schemeID");
@@ -194,25 +179,25 @@ public final class ConvertV7 extends AbstractConverter
           throw new IllegalStateException ("Code list entry is deprecated but there is no deprecated-since entry");
 
         final IMicroElement eAgency = eRoot.appendElement ("identifier-scheme");
-        eAgency.setAttribute ("schemeid", sSchemeID);
-        eAgency.setAttribute ("country", sCountryCode);
-        eAgency.setAttribute ("schemename", sSchemeName);
-        // legacy name
-        eAgency.setAttribute ("agencyname", sIssuingAgency);
-        eAgency.setAttribute ("iso6523", sISO6523);
-        eAgency.setAttribute ("since", sSince);
-        eAgency.setAttribute ("deprecated", bDeprecated);
-        eAgency.setAttribute ("deprecated-since", sDeprecatedSince);
+        eAgency.setAttribute (EParticipantIDSchemeField.SCHEME_ID.field ().getColumnID (), sSchemeID);
+        eAgency.setAttribute (EParticipantIDSchemeField.COUNTRY.field ().getColumnID (), sCountryCode);
+        eAgency.setAttribute (EParticipantIDSchemeField.SCHEME_NAME.field ().getColumnID (), sSchemeName);
+        eAgency.setAttribute (EParticipantIDSchemeField.ISSUING_AGENCY.field ().getColumnID (), sIssuingAgency);
+        eAgency.setAttribute (EParticipantIDSchemeField.ISO6523.field ().getColumnID (), sISO6523);
+        eAgency.setAttribute (EParticipantIDSchemeField.SINCE.field ().getColumnID (), sSince);
+        eAgency.setAttribute (EParticipantIDSchemeField.DEPRECATED.field ().getColumnID (), bDeprecated);
+        eAgency.setAttribute (EParticipantIDSchemeField.DEPRECATED_SINCE.field ().getColumnID (), sDeprecatedSince);
         if (StringHelper.hasText (sStructure))
-          eAgency.appendElement ("structure").appendText (sStructure);
+          eAgency.appendElement (EParticipantIDSchemeField.STRUCTURE.field ().getColumnID ()).appendText (sStructure);
         if (StringHelper.hasText (sDisplay))
-          eAgency.appendElement ("display").appendText (sDisplay);
+          eAgency.appendElement (EParticipantIDSchemeField.DISPLAY.field ().getColumnID ()).appendText (sDisplay);
         if (StringHelper.hasText (sExamples))
-          eAgency.appendElement ("examples").appendText (sExamples);
+          eAgency.appendElement (EParticipantIDSchemeField.EXAMPLES.field ().getColumnID ()).appendText (sExamples);
         if (StringHelper.hasText (sValidationRules))
-          eAgency.appendElement ("validation-rules").appendText (sValidationRules);
+          eAgency.appendElement (EParticipantIDSchemeField.VALIDATION_RULES.field ().getColumnID ())
+                 .appendText (sValidationRules);
         if (StringHelper.hasText (sUsage))
-          eAgency.appendElement ("usage").appendText (sUsage);
+          eAgency.appendElement (EParticipantIDSchemeField.USAGE.field ().getColumnID ()).appendText (sUsage);
       }
     }
 
@@ -224,12 +209,8 @@ public final class ConvertV7 extends AbstractConverter
   private void _handleTransportProfileIdentifiers (final Sheet aTPSheet)
   {
     final XLSXReadOptions aReadOptions = new XLSXReadOptions ();
-    aReadOptions.addColumn ("protocol", true, ECodeListDataType.STRING);
-    aReadOptions.addColumn ("profileversion", true, ECodeListDataType.STRING);
-    aReadOptions.addKeyColumn ("profileid", true, ECodeListDataType.STRING);
-    aReadOptions.addColumn ("since", true, ECodeListDataType.STRING);
-    aReadOptions.addColumn ("deprecated", true, ECodeListDataType.BOOLEAN);
-    aReadOptions.addColumn ("deprecated-since", false, ECodeListDataType.STRING);
+    for (final ETransportProfilesField e : ETransportProfilesField.values ())
+      aReadOptions.addColumn (e.field ());
     final InMemoryXLSX aXLSX = InMemoryXLSX.read (aReadOptions, aTPSheet);
 
     final String sCodeListName = "PeppolTransportProfiles";
@@ -247,23 +228,23 @@ public final class ConvertV7 extends AbstractConverter
       eRoot.setAttribute ("version", m_aCodeListVersion.getAsString ());
       for (final Row aRow : aCodeList.getSimpleCodeList ().getRow ())
       {
-        final String sProtocol = getGCRowValue (aRow, "protocol");
-        final String sProfileVersion = getGCRowValue (aRow, "profileversion");
-        final String sProfileID = getGCRowValue (aRow, "profileid");
-        final String sSince = getGCRowValue (aRow, "since");
-        final boolean bDeprecated = parseDeprecated (getGCRowValue (aRow, "deprecated"));
-        final String sDeprecatedSince = getGCRowValue (aRow, "deprecated-since");
+        final String sProtocol = getGCRowValue (aRow, ETransportProfilesField.PROTOCOL);
+        final String sProfileVersion = getGCRowValue (aRow, ETransportProfilesField.PROFILE_VERSION);
+        final String sProfileID = getGCRowValue (aRow, ETransportProfilesField.PROFILE_ID);
+        final String sSince = getGCRowValue (aRow, ETransportProfilesField.SINCE);
+        final boolean bDeprecated = parseDeprecated (getGCRowValue (aRow, ETransportProfilesField.DEPRECATED));
+        final String sDeprecatedSince = getGCRowValue (aRow, ETransportProfilesField.DEPRECATED_SINCE);
 
         if (bDeprecated && StringHelper.hasNoText (sDeprecatedSince))
           throw new IllegalStateException ("Code list entry is deprecated but there is no deprecated-since entry");
 
         final IMicroElement eAgency = eRoot.appendElement ("transport-profile");
-        eAgency.setAttribute ("protocol", sProtocol);
-        eAgency.setAttribute ("profileversion", sProfileVersion);
-        eAgency.setAttribute ("profileid", sProfileID);
-        eAgency.setAttribute ("since", sSince);
-        eAgency.setAttribute ("deprecated", bDeprecated);
-        eAgency.setAttribute ("deprecated-since", sDeprecatedSince);
+        eAgency.setAttribute (ETransportProfilesField.PROTOCOL.field ().getColumnID (), sProtocol);
+        eAgency.setAttribute (ETransportProfilesField.PROFILE_VERSION.field ().getColumnID (), sProfileVersion);
+        eAgency.setAttribute (ETransportProfilesField.PROFILE_ID.field ().getColumnID (), sProfileID);
+        eAgency.setAttribute (ETransportProfilesField.SINCE.field ().getColumnID (), sSince);
+        eAgency.setAttribute (ETransportProfilesField.DEPRECATED.field ().getColumnID (), bDeprecated);
+        eAgency.setAttribute (ETransportProfilesField.DEPRECATED_SINCE.field ().getColumnID (), sDeprecatedSince);
       }
     }
 
@@ -275,8 +256,8 @@ public final class ConvertV7 extends AbstractConverter
   private void _handleProcessIdentifiers ()
   {
     final XLSXReadOptions aReadOptions = new XLSXReadOptions ();
-    aReadOptions.addKeyColumn ("scheme", true, ECodeListDataType.STRING);
-    aReadOptions.addKeyColumn ("value", true, ECodeListDataType.STRING);
+    for (final EProcessIDField e : EProcessIDField.values ())
+      aReadOptions.addColumn (e.field ());
 
     final ICommonsList <IProcessIdentifier> aProcIDs = new CommonsArrayList <> (m_aProcIDs.keySet ());
     final InMemoryXLSX aXLSX = InMemoryXLSX.createForProcessIDs (aProcIDs);
@@ -297,8 +278,8 @@ public final class ConvertV7 extends AbstractConverter
       for (final IProcessIdentifier aProcID : aProcIDs)
       {
         final IMicroElement eProcess = eRoot.appendElement ("process");
-        eProcess.setAttribute ("scheme", aProcID.getScheme ());
-        eProcess.setAttribute ("value", aProcID.getValue ());
+        eProcess.setAttribute (EProcessIDField.SCHEME.field ().getColumnID (), aProcID.getScheme ());
+        eProcess.setAttribute (EProcessIDField.VALUE.field ().getColumnID (), aProcID.getValue ());
       }
     }
 

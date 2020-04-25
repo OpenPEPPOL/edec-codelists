@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package eu.peppol.codelist.excel;
+package eu.peppol.codelist.field;
 
 import javax.annotation.Nonnull;
 

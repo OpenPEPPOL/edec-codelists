@@ -21,8 +21,9 @@ import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
 import com.helger.commons.ValueEnforcer;
-import com.helger.commons.annotation.Nonempty;
 import com.helger.commons.string.ToStringGenerator;
+
+import eu.peppol.codelist.field.CodeListField;
 
 /**
  * This class represents a single column definition when converting an Excel
@@ -34,26 +35,14 @@ import com.helger.commons.string.ToStringGenerator;
 public final class XLSXColumn
 {
   private final int m_nIndex;
-  private final String m_sColumnID;
-  private final boolean m_bRequired;
-  private final ECodeListDataType m_eDataType;
-  private final boolean m_bKeyColumn;
+  private final CodeListField m_aField;
 
-  public XLSXColumn (@Nonnegative final int nIndex,
-                     @Nonnull @Nonempty final String sColumnID,
-                     final boolean bRequired,
-                     @Nonnull final ECodeListDataType eDataType,
-                     final boolean bKeyColumn)
+  public XLSXColumn (@Nonnegative final int nIndex, @Nonnull final CodeListField aField)
   {
     ValueEnforcer.isGE0 (nIndex, "Index");
-    ValueEnforcer.notEmpty (sColumnID, "ColumnID");
-    ValueEnforcer.isFalse (!bRequired && bKeyColumn, "Optional columns cannot be key columns!");
-    ValueEnforcer.notNull (eDataType, "DataType");
+    ValueEnforcer.notNull (aField, "Field");
     m_nIndex = nIndex;
-    m_sColumnID = sColumnID;
-    m_bRequired = bRequired;
-    m_eDataType = eDataType;
-    m_bKeyColumn = bKeyColumn;
+    m_aField = aField;
   }
 
   /**
@@ -66,50 +55,17 @@ public final class XLSXColumn
   }
 
   /**
-   * @return The ID of this column to be used in the Genericode file.
+   * @return Code list field.
    */
   @Nonnull
-  @Nonempty
-  public String getColumnID ()
+  public CodeListField field ()
   {
-    return m_sColumnID;
-  }
-
-  /**
-   * @return optional or required?
-   */
-  @Nonnull
-  public boolean isRequired ()
-  {
-    return m_bRequired;
-  }
-
-  /**
-   * @return The data type for this column.
-   */
-  @Nonnull
-  public ECodeListDataType getDataType ()
-  {
-    return m_eDataType;
-  }
-
-  /**
-   * @return <code>true</code> if this is a key column, <code>false</code>
-   *         otherwise. Only required columns can be key columns.
-   */
-  public boolean isKeyColumn ()
-  {
-    return m_bKeyColumn;
+    return m_aField;
   }
 
   @Override
   public String toString ()
   {
-    return new ToStringGenerator (this).append ("index", m_nIndex)
-                                       .append ("columnID", m_sColumnID)
-                                       .append ("required", m_bRequired)
-                                       .append ("dataType", m_eDataType)
-                                       .append ("keyColumn", m_bKeyColumn)
-                                       .getToString ();
+    return new ToStringGenerator (this).append ("Index", m_nIndex).append ("Field", m_aField).getToString ();
   }
 }

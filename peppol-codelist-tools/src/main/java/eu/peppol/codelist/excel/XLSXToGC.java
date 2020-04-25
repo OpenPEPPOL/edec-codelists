@@ -98,18 +98,18 @@ public final class XLSXToGC
       final String sLongName = null;
 
       // Create Genericode column set
-      final Column aColumn = Genericode10Helper.createColumn (aExcelColumn.getColumnID (),
-                                                              aExcelColumn.isRequired () ? UseType.REQUIRED
-                                                                                         : UseType.OPTIONAL,
+      final Column aColumn = Genericode10Helper.createColumn (aExcelColumn.field ().getColumnID (),
+                                                              aExcelColumn.field ().isRequired () ? UseType.REQUIRED
+                                                                                                  : UseType.OPTIONAL,
                                                               sShortName,
                                                               sLongName,
-                                                              aExcelColumn.getDataType ().getID ());
+                                                              aExcelColumn.field ().getDataType ().getID ());
       aColumnSet.addColumnChoice (aColumn);
 
-      if (aExcelColumn.isKeyColumn ())
+      if (aExcelColumn.field ().isKeyColumn ())
       {
         // Create key definition
-        final Key aKey = Genericode10Helper.createKey (aExcelColumn.getColumnID () + "Key",
+        final Key aKey = Genericode10Helper.createKey (aExcelColumn.field ().getColumnID () + "Key",
                                                        sShortName,
                                                        sLongName,
                                                        aColumn);
@@ -130,11 +130,11 @@ public final class XLSXToGC
       for (final XLSXColumn aExcelColumn : aExcelColumns)
       {
         final String sValue = aExcelRow[aExcelColumn.getIndex ()];
-        if (StringHelper.hasText (sValue) || aExcelColumn.isRequired ())
+        if (StringHelper.hasText (sValue) || aExcelColumn.field ().isRequired ())
         {
           // Create a single value in the current row
           final Value aValue = aFactory.createValue ();
-          aValue.setColumnRef (Genericode10Helper.getColumnOfID (aColumnSet, aExcelColumn.getColumnID ()));
+          aValue.setColumnRef (Genericode10Helper.getColumnOfID (aColumnSet, aExcelColumn.field ().getColumnID ()));
           aValue.setSimpleValue (Genericode10Helper.createSimpleValue (sValue));
           aRow.addValue (aValue);
         }
