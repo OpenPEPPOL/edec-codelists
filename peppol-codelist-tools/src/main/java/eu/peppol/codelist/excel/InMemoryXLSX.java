@@ -16,12 +16,15 @@
  */
 package eu.peppol.codelist.excel;
 
+import java.util.function.Function;
+
 import javax.annotation.Nonnull;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 
 import com.helger.commons.ValueEnforcer;
+import com.helger.commons.annotation.ReturnsMutableCopy;
 import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.collection.iterate.ArrayIterator;
@@ -60,21 +63,22 @@ public class InMemoryXLSX
   }
 
   @Nonnull
-  public static InMemoryXLSX read (final XLSXReadOptions aReadOptions, @Nonnull final Sheet aExcelSheet)
+  @ReturnsMutableCopy
+  public <T> ICommonsList <T> getAsList (final Function <String [], T> aProvider)
   {
-    ValueEnforcer.notNull (aReadOptions, "ReadOptions");
+    return new CommonsArrayList <> (m_aPayload, aProvider);
+  }
 
-    final ICommonsList <XLSXColumn> aExcelColumns = aReadOptions.getAllColumns ();
-    final int nCols = aExcelColumns.size ();
-
-    final String [] aShortNameRowData = new String [nCols];
+  @Nonnull
+  public static InMemoryXLSX read (@Nonnull final Sheet aExcelSheet, final int nColumnCount)
+  {
+    final String [] aShortNameRowData = new String [nColumnCount];
 
     // Read mandatory short names
     {
-      final Row aExcelRow = aExcelSheet.getRow (aReadOptions.getLineIndexShortName ());
-      for (final XLSXColumn aExcelColumn : aExcelColumns)
+      final Row aExcelRow = aExcelSheet.getRow (0);
+      for (int nIndex = 0; nIndex < nColumnCount; ++nIndex)
       {
-        final int nIndex = aExcelColumn.getIndex ();
         final String sShortName = ExcelReadHelper.getCellValueString (aExcelRow.getCell (nIndex));
         aShortNameRowData[nIndex] = StringHelper.trim (sShortName);
       }
@@ -84,7 +88,7 @@ public class InMemoryXLSX
     final ICommonsList <String []> aPayload = new CommonsArrayList <> (1024);
 
     // Determine the row where reading should start
-    int nRowIndex = aReadOptions.getLinesToSkip ();
+    int nRowIndex = 1;
     while (true)
     {
       // Read a single excel row
@@ -93,10 +97,9 @@ public class InMemoryXLSX
         break;
 
       // Create Genericode row
-      final String [] aRowData = new String [nCols];
-      for (final XLSXColumn aExcelColumn : aExcelColumns)
+      final String [] aRowData = new String [nColumnCount];
+      for (int nIndex = 0; nIndex < nColumnCount; ++nIndex)
       {
-        final int nIndex = aExcelColumn.getIndex ();
         final String sValue = ExcelReadHelper.getCellValueString (aExcelRow.getCell (nIndex));
         aRowData[nIndex] = StringHelper.trim (sValue);
       }

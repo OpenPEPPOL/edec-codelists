@@ -16,24 +16,28 @@
  */
 package eu.peppol.codelist;
 
+import javax.annotation.Nonnull;
+
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.helger.commons.collection.impl.CommonsArrayList;
-import com.helger.commons.collection.impl.CommonsLinkedHashMap;
+import com.helger.commons.collection.impl.CommonsLinkedHashSet;
 import com.helger.commons.collection.impl.ICommonsList;
-import com.helger.commons.collection.impl.ICommonsMap;
+import com.helger.commons.collection.impl.ICommonsSet;
 import com.helger.commons.io.resource.FileSystemResource;
 import com.helger.commons.io.resource.IReadableResource;
 import com.helger.commons.regex.RegExHelper;
 import com.helger.commons.string.StringHelper;
-import com.helger.commons.string.StringParser;
 import com.helger.commons.url.URLHelper;
 import com.helger.commons.version.Version;
 import com.helger.genericode.v10.CodeListDocument;
 import com.helger.genericode.v10.Row;
-import com.helger.peppolid.CIdentifier;
+import com.helger.json.IJsonArray;
+import com.helger.json.IJsonObject;
+import com.helger.json.JsonArray;
+import com.helger.json.JsonObject;
 import com.helger.peppolid.IProcessIdentifier;
 import com.helger.xml.microdom.IMicroDocument;
 import com.helger.xml.microdom.IMicroElement;
@@ -42,7 +46,6 @@ import com.helger.xml.microdom.MicroDocument;
 import eu.peppol.codelist.excel.InMemoryXLSX;
 import eu.peppol.codelist.excel.XLSXReadOptions;
 import eu.peppol.codelist.excel.XLSXToGC;
-import eu.peppol.codelist.field.EDocTypeField;
 import eu.peppol.codelist.field.EParticipantIDSchemeField;
 import eu.peppol.codelist.field.EProcessIDField;
 import eu.peppol.codelist.field.ETransportProfilesField;
@@ -54,80 +57,62 @@ import eu.peppol.codelist.field.ETransportProfilesField;
  */
 public final class ConvertV7 extends AbstractConverter
 {
-  private final ICommonsMap <IProcessIdentifier, ICommonsList <String>> m_aProcIDs = new CommonsLinkedHashMap <> ();
+  private final ICommonsSet <IProcessIdentifier> m_aProcIDs = new CommonsLinkedHashSet <> ();
 
   public ConvertV7 ()
   {
     super (new Version (7), "created-codelists/v7/", "V7");
   }
 
-  private void _handleDocumentTypes (final Sheet aDocumentSheet)
+  private void _handleDocumentTypes (@Nonnull final Sheet aDocumentSheet)
   {
-    // Create GeneriCode file
-    final XLSXReadOptions aReadOptions = new XLSXReadOptions ();
-    for (final EDocTypeField e : EDocTypeField.values ())
-      aReadOptions.addColumn (e.field ());
-    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aReadOptions, aDocumentSheet);
+    // Read Excel
+    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aDocumentSheet, 11);
 
-    final String sCodeListName = "PeppolDocumentTypes";
-    final CodeListDocument aCodeList = XLSXToGC.convertToSimpleCodeList (aXLSX,
-                                                                         aReadOptions.getAllColumns (),
-                                                                         sCodeListName,
-                                                                         m_aCodeListVersion,
-                                                                         URLHelper.getAsURI ("urn:peppol.eu:names:identifier:documenttypes"));
+    // Convert to domain object
+    final ICommonsList <DocTypeRow> aRows = aXLSX.getAsList (DocTypeRow::createV7);
 
-    // Save as XML
+    // Consistency checks
+    for (final DocTypeRow aRow : aRows)
+    {
+      aRow.checkConsistency ();
+      m_aProcIDs.addAll (aRow.m_aProcessIDs);
+    }
+
+    // Create GC
+    final CodeListDocument aCodeList = GCHelper.createEmptyCodeList (DocTypeRow.CODE_LIST_NAME,
+                                                                     m_aCodeListVersion,
+                                                                     DocTypeRow.CODE_LIST_URI);
+    {
+      DocTypeRow.addColumns (aCodeList);
+      for (final DocTypeRow aRow : aRows)
+        aCodeList.getSimpleCodeList ().addRow (aRow.getAsGCRow (aCodeList.getColumnSet ()));
+    }
+
+    // Create XML
     final IMicroDocument aDoc = new MicroDocument ();
     {
       aDoc.appendComment (DO_NOT_EDIT);
       final IMicroElement eRoot = aDoc.appendElement ("root");
       eRoot.setAttribute ("version", m_aCodeListVersion.getAsString ());
-      for (final Row aRow : aCodeList.getSimpleCodeList ().getRow ())
-      {
-        final String sProfileCode = getGCRowValue (aRow, EDocTypeField.NAME);
-        final String sScheme = getGCRowValue (aRow, EDocTypeField.SCHEME);
-        final String sID = getGCRowValue (aRow, EDocTypeField.ID);
-        final String sSince = getGCRowValue (aRow, EDocTypeField.SINCE);
-        final boolean bDeprecated = parseDeprecated (getGCRowValue (aRow, EDocTypeField.DEPRECATED));
-        final String sDeprecatedSince = getGCRowValue (aRow, EDocTypeField.DEPRECATED_SINCE);
-        final boolean bIssuedByOpenPEPPOL = parseIssuedByOpenPEPPOL (getGCRowValue (aRow,
-                                                                                    EDocTypeField.ISSUED_BY_OPENPEPPOL));
-        final String sBISVersion = getGCRowValue (aRow, EDocTypeField.BIS_VERSION);
-        final String sDomainCommunity = getGCRowValue (aRow, EDocTypeField.DOMAIN_COMMUNITY);
-        final String sProcessIDs = getGCRowValue (aRow, EDocTypeField.PROCESS_IDs);
+      for (final DocTypeRow aRow : aRows)
+        eRoot.appendChild (aRow.getAsElement ());
+    }
 
-        if (bDeprecated && StringHelper.hasNoText (sDeprecatedSince))
-          throw new IllegalStateException ("Code list entry is deprecated but there is no deprecated-since entry");
-        if (bIssuedByOpenPEPPOL && StringHelper.hasNoText (sBISVersion))
-          throw new IllegalStateException ("If issued by OpenPEPPOL, a BIS version is required");
-        if (StringHelper.hasText (sBISVersion) && !StringParser.isUnsignedInt (sBISVersion))
-          throw new IllegalStateException ("Code list entry has an invalid BIS version number - must be numeric");
-
-        final IMicroElement eAgency = eRoot.appendElement ("document-type");
-        eAgency.setAttribute (EDocTypeField.NAME.field ().getColumnID (), sProfileCode);
-        eAgency.setAttribute (EDocTypeField.SCHEME.field ().getColumnID (), sScheme);
-        eAgency.setAttribute (EDocTypeField.ID.field ().getColumnID (), sID);
-        eAgency.setAttribute (EDocTypeField.SINCE.field ().getColumnID (), sSince);
-        eAgency.setAttribute (EDocTypeField.DEPRECATED.field ().getColumnID (), bDeprecated);
-        eAgency.setAttribute (EDocTypeField.DEPRECATED_SINCE.field ().getColumnID (), sDeprecatedSince);
-        eAgency.setAttribute (EDocTypeField.ISSUED_BY_OPENPEPPOL.field ().getColumnID (), bIssuedByOpenPEPPOL);
-        eAgency.setAttribute (EDocTypeField.BIS_VERSION.field ().getColumnID (), sBISVersion);
-        eAgency.setAttribute (EDocTypeField.DOMAIN_COMMUNITY.field ().getColumnID (), sDomainCommunity);
-        final ICommonsList <IProcessIdentifier> aProcIDs = getAllProcessIDsFromMultilineString (sProcessIDs);
-        for (final IProcessIdentifier aProcID : aProcIDs)
-        {
-          eAgency.appendElement ("process-id")
-                 .setAttribute (EProcessIDField.SCHEME.field ().getColumnID (), aProcID.getScheme ())
-                 .setAttribute (EProcessIDField.VALUE.field ().getColumnID (), aProcID.getValue ());
-          m_aProcIDs.computeIfAbsent (aProcID, k -> new CommonsArrayList <> ())
-                    .add (CIdentifier.getURIEncoded (sScheme, sID));
-        }
-      }
+    // Create JSON
+    final IJsonObject aJson = new JsonObject ();
+    {
+      aJson.add ("version", m_aCodeListVersion.getAsString ());
+      final IJsonArray aValues = new JsonArray ();
+      for (final DocTypeRow aRow : aRows)
+        aValues.add (aRow.getAsJson ());
+      aJson.add ("values", aValues);
     }
 
     // Write at the end
-    writeGenericodeFile (aCodeList, sCodeListName);
-    writeXMLFile (aDoc, sCodeListName);
+    writeGenericodeFile (aCodeList, DocTypeRow.CODE_LIST_NAME);
+    writeXMLFile (aDoc, DocTypeRow.CODE_LIST_NAME);
+    writeJsonFile (aJson, DocTypeRow.CODE_LIST_NAME);
   }
 
   private void _handleParticipantIdentifierSchemes (final Sheet aParticipantSheet)
@@ -259,7 +244,7 @@ public final class ConvertV7 extends AbstractConverter
     for (final EProcessIDField e : EProcessIDField.values ())
       aReadOptions.addColumn (e.field ());
 
-    final ICommonsList <IProcessIdentifier> aProcIDs = new CommonsArrayList <> (m_aProcIDs.keySet ());
+    final ICommonsList <IProcessIdentifier> aProcIDs = new CommonsArrayList <> (m_aProcIDs);
     final InMemoryXLSX aXLSX = InMemoryXLSX.createForProcessIDs (aProcIDs);
 
     final String sCodeListName = "PeppolProcessIdentifiers";

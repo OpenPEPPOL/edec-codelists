@@ -28,6 +28,7 @@ import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
 
 import eu.peppol.codelist.field.CodeListField;
+import eu.peppol.codelist.field.IHasCodeListField;
 
 /**
  * This class contains the options that are used to read the Excel file.
@@ -103,5 +104,14 @@ public class XLSXReadOptions implements Serializable
   public ICommonsList <XLSXColumn> getAllColumns ()
   {
     return m_aColumns.getClone ();
+  }
+
+  public int getIndex (@Nonnull final IHasCodeListField aCLFP)
+  {
+    final CodeListField aField = aCLFP.field ();
+    for (final XLSXColumn c : m_aColumns)
+      if (c.field ().equals (aField))
+        return c.getIndex ();
+    return -1;
   }
 }

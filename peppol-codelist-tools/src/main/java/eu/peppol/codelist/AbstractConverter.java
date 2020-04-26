@@ -17,6 +17,8 @@
 package eu.peppol.codelist;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -26,8 +28,7 @@ import org.slf4j.LoggerFactory;
 
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.annotation.Nonempty;
-import com.helger.commons.collection.impl.CommonsArrayList;
-import com.helger.commons.collection.impl.ICommonsList;
+import com.helger.commons.io.file.FileHelper;
 import com.helger.commons.io.file.FileOperationManager;
 import com.helger.commons.string.StringHelper;
 import com.helger.commons.version.Version;
@@ -36,8 +37,8 @@ import com.helger.genericode.Genericode10CodeListMarshaller;
 import com.helger.genericode.Genericode10Helper;
 import com.helger.genericode.v10.CodeListDocument;
 import com.helger.genericode.v10.Row;
-import com.helger.peppolid.IProcessIdentifier;
-import com.helger.peppolid.factory.PeppolIdentifierFactory;
+import com.helger.json.IJsonObject;
+import com.helger.json.serialize.JsonWriter;
 import com.helger.xml.microdom.IMicroNode;
 import com.helger.xml.microdom.serialize.MicroWriter;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
@@ -103,25 +104,6 @@ public abstract class AbstractConverter
     return Genericode10Helper.getRowValue (aRow, aFieldProvider.field ().getColumnID ());
   }
 
-  @Nonnull
-  protected static ICommonsList <IProcessIdentifier> getAllProcessIDsFromMultilineString (@Nonnull final String sProcessIDs)
-  {
-    final ICommonsList <IProcessIdentifier> ret = new CommonsArrayList <> ();
-    for (final String s : StringHelper.getExploded ('\n', StringHelper.replaceAll (sProcessIDs, '\r', '\n')))
-    {
-      final String sProcessID = s.trim ();
-      if (StringHelper.hasNoText (sProcessID))
-        throw new IllegalStateException ("Found empty process ID in '" + sProcessIDs + "'");
-      final IProcessIdentifier aProcID = PeppolIdentifierFactory.INSTANCE.parseProcessIdentifier (sProcessID);
-      if (aProcID == null)
-        throw new IllegalStateException ("Failed to parse process ID '" + sProcessID + "'");
-      ret.add (aProcID);
-    }
-    if (ret.isEmpty ())
-      throw new IllegalStateException ("Found no single process ID in '" + sProcessIDs + "'");
-    return ret;
-  }
-
   /**
    * Write a Genericode 1.0 Document to disk
    *
@@ -153,6 +135,20 @@ public abstract class AbstractConverter
     if (MicroWriter.writeToFile (aNode, aDstFile).isFailure ())
       throw new IllegalStateException ("Failed to write file '" + aDstFile.getPath () + "'");
     LOGGER.info ("Wrote XML file '" + aDstFile.getPath () + "'");
+  }
+
+  protected final void writeJsonFile (@Nonnull final IJsonObject aNode, @Nonnull final String sBasename)
+  {
+    final File aDstFile = new File (m_aResultDir, sBasename + m_sFilenameSuffix + ".json");
+    try
+    {
+      new JsonWriter ().writeToStream (aNode, FileHelper.getBufferedOutputStream (aDstFile), StandardCharsets.UTF_8);
+    }
+    catch (final IOException ex)
+    {
+      throw new IllegalStateException ("Failed to write file '" + aDstFile.getPath () + "'", ex);
+    }
+    LOGGER.info ("Wrote JSON file '" + aDstFile.getPath () + "'");
   }
 
   protected void init () throws Exception

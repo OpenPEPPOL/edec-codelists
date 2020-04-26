@@ -20,7 +20,9 @@ import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
 import com.helger.commons.ValueEnforcer;
+import com.helger.commons.annotation.MustImplementEqualsAndHashcode;
 import com.helger.commons.annotation.Nonempty;
+import com.helger.commons.hashcode.HashCodeGenerator;
 import com.helger.commons.string.ToStringGenerator;
 
 /**
@@ -29,6 +31,7 @@ import com.helger.commons.string.ToStringGenerator;
  * @author Philip Helger
  */
 @Immutable
+@MustImplementEqualsAndHashcode
 public final class CodeListField
 {
   private final String m_sColumnID;
@@ -85,6 +88,23 @@ public final class CodeListField
   public boolean isKeyColumn ()
   {
     return m_bKeyColumn;
+  }
+
+  @Override
+  public boolean equals (final Object o)
+  {
+    if (o == this)
+      return true;
+    if (o == null || !getClass ().equals (o.getClass ()))
+      return false;
+    final CodeListField rhs = (CodeListField) o;
+    return m_sColumnID.equals (rhs.m_sColumnID);
+  }
+
+  @Override
+  public int hashCode ()
+  {
+    return new HashCodeGenerator (this).append (m_sColumnID).getHashCode ();
   }
 
   @Override

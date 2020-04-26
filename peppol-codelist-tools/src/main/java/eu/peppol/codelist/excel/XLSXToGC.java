@@ -35,7 +35,6 @@ import com.helger.genericode.v10.Column;
 import com.helger.genericode.v10.ColumnSet;
 import com.helger.genericode.v10.Identification;
 import com.helger.genericode.v10.Key;
-import com.helger.genericode.v10.ObjectFactory;
 import com.helger.genericode.v10.Row;
 import com.helger.genericode.v10.SimpleCodeList;
 import com.helger.genericode.v10.UseType;
@@ -69,18 +68,17 @@ public final class XLSXToGC
     ValueEnforcer.notNull (aExcelSheet, "ExcelSheet");
     ValueEnforcer.notEmptyNoNullValue (aExcelColumns, "aExcelColumns");
 
-    final ObjectFactory aFactory = new ObjectFactory ();
-    final CodeListDocument ret = aFactory.createCodeListDocument ();
+    final CodeListDocument ret = new CodeListDocument ();
 
     // create annotation
-    final Annotation aAnnotation = aFactory.createAnnotation ();
-    final AnyOtherContent aContent = aFactory.createAnyOtherContent ();
+    final Annotation aAnnotation = new Annotation ();
+    final AnyOtherContent aContent = new AnyOtherContent ();
     aContent.addAny (new JAXBElement <> (QNAME_ANNOTATION, String.class, null, AbstractConverter.DO_NOT_EDIT));
     aAnnotation.setAppInfo (aContent);
     ret.setAnnotation (aAnnotation);
 
     // create identification
-    final Identification aIdentification = aFactory.createIdentification ();
+    final Identification aIdentification = new Identification ();
     aIdentification.setShortName (Genericode10Helper.createShortName (sCodeListName));
     aIdentification.setVersion (aCodeListVersion.getAsString ());
     aIdentification.setCanonicalUri (aCanonicalUri.toString ());
@@ -88,7 +86,7 @@ public final class XLSXToGC
     ret.setIdentification (aIdentification);
 
     // create columns
-    final ColumnSet aColumnSet = aFactory.createColumnSet ();
+    final ColumnSet aColumnSet = new ColumnSet ();
     int nColIndex = 0;
     for (final String sShortName : aExcelSheet.getShortNames ())
     {
@@ -120,20 +118,20 @@ public final class XLSXToGC
     ret.setColumnSet (aColumnSet);
 
     // Read items
-    final SimpleCodeList aSimpleCodeList = aFactory.createSimpleCodeList ();
+    final SimpleCodeList aSimpleCodeList = new SimpleCodeList ();
 
     // Determine the row where reading should start
     for (final String [] aExcelRow : aExcelSheet.getPayload ())
     {
       // Create Genericode row
-      final Row aRow = aFactory.createRow ();
+      final Row aRow = new Row ();
       for (final XLSXColumn aExcelColumn : aExcelColumns)
       {
         final String sValue = aExcelRow[aExcelColumn.getIndex ()];
         if (StringHelper.hasText (sValue) || aExcelColumn.field ().isRequired ())
         {
           // Create a single value in the current row
-          final Value aValue = aFactory.createValue ();
+          final Value aValue = new Value ();
           aValue.setColumnRef (Genericode10Helper.getColumnOfID (aColumnSet, aExcelColumn.field ().getColumnID ()));
           aValue.setSimpleValue (Genericode10Helper.createSimpleValue (sValue));
           aRow.addValue (aValue);
