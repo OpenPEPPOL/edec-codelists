@@ -30,7 +30,6 @@ import com.helger.commons.ValueEnforcer;
 import com.helger.commons.annotation.Nonempty;
 import com.helger.commons.io.file.FileHelper;
 import com.helger.commons.io.file.FileOperationManager;
-import com.helger.commons.string.StringHelper;
 import com.helger.commons.version.Version;
 import com.helger.genericode.CGenericode;
 import com.helger.genericode.Genericode10CodeListMarshaller;
@@ -59,8 +58,6 @@ public abstract class AbstractConverter
                                            "This file was automatically generated.\n" +
                                            "Do NOT edit!";
   private static final Logger LOGGER = LoggerFactory.getLogger (AbstractConverter.class);
-  private static final boolean DEFAULT_DEPRECATED = false;
-  private static final boolean DEFAULT_ISSUED_BY_OPENPEPPOL = false;
 
   protected final Version m_aCodeListVersion;
   private final File m_aResultDir;
@@ -79,23 +76,6 @@ public abstract class AbstractConverter
 
     // Ensure target directory exists
     FileOperationManager.INSTANCE.createDirRecursiveIfNotExisting (m_aResultDir);
-  }
-
-  static boolean parseBoolean (final String s, final boolean bFallback)
-  {
-    if (StringHelper.hasText (s))
-      return "1".equals (s) || "true".equalsIgnoreCase (s) || "yes".equalsIgnoreCase (s);
-    return bFallback;
-  }
-
-  static boolean parseDeprecated (final String s)
-  {
-    return parseBoolean (s, DEFAULT_DEPRECATED);
-  }
-
-  static boolean parseIssuedByOpenPEPPOL (final String s)
-  {
-    return parseBoolean (s, DEFAULT_ISSUED_BY_OPENPEPPOL);
   }
 
   @Nullable

@@ -1,4 +1,4 @@
-package eu.peppol.codelist;
+package eu.peppol.codelist.gc;
 
 import javax.annotation.Nonnull;
 
@@ -8,7 +8,7 @@ import com.helger.genericode.v10.ColumnSet;
 import com.helger.genericode.v10.Row;
 import com.helger.genericode.v10.Value;
 
-final class GCRowExt extends Row
+public final class GCRowExt extends Row
 {
   private final ColumnSet m_aColumnSet;
 
@@ -17,7 +17,7 @@ final class GCRowExt extends Row
     m_aColumnSet = aColumnSet;
   }
 
-  void add (final String sColumnID, final String sValue)
+  public void add (final String sColumnID, final String sValue)
   {
     if (StringHelper.hasText (sValue))
     {
@@ -29,7 +29,7 @@ final class GCRowExt extends Row
     }
   }
 
-  void add (final String sColumnID, final boolean bValue)
+  public void add (final String sColumnID, final boolean bValue)
   {
     add (sColumnID, Boolean.toString (bValue));
   }

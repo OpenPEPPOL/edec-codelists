@@ -1,4 +1,4 @@
-package eu.peppol.codelist;
+package eu.peppol.codelist.gc;
 
 import java.net.URI;
 
@@ -18,6 +18,7 @@ import com.helger.genericode.v10.Key;
 import com.helger.genericode.v10.SimpleCodeList;
 import com.helger.genericode.v10.UseType;
 
+import eu.peppol.codelist.AbstractConverter;
 import eu.peppol.codelist.field.ECodeListDataType;
 
 public class GCHelper
@@ -29,9 +30,9 @@ public class GCHelper
   {}
 
   @Nonnull
-  static CodeListDocument createEmptyCodeList (@Nonnull final String sCodeListName,
-                                               @Nonnull final Version aCodeListVersion,
-                                               @Nonnull final URI aCanonicalUri)
+  public static CodeListDocument createEmptyCodeList (@Nonnull final String sCodeListName,
+                                                      @Nonnull final Version aCodeListVersion,
+                                                      @Nonnull final URI aCanonicalUri)
   {
     final CodeListDocument ret = new CodeListDocument ();
 
@@ -59,12 +60,12 @@ public class GCHelper
     return ret;
   }
 
-  static void addHeaderColumn (@Nonnull final ColumnSet aColumnSet,
-                               @Nonnull final String sColumnID,
-                               final boolean bIsKeyColumn,
-                               final boolean bIsRequired,
-                               @Nonnull final String sShortName,
-                               @Nonnull final ECodeListDataType eDataType)
+  public static void addHeaderColumn (@Nonnull final ColumnSet aColumnSet,
+                                      @Nonnull final String sColumnID,
+                                      final boolean bIsKeyColumn,
+                                      final boolean bIsRequired,
+                                      @Nonnull final String sShortName,
+                                      @Nonnull final ECodeListDataType eDataType)
   {
     // No long name
     final String sLongName = null;

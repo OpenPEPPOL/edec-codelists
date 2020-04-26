@@ -49,6 +49,8 @@ import eu.peppol.codelist.excel.XLSXToGC;
 import eu.peppol.codelist.field.EParticipantIDSchemeField;
 import eu.peppol.codelist.field.EProcessIDField;
 import eu.peppol.codelist.field.ETransportProfilesField;
+import eu.peppol.codelist.gc.GCHelper;
+import eu.peppol.codelist.model.DocTypeRow;
 
 /**
  * Handle V7 code list
@@ -76,7 +78,7 @@ public final class ConvertV7 extends AbstractConverter
     for (final DocTypeRow aRow : aRows)
     {
       aRow.checkConsistency ();
-      m_aProcIDs.addAll (aRow.m_aProcessIDs);
+      aRow.addAllProcessIDs (m_aProcIDs);
     }
 
     // Create GC
