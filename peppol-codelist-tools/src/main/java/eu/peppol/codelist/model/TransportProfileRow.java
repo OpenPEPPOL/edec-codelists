@@ -95,7 +95,8 @@ public final class TransportProfileRow implements IModelRow
     ret.add (PROFILE_ID, m_sProfileID);
     ret.add (SINCE, m_sSince);
     ret.add (DEPRECATED, m_bDeprecated);
-    ret.add (DEPRECATED_SINCE, m_sDeprecatedSince);
+    if (StringHelper.hasText (m_sDeprecatedSince))
+      ret.add (DEPRECATED_SINCE, m_sDeprecatedSince);
     return ret;
   }
 

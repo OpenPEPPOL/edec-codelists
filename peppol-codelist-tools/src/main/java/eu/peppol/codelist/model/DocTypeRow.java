@@ -136,11 +136,15 @@ public final class DocTypeRow implements IModelRow
     ret.add (VALUE, m_sValue);
     ret.add (SINCE, m_sSince);
     ret.add (DEPRECATED, m_bDeprecated);
-    ret.add (DEPRECATED_SINCE, m_sDeprecatedSince);
-    ret.add (COMMENT, m_sComment);
+    if (StringHelper.hasText (m_sDeprecatedSince))
+      ret.add (DEPRECATED_SINCE, m_sDeprecatedSince);
+    if (StringHelper.hasText (m_sComment))
+      ret.add (COMMENT, m_sComment);
     ret.add (ISSUED_BY_OPENPEPPOL, m_bIssuedByOpenPeppol);
-    ret.add (BIS_VERSION, m_sBISVersion);
-    ret.add (DOMAIN_COMMUNITY, m_sDomainCommunity);
+    if (StringHelper.hasText (m_sBISVersion))
+      ret.add (BIS_VERSION, m_sBISVersion);
+    if (StringHelper.hasText (m_sDomainCommunity))
+      ret.add (DOMAIN_COMMUNITY, m_sDomainCommunity);
     final IJsonArray aProcIDs = new JsonArray ();
     for (final IProcessIdentifier aProcID : m_aProcessIDs)
       aProcIDs.add (new JsonObject ().add (SCHEME, aProcID.getScheme ()).add (VALUE, aProcID.getValue ()));

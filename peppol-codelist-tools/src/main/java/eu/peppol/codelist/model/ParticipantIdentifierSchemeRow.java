@@ -129,15 +129,22 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
     ret.add (ISO6523, m_sISO6523);
     ret.add (COUNTRY, m_sCountry);
     ret.add (SCHEME_NAME, m_sSchemeName);
-    ret.add (ISSUING_AGENCY, m_sIssuingAgency);
+    if (StringHelper.hasText (m_sIssuingAgency))
+      ret.add (ISSUING_AGENCY, m_sIssuingAgency);
     ret.add (SINCE, m_sSince);
     ret.add (DEPRECATED, m_bDeprecated);
-    ret.add (DEPRECATED_SINCE, m_sDeprecatedSince);
-    ret.add (STRUCTURE, m_sStructure);
-    ret.add (DISPLAY, m_sDisplay);
-    ret.add (EXAMPLES, m_sExamples);
-    ret.add (VALIDATION_RULES, m_sValidationRules);
-    ret.add (USAGE, m_sUsage);
+    if (StringHelper.hasText (m_sDeprecatedSince))
+      ret.add (DEPRECATED_SINCE, m_sDeprecatedSince);
+    if (StringHelper.hasText (m_sStructure))
+      ret.add (STRUCTURE, m_sStructure);
+    if (StringHelper.hasText (m_sDisplay))
+      ret.add (DISPLAY, m_sDisplay);
+    if (StringHelper.hasText (m_sExamples))
+      ret.add (EXAMPLES, m_sExamples);
+    if (StringHelper.hasText (m_sValidationRules))
+      ret.add (VALIDATION_RULES, m_sValidationRules);
+    if (StringHelper.hasText (m_sUsage))
+      ret.add (USAGE, m_sUsage);
     return ret;
   }
 
