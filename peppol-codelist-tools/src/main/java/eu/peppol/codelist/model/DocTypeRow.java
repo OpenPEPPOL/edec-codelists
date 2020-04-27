@@ -41,7 +41,7 @@ public final class DocTypeRow
   private static final String PROCESS_ID_MANY = "process-ids";
 
   public static final String CODE_LIST_NAME = "PeppolDocumentTypes";
-  public static final URI CODE_LIST_URI = URLHelper.getAsURI ("urn:peppol.eu:names:identifier:documenttypes");
+  public static final URI CODE_LIST_URI = URLHelper.getAsURI ("urn:peppol.eu:names:identifier:document-type");
 
   private String m_sName;
   private String m_sScheme;
@@ -101,9 +101,7 @@ public final class DocTypeRow
     ret.setAttribute (DOMAIN_COMMUNITY, m_sDomainCommunity);
     for (final IProcessIdentifier aProcID : m_aProcessIDs)
     {
-      ret.appendElement (PROCESS_ID_ONE)
-         .setAttribute (SCHEME, aProcID.getScheme ())
-         .setAttribute (VALUE, aProcID.getValue ());
+      ret.appendElement (PROCESS_ID_ONE).setAttribute (SCHEME, aProcID.getScheme ()).setAttribute (VALUE, aProcID.getValue ());
     }
     return ret;
   }
@@ -133,28 +131,13 @@ public final class DocTypeRow
   {
     final ColumnSet aColumnSet = aCLDoc.getColumnSet ();
     GCHelper.addHeaderColumn (aColumnSet, NAME, false, true, "Name", ECodeListDataType.STRING);
-    GCHelper.addHeaderColumn (aColumnSet,
-                              SCHEME,
-                              true,
-                              true,
-                              "Peppol Document Type Identifier Scheme",
-                              ECodeListDataType.STRING);
-    GCHelper.addHeaderColumn (aColumnSet,
-                              VALUE,
-                              true,
-                              true,
-                              "Peppol Document Type Identifier Value",
-                              ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet, SCHEME, true, true, "Peppol Document Type Identifier Scheme", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet, VALUE, true, true, "Peppol Document Type Identifier Value", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, SINCE, false, true, "Since", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, DEPRECATED, false, true, "Deprecated?", ECodeListDataType.BOOLEAN);
     GCHelper.addHeaderColumn (aColumnSet, DEPRECATED_SINCE, false, false, "Deprecated since", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, COMMENT, false, false, "Comment", ECodeListDataType.STRING);
-    GCHelper.addHeaderColumn (aColumnSet,
-                              ISSUED_BY_OPENPEPPOL,
-                              false,
-                              true,
-                              "Issued by OpenPeppol?",
-                              ECodeListDataType.BOOLEAN);
+    GCHelper.addHeaderColumn (aColumnSet, ISSUED_BY_OPENPEPPOL, false, true, "Issued by OpenPeppol?", ECodeListDataType.BOOLEAN);
     GCHelper.addHeaderColumn (aColumnSet, BIS_VERSION, false, false, "BIS version", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, DOMAIN_COMMUNITY, false, true, "Domain Community", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet,

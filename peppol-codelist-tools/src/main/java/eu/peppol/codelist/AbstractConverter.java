@@ -21,7 +21,6 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,17 +32,14 @@ import com.helger.commons.io.file.FileOperationManager;
 import com.helger.commons.version.Version;
 import com.helger.genericode.CGenericode;
 import com.helger.genericode.Genericode10CodeListMarshaller;
-import com.helger.genericode.Genericode10Helper;
 import com.helger.genericode.v10.CodeListDocument;
-import com.helger.genericode.v10.Row;
 import com.helger.json.IJsonObject;
 import com.helger.json.serialize.JsonWriter;
 import com.helger.xml.microdom.IMicroNode;
 import com.helger.xml.microdom.serialize.MicroWriter;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
 
-import eu.peppol.codelist.excel.XLSXToGC;
-import eu.peppol.codelist.field.IHasCodeListField;
+import eu.peppol.codelist.gc.GCHelper;
 
 /**
  * Abstract base processor containing only version independent stuff.
@@ -78,12 +74,6 @@ public abstract class AbstractConverter
     FileOperationManager.INSTANCE.createDirRecursiveIfNotExisting (m_aResultDir);
   }
 
-  @Nullable
-  static String getGCRowValue (@Nonnull final Row aRow, @Nonnull final IHasCodeListField aFieldProvider)
-  {
-    return Genericode10Helper.getRowValue (aRow, aFieldProvider.field ().getColumnID ());
-  }
-
   /**
    * Write a Genericode 1.0 Document to disk
    *
@@ -97,7 +87,7 @@ public abstract class AbstractConverter
   {
     final MapBasedNamespaceContext aNsCtx = new MapBasedNamespaceContext ();
     aNsCtx.addMapping ("gc", CGenericode.GENERICODE_10_NAMESPACE_URI);
-    aNsCtx.addMapping ("ext", XLSXToGC.ANNOTATION_NS);
+    aNsCtx.addMapping ("ext", GCHelper.ANNOTATION_NS);
 
     final Genericode10CodeListMarshaller aMarshaller = new Genericode10CodeListMarshaller ();
     aMarshaller.setNamespaceContext (aNsCtx);
@@ -131,19 +121,11 @@ public abstract class AbstractConverter
     LOGGER.info ("Wrote JSON file '" + aDstFile.getPath () + "'");
   }
 
-  protected void init () throws Exception
-  {}
-
   protected abstract void convert () throws Exception;
-
-  protected void done () throws Exception
-  {}
 
   public final void run () throws Exception
   {
-    init ();
     convert ();
-    done ();
     LOGGER.info ("Successfully finished creation");
   }
 }

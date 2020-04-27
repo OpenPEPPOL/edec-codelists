@@ -28,11 +28,8 @@ import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.collection.impl.ICommonsSet;
 import com.helger.commons.io.resource.FileSystemResource;
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.commons.string.StringHelper;
-import com.helger.commons.url.URLHelper;
 import com.helger.commons.version.Version;
 import com.helger.genericode.v10.CodeListDocument;
-import com.helger.genericode.v10.Row;
 import com.helger.json.IJsonArray;
 import com.helger.json.IJsonObject;
 import com.helger.json.JsonArray;
@@ -43,13 +40,11 @@ import com.helger.xml.microdom.IMicroElement;
 import com.helger.xml.microdom.MicroDocument;
 
 import eu.peppol.codelist.excel.InMemoryXLSX;
-import eu.peppol.codelist.excel.XLSXReadOptions;
-import eu.peppol.codelist.excel.XLSXToGC;
-import eu.peppol.codelist.field.ETransportProfilesField;
 import eu.peppol.codelist.gc.GCHelper;
 import eu.peppol.codelist.model.DocTypeRow;
 import eu.peppol.codelist.model.ParticipantIdentifierSchemeRow;
 import eu.peppol.codelist.model.ProcessRow;
+import eu.peppol.codelist.model.TransportProfileRow;
 
 /**
  * Handle V7 code list
@@ -73,12 +68,13 @@ public final class ConvertV7 extends AbstractConverter
     // Convert to domain object
     final ICommonsList <DocTypeRow> aRows = aXLSX.getAsList (DocTypeRow::createV7);
 
+    // Collect all proc types
+    for (final DocTypeRow aRow : aRows)
+      aRow.addAllProcessIDs (m_aProcIDs);
+
     // Consistency checks
     for (final DocTypeRow aRow : aRows)
-    {
       aRow.checkConsistency ();
-      aRow.addAllProcessIDs (m_aProcIDs);
-    }
 
     // Create GC
     final CodeListDocument aCodeList = GCHelper.createEmptyCodeList (DocTypeRow.CODE_LIST_NAME,
@@ -164,51 +160,52 @@ public final class ConvertV7 extends AbstractConverter
     writeJsonFile (aJson, ParticipantIdentifierSchemeRow.CODE_LIST_NAME);
   }
 
-  private void _handleTransportProfileIdentifiers (final Sheet aTPSheet)
+  private void _handleTransportProfileIdentifiers (@Nonnull final Sheet aTPSheet)
   {
-    final XLSXReadOptions aReadOptions = new XLSXReadOptions ();
-    for (final ETransportProfilesField e : ETransportProfilesField.values ())
-      aReadOptions.addColumn (e.field ());
-    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aReadOptions, aTPSheet);
+    // Read Excel
+    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aTPSheet, 6);
 
-    final String sCodeListName = "PeppolTransportProfiles";
-    final CodeListDocument aCodeList = XLSXToGC.convertToSimpleCodeList (aXLSX,
-                                                                         aReadOptions.getAllColumns (),
-                                                                         sCodeListName,
-                                                                         m_aCodeListVersion,
-                                                                         URLHelper.getAsURI ("urn:peppol.eu:names:identifier:transportprofile"));
+    // Convert to domain object
+    final ICommonsList <TransportProfileRow> aRows = aXLSX.getAsList (TransportProfileRow::createV7);
 
-    // Save as XML
+    // Consistency checks
+    for (final TransportProfileRow aRow : aRows)
+      aRow.checkConsistency ();
+
+    // Create GC
+    final CodeListDocument aCodeList = GCHelper.createEmptyCodeList (TransportProfileRow.CODE_LIST_NAME,
+                                                                     m_aCodeListVersion,
+                                                                     TransportProfileRow.CODE_LIST_URI);
+    {
+      TransportProfileRow.addColumns (aCodeList);
+      for (final TransportProfileRow aRow : aRows)
+        aCodeList.getSimpleCodeList ().addRow (aRow.getAsGCRow (aCodeList.getColumnSet ()));
+    }
+
+    // Create XML
     final IMicroDocument aDoc = new MicroDocument ();
     {
       aDoc.appendComment (DO_NOT_EDIT);
       final IMicroElement eRoot = aDoc.appendElement ("root");
       eRoot.setAttribute ("version", m_aCodeListVersion.getAsString ());
-      for (final Row aRow : aCodeList.getSimpleCodeList ().getRow ())
-      {
-        final String sProtocol = getGCRowValue (aRow, ETransportProfilesField.PROTOCOL);
-        final String sProfileVersion = getGCRowValue (aRow, ETransportProfilesField.PROFILE_VERSION);
-        final String sProfileID = getGCRowValue (aRow, ETransportProfilesField.PROFILE_ID);
-        final String sSince = getGCRowValue (aRow, ETransportProfilesField.SINCE);
-        final boolean bDeprecated = parseDeprecated (getGCRowValue (aRow, ETransportProfilesField.DEPRECATED));
-        final String sDeprecatedSince = getGCRowValue (aRow, ETransportProfilesField.DEPRECATED_SINCE);
+      for (final TransportProfileRow aRow : aRows)
+        eRoot.appendChild (aRow.getAsElement ());
+    }
 
-        if (bDeprecated && StringHelper.hasNoText (sDeprecatedSince))
-          throw new IllegalStateException ("Code list entry is deprecated but there is no deprecated-since entry");
-
-        final IMicroElement eAgency = eRoot.appendElement ("transport-profile");
-        eAgency.setAttribute (ETransportProfilesField.PROTOCOL.field ().getColumnID (), sProtocol);
-        eAgency.setAttribute (ETransportProfilesField.PROFILE_VERSION.field ().getColumnID (), sProfileVersion);
-        eAgency.setAttribute (ETransportProfilesField.PROFILE_ID.field ().getColumnID (), sProfileID);
-        eAgency.setAttribute (ETransportProfilesField.SINCE.field ().getColumnID (), sSince);
-        eAgency.setAttribute (ETransportProfilesField.DEPRECATED.field ().getColumnID (), bDeprecated);
-        eAgency.setAttribute (ETransportProfilesField.DEPRECATED_SINCE.field ().getColumnID (), sDeprecatedSince);
-      }
+    // Create JSON
+    final IJsonObject aJson = new JsonObject ();
+    {
+      aJson.add ("version", m_aCodeListVersion.getAsString ());
+      final IJsonArray aValues = new JsonArray ();
+      for (final TransportProfileRow aRow : aRows)
+        aValues.add (aRow.getAsJson ());
+      aJson.add ("values", aValues);
     }
 
     // Write at the end
-    writeGenericodeFile (aCodeList, sCodeListName);
-    writeXMLFile (aDoc, sCodeListName);
+    writeGenericodeFile (aCodeList, TransportProfileRow.CODE_LIST_NAME);
+    writeXMLFile (aDoc, TransportProfileRow.CODE_LIST_NAME);
+    writeJsonFile (aJson, TransportProfileRow.CODE_LIST_NAME);
   }
 
   private void _handleProcessIdentifiers ()
