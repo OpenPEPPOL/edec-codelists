@@ -40,11 +40,15 @@ import eu.peppol.codelist.model.TransportProfileRow;
  */
 public final class ConvertV7 extends AbstractConverter
 {
+  public static final Version CODE_LIST_VERSION = new Version (7);
+  public static final String DESTINATION_BASE_PATH = "created-codelists/v7/";
+  public static final String DESTINATION_FILENAME_SUFFIX = "V7";
+
   private final ICommonsSet <IProcessIdentifier> m_aProcIDs = new CommonsLinkedHashSet <> ();
 
   public ConvertV7 ()
   {
-    super (new Version (7), "created-codelists/v7/", "V7");
+    super (CODE_LIST_VERSION, DESTINATION_BASE_PATH, DESTINATION_FILENAME_SUFFIX);
   }
 
   private void _handleDocumentTypes (@Nonnull final Sheet aDocumentSheet)

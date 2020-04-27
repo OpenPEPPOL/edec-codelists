@@ -117,7 +117,8 @@ public final class DocTypeRow implements IModelRow
     ret.setAttribute (SINCE, m_sSince);
     ret.setAttribute (DEPRECATED, m_bDeprecated);
     ret.setAttribute (DEPRECATED_SINCE, m_sDeprecatedSince);
-    ret.setAttribute (COMMENT, m_sComment);
+    if (StringHelper.hasText (m_sComment))
+      ret.appendElement (COMMENT).appendText (m_sComment);
     ret.setAttribute (ISSUED_BY_OPENPEPPOL, m_bIssuedByOpenPeppol);
     ret.setAttribute (BIS_VERSION, m_sBISVersion);
     ret.setAttribute (DOMAIN_COMMUNITY, m_sDomainCommunity);

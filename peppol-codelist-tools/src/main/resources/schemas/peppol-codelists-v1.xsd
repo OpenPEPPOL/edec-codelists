@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Copyright (C) 2015-2020 Philip Helger
+    philip[at]helger[dot]com
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="" 
+           id="Identifiers" 
+           elementFormDefault="qualified"
+           targetNamespace="">
+  <xs:annotation>
+    <xs:documentation>
+      OpenPeppol Code list schemas.
+      Author: Philip Helger
+      Last update: 2020-04-27
+    </xs:documentation>
+  </xs:annotation>
+  
+  <!-- Shared stuff -->
+  
+  <xs:simpleType name="VersionType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]+(\.[0-9]+)*(\-[0-9a-zA-Z]+)?" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:attributeGroup name="CodeListAttrGroup">
+    <xs:attribute name="version" type="VersionType" use="required">
+      <xs:annotation>
+        <xs:documentation>The code list version</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="entry-count" type="xs:nonNegativeInteger" use="required">
+      <xs:annotation>
+        <xs:documentation>The number of entries in the code list</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  
+  <!-- Document Type Identifiers -->
+  
+  <xs:complexType name="ProcessIDType">
+    <xs:attribute name="scheme" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>The process ID scheme</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="value" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>The process ID value</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  
+  <xs:complexType name="DocumentTypeType">
+    <xs:annotation>
+      <xs:documentation>Representation of a single code list entry</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="comment" type="xs:string" minOccurs="0" />
+      <xs:element name="process-id" type="ProcessIDType" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>Display name of the document type</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="scheme" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>The document type identifier scheme. Usually "busdox-docid-qns".</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="value" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>The document type identifier value.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="since" type="xs:string" use="required" />
+    <xs:attribute name="deprecated" type="xs:boolean" use="required" />
+    <xs:attribute name="deprecated-since" type="VersionType" use="optional" />
+    <xs:attribute name="issued-by-openpeppol" type="xs:boolean" use="optional" />
+    <xs:attribute name="bis-version" type="xs:string" use="optional" />
+    <xs:attribute name="domain-community" type="xs:string" use="optional" />
+  </xs:complexType>
+  
+  <xs:complexType name="DocumentTypesType">
+    <xs:annotation>
+      <xs:documentation>The type of the root element of the "document types" code list</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="document-type" type="DocumentTypeType" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>The code list entries</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attributeGroup ref="CodeListAttrGroup" />
+  </xs:complexType>
+
+  <xs:element name="document-types" type="DocumentTypesType">
+    <xs:annotation>
+      <xs:documentation>The root element of the "document types" code list</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  
+  <!-- Participant Identifier Schemes -->
+
+  <xs:complexType name="ParticipantIdentifierSchemeType">
+    <xs:annotation>
+      <xs:documentation>Representation of a single code list entry</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="structure" type="xs:string" minOccurs="0" />
+      <xs:element name="display" type="xs:string" minOccurs="0" />
+      <xs:element name="examples" type="xs:string" minOccurs="0" />
+      <xs:element name="validation-rules" type="xs:string" minOccurs="0" />
+      <xs:element name="usage" type="xs:string" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="schemeid" type="xs:string" use="required"/>
+    <xs:attribute name="iso6523" type="xs:string" use="required"/>
+    <xs:attribute name="country" type="xs:string" use="required" />
+    <xs:attribute name="scheme-name" type="xs:string" use="required" />
+    <xs:attribute name="issuing-agency" type="xs:string" use="optional" />
+    <xs:attribute name="since" type="xs:string" use="required" />
+    <xs:attribute name="deprecated" type="xs:boolean" use="required" />
+    <xs:attribute name="deprecated-since" type="VersionType" use="optional" />
+  </xs:complexType>
+  
+  <xs:complexType name="ParticipantIdentifierSchemesType">
+    <xs:annotation>
+      <xs:documentation>The type of the root element of the "participant identifier schemes" code list</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="participant-identifier-scheme" type="ParticipantIdentifierSchemeType" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>The code list entries</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attributeGroup ref="CodeListAttrGroup" />
+  </xs:complexType>
+
+  <xs:element name="participant-identifier-schemes" type="ParticipantIdentifierSchemesType">
+    <xs:annotation>
+      <xs:documentation>The root element of the "participant identifier schemes" code list</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+</xs:schema>
