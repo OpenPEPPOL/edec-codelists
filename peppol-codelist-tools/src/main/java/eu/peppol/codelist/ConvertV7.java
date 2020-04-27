@@ -28,7 +28,6 @@ import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.collection.impl.ICommonsSet;
 import com.helger.commons.io.resource.FileSystemResource;
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.commons.regex.RegExHelper;
 import com.helger.commons.string.StringHelper;
 import com.helger.commons.url.URLHelper;
 import com.helger.commons.version.Version;
@@ -46,11 +45,11 @@ import com.helger.xml.microdom.MicroDocument;
 import eu.peppol.codelist.excel.InMemoryXLSX;
 import eu.peppol.codelist.excel.XLSXReadOptions;
 import eu.peppol.codelist.excel.XLSXToGC;
-import eu.peppol.codelist.field.EParticipantIDSchemeField;
-import eu.peppol.codelist.field.EProcessIDField;
 import eu.peppol.codelist.field.ETransportProfilesField;
 import eu.peppol.codelist.gc.GCHelper;
 import eu.peppol.codelist.model.DocTypeRow;
+import eu.peppol.codelist.model.ParticipantIdentifierSchemeRow;
+import eu.peppol.codelist.model.ProcessRow;
 
 /**
  * Handle V7 code list
@@ -117,80 +116,52 @@ public final class ConvertV7 extends AbstractConverter
     writeJsonFile (aJson, DocTypeRow.CODE_LIST_NAME);
   }
 
-  private void _handleParticipantIdentifierSchemes (final Sheet aParticipantSheet)
+  private void _handleParticipantIdentifierSchemes (@Nonnull final Sheet aParticipantSheet)
   {
-    // Read excel file
-    final XLSXReadOptions aReadOptions = new XLSXReadOptions ();
-    for (final EParticipantIDSchemeField e : EParticipantIDSchemeField.values ())
-      aReadOptions.addColumn (e.field ());
-    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aReadOptions, aParticipantSheet);
+    // Read Excel
+    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aParticipantSheet, 13);
 
-    final String sCodeListName = "PeppolParticipantIdentifierSchemes";
-    final CodeListDocument aCodeList = XLSXToGC.convertToSimpleCodeList (aXLSX,
-                                                                         aReadOptions.getAllColumns (),
-                                                                         sCodeListName,
-                                                                         m_aCodeListVersion,
-                                                                         URLHelper.getAsURI ("urn:peppol.eu:names:identifier:participantidentifierschemes"));
+    // Convert to domain object
+    final ICommonsList <ParticipantIdentifierSchemeRow> aRows = aXLSX.getAsList (ParticipantIdentifierSchemeRow::createV7);
 
-    // Save data also as XML
+    // Consistency checks
+    for (final ParticipantIdentifierSchemeRow aRow : aRows)
+      aRow.checkConsistency ();
+
+    // Create GC
+    final CodeListDocument aCodeList = GCHelper.createEmptyCodeList (ParticipantIdentifierSchemeRow.CODE_LIST_NAME,
+                                                                     m_aCodeListVersion,
+                                                                     ParticipantIdentifierSchemeRow.CODE_LIST_URI);
+    {
+      ParticipantIdentifierSchemeRow.addColumns (aCodeList);
+      for (final ParticipantIdentifierSchemeRow aRow : aRows)
+        aCodeList.getSimpleCodeList ().addRow (aRow.getAsGCRow (aCodeList.getColumnSet ()));
+    }
+
+    // Create XML
     final IMicroDocument aDoc = new MicroDocument ();
     {
       aDoc.appendComment (DO_NOT_EDIT);
       final IMicroElement eRoot = aDoc.appendElement ("root");
       eRoot.setAttribute ("version", m_aCodeListVersion.getAsString ());
-      for (final Row aRow : aCodeList.getSimpleCodeList ().getRow ())
-      {
-        final String sSchemeID = getGCRowValue (aRow, EParticipantIDSchemeField.SCHEME_ID);
-        final String sISO6523 = getGCRowValue (aRow, EParticipantIDSchemeField.ISO6523);
-        final String sCountryCode = getGCRowValue (aRow, EParticipantIDSchemeField.COUNTRY);
-        final String sSchemeName = getGCRowValue (aRow, EParticipantIDSchemeField.SCHEME_NAME);
-        final String sIssuingAgency = getGCRowValue (aRow, EParticipantIDSchemeField.ISSUING_AGENCY);
-        final String sSince = getGCRowValue (aRow, EParticipantIDSchemeField.SINCE);
-        final boolean bDeprecated = parseDeprecated (getGCRowValue (aRow, EParticipantIDSchemeField.DEPRECATED));
-        final String sDeprecatedSince = getGCRowValue (aRow, EParticipantIDSchemeField.DEPRECATED_SINCE);
-        final String sStructure = getGCRowValue (aRow, EParticipantIDSchemeField.STRUCTURE);
-        final String sDisplay = getGCRowValue (aRow, EParticipantIDSchemeField.DISPLAY);
-        final String sExamples = getGCRowValue (aRow, EParticipantIDSchemeField.EXAMPLES);
-        final String sValidationRules = getGCRowValue (aRow, EParticipantIDSchemeField.VALIDATION_RULES);
-        final String sUsage = getGCRowValue (aRow, EParticipantIDSchemeField.USAGE);
+      for (final ParticipantIdentifierSchemeRow aRow : aRows)
+        eRoot.appendChild (aRow.getAsElement ());
+    }
 
-        if (StringHelper.hasNoText (sSchemeID))
-          throw new IllegalStateException ("schemeID");
-        if (sSchemeID.indexOf (' ') >= 0)
-          throw new IllegalStateException ("Scheme IDs are not supposed to contain spaces!");
-        if (StringHelper.hasNoText (sISO6523))
-          throw new IllegalStateException ("ISO6523Code");
-        if (!RegExHelper.stringMatchesPattern ("[0-9]{4}", sISO6523))
-          throw new IllegalStateException ("The ISO 6523 code '" + sISO6523 + "' does not consist of 4 numbers");
-        if (bDeprecated && StringHelper.hasNoText (sDeprecatedSince))
-          throw new IllegalStateException ("Code list entry is deprecated but there is no deprecated-since entry");
-
-        final IMicroElement eAgency = eRoot.appendElement ("identifier-scheme");
-        eAgency.setAttribute (EParticipantIDSchemeField.SCHEME_ID.field ().getColumnID (), sSchemeID);
-        eAgency.setAttribute (EParticipantIDSchemeField.COUNTRY.field ().getColumnID (), sCountryCode);
-        eAgency.setAttribute (EParticipantIDSchemeField.SCHEME_NAME.field ().getColumnID (), sSchemeName);
-        eAgency.setAttribute (EParticipantIDSchemeField.ISSUING_AGENCY.field ().getColumnID (), sIssuingAgency);
-        eAgency.setAttribute (EParticipantIDSchemeField.ISO6523.field ().getColumnID (), sISO6523);
-        eAgency.setAttribute (EParticipantIDSchemeField.SINCE.field ().getColumnID (), sSince);
-        eAgency.setAttribute (EParticipantIDSchemeField.DEPRECATED.field ().getColumnID (), bDeprecated);
-        eAgency.setAttribute (EParticipantIDSchemeField.DEPRECATED_SINCE.field ().getColumnID (), sDeprecatedSince);
-        if (StringHelper.hasText (sStructure))
-          eAgency.appendElement (EParticipantIDSchemeField.STRUCTURE.field ().getColumnID ()).appendText (sStructure);
-        if (StringHelper.hasText (sDisplay))
-          eAgency.appendElement (EParticipantIDSchemeField.DISPLAY.field ().getColumnID ()).appendText (sDisplay);
-        if (StringHelper.hasText (sExamples))
-          eAgency.appendElement (EParticipantIDSchemeField.EXAMPLES.field ().getColumnID ()).appendText (sExamples);
-        if (StringHelper.hasText (sValidationRules))
-          eAgency.appendElement (EParticipantIDSchemeField.VALIDATION_RULES.field ().getColumnID ())
-                 .appendText (sValidationRules);
-        if (StringHelper.hasText (sUsage))
-          eAgency.appendElement (EParticipantIDSchemeField.USAGE.field ().getColumnID ()).appendText (sUsage);
-      }
+    // Create JSON
+    final IJsonObject aJson = new JsonObject ();
+    {
+      aJson.add ("version", m_aCodeListVersion.getAsString ());
+      final IJsonArray aValues = new JsonArray ();
+      for (final ParticipantIdentifierSchemeRow aRow : aRows)
+        aValues.add (aRow.getAsJson ());
+      aJson.add ("values", aValues);
     }
 
     // Write at the end
-    writeGenericodeFile (aCodeList, sCodeListName);
-    writeXMLFile (aDoc, sCodeListName);
+    writeGenericodeFile (aCodeList, ParticipantIdentifierSchemeRow.CODE_LIST_NAME);
+    writeXMLFile (aDoc, ParticipantIdentifierSchemeRow.CODE_LIST_NAME);
+    writeJsonFile (aJson, ParticipantIdentifierSchemeRow.CODE_LIST_NAME);
   }
 
   private void _handleTransportProfileIdentifiers (final Sheet aTPSheet)
@@ -242,37 +213,47 @@ public final class ConvertV7 extends AbstractConverter
 
   private void _handleProcessIdentifiers ()
   {
-    final XLSXReadOptions aReadOptions = new XLSXReadOptions ();
-    for (final EProcessIDField e : EProcessIDField.values ())
-      aReadOptions.addColumn (e.field ());
+    // Convert to domain object
+    final ICommonsList <ProcessRow> aRows = new CommonsArrayList <> (m_aProcIDs, ProcessRow::createFromID);
 
-    final ICommonsList <IProcessIdentifier> aProcIDs = new CommonsArrayList <> (m_aProcIDs);
-    final InMemoryXLSX aXLSX = InMemoryXLSX.createForProcessIDs (aProcIDs);
+    // Consistency checks
+    for (final ProcessRow aRow : aRows)
+      aRow.checkConsistency ();
 
-    final String sCodeListName = "PeppolProcessIdentifiers";
-    final CodeListDocument aCodeList = XLSXToGC.convertToSimpleCodeList (aXLSX,
-                                                                         aReadOptions.getAllColumns (),
-                                                                         sCodeListName,
-                                                                         m_aCodeListVersion,
-                                                                         URLHelper.getAsURI ("urn:peppol.eu:names:identifier:process"));
+    // Create GC
+    final CodeListDocument aCodeList = GCHelper.createEmptyCodeList (ProcessRow.CODE_LIST_NAME,
+                                                                     m_aCodeListVersion,
+                                                                     ProcessRow.CODE_LIST_URI);
+    {
+      ProcessRow.addColumns (aCodeList);
+      for (final ProcessRow aRow : aRows)
+        aCodeList.getSimpleCodeList ().addRow (aRow.getAsGCRow (aCodeList.getColumnSet ()));
+    }
 
-    // Save as XML
+    // Create XML
     final IMicroDocument aDoc = new MicroDocument ();
     {
       aDoc.appendComment (DO_NOT_EDIT);
       final IMicroElement eRoot = aDoc.appendElement ("root");
       eRoot.setAttribute ("version", m_aCodeListVersion.getAsString ());
-      for (final IProcessIdentifier aProcID : aProcIDs)
-      {
-        final IMicroElement eProcess = eRoot.appendElement ("process");
-        eProcess.setAttribute (EProcessIDField.SCHEME.field ().getColumnID (), aProcID.getScheme ());
-        eProcess.setAttribute (EProcessIDField.VALUE.field ().getColumnID (), aProcID.getValue ());
-      }
+      for (final ProcessRow aRow : aRows)
+        eRoot.appendChild (aRow.getAsElement ());
+    }
+
+    // Create JSON
+    final IJsonObject aJson = new JsonObject ();
+    {
+      aJson.add ("version", m_aCodeListVersion.getAsString ());
+      final IJsonArray aValues = new JsonArray ();
+      for (final ProcessRow aRow : aRows)
+        aValues.add (aRow.getAsJson ());
+      aJson.add ("values", aValues);
     }
 
     // Write at the end
-    writeGenericodeFile (aCodeList, sCodeListName);
-    writeXMLFile (aDoc, sCodeListName);
+    writeGenericodeFile (aCodeList, ProcessRow.CODE_LIST_NAME);
+    writeXMLFile (aDoc, ProcessRow.CODE_LIST_NAME);
+    writeJsonFile (aJson, ProcessRow.CODE_LIST_NAME);
   }
 
   @Override
@@ -293,9 +274,7 @@ public final class ConvertV7 extends AbstractConverter
       // Where is the Excel?
       final IReadableResource aExcel = new FileSystemResource (aCLF.getFile ());
       if (!aExcel.exists ())
-        throw new IllegalStateException ("The Excel file '" +
-                                         aCLF.getFile ().getAbsolutePath () +
-                                         "' could not be found!");
+        throw new IllegalStateException ("The Excel file '" + aCLF.getFile ().getAbsolutePath () + "' could not be found!");
 
       // Interpret as Excel
       try (final Workbook aWB = new XSSFWorkbook (aExcel.getInputStream ()))
