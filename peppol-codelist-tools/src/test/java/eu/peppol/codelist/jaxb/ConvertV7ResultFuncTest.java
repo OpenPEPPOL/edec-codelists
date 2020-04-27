@@ -11,6 +11,7 @@ import eu.peppol.codelist.ConvertV7;
 import eu.peppol.codelist.model.DocTypeRow;
 import eu.peppol.codelist.model.ParticipantIdentifierSchemeRow;
 import eu.peppol.codelist.model.ProcessRow;
+import eu.peppol.codelist.model.TransportProfileRow;
 
 /**
  * Check if the create lists match the XSD.
@@ -47,6 +48,17 @@ public final class ConvertV7ResultFuncTest
     final File f = new File (ConvertV7.DESTINATION_BASE_PATH, ProcessRow.CODE_LIST_NAME + ConvertV7.DESTINATION_FILENAME_SUFFIX + ".xml");
     assertTrue (f.exists ());
     final ProcessesType aList = m.read (f);
+    assertNotNull (aList);
+  }
+
+  @Test
+  public void testReadTransportProfiles ()
+  {
+    final TransportProfileCodeListMarshaller m = new TransportProfileCodeListMarshaller ();
+    final File f = new File (ConvertV7.DESTINATION_BASE_PATH,
+                             TransportProfileRow.CODE_LIST_NAME + ConvertV7.DESTINATION_FILENAME_SUFFIX + ".xml");
+    assertTrue (f.exists ());
+    final TransportProfilesType aList = m.read (f);
     assertNotNull (aList);
   }
 }
