@@ -10,6 +10,7 @@ import org.junit.Test;
 import eu.peppol.codelist.ConvertV7;
 import eu.peppol.codelist.model.DocTypeRow;
 import eu.peppol.codelist.model.ParticipantIdentifierSchemeRow;
+import eu.peppol.codelist.model.ProcessRow;
 
 /**
  * Check if the create lists match the XSD.
@@ -36,6 +37,16 @@ public final class ConvertV7ResultFuncTest
                              ParticipantIdentifierSchemeRow.CODE_LIST_NAME + ConvertV7.DESTINATION_FILENAME_SUFFIX + ".xml");
     assertTrue (f.exists ());
     final ParticipantIdentifierSchemesType aList = m.read (f);
+    assertNotNull (aList);
+  }
+
+  @Test
+  public void testReadProcesses ()
+  {
+    final ProcessCodeListMarshaller m = new ProcessCodeListMarshaller ();
+    final File f = new File (ConvertV7.DESTINATION_BASE_PATH, ProcessRow.CODE_LIST_NAME + ConvertV7.DESTINATION_FILENAME_SUFFIX + ".xml");
+    assertTrue (f.exists ());
+    final ProcessesType aList = m.read (f);
     assertNotNull (aList);
   }
 }

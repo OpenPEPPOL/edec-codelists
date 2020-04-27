@@ -159,4 +159,41 @@
       <xs:documentation>The root element of the "participant identifier schemes" code list</xs:documentation>
     </xs:annotation>
   </xs:element>
+  
+  <!-- Process Identifiers -->
+  
+  <xs:complexType name="ProcessType">
+    <xs:attribute name="scheme" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>The process ID scheme</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="value" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>The process ID value</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="ProcessesType">
+    <xs:annotation>
+      <xs:documentation>The type of the root element of the "processes" code list</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="process" type="ProcessType" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>The code list entries</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attributeGroup ref="CodeListAttrGroup" />
+  </xs:complexType>
+
+  <xs:element name="processes" type="ProcessesType">
+    <xs:annotation>
+      <xs:documentation>The root element of the "processes" code list</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  
+  <!-- Transport profiles -->
 </xs:schema>
