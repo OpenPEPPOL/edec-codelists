@@ -65,7 +65,7 @@ public final class ConvertV7 extends AbstractConverter
 
     // Create files
     createGenericodeFile (aRows, DocTypeRow.CODE_LIST_NAME, DocTypeRow::addColumns, DocTypeRow.CODE_LIST_URI);
-    createXMLFile (aRows, DocTypeRow.CODE_LIST_NAME);
+    createXMLFile (aRows, DocTypeRow.CODE_LIST_NAME, DocTypeRow.ROOT_ELEMENT_NAME);
     createJsonFile (aRows, DocTypeRow.CODE_LIST_NAME);
   }
 
@@ -86,7 +86,7 @@ public final class ConvertV7 extends AbstractConverter
                           ParticipantIdentifierSchemeRow.CODE_LIST_NAME,
                           ParticipantIdentifierSchemeRow::addColumns,
                           ParticipantIdentifierSchemeRow.CODE_LIST_URI);
-    createXMLFile (aRows, ParticipantIdentifierSchemeRow.CODE_LIST_NAME);
+    createXMLFile (aRows, ParticipantIdentifierSchemeRow.CODE_LIST_NAME, ParticipantIdentifierSchemeRow.ROOT_ELEMENT_NAME);
     createJsonFile (aRows, ParticipantIdentifierSchemeRow.CODE_LIST_NAME);
   }
 
@@ -104,7 +104,7 @@ public final class ConvertV7 extends AbstractConverter
 
     // Create files
     createGenericodeFile (aRows, TransportProfileRow.CODE_LIST_NAME, TransportProfileRow::addColumns, TransportProfileRow.CODE_LIST_URI);
-    createXMLFile (aRows, TransportProfileRow.CODE_LIST_NAME);
+    createXMLFile (aRows, TransportProfileRow.CODE_LIST_NAME, TransportProfileRow.ROOT_ELEMENT_NAME);
     createJsonFile (aRows, TransportProfileRow.CODE_LIST_NAME);
   }
 
@@ -119,7 +119,7 @@ public final class ConvertV7 extends AbstractConverter
 
     // Create files
     createGenericodeFile (aRows, ProcessRow.CODE_LIST_NAME, ProcessRow::addColumns, ProcessRow.CODE_LIST_URI);
-    createXMLFile (aRows, ProcessRow.CODE_LIST_NAME);
+    createXMLFile (aRows, ProcessRow.CODE_LIST_NAME, ProcessRow.ROOT_ELEMENT_NAME);
     createJsonFile (aRows, ProcessRow.CODE_LIST_NAME);
   }
 

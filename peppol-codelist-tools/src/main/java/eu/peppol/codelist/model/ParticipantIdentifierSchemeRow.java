@@ -59,6 +59,7 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
 
   public static final String CODE_LIST_NAME = "PeppolParticipantIdentifierSchemes";
   public static final URI CODE_LIST_URI = URLHelper.getAsURI ("urn:peppol.eu:names:identifier:participant-identifier-scheme");
+  public static final String ROOT_ELEMENT_NAME = "participant-identifier-schemes";
 
   private String m_sSchemeID;
   private String m_sISO6523;

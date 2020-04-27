@@ -63,6 +63,7 @@ public final class DocTypeRow implements IModelRow
 
   public static final String CODE_LIST_NAME = "PeppolDocumentTypes";
   public static final URI CODE_LIST_URI = URLHelper.getAsURI ("urn:peppol.eu:names:identifier:document-type");
+  public static final String ROOT_ELEMENT_NAME = "document-types";
 
   private String m_sName;
   private String m_sScheme;

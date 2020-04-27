@@ -122,11 +122,13 @@ public abstract class AbstractConverter
     LOGGER.info ("Wrote Genericode file '" + aDstFile.getPath () + "'");
   }
 
-  protected final <T extends IModelRow> void createXMLFile (@Nonnull final ICommonsList <T> aRows, @Nonnull final String sCodeListName)
+  protected final <T extends IModelRow> void createXMLFile (@Nonnull final ICommonsList <T> aRows,
+                                                            @Nonnull final String sCodeListName,
+                                                            final String sRootElementName)
   {
     final IMicroDocument aDoc = new MicroDocument ();
     aDoc.appendComment (DO_NOT_EDIT);
-    final IMicroElement eRoot = aDoc.appendElement ("root");
+    final IMicroElement eRoot = aDoc.appendElement (sRootElementName);
     eRoot.setAttribute ("version", m_aCodeListVersion.getAsString ());
     eRoot.setAttribute ("entry-count", aRows.size ());
     for (final T aRow : aRows)
