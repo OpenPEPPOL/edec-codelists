@@ -18,7 +18,12 @@ import eu.peppol.codelist.field.ECodeListDataType;
 import eu.peppol.codelist.gc.GCHelper;
 import eu.peppol.codelist.gc.GCRowExt;
 
-public final class TransportProfileRow
+/**
+ * Single row of a transport profile in a code list version independent format.
+ *
+ * @author Philip Helger
+ */
+public final class TransportProfileRow implements IModelRow
 {
   private static final String PROTOCOL = "protocol";
   private static final String PROFILE_VERSION = "profile-version";

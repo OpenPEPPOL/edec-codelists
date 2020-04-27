@@ -19,7 +19,12 @@ import eu.peppol.codelist.field.ECodeListDataType;
 import eu.peppol.codelist.gc.GCHelper;
 import eu.peppol.codelist.gc.GCRowExt;
 
-public final class ProcessRow
+/**
+ * Single row of a process in a code list version independent format.
+ *
+ * @author Philip Helger
+ */
+public final class ProcessRow implements IModelRow
 {
   private static final String SCHEME = "scheme";
   private static final String VALUE = "value";

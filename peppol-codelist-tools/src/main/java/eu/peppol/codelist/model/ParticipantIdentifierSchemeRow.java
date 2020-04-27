@@ -19,7 +19,13 @@ import eu.peppol.codelist.field.ECodeListDataType;
 import eu.peppol.codelist.gc.GCHelper;
 import eu.peppol.codelist.gc.GCRowExt;
 
-public final class ParticipantIdentifierSchemeRow
+/**
+ * Single row of a participant identifier scheme in a code list version
+ * independent format.
+ *
+ * @author Philip Helger
+ */
+public final class ParticipantIdentifierSchemeRow implements IModelRow
 {
   private static final String SCHEME_ID = "schemeid";
   private static final String ISO6523 = "iso6523";

@@ -25,7 +25,12 @@ import eu.peppol.codelist.field.ECodeListDataType;
 import eu.peppol.codelist.gc.GCHelper;
 import eu.peppol.codelist.gc.GCRowExt;
 
-public final class DocTypeRow
+/**
+ * Single row of a document type in a code list version independent format.
+ *
+ * @author Philip Helger
+ */
+public final class DocTypeRow implements IModelRow
 {
   private static final String NAME = "name";
   private static final String SCHEME = "scheme";
