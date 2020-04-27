@@ -19,28 +19,15 @@ package eu.peppol.codelist;
 import javax.annotation.Nonnull;
 
 import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.CommonsLinkedHashSet;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.collection.impl.ICommonsSet;
-import com.helger.commons.io.resource.FileSystemResource;
-import com.helger.commons.io.resource.IReadableResource;
 import com.helger.commons.version.Version;
-import com.helger.genericode.v10.CodeListDocument;
-import com.helger.json.IJsonArray;
-import com.helger.json.IJsonObject;
-import com.helger.json.JsonArray;
-import com.helger.json.JsonObject;
 import com.helger.peppolid.IProcessIdentifier;
-import com.helger.xml.microdom.IMicroDocument;
-import com.helger.xml.microdom.IMicroElement;
-import com.helger.xml.microdom.MicroDocument;
 
 import eu.peppol.codelist.excel.InMemoryXLSX;
-import eu.peppol.codelist.gc.GCHelper;
 import eu.peppol.codelist.model.DocTypeRow;
 import eu.peppol.codelist.model.ParticipantIdentifierSchemeRow;
 import eu.peppol.codelist.model.ProcessRow;
@@ -76,40 +63,10 @@ public final class ConvertV7 extends AbstractConverter
     for (final DocTypeRow aRow : aRows)
       aRow.checkConsistency ();
 
-    // Create GC
-    final CodeListDocument aCodeList = GCHelper.createEmptyCodeList (DocTypeRow.CODE_LIST_NAME,
-                                                                     m_aCodeListVersion,
-                                                                     DocTypeRow.CODE_LIST_URI);
-    {
-      DocTypeRow.addColumns (aCodeList);
-      for (final DocTypeRow aRow : aRows)
-        aCodeList.getSimpleCodeList ().addRow (aRow.getAsGCRow (aCodeList.getColumnSet ()));
-    }
-
-    // Create XML
-    final IMicroDocument aDoc = new MicroDocument ();
-    {
-      aDoc.appendComment (DO_NOT_EDIT);
-      final IMicroElement eRoot = aDoc.appendElement ("root");
-      eRoot.setAttribute ("version", m_aCodeListVersion.getAsString ());
-      for (final DocTypeRow aRow : aRows)
-        eRoot.appendChild (aRow.getAsElement ());
-    }
-
-    // Create JSON
-    final IJsonObject aJson = new JsonObject ();
-    {
-      aJson.add ("version", m_aCodeListVersion.getAsString ());
-      final IJsonArray aValues = new JsonArray ();
-      for (final DocTypeRow aRow : aRows)
-        aValues.add (aRow.getAsJson ());
-      aJson.add ("values", aValues);
-    }
-
-    // Write at the end
-    writeGenericodeFile (aCodeList, DocTypeRow.CODE_LIST_NAME);
-    writeXMLFile (aDoc, DocTypeRow.CODE_LIST_NAME);
-    writeJsonFile (aJson, DocTypeRow.CODE_LIST_NAME);
+    // Create files
+    createGenericodeFile (aRows, DocTypeRow.CODE_LIST_NAME, DocTypeRow::addColumns, DocTypeRow.CODE_LIST_URI);
+    createXMLFile (aRows, DocTypeRow.CODE_LIST_NAME);
+    createJsonFile (aRows, DocTypeRow.CODE_LIST_NAME);
   }
 
   private void _handleParticipantIdentifierSchemes (@Nonnull final Sheet aParticipantSheet)
@@ -124,40 +81,13 @@ public final class ConvertV7 extends AbstractConverter
     for (final ParticipantIdentifierSchemeRow aRow : aRows)
       aRow.checkConsistency ();
 
-    // Create GC
-    final CodeListDocument aCodeList = GCHelper.createEmptyCodeList (ParticipantIdentifierSchemeRow.CODE_LIST_NAME,
-                                                                     m_aCodeListVersion,
-                                                                     ParticipantIdentifierSchemeRow.CODE_LIST_URI);
-    {
-      ParticipantIdentifierSchemeRow.addColumns (aCodeList);
-      for (final ParticipantIdentifierSchemeRow aRow : aRows)
-        aCodeList.getSimpleCodeList ().addRow (aRow.getAsGCRow (aCodeList.getColumnSet ()));
-    }
-
-    // Create XML
-    final IMicroDocument aDoc = new MicroDocument ();
-    {
-      aDoc.appendComment (DO_NOT_EDIT);
-      final IMicroElement eRoot = aDoc.appendElement ("root");
-      eRoot.setAttribute ("version", m_aCodeListVersion.getAsString ());
-      for (final ParticipantIdentifierSchemeRow aRow : aRows)
-        eRoot.appendChild (aRow.getAsElement ());
-    }
-
-    // Create JSON
-    final IJsonObject aJson = new JsonObject ();
-    {
-      aJson.add ("version", m_aCodeListVersion.getAsString ());
-      final IJsonArray aValues = new JsonArray ();
-      for (final ParticipantIdentifierSchemeRow aRow : aRows)
-        aValues.add (aRow.getAsJson ());
-      aJson.add ("values", aValues);
-    }
-
-    // Write at the end
-    writeGenericodeFile (aCodeList, ParticipantIdentifierSchemeRow.CODE_LIST_NAME);
-    writeXMLFile (aDoc, ParticipantIdentifierSchemeRow.CODE_LIST_NAME);
-    writeJsonFile (aJson, ParticipantIdentifierSchemeRow.CODE_LIST_NAME);
+    // Create files
+    createGenericodeFile (aRows,
+                          ParticipantIdentifierSchemeRow.CODE_LIST_NAME,
+                          ParticipantIdentifierSchemeRow::addColumns,
+                          ParticipantIdentifierSchemeRow.CODE_LIST_URI);
+    createXMLFile (aRows, ParticipantIdentifierSchemeRow.CODE_LIST_NAME);
+    createJsonFile (aRows, ParticipantIdentifierSchemeRow.CODE_LIST_NAME);
   }
 
   private void _handleTransportProfileIdentifiers (@Nonnull final Sheet aTPSheet)
@@ -172,40 +102,10 @@ public final class ConvertV7 extends AbstractConverter
     for (final TransportProfileRow aRow : aRows)
       aRow.checkConsistency ();
 
-    // Create GC
-    final CodeListDocument aCodeList = GCHelper.createEmptyCodeList (TransportProfileRow.CODE_LIST_NAME,
-                                                                     m_aCodeListVersion,
-                                                                     TransportProfileRow.CODE_LIST_URI);
-    {
-      TransportProfileRow.addColumns (aCodeList);
-      for (final TransportProfileRow aRow : aRows)
-        aCodeList.getSimpleCodeList ().addRow (aRow.getAsGCRow (aCodeList.getColumnSet ()));
-    }
-
-    // Create XML
-    final IMicroDocument aDoc = new MicroDocument ();
-    {
-      aDoc.appendComment (DO_NOT_EDIT);
-      final IMicroElement eRoot = aDoc.appendElement ("root");
-      eRoot.setAttribute ("version", m_aCodeListVersion.getAsString ());
-      for (final TransportProfileRow aRow : aRows)
-        eRoot.appendChild (aRow.getAsElement ());
-    }
-
-    // Create JSON
-    final IJsonObject aJson = new JsonObject ();
-    {
-      aJson.add ("version", m_aCodeListVersion.getAsString ());
-      final IJsonArray aValues = new JsonArray ();
-      for (final TransportProfileRow aRow : aRows)
-        aValues.add (aRow.getAsJson ());
-      aJson.add ("values", aValues);
-    }
-
-    // Write at the end
-    writeGenericodeFile (aCodeList, TransportProfileRow.CODE_LIST_NAME);
-    writeXMLFile (aDoc, TransportProfileRow.CODE_LIST_NAME);
-    writeJsonFile (aJson, TransportProfileRow.CODE_LIST_NAME);
+    // Create files
+    createGenericodeFile (aRows, TransportProfileRow.CODE_LIST_NAME, TransportProfileRow::addColumns, TransportProfileRow.CODE_LIST_URI);
+    createXMLFile (aRows, TransportProfileRow.CODE_LIST_NAME);
+    createJsonFile (aRows, TransportProfileRow.CODE_LIST_NAME);
   }
 
   private void _handleProcessIdentifiers ()
@@ -217,40 +117,10 @@ public final class ConvertV7 extends AbstractConverter
     for (final ProcessRow aRow : aRows)
       aRow.checkConsistency ();
 
-    // Create GC
-    final CodeListDocument aCodeList = GCHelper.createEmptyCodeList (ProcessRow.CODE_LIST_NAME,
-                                                                     m_aCodeListVersion,
-                                                                     ProcessRow.CODE_LIST_URI);
-    {
-      ProcessRow.addColumns (aCodeList);
-      for (final ProcessRow aRow : aRows)
-        aCodeList.getSimpleCodeList ().addRow (aRow.getAsGCRow (aCodeList.getColumnSet ()));
-    }
-
-    // Create XML
-    final IMicroDocument aDoc = new MicroDocument ();
-    {
-      aDoc.appendComment (DO_NOT_EDIT);
-      final IMicroElement eRoot = aDoc.appendElement ("root");
-      eRoot.setAttribute ("version", m_aCodeListVersion.getAsString ());
-      for (final ProcessRow aRow : aRows)
-        eRoot.appendChild (aRow.getAsElement ());
-    }
-
-    // Create JSON
-    final IJsonObject aJson = new JsonObject ();
-    {
-      aJson.add ("version", m_aCodeListVersion.getAsString ());
-      final IJsonArray aValues = new JsonArray ();
-      for (final ProcessRow aRow : aRows)
-        aValues.add (aRow.getAsJson ());
-      aJson.add ("values", aValues);
-    }
-
-    // Write at the end
-    writeGenericodeFile (aCodeList, ProcessRow.CODE_LIST_NAME);
-    writeXMLFile (aDoc, ProcessRow.CODE_LIST_NAME);
-    writeJsonFile (aJson, ProcessRow.CODE_LIST_NAME);
+    // Create files
+    createGenericodeFile (aRows, ProcessRow.CODE_LIST_NAME, ProcessRow::addColumns, ProcessRow.CODE_LIST_URI);
+    createXMLFile (aRows, ProcessRow.CODE_LIST_NAME);
+    createJsonFile (aRows, ProcessRow.CODE_LIST_NAME);
   }
 
   @Override
@@ -258,32 +128,9 @@ public final class ConvertV7 extends AbstractConverter
   {
     final String sFilenameVersion = m_aCodeListVersion.getAsString (false) + " draft";
 
-    for (final CodeListSource aCLF : new CodeListSource [] { new CodeListSource ("Document types",
-                                                                                 sFilenameVersion,
-                                                                                 this::_handleDocumentTypes),
-                                                             new CodeListSource ("Participant identifier schemes",
-                                                                                 sFilenameVersion,
-                                                                                 this::_handleParticipantIdentifierSchemes),
-                                                             new CodeListSource ("Transport profiles",
-                                                                                 sFilenameVersion,
-                                                                                 this::_handleTransportProfileIdentifiers) })
-    {
-      // Where is the Excel?
-      final IReadableResource aExcel = new FileSystemResource (aCLF.getFile ());
-      if (!aExcel.exists ())
-        throw new IllegalStateException ("The Excel file '" + aCLF.getFile ().getAbsolutePath () + "' could not be found!");
-
-      // Interpret as Excel
-      try (final Workbook aWB = new XSSFWorkbook (aExcel.getInputStream ()))
-      {
-        // Check whether all required sheets are present
-        final Sheet aSheet = aWB.getSheetAt (0);
-        if (aSheet == null)
-          throw new IllegalStateException ("The first sheet could not be found!");
-
-        aCLF.handle (aSheet);
-      }
-    }
+    new CodeListSource ("Document types", sFilenameVersion, this::_handleDocumentTypes).readExcelSheet ();
+    new CodeListSource ("Participant identifier schemes", sFilenameVersion, this::_handleParticipantIdentifierSchemes).readExcelSheet ();
+    new CodeListSource ("Transport profiles", sFilenameVersion, this::_handleTransportProfileIdentifiers).readExcelSheet ();
 
     _handleProcessIdentifiers ();
   }

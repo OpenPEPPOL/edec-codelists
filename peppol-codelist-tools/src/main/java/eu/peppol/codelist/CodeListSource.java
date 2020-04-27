@@ -21,9 +21,13 @@ import java.io.File;
 import javax.annotation.Nonnull;
 
 import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.functional.IThrowingConsumer;
+import com.helger.commons.io.resource.FileSystemResource;
+import com.helger.commons.io.resource.IReadableResource;
 
 /**
  * Represent a single CodeList Excel source file.
@@ -49,14 +53,22 @@ public final class CodeListSource
     m_aHandler = aHandler;
   }
 
-  @Nonnull
-  public File getFile ()
+  public void readExcelSheet () throws Exception
   {
-    return m_aFile;
-  }
+    // Where is the Excel?
+    final IReadableResource aExcel = new FileSystemResource (m_aFile);
+    if (!aExcel.exists ())
+      throw new IllegalStateException ("The Excel file '" + m_aFile.getAbsolutePath () + "' could not be found!");
 
-  public void handle (@Nonnull final Sheet aSheet) throws Exception
-  {
-    m_aHandler.accept (aSheet);
+    // Interpret as Excel
+    try (final Workbook aWB = new XSSFWorkbook (aExcel.getInputStream ()))
+    {
+      // Check whether all required sheets are present
+      final Sheet aSheet = aWB.getSheetAt (0);
+      if (aSheet == null)
+        throw new IllegalStateException ("The first sheet could not be found!");
+
+      m_aHandler.accept (aSheet);
+    }
   }
 }

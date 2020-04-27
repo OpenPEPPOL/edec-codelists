@@ -18,7 +18,9 @@ package eu.peppol.codelist;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.nio.charset.StandardCharsets;
+import java.util.function.Consumer;
 
 import javax.annotation.Nonnull;
 
@@ -27,19 +29,28 @@ import org.slf4j.LoggerFactory;
 
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.annotation.Nonempty;
+import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.file.FileHelper;
 import com.helger.commons.io.file.FileOperationManager;
 import com.helger.commons.version.Version;
 import com.helger.genericode.CGenericode;
 import com.helger.genericode.Genericode10CodeListMarshaller;
 import com.helger.genericode.v10.CodeListDocument;
+import com.helger.json.IJsonArray;
 import com.helger.json.IJsonObject;
+import com.helger.json.JsonArray;
+import com.helger.json.JsonObject;
 import com.helger.json.serialize.JsonWriter;
+import com.helger.json.serialize.JsonWriterSettings;
+import com.helger.xml.microdom.IMicroDocument;
+import com.helger.xml.microdom.IMicroElement;
 import com.helger.xml.microdom.IMicroNode;
+import com.helger.xml.microdom.MicroDocument;
 import com.helger.xml.microdom.serialize.MicroWriter;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
 
 import eu.peppol.codelist.gc.GCHelper;
+import eu.peppol.codelist.model.IModelRow;
 
 /**
  * Abstract base processor containing only version independent stuff.
@@ -74,6 +85,18 @@ public abstract class AbstractConverter
     FileOperationManager.INSTANCE.createDirRecursiveIfNotExisting (m_aResultDir);
   }
 
+  protected final <T extends IModelRow> void createGenericodeFile (@Nonnull final ICommonsList <T> aRows,
+                                                                   @Nonnull final String sCodeListName,
+                                                                   @Nonnull final Consumer <CodeListDocument> aColumnProvider,
+                                                                   @Nonnull final URI sCodeListURI)
+  {
+    final CodeListDocument aCodeList = GCHelper.createEmptyCodeList (sCodeListName, m_aCodeListVersion, sCodeListURI);
+    aColumnProvider.accept (aCodeList);
+    for (final T aRow : aRows)
+      aCodeList.getSimpleCodeList ().addRow (aRow.getAsGCRow (aCodeList.getColumnSet ()));
+    writeGenericodeFile (aCodeList, sCodeListName);
+  }
+
   /**
    * Write a Genericode 1.0 Document to disk
    *
@@ -99,6 +122,18 @@ public abstract class AbstractConverter
     LOGGER.info ("Wrote Genericode file '" + aDstFile.getPath () + "'");
   }
 
+  protected final <T extends IModelRow> void createXMLFile (@Nonnull final ICommonsList <T> aRows, @Nonnull final String sCodeListName)
+  {
+    final IMicroDocument aDoc = new MicroDocument ();
+    aDoc.appendComment (DO_NOT_EDIT);
+    final IMicroElement eRoot = aDoc.appendElement ("root");
+    eRoot.setAttribute ("version", m_aCodeListVersion.getAsString ());
+    eRoot.setAttribute ("entry-count", aRows.size ());
+    for (final T aRow : aRows)
+      eRoot.appendChild (aRow.getAsElement ());
+    writeXMLFile (aDoc, sCodeListName);
+  }
+
   protected final void writeXMLFile (@Nonnull final IMicroNode aNode, @Nonnull final String sBasename)
   {
     final File aDstFile = new File (m_aResultDir, sBasename + m_sFilenameSuffix + ".xml");
@@ -107,12 +142,26 @@ public abstract class AbstractConverter
     LOGGER.info ("Wrote XML file '" + aDstFile.getPath () + "'");
   }
 
+  protected final <T extends IModelRow> void createJsonFile (@Nonnull final ICommonsList <T> aRows, @Nonnull final String sCodeListName)
+  {
+    final IJsonObject aJson = new JsonObject ();
+    aJson.add ("version", m_aCodeListVersion.getAsString ());
+    aJson.add ("entry-count", aRows.size ());
+    final IJsonArray aValues = new JsonArray ();
+    for (final T aRow : aRows)
+      aValues.add (aRow.getAsJson ());
+    aJson.add ("values", aValues);
+    writeJsonFile (aJson, sCodeListName);
+  }
+
   protected final void writeJsonFile (@Nonnull final IJsonObject aNode, @Nonnull final String sBasename)
   {
     final File aDstFile = new File (m_aResultDir, sBasename + m_sFilenameSuffix + ".json");
     try
     {
-      new JsonWriter ().writeToStream (aNode, FileHelper.getBufferedOutputStream (aDstFile), StandardCharsets.UTF_8);
+      new JsonWriter (new JsonWriterSettings ().setIndentEnabled (true)).writeToStream (aNode,
+                                                                                        FileHelper.getBufferedOutputStream (aDstFile),
+                                                                                        StandardCharsets.UTF_8);
     }
     catch (final IOException ex)
     {
