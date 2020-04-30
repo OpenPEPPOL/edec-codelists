@@ -129,7 +129,7 @@ public final class ConvertV7 extends AbstractConverter
   @Override
   protected void convert () throws Exception
   {
-    final String sFilenameVersion = m_aCodeListVersion.getAsString (false) + " draft";
+    final String sFilenameVersion = m_aCodeListVersion.getAsString (false);
 
     new CodeListSource ("Document types", sFilenameVersion, this::_handleDocumentTypes).readExcelSheet ();
     new CodeListSource ("Participant identifier schemes", sFilenameVersion, this::_handleParticipantIdentifierSchemes).readExcelSheet ();
