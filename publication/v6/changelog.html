@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OpenPEPPOL eDEC Code Lists Change Log</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <h1>OpenPEPPOL eDEC Code Lists Change Log</h1>
+      
+      <div><small>Note: the links to the JIRA issues are only available to Peppol members</small></div>
+
+<!--      
+      <h3>v6 - 2020-01-14</h3>
+      
+      <ul>
+        <li>Participant identifier schemes
+          <ul>
+          </ul>
+        </li>  
+        <li>Document type identifiers
+          <ul>
+          </ul>
+        </li>
+        <li>Process identifiers
+          <ul>
+          </ul>
+        </li>  
+        <li>Transport profiles
+          <ul>
+          </ul>
+        </li>
+      </ul>
+-->
+
+      <h3>v6 - 2020-01-14</h3>
+      
+      <ul>
+        <li>Participant identifier schemes
+          <ul>
+            <li>Added <code>0201</code> - IT:CUUO - Codice Univoco Unità Organizzativa iPA - <a href="https://openpeppol.atlassian.net/browse/TICC-101" target="_blank">TICC-101</a></li>
+            <li>Deprecated <code>9921</code> - IT:IPA in favour of <code>0201</code> - <a href="https://openpeppol.atlassian.net/browse/TICC-101" target="_blank">TICC-101</a></li>
+            <li>Added <code>0204</code> - DE:LWID - Leitweg ID - <a href="https://openpeppol.atlassian.net/browse/TICC-96" target="_blank">TICC-96</a></li>
+            <li>Deprecated <code>9958</code> - DE:LID in favour of <code>0204</code> - <a href="https://openpeppol.atlassian.net/browse/TICC-96" target="_blank">TICC-96</a></li>
+          </ul>
+        </li>  
+        <li>Document type identifiers
+          <ul>
+            <li>Changed the Profile code of several document types so that they come closer to uniqueness</li>
+            <li>Started fixing the structure of the code and example columns</li>
+            <li>Added new columns: "Issued by OpenPEPPOL", "BIS version" and "Domain Community"</li>
+            <li>Added "PEF.PL Accounting Note v1" - <a href="https://openpeppol.atlassian.net/browse/TICC-75" target="_blank">TICC-75</a></li>
+            <li>Added "PEFPEF.PL Correcting Invoice v1" - <a href="https://openpeppol.atlassian.net/browse/TICC-76" target="_blank">TICC-76</a></li>
+            <li>Added "PEF.PL Receipt Advice v1" - <a href="https://openpeppol.atlassian.net/browse/TICC-78" target="_blank">TICC-78</a></li>
+            <li>Added "AU-NZ PEPPOL BIS Billing 3.0 Invoice", "AU-NZ PEPPOL BIS Billing 3.0 CreditNote", "AU-NZ Self-Billing 3.0 Invoice" and "AU-NZ Self-Billing 3.0 CreditNote" - <a href="https://openpeppol.atlassian.net/browse/TICC-102" target="_blank">TICC-102</a></li>
+            <li>Added "SI-UBL 1.2 Invoice" and "SI-UBL 1.2 Order" - <a href="https://openpeppol.atlassian.net/browse/TICC-107" target="_blank">TICC-107</a></li>
+            <li>Fixed an incorrect String for the "SG PEPPOL BIS Billing 3.0 Credit Note"</li>
+          </ul>
+        </li>
+        <li>Process identifiers
+          <ul>
+            <li>Added missing identifier "PEPPOL BIS Catalogue without Response 3.0" (<code>urn:fdc:peppol.eu:poacc:bis:catalogue_wo_response:3</code>)</li>
+          </ul>
+        </li>  
+        <li>Transport profiles
+          <ul>
+            <li><em>no changes</em></li>
+          </ul>
+        </li>
+      </ul>
+      
+      <h3>v5 - 2019-08-15</h3>
+      
+      <ul>
+        <li>Participant identifier schemes
+          <ul>
+            <li>Added <code>0151</code> - AU:ABN - Australian Business Number (ABN) Scheme</li>
+            <li>Added new column in the Excel file <strong>Country code</strong></li>
+            <li>Added new column in the Excel file <strong>Scheme name</strong></li>
+            <li>Fixed a typo in the <code>0195</code> identifier agency name</li>
+            <li>Added <code>0200</code> - LT:LEC - Lithuanian Legal entity code - <a href="https://openpeppol.atlassian.net/browse/TICC-81" target="_blank">TICC-81</a></li>
+            <li>Added <code>0183</code> - CH:UIDB - Swiss Unique Business Identification Number (UIDB) - <a href="https://openpeppol.atlassian.net/browse/TICC-90" target="_blank">TICC-90</a></li>
+            <li>Added <code>0198</code> - DK:ERST - ERSTORG - <a href="https://openpeppol.atlassian.net/browse/TICC-91" target="_blank">TICC-91</a></li>
+            <li>Added <code>0199</code> - LEI - Legal Entity Identifier - <a href="https://openpeppol.atlassian.net/browse/TICC-94" target="_blank">TICC-94</a></li>
+          </ul>
+        </li>
+        <li>Document type identifiers
+          <ul>
+            <li>Added "XRechnung UBL Invoice V1.2" - <a href="https://openpeppol.atlassian.net/browse/TICC-89" target="_blank">TICC-89</a></li>
+            <li>Added "XRechnung UBL CreditNote V1.2" - <a href="https://openpeppol.atlassian.net/browse/TICC-89" target="_blank">TICC-89</a></li>
+            <li>Added "XRechnung CII Invoice V1.2" - <a href="https://openpeppol.atlassian.net/browse/TICC-89" target="_blank">TICC-89</a></li>
+            <li>Deprecated the old "XRechnung ... V1.1" identifiers - <a href="https://openpeppol.atlassian.net/browse/TICC-71" target="_blank">TICC-71</a></li>
+          </ul>
+        </li>
+        <li>Process identifiers
+          <ul>
+            <li><em>no changes</em></li>
+          </ul>
+        </li>  
+        <li>Transport profiles
+          <ul>
+            <li>AS2 profile v2 was added (<code>busdox-transport-as2-ver2p0</code>)</li>
+          </ul>
+        </li>
+      </ul>      
+      
+      <div>Note: <a href="https://openpeppol.atlassian.net/browse/TICC-89" target="_blank">TICC-89</a> obsoletes <a href="https://openpeppol.atlassian.net/browse/TICC-71" target="_blank">TICC-71</a></div>
+
+      <h3>v4 - 2019-01-18</h3>
+      
+      <ul>
+        <li>Participant identifier schemes
+          <ul>
+            <li>Added <code>0195</code> - SG:UEN - Singapore Nationwide E-Invoice Framework - TICC-60</li>
+            <li>Added <code>0196</code> - IS:KTNR - Icelandic National Registry - TICC-61</li>
+            <li>Deprecated <code>9917</code> - IS:KT as it is replaced by 0196</li>
+            <li>Added <code>0130</code> - EU:NAL - Directorates of the European Commission - TICC-65</li>
+          </ul>  
+        </li>
+        <li>Document type identifiers
+          <ul>
+            <li>Added "PEPPOL Invoice Response V1" - TICC-64</li>
+            <li>Added "PEPPOL Catalogue transaction 3.0" - TICC-63</li>
+            <li>Added "PEPPOL Catalogue Response transaction 3.0" - TICC-63</li>
+            <li>Added "PEPPOL Order transaction 3.0" - TICC-63</li>
+            <li>Added "PEPPOL Invoice Response transaction 3.0" - TICC-63</li>
+            <li>Added "PEPPOL Punch Out transaction 3.0" - TICC-63</li>
+            <li>Added "PEPPOL Order Response transaction 3.0" - TICC-63</li>
+            <li>Added "PEPPOL Despatch Advice transaction 3.0" - TICC-63</li>
+            <li>Added "PEPPOL Order Agreement transaction 3.0" - TICC-63</li>
+            <li>Added "PEPPOL Message Level Response transaction 3.0" - TICC-63</li>
+            <li>Added "SI-UBL 2.0 Invoice" - TICC-66</li>
+            <li>Added "SI-UBL 2.0 CreditNote" - TICC-66</li>
+            <li>Added "SG PEPPOL BIS Billing 3.0 Invoice" - TICC-67</li>
+            <li>Added "SG PEPPOL BIS Billing 3.0 Credit Note" - TICC-67</li>
+          </ul>  
+        </li>
+        <li>Process identifiers
+          <ul>
+            <li>Added "PEPPOL Invoice Response V1" - TICC-64</li>
+            <li>Added "PEPPOL BIS Catalogue only 3.0" - TICC-63</li>
+            <li>Added "PEPPOL BIS Order only 3.0" - TICC-63</li>
+            <li>Added "PEPPOL BIS Invoice Response 3.0" - TICC-63</li>
+            <li>Added "PEPPOL BIS Punch Out 3.0" - TICC-63</li>
+            <li>Added "PEPPOL BIS Ordering 3.0" - TICC-63</li>
+            <li>Added "PEPPOL BIS Despatch Advice 3.0" - TICC-63</li>
+            <li>Added "PEPPOL BIS Order Agreement 3.0" - TICC-63</li>
+            <li>Added "PEPPOL BIS Message Level Response 3.0" - TICC-63</li>
+          </ul>  
+        </li>
+        <li>Transport profiles
+          <ul>
+            <li><em>no changes</em></li>
+          </ul>  
+        </li>
+      </ul>
+
+      <h3>v3 - 2018-10-12</h3>
+      
+      <ul>
+        <li>Participant identifier schemes
+          <ul>
+            <li>Added <code>0193</code> - UBLBE - UBL.BE Party Identifier</li>
+            <li>Added <code>9958</code> - DE:LID - German Leitweg ID</li>
+          </ul>  
+        </li>
+        <li>Document type identifiers
+          <ul>
+            <li>Added new identifiers according to TICC-45</li>
+            <li>Added new identifiers according to TICC-49 - PEPPOL BIS Billing V3 with CII binding</li>
+            <li>Added new identifiers documents types for P001, P002 and P003 (see "process identifiers" below)</li>
+            <li>Fixed a typo in the "OrderResponse" document type of "PEPPOL Ordering profile V1"</li>
+            <li>Fixed a typo in the "PEPPOL Order profile V2" document type. Correct: <code>peppol3a</code>. Old and invalid: <code>peppol03a</code>.</li>
+            <li>Added "XRechnung Invoice V1.1" and "XRechnung CreditNote V1.1" document types (as EN 16931 CIUSes) TICC-55</li>
+            <li>Added "OIOUBL UtilityStatement V2.02" and "OIOUBL Reminder V2.02" document type identifiers TICC-37</li>
+            <li>Added "UBL.BE Invoice 3.0" and "UBL.BE Credit Note 3.0" document type identifiers TICC-54</li>
+          </ul>  
+        </li>
+        <li>Process identifiers
+          <ul>
+            <li>Added PreAward P001 "Procurement procedure subscription" - TICC-50</li>
+            <li>Added PreAward P002 "Procurement document access" - TICC-51</li>
+            <li>Added PreAward P003 "Tender Submission" - TICC-52</li>
+            <li>Added "OIOUBL UtilityStatement V2.02" and "OIOUBL Reminder V2.02" process identifiers TICC-37 - Important this requires the usage of the OpenPEPPOL Envelope Specification 1.1 or newer (SBDH)</li>
+          </ul>  
+        </li>
+        <li>Transport profiles
+          <ul>
+            <li>PEPPOL AS4 profile v1 was deprecated (<code>peppol-transport-as4-v1_0</code>)</li>
+            <li>PEPPOL AS4 profile v2 was added (<code>peppol-transport-as4-v2_0</code>)</li>
+          </ul>  
+        </li>
+      </ul>
+
+      <div>Note: The layout of the file "PEPPOL Code Lists - Processes v?.xlsx" changed. Column C now contains the identifier scheme</div>
+      <div>Note: The layout of the file "PEPPOL Code Lists - Document types v?.xlsx" changed. Column B now contains the identifier scheme. Also the header of column A changed from "Common Name" to "Profile code"</div>
+
+      <h3>v2 - 2018-05-04</h3>
+      
+      <ul>
+        <li>Participant identifier schemes
+          <ul>
+            <li>Added <code>0190</code> - NL:OINO</li>
+            <li>Added <code>0191</code> - EE:CC</li>
+            <li>Added <code>0192</code> - NO:ORG</li>
+            <li>Deprecated <code>9954</code> - NL:OIN (in favor of NL:OINO)</li>
+          </ul>  
+        </li>
+        <li>Document type identifiers
+          <ul>
+            <li>Deprecated "PEPPOL Billing profile V1"</li>
+            <li>Deprecated "PEPPOL Catalogue profile V1"</li>
+            <li>Deprecated "PEPPOL Invoice profile V1"</li>
+            <li>Deprecated "PEPPOL Order Profile V1"</li>
+            <li>Deprecated "Virtual Company Dossier"</li>
+            <li>Deprecated "Virtual Company Dossier Package"</li>
+            <li>Deprecated "Catalogue Template"</li>
+            <li>Deprecated "EHF Invoice v1"</li>
+            <li>Added "PEPPOL BIS Billing V3"</li>
+          </ul>  
+        </li>
+        <li>Process identifiers
+          <ul>
+            <li>Added "PEPPOL BIS Billing V3"</li>
+          </ul>  
+        </li>
+        <li>Transport profiles
+          <ul>
+            <li>Added PEPPOL AS4 profile (<code>peppol-transport-as4-v1_0</code>)</li>
+          </ul>  
+        </li>
+      </ul>
+
+      <div class="alert alert-info">Change logs for previous versions (1.x) are not available explicitly</div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  </body>
+</html>
