@@ -31,6 +31,7 @@ import com.helger.commons.annotation.Nonempty;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.file.FileHelper;
 import com.helger.commons.io.file.FileOperationManager;
+import com.helger.commons.io.stream.NonBlockingBufferedOutputStream;
 import com.helger.commons.version.Version;
 import com.helger.genericode.CGenericode;
 import com.helger.genericode.Genericode10CodeListMarshaller;
@@ -93,7 +94,7 @@ public abstract class AbstractConverter
     aColumnProvider.accept (aCodeList);
     for (final T aRow : aRows)
       aCodeList.getSimpleCodeList ().addRow (aRow.getAsGCRow (aCodeList.getColumnSet ()));
-    writeGenericodeFile (aCodeList, sCodeListName);
+    _writeGenericodeFile (aCodeList, sCodeListName);
   }
 
   /**
@@ -105,7 +106,7 @@ public abstract class AbstractConverter
    *        The filename to write to, relative to the result directory, no
    *        extension.
    */
-  protected final void writeGenericodeFile (@Nonnull final CodeListDocument aCodeList, @Nonnull final String sBasename)
+  private void _writeGenericodeFile (@Nonnull final CodeListDocument aCodeList, @Nonnull final String sBasename)
   {
     final MapBasedNamespaceContext aNsCtx = new MapBasedNamespaceContext ();
     aNsCtx.addMapping ("gc", CGenericode.GENERICODE_10_NAMESPACE_URI);
@@ -132,10 +133,10 @@ public abstract class AbstractConverter
     eRoot.setAttribute ("entry-count", aRows.size ());
     for (final T aRow : aRows)
       eRoot.appendChild (aRow.getAsElement ());
-    writeXMLFile (aDoc, sCodeListName);
+    _writeXMLFile (aDoc, sCodeListName);
   }
 
-  protected final void writeXMLFile (@Nonnull final IMicroNode aNode, @Nonnull final String sBasename)
+  private void _writeXMLFile (@Nonnull final IMicroNode aNode, @Nonnull final String sBasename)
   {
     final File aDstFile = new File (m_aResultDir, sBasename + m_sFilenameSuffix + ".xml");
     if (MicroWriter.writeToFile (aNode, aDstFile).isFailure ())
@@ -152,17 +153,17 @@ public abstract class AbstractConverter
     for (final T aRow : aRows)
       aValues.add (aRow.getAsJson ());
     aJson.add ("values", aValues);
-    writeJsonFile (aJson, sCodeListName);
+    _writeJsonFile (aJson, sCodeListName);
   }
 
-  protected final void writeJsonFile (@Nonnull final IJsonObject aNode, @Nonnull final String sBasename)
+  private void _writeJsonFile (@Nonnull final IJsonObject aNode, @Nonnull final String sBasename)
   {
     final File aDstFile = new File (m_aResultDir, sBasename + m_sFilenameSuffix + ".json");
-    try
+    try (final NonBlockingBufferedOutputStream aOS = FileHelper.getBufferedOutputStream (aDstFile))
     {
-      new JsonWriter (new JsonWriterSettings ().setIndentEnabled (true)).writeToStream (aNode,
-                                                                                        FileHelper.getBufferedOutputStream (aDstFile),
-                                                                                        StandardCharsets.UTF_8);
+      // Manually add the header: ^\o/^
+      aOS.write (("/* " + DO_NOT_EDIT + " */\n").getBytes (StandardCharsets.UTF_8));
+      new JsonWriter (new JsonWriterSettings ().setIndentEnabled (true)).writeToStream (aNode, aOS, StandardCharsets.UTF_8);
     }
     catch (final IOException ex)
     {
