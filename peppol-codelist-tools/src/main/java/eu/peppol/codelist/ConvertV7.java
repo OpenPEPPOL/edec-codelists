@@ -15,14 +15,16 @@
  */
 package eu.peppol.codelist;
 
+import java.util.Map;
+
 import javax.annotation.Nonnull;
 
 import org.apache.poi.ss.usermodel.Sheet;
 
 import com.helger.commons.collection.impl.CommonsArrayList;
-import com.helger.commons.collection.impl.CommonsLinkedHashSet;
+import com.helger.commons.collection.impl.CommonsLinkedHashMap;
 import com.helger.commons.collection.impl.ICommonsList;
-import com.helger.commons.collection.impl.ICommonsSet;
+import com.helger.commons.collection.impl.ICommonsMap;
 import com.helger.commons.version.Version;
 import com.helger.peppolid.IProcessIdentifier;
 
@@ -43,7 +45,7 @@ public final class ConvertV7 extends AbstractConverter
   public static final String DESTINATION_BASE_PATH = "created-codelists/v7/";
   public static final String DESTINATION_FILENAME_SUFFIX = "V7";
 
-  private final ICommonsSet <IProcessIdentifier> m_aProcIDs = new CommonsLinkedHashSet <> ();
+  private final ICommonsMap <IProcessIdentifier, ICommonsList <DocTypeRow>> m_aProcIDs = new CommonsLinkedHashMap <> ();
 
   public ConvertV7 ()
   {
@@ -60,7 +62,8 @@ public final class ConvertV7 extends AbstractConverter
 
     // Collect all proc types
     for (final DocTypeRow aRow : aRows)
-      aRow.addAllProcessIDs (m_aProcIDs);
+      for (final IProcessIdentifier aProcID : aRow.getAllProcessIDs ())
+        m_aProcIDs.computeIfAbsent (aProcID, k -> new CommonsArrayList <> ()).add (aRow);
 
     // Consistency checks
     for (final DocTypeRow aRow : aRows)
@@ -114,7 +117,9 @@ public final class ConvertV7 extends AbstractConverter
   private void _handleProcessIdentifiers ()
   {
     // Convert to domain object
-    final ICommonsList <ProcessRow> aRows = new CommonsArrayList <> (m_aProcIDs, ProcessRow::createFromID);
+    final ICommonsList <ProcessRow> aRows = new CommonsArrayList <> ();
+    for (final Map.Entry <IProcessIdentifier, ICommonsList <DocTypeRow>> aEntry : m_aProcIDs.entrySet ())
+      aRows.add (ProcessRow.createFromID (aEntry.getKey (), aEntry.getValue ()));
 
     // Consistency checks
     for (final ProcessRow aRow : aRows)
