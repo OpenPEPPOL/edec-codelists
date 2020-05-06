@@ -19,6 +19,8 @@ import java.net.URI;
 
 import javax.annotation.Nonnull;
 
+import com.helger.commons.annotation.Nonempty;
+import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.string.StringHelper;
 import com.helger.commons.url.URLHelper;
 import com.helger.genericode.v10.CodeListDocument;
@@ -43,6 +45,7 @@ public final class ProcessRow implements IModelRow
 {
   private static final String SCHEME = "scheme";
   private static final String VALUE = "value";
+  private static final String DEPRECATED = "deprecated";
 
   public static final String CODE_LIST_NAME = "PeppolProcessIdentifiers";
   public static final URI CODE_LIST_URI = URLHelper.getAsURI ("urn:peppol.eu:names:identifier:process");
@@ -50,6 +53,7 @@ public final class ProcessRow implements IModelRow
 
   private String m_sScheme;
   private String m_sValue;
+  private boolean m_bDeprecated;
 
   public void checkConsistency ()
   {
@@ -65,6 +69,7 @@ public final class ProcessRow implements IModelRow
     final IMicroElement ret = new MicroElement ("process");
     ret.setAttribute (SCHEME, m_sScheme);
     ret.setAttribute (VALUE, m_sValue);
+    ret.setAttribute (DEPRECATED, m_bDeprecated);
     return ret;
   }
 
@@ -74,6 +79,7 @@ public final class ProcessRow implements IModelRow
     final IJsonObject ret = new JsonObject ();
     ret.add (SCHEME, m_sScheme);
     ret.add (VALUE, m_sValue);
+    ret.add (DEPRECATED, m_bDeprecated);
     return ret;
   }
 
@@ -82,6 +88,7 @@ public final class ProcessRow implements IModelRow
     final ColumnSet aColumnSet = aCLDoc.getColumnSet ();
     GCHelper.addHeaderColumn (aColumnSet, SCHEME, true, true, "Peppol Identifier Scheme", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, VALUE, true, true, "Peppol Identifier Value", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet, DEPRECATED, false, true, "Deprecated?", ECodeListDataType.BOOLEAN);
   }
 
   @Nonnull
@@ -91,15 +98,18 @@ public final class ProcessRow implements IModelRow
     final GCRowExt ret = new GCRowExt (aColumnSet);
     ret.add (SCHEME, m_sScheme);
     ret.add (VALUE, m_sValue);
+    ret.add (DEPRECATED, m_bDeprecated);
     return ret;
   }
 
   @Nonnull
-  public static ProcessRow createFromID (@Nonnull final IProcessIdentifier aProcID)
+  public static ProcessRow createFromID (@Nonnull final IProcessIdentifier aProcID,
+                                         @Nonnull @Nonempty final ICommonsList <DocTypeRow> aAllDocTypes)
   {
     final ProcessRow ret = new ProcessRow ();
     ret.m_sScheme = aProcID.getScheme ();
     ret.m_sValue = aProcID.getValue ();
+    ret.m_bDeprecated = aAllDocTypes.containsOnly (DocTypeRow::isDeprecated);
     return ret;
   }
 }

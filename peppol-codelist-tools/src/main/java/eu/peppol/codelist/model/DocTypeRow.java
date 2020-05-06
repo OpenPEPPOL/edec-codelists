@@ -16,9 +16,9 @@
 package eu.peppol.codelist.model;
 
 import java.net.URI;
-import java.util.Collection;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import com.helger.commons.collection.CollectionHelper;
 import com.helger.commons.collection.impl.ICommonsList;
@@ -77,6 +77,17 @@ public final class DocTypeRow implements IModelRow
   private String m_sProcessIDs;
   private ICommonsList <IProcessIdentifier> m_aProcessIDs;
 
+  public boolean isDeprecated ()
+  {
+    return m_bDeprecated;
+  }
+
+  @Nullable
+  public Iterable <IProcessIdentifier> getAllProcessIDs ()
+  {
+    return m_aProcessIDs;
+  }
+
   public void checkConsistency ()
   {
     if (StringHelper.hasNoText (m_sName))
@@ -98,12 +109,6 @@ public final class DocTypeRow implements IModelRow
       throw new IllegalStateException ("If issued by OpenPEPPOL, a BIS version is required");
     if (StringHelper.hasText (m_sBISVersion) && !StringParser.isUnsignedInt (m_sBISVersion))
       throw new IllegalStateException ("Code list entry has an invalid BIS version number - must be numeric");
-  }
-
-  public void addAllProcessIDs (@Nonnull final Collection <? super IProcessIdentifier> aTarget)
-  {
-    if (m_aProcessIDs != null)
-      aTarget.addAll (m_aProcessIDs);
   }
 
   @Nonnull
