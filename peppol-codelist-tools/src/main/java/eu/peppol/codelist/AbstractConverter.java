@@ -36,7 +36,6 @@ import com.helger.commons.version.Version;
 import com.helger.genericode.CGenericode;
 import com.helger.genericode.Genericode10CodeListMarshaller;
 import com.helger.genericode.v10.CodeListDocument;
-import com.helger.json.IJsonArray;
 import com.helger.json.IJsonObject;
 import com.helger.json.JsonArray;
 import com.helger.json.JsonObject;
@@ -149,10 +148,7 @@ public abstract class AbstractConverter
     final IJsonObject aJson = new JsonObject ();
     aJson.add ("version", m_aCodeListVersion.getAsString ());
     aJson.add ("entry-count", aRows.size ());
-    final IJsonArray aValues = new JsonArray ();
-    for (final T aRow : aRows)
-      aValues.add (aRow.getAsJson ());
-    aJson.add ("values", aValues);
+    aJson.addJson ("values", new JsonArray ().addAllMapped (aRows, T::getAsJson));
     _writeJsonFile (aJson, sCodeListName);
   }
 

@@ -151,10 +151,12 @@ public final class DocTypeRow implements IModelRow
       ret.add (BIS_VERSION, m_sBISVersion);
     if (StringHelper.hasText (m_sDomainCommunity))
       ret.add (DOMAIN_COMMUNITY, m_sDomainCommunity);
-    final IJsonArray aProcIDs = new JsonArray ();
-    for (final IProcessIdentifier aProcID : m_aProcessIDs)
-      aProcIDs.add (new JsonObject ().add (SCHEME, aProcID.getScheme ()).add (VALUE, aProcID.getValue ()));
-    ret.add (PROCESS_ID_MANY, aProcIDs);
+    {
+      final IJsonArray aProcIDs = new JsonArray ();
+      for (final IProcessIdentifier aProcID : m_aProcessIDs)
+        aProcIDs.add (new JsonObject ().add (SCHEME, aProcID.getScheme ()).add (VALUE, aProcID.getValue ()));
+      ret.addJson (PROCESS_ID_MANY, aProcIDs);
+    }
     return ret;
   }
 
