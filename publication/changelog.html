@@ -61,22 +61,74 @@
       
       <ul>
         <li>
-          Since this version, the Code Lists are  
+          Since this version, the Code Lists are available for download in different format.
+          Additionally the name of the files was changed from "PEPPOL" to "Peppol".
         </li>
         <li>Participant identifier schemes
           <ul>
+            <li>Added <code>0208</code> - BE:EN - Numero d'entreprise / ondernemingsnummer / Unternehmensnummer - <a href="https://openpeppol.atlassian.net/browse/TICC-126" target="_blank">TICC-126</a></li>
           </ul>
         </li>  
         <li>Document type identifiers
           <ul>
+            <li>The process identifiers are now part of the document type identifiers list as a new column - <a href="https://openpeppol.atlassian.net/browse/TICC-95" target="_blank">TICC-95</a></li>
+            <li>Added a new, <strong>non-normative</strong> column with validation rules.</li>
+            <li>
+              Deprecated all old BIS 1 or BIS 2 identifiers issued by OpenPEPPOL and maintained by POAC - <a href="https://openpeppol.atlassian.net/browse/TICC-114" target="_blank">TICC-114</a>.
+              These are:
+              <ul>
+                <li>PEPPOL Catalogue profile V4 - <code>urn:oasis:names:specification:ubl:schema:xsd:Catalogue-2::Catalogue##urn:www.cenbii.eu:transaction:biitrns019:ver2.0:extended:urn:www.peppol.eu:bis:peppol1a:ver4.0::2.1</code></li>
+                <li>PEPPOL Order profile V2 - <code>urn:oasis:names:specification:ubl:schema:xsd:Order-2::Order##urn:www.cenbii.eu:transaction:biitrns001:ver2.0:extended:urn:www.peppol.eu:bis:peppol3a:ver2.0::2.1</code></li>
+                <li>PEPPOL Invoice profile V2 - <code>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:www.cenbii.eu:transaction:biitrns010:ver2.0:extended:urn:www.peppol.eu:bis:peppol4a:ver2.0::2.1</code></li>
+                <li>PEPPOL Billing profile Invoice V2 - <code>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:www.cenbii.eu:transaction:biitrns010:ver2.0:extended:urn:www.peppol.eu:bis:peppol5a:ver2.0::2.1</code></li>
+                <li>PEPPOL Billing profile CreditNote V2 - <code>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:www.cenbii.eu:transaction:biitrns014:ver2.0:extended:urn:www.peppol.eu:bis:peppol5a:ver2.0::2.1</code></li>
+                <li>PEPPOL Procurement profile Order V1 - <code>urn:oasis:names:specification:ubl:schema:xsd:Order-2::Order##urn:www.cenbii.eu:transaction:biicoretrdm001:ver1.0:#urn:www.peppol.eu:bis:peppol6a:ver1.0::2.0</code></li>
+                <li>PEPPOL Procurement profile OrderResponseSimple V1 - <code>urn:oasis:names:specification:ubl:schema:xsd:OrderResponseSimple-2::OrderResponseSimple##urn:www.cenbii.eu:transaction:biicoretrdm002:ver1.0:#urn:www.peppol.eu:bis:peppol6a:ver1.0::2.0</code></li>
+                <li>PEPPOL Procurement profile OrderResponseSimple V1 - <code>urn:oasis:names:specification:ubl:schema:xsd:OrderResponseSimple-2::OrderResponseSimple##urn:www.cenbii.eu:transaction:biicoretrdm003:ver1.0:#urn:www.peppol.eu:bis:peppol6a:ver1.0::2.0</code></li>
+                <li>PEPPOL Procurement profile Invoice V1 - <code>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:www.cenbii.eu:transaction:biicoretrdm010:ver1.0:#urn:www.peppol.eu:bis:peppol6a:ver1.0::2.0</code></li>
+                <li>PEPPOL Procurement profile CreditNote V1 - <code>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:www.cenbii.eu:transaction:biicoretrdm014:ver1.0:#urn:www.peppol.eu:bis:peppol6a:ver1.0::2.0</code></li>
+                <li>PEPPOL Procurement profile Invoice V1 - <code>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:www.cenbii.eu:transaction:biicoretrdm015:ver1.0:#urn:www.peppol.eu:bis:peppol6a:ver1.0::2.0</code></li>
+                <li>PEPPOL Ordering profile Order V1 - <code>urn:oasis:names:specification:ubl:schema:xsd:Order-2::Order##urn:www.cenbii.eu:transaction:biitrns001:ver2.0:extended:urn:www.peppol.eu:bis:peppol28a:ver1.0::2.1</code></li>
+                <li>PEPPOL Ordering profile OrderResponse V1 - <code>urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2::OrderResponse##urn:www.cenbii.eu:transaction:biitrns076:ver2.0:extended:urn:www.peppol.eu:bis:peppol28a:ver1.0::2.1</code></li>
+                <li>PEPPOL Despatch Advice V1 - <code>urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2::DespatchAdvice##urn:www.cenbii.eu:transaction:biitrns016:ver1.0:extended:urn:www.peppol.eu:bis:peppol30a:ver1.0::2.1</code></li>
+                <li>PEPPOL Message Level Response V1 - <code>urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2::ApplicationResponse##urn:www.cenbii.eu:transaction:biitrns071:ver2.0:extended:urn:www.peppol.eu:bis:peppol36a:ver1.0::2.1</code></li>
+                <li>PEPPOL Invoice Response V1 - <code>urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2::ApplicationResponse##urn:www.peppol.eu:transaction:biitrns111:ver1.0::2.1</code></li>
+              </ul>
+            </li>  
+            <li>Added "XRechnung UBL Invoice V1.3" - <a href="https://openpeppol.atlassian.net/browse/TICC-117" target="_blank">TICC-117</a>.</li>
+            <li>Added "XRechnung UBL CreditNote V1.3" - <a href="https://openpeppol.atlassian.net/browse/TICC-117" target="_blank">TICC-117</a>.</li>
+            <li>Added "XRechnung CII Invoice V1.3" - <a href="https://openpeppol.atlassian.net/browse/TICC-117" target="_blank">TICC-117</a>.</li>
+            <li>Added "XRechnung UBL Invoice V1.3 Extension" - <a href="https://openpeppol.atlassian.net/browse/TICC-130" target="_blank">TICC-130</a>.</li>
+            <li>Added "XRechnung UBL CreditNote V1.3 Extension" - <a href="https://openpeppol.atlassian.net/browse/TICC-130" target="_blank">TICC-130</a>.</li>
+            <li>Added "XRechnung CII Invoice V1.3 Extension" - <a href="https://openpeppol.atlassian.net/browse/TICC-130" target="_blank">TICC-130</a>.</li>
+            <li>Added "XRechnung UBL Invoice V2.0" - <a href="https://openpeppol.atlassian.net/browse/TICC-118" target="_blank">TICC-118</a>.</li>
+            <li>Added "XRechnung UBL CreditNote V2.0" - <a href="https://openpeppol.atlassian.net/browse/TICC-118" target="_blank">TICC-118</a>.</li>
+            <li>Added "XRechnung CII Invoice V2.0" - <a href="https://openpeppol.atlassian.net/browse/TICC-118" target="_blank">TICC-118</a>.</li>
+            <li>Added "SI-UBL 2.0 G-Account Extension" - <a href="https://openpeppol.atlassian.net/browse/TICC-124" target="_blank">TICC-124</a>.</li>
+            <li>Added "EHF Advanced Order Initiation 3.0" - <a href="https://openpeppol.atlassian.net/browse/TICC-129" target="_blank">TICC-129</a>.</li>
+            <li>Added "EHF Advanced Order Change 3.0" - <a href="https://openpeppol.atlassian.net/browse/TICC-129" target="_blank">TICC-129</a>.</li>
+            <li>Added "EHF Advanced Order Cancellation 3.0" - <a href="https://openpeppol.atlassian.net/browse/TICC-129" target="_blank">TICC-129</a>.</li>
+            <li>Added "EHF Advanced Order Response 3.0" - <a href="https://openpeppol.atlassian.net/browse/TICC-129" target="_blank">TICC-129</a>.</li>
+            <li>Added "EN 16931 UBL Invoice" - <a href="https://openpeppol.atlassian.net/browse/PEPPOL-2534" target="_blank">PEPPOL-2534</a>.</li>
+            <li>Added "EN 16931 UBL CreditNote" - <a href="https://openpeppol.atlassian.net/browse/PEPPOL-2534" target="_blank">PEPPOL-2534</a>.</li>
+            <li>Added "EN 16931 CII Invoice" - <a href="https://openpeppol.atlassian.net/browse/PEPPOL-2534" target="_blank">PEPPOL-2534</a>.</li>
           </ul>
         </li>
         <li>Process identifiers
           <ul>
+            <li>Added the missing Polish process identifiers that should have been included in v6 - <a href="https://openpeppol.atlassian.net/browse/TICC-115" target="_blank">TICC-115</a>.
+              These are:
+              <ul>
+                <li><code>urn:fdc:www.efaktura.gov.pl:ver1.0:account_corr:ver1.0</code> - <a href="https://openpeppol.atlassian.net/browse/TICC-75" target="_blank">TICC-75</a>.</li>
+                <li><code>urn:fdc:www.efaktura.gov.pl:ver1.0:corr_inv:ver1.0</code> - <a href="https://openpeppol.atlassian.net/browse/TICC-76" target="_blank">TICC-76</a>.</li>
+                <li><code>urn:fdc:www.efaktura.gov.pl:ver1.0:receipt_advice:ver1.0</code> - <a href="https://openpeppol.atlassian.net/browse/TICC-78" target="_blank">TICC-78</a>.</li>
+              </ul>
+            </li>            
           </ul>
         </li>  
         <li>Transport profiles
           <ul>
+            <li>Deprecated "Peppol AS2 v1" with ID <code>busdox-transport-as2-ver1p0</code> - <a href="https://openpeppol.atlassian.net/browse/TICC-123" target="_blank">TICC-123</a></li>
           </ul>
         </li>
       </ul>
