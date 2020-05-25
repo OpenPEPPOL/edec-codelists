@@ -158,7 +158,8 @@ public abstract class AbstractConverter
     try (final NonBlockingBufferedOutputStream aOS = FileHelper.getBufferedOutputStream (aDstFile))
     {
       // Manually add the header: ^\o/^
-      aOS.write (("/* " + DO_NOT_EDIT + " */\n").getBytes (StandardCharsets.UTF_8));
+      if (false)
+        aOS.write (("/* " + DO_NOT_EDIT + " */\n").getBytes (StandardCharsets.UTF_8));
       new JsonWriter (new JsonWriterSettings ().setIndentEnabled (true)).writeToStream (aNode, aOS, StandardCharsets.UTF_8);
     }
     catch (final IOException ex)
