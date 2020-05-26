@@ -69,7 +69,7 @@
       <artifactId>ph-poi</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.helger</groupId>
+      <groupId>com.helger.peppol</groupId>
       <artifactId>peppol-id</artifactId>
     </dependency>
 
