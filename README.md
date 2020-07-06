@@ -1,6 +1,6 @@
 # Peppol eDEC Code Lists
 
-This repository is the working are of the Peppol eDEC Code Lists.
+This repository is the working area for the Peppol eDEC Code Lists.
 
 The latest code lists are always published at https://docs.peppol.eu/edelivery/codelists/
 
