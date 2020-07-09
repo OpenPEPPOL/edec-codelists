@@ -6,19 +6,6 @@ The actual released code lists now reside on https://docs.peppol.eu/edelivery/co
 
 See https://docs.peppol.eu/edelivery/codelists/changelog.html for all changes.
 
-Previous versions can be found in the [releases](https://github.com/OpenPEPPOL/documentation/tree/master/Code%20Lists/releases) folder.
-
-### v8 - upcoming
-
-* Participant identifier schemes
-    * *No changes so far*
-
-* Document type identifiers
-    * *No changes so far*
-
-* Transport profiles
-    * *No changes so far*
-
 ### backlog
 
 * Participant identifier schemes
