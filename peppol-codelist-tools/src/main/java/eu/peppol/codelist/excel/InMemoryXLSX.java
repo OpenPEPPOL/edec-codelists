@@ -21,6 +21,8 @@ import javax.annotation.Nonnull;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.annotation.ReturnsMutableCopy;
@@ -38,6 +40,8 @@ import com.helger.poi.excel.ExcelReadHelper;
  */
 public class InMemoryXLSX
 {
+  private static final Logger LOGGER = LoggerFactory.getLogger (InMemoryXLSX.class);
+
   private final String [] m_aShortNames;
   private final ICommonsList <String []> m_aPayload;
 
@@ -104,6 +108,8 @@ public class InMemoryXLSX
       }
       aPayload.add (aRowData);
     }
+
+    LOGGER.info ("Successfully read " + aPayload.size () + " rows");
 
     return new InMemoryXLSX (aShortNameRowData, aPayload);
   }

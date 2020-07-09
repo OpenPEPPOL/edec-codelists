@@ -205,6 +205,8 @@ public final class DocTypeRow implements IModelRow
   {
     final DocTypeRow ret = new DocTypeRow ();
     ret.m_sName = aRow[0];
+    if (StringHelper.hasNoText (ret.m_sName))
+      throw new IllegalStateException ("Empty name is not allowed");
     ret.m_sScheme = aRow[1];
     ret.m_sValue = aRow[2];
     ret.m_sSince = aRow[3];
