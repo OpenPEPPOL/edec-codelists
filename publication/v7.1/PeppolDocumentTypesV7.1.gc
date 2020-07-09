@@ -2944,7 +2944,7 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:order_only:3</SimpleValue>
     </Row>
       <Row>
       <Value ColumnRef="name">
-        <SimpleValue>Agid Order</SimpleValue>
+        <SimpleValue>SimpleOrder_IT</SimpleValue>
       </Value>
           <Value ColumnRef="scheme">
         <SimpleValue>busdox-docid-qns</SimpleValue>
@@ -2973,7 +2973,7 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:order_only:3</SimpleValue>
     </Row>
       <Row>
       <Value ColumnRef="name">
-        <SimpleValue>Agid Order Response</SimpleValue>
+        <SimpleValue>OrderResponse_IT</SimpleValue>
       </Value>
           <Value ColumnRef="scheme">
         <SimpleValue>busdox-docid-qns</SimpleValue>

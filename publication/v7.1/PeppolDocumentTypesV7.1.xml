@@ -346,11 +346,11 @@ Do NOT edit!-->
     <comment>TICC-135</comment>
     <process-id scheme="cenbii-procid-ubl" value="urn:fdc:peppol.eu:2017:poacc:billing:01:1.0" />
   </document-type>
-  <document-type name="Agid Order" scheme="busdox-docid-qns" value="urn:oasis:names:specification:ubl:schema:xsd:Order-2::Order##urn:fdc:peppol.eu:poacc:trns:order:3:restrictive:urn:www.agid.gov.it:trns:ordine:3.1::2.1" since="7.1" deprecated="false" issued-by-openpeppol="false" domain-community="POAC">
+  <document-type name="SimpleOrder_IT" scheme="busdox-docid-qns" value="urn:oasis:names:specification:ubl:schema:xsd:Order-2::Order##urn:fdc:peppol.eu:poacc:trns:order:3:restrictive:urn:www.agid.gov.it:trns:ordine:3.1::2.1" since="7.1" deprecated="false" issued-by-openpeppol="false" domain-community="POAC">
     <comment>TICC-137</comment>
     <process-id scheme="cenbii-procid-ubl" value="urn:fdc:peppol.eu:poacc:bis:order_only:3" />
   </document-type>
-  <document-type name="Agid Order Response" scheme="busdox-docid-qns" value="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2::OrderResponse##urn:fdc:peppol.eu:poacc:trns:order_response:3:restrictive:urn:www.agid.gov.it:trns:risposta_ordine:3.0::2.1" since="7.1" deprecated="false" issued-by-openpeppol="false" domain-community="POAC">
+  <document-type name="OrderResponse_IT" scheme="busdox-docid-qns" value="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2::OrderResponse##urn:fdc:peppol.eu:poacc:trns:order_response:3:restrictive:urn:www.agid.gov.it:trns:risposta_ordine:3.0::2.1" since="7.1" deprecated="false" issued-by-openpeppol="false" domain-community="POAC">
     <comment>TICC-137</comment>
     <process-id scheme="cenbii-procid-ubl" value="urn:fdc:peppol.eu:poacc:bis:ordering:3" />
   </document-type>

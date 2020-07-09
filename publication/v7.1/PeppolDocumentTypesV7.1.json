@@ -1571,7 +1571,7 @@
       ]
     },
     {
-      "name":"Agid Order",
+      "name":"SimpleOrder_IT",
       "scheme":"busdox-docid-qns",
       "value":"urn:oasis:names:specification:ubl:schema:xsd:Order-2::Order##urn:fdc:peppol.eu:poacc:trns:order:3:restrictive:urn:www.agid.gov.it:trns:ordine:3.1::2.1",
       "since":"7.1",
@@ -1587,7 +1587,7 @@
       ]
     },
     {
-      "name":"Agid Order Response",
+      "name":"OrderResponse_IT",
       "scheme":"busdox-docid-qns",
       "value":"urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2::OrderResponse##urn:fdc:peppol.eu:poacc:trns:order_response:3:restrictive:urn:www.agid.gov.it:trns:risposta_ordine:3.0::2.1",
       "since":"7.1",
