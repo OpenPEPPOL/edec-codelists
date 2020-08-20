@@ -22,25 +22,25 @@ import java.io.File;
 
 import org.junit.Test;
 
-import eu.peppol.codelist.ConvertV7_1;
+import eu.peppol.codelist.ConvertV7_2;
 import eu.peppol.codelist.model.DocTypeRow;
 import eu.peppol.codelist.model.ParticipantIdentifierSchemeRow;
 import eu.peppol.codelist.model.ProcessRow;
 import eu.peppol.codelist.model.TransportProfileRow;
 
 /**
- * Check if the create lists match the XSD.
+ * Check if the created lists match the XSD.
  *
  * @author Philip Helger
  */
-public final class ConvertV7_1ResultFuncTest
+public final class ConvertV7_2ResultFuncTest
 {
   @Test
   public void testReadDocTypes ()
   {
     final DocumentTypeCodeListMarshaller m = new DocumentTypeCodeListMarshaller ();
-    final File f = new File (ConvertV7_1.DESTINATION_BASE_PATH,
-                             DocTypeRow.CODE_LIST_NAME + ConvertV7_1.DESTINATION_FILENAME_SUFFIX + ".xml");
+    final File f = new File (ConvertV7_2.DESTINATION_BASE_PATH,
+                             DocTypeRow.CODE_LIST_NAME + ConvertV7_2.DESTINATION_FILENAME_SUFFIX + ".xml");
     assertTrue (f.exists ());
     final DocumentTypesType aList = m.read (f);
     assertNotNull (aList);
@@ -50,8 +50,8 @@ public final class ConvertV7_1ResultFuncTest
   public void testReadParticipantIdentifierSchemes ()
   {
     final ParticipantIdentifierSchemeCodeListMarshaller m = new ParticipantIdentifierSchemeCodeListMarshaller ();
-    final File f = new File (ConvertV7_1.DESTINATION_BASE_PATH,
-                             ParticipantIdentifierSchemeRow.CODE_LIST_NAME + ConvertV7_1.DESTINATION_FILENAME_SUFFIX + ".xml");
+    final File f = new File (ConvertV7_2.DESTINATION_BASE_PATH,
+                             ParticipantIdentifierSchemeRow.CODE_LIST_NAME + ConvertV7_2.DESTINATION_FILENAME_SUFFIX + ".xml");
     assertTrue (f.exists ());
     final ParticipantIdentifierSchemesType aList = m.read (f);
     assertNotNull (aList);
@@ -61,8 +61,8 @@ public final class ConvertV7_1ResultFuncTest
   public void testReadProcesses ()
   {
     final ProcessCodeListMarshaller m = new ProcessCodeListMarshaller ();
-    final File f = new File (ConvertV7_1.DESTINATION_BASE_PATH,
-                             ProcessRow.CODE_LIST_NAME + ConvertV7_1.DESTINATION_FILENAME_SUFFIX + ".xml");
+    final File f = new File (ConvertV7_2.DESTINATION_BASE_PATH,
+                             ProcessRow.CODE_LIST_NAME + ConvertV7_2.DESTINATION_FILENAME_SUFFIX + ".xml");
     assertTrue (f.exists ());
     final ProcessesType aList = m.read (f);
     assertNotNull (aList);
@@ -72,8 +72,8 @@ public final class ConvertV7_1ResultFuncTest
   public void testReadTransportProfiles ()
   {
     final TransportProfileCodeListMarshaller m = new TransportProfileCodeListMarshaller ();
-    final File f = new File (ConvertV7_1.DESTINATION_BASE_PATH,
-                             TransportProfileRow.CODE_LIST_NAME + ConvertV7_1.DESTINATION_FILENAME_SUFFIX + ".xml");
+    final File f = new File (ConvertV7_2.DESTINATION_BASE_PATH,
+                             TransportProfileRow.CODE_LIST_NAME + ConvertV7_2.DESTINATION_FILENAME_SUFFIX + ".xml");
     assertTrue (f.exists ());
     final TransportProfilesType aList = m.read (f);
     assertNotNull (aList);
