@@ -13,19 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package eu.peppol.codelist.main;
+package eu.peppol.codelist;
 
-import eu.peppol.codelist.ConvertV7_1;
+import com.helger.commons.version.Version;
 
 /**
- * Utility class to create the Genericode files from the Excel code list.
+ * Handle V7.2 code lists
  *
  * @author Philip Helger
  */
-public final class MainProcessExcel_v7_1
+public final class ConvertV7_2 extends AbstractConvertV7
 {
-  public static void main (final String [] args) throws Exception
+  public static final Version CODE_LIST_VERSION = new Version (7, 2);
+  public static final String DESTINATION_BASE_PATH = "created-codelists/v7.2/";
+  public static final String DESTINATION_FILENAME_SUFFIX = "V7.2";
+
+  public ConvertV7_2 ()
   {
-    new ConvertV7_1 ().run ();
+    super (CODE_LIST_VERSION, DESTINATION_BASE_PATH, DESTINATION_FILENAME_SUFFIX);
   }
 }
