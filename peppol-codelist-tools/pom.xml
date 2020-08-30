@@ -64,14 +64,14 @@
       <dependency>
         <groupId>com.helger</groupId>
         <artifactId>ph-commons-parent-pom</artifactId>
-        <version>9.4.6</version>
+        <version>9.4.7</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>com.helger.peppol</groupId>
         <artifactId>peppol-commons-parent-pom</artifactId>
-        <version>8.1.2</version>
+        <version>8.1.6</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -151,7 +151,7 @@
         <configuration>
           <schemaDirectory>src/main/resources/schemas</schemaDirectory>
           <bindingDirectory>src/main/jaxb</bindingDirectory>
-          <extension>false</extension>
+          <extension>true</extension>
           <strict>false</strict>
           <args>
             <arg>-no-header</arg>
