@@ -160,7 +160,7 @@ public abstract class AbstractConverter
       // Manually add the header: ^\o/^
       if (false)
         aOS.write (("/* " + DO_NOT_EDIT + " */\n").getBytes (StandardCharsets.UTF_8));
-      new JsonWriter (new JsonWriterSettings ().setIndentEnabled (true)).writeToStream (aNode, aOS, StandardCharsets.UTF_8);
+      new JsonWriter (JsonWriterSettings.DEFAULT_SETTINGS_FORMATTED).writeToStream (aNode, aOS, StandardCharsets.UTF_8);
     }
     catch (final IOException ex)
     {
