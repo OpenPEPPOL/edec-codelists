@@ -47,7 +47,7 @@ public final class ProcessRow implements IModelRow
   private static final String VALUE = "value";
   private static final String DEPRECATED = "deprecated";
 
-  public static final String CODE_LIST_NAME = "PeppolProcessIdentifiers";
+  public static final String CODE_LIST_NAME = "Peppol Code Lists - Processes";
   public static final URI CODE_LIST_URI = URLHelper.getAsURI ("urn:peppol.eu:names:identifier:process");
   public static final String ROOT_ELEMENT_NAME = "processes";
 

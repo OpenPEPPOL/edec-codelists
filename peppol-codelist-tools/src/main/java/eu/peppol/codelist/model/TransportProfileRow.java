@@ -47,7 +47,7 @@ public final class TransportProfileRow implements IModelRow
   private static final String DEPRECATED = "deprecated";
   private static final String DEPRECATED_SINCE = "deprecated-since";
 
-  public static final String CODE_LIST_NAME = "PeppolTransportProfiles";
+  public static final String CODE_LIST_NAME = "Peppol Code Lists - Transport profiles";
   public static final URI CODE_LIST_URI = URLHelper.getAsURI ("urn:peppol.eu:names:identifier:transport-profile");
   public static final String ROOT_ELEMENT_NAME = "transport-profiles";
 

@@ -26,7 +26,7 @@ public final class ConvertV7_3 extends AbstractConvertV7
 {
   public static final Version CODE_LIST_VERSION = new Version (7, 3);
   public static final String DESTINATION_BASE_PATH = "created-codelists/v7.3/";
-  public static final String DESTINATION_FILENAME_SUFFIX = "V7.3";
+  public static final String DESTINATION_FILENAME_SUFFIX = " v7.3";
 
   public ConvertV7_3 ()
   {
