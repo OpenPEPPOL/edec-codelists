@@ -98,8 +98,9 @@ public final class DocTypeRow implements IModelRow
       throw new IllegalStateException ("Value is required");
     if (StringHelper.hasNoText (m_sSince))
       throw new IllegalStateException ("Since is required");
-    if (StringHelper.hasNoText (m_sDomainCommunity))
-      throw new IllegalStateException ("DomainCommunity is required");
+    if (false)
+      if (StringHelper.hasNoText (m_sDomainCommunity))
+        throw new IllegalStateException ("DomainCommunity is required");
     if (CollectionHelper.isEmpty (m_aProcessIDs))
       throw new IllegalStateException ("ProcessID is required");
 
@@ -125,7 +126,8 @@ public final class DocTypeRow implements IModelRow
       ret.appendElement (COMMENT).appendText (m_sComment);
     ret.setAttribute (ISSUED_BY_OPENPEPPOL, m_bIssuedByOpenPeppol);
     ret.setAttribute (BIS_VERSION, m_sBISVersion);
-    ret.setAttribute (DOMAIN_COMMUNITY, m_sDomainCommunity);
+    if (StringHelper.hasText (m_sDomainCommunity))
+      ret.setAttribute (DOMAIN_COMMUNITY, m_sDomainCommunity);
     for (final IProcessIdentifier aProcID : m_aProcessIDs)
     {
       ret.appendElement (PROCESS_ID_ONE).setAttribute (SCHEME, aProcID.getScheme ()).setAttribute (VALUE, aProcID.getValue ());

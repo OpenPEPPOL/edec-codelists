@@ -18,18 +18,17 @@ package eu.peppol.codelist;
 import com.helger.commons.version.Version;
 
 /**
- * Handle V7.2 code lists
+ * Handle V7.3 code lists
  *
  * @author Philip Helger
  */
-@Deprecated
-public final class ConvertV7_2 extends AbstractConvertV7
+public final class ConvertV7_3 extends AbstractConvertV7
 {
-  public static final Version CODE_LIST_VERSION = new Version (7, 2);
-  public static final String DESTINATION_BASE_PATH = "created-codelists/v7.2/";
-  public static final String DESTINATION_FILENAME_SUFFIX = "V7.2";
+  public static final Version CODE_LIST_VERSION = new Version (7, 3);
+  public static final String DESTINATION_BASE_PATH = "created-codelists/v7.3/";
+  public static final String DESTINATION_FILENAME_SUFFIX = "V7.3";
 
-  public ConvertV7_2 ()
+  public ConvertV7_3 ()
   {
     super (CODE_LIST_VERSION, DESTINATION_BASE_PATH, DESTINATION_FILENAME_SUFFIX);
   }
