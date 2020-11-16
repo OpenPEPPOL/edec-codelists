@@ -1,0 +1,3170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gc:CodeList xmlns:gc="http://docs.oasis-open.org/codelist/ns/genericode/1.0/" xmlns="">
+  <Annotation>
+    <AppInfo>
+      <ext:info xmlns:ext="urn:peppol.eu:codelist:gc-annotation">This is an OpenPeppol EDEC Code List.
+Official source: https://docs.peppol.eu/edelivery/codelists/
+
+This file was automatically generated.
+Do NOT edit!</ext:info>
+    </AppInfo>
+  </Annotation>
+  <Identification>
+    <ShortName>Peppol Code Lists - Document types</ShortName>
+      <Version>7.3</Version>
+      <CanonicalUri>urn:peppol.eu:names:identifier:document-type</CanonicalUri>
+      <CanonicalVersionUri>urn:peppol.eu:names:identifier:document-type7.3</CanonicalVersionUri>
+  </Identification>
+  <ColumnSet>
+    <Column Use="required" Id="name">
+      <ShortName>Name</ShortName>
+          <Data Type="string" />
+    </Column>
+      <Column Use="required" Id="scheme">
+      <ShortName>Peppol Document Type Identifier Scheme</ShortName>
+          <Data Type="string" />
+    </Column>
+      <Column Use="required" Id="value">
+      <ShortName>Peppol Document Type Identifier Value</ShortName>
+          <Data Type="string" />
+    </Column>
+      <Column Use="required" Id="since">
+      <ShortName>Since</ShortName>
+          <Data Type="string" />
+    </Column>
+      <Column Use="required" Id="deprecated">
+      <ShortName>Deprecated?</ShortName>
+          <Data Type="boolean" />
+    </Column>
+      <Column Use="optional" Id="deprecated-since">
+      <ShortName>Deprecated since</ShortName>
+          <Data Type="string" />
+    </Column>
+      <Column Use="optional" Id="comment">
+      <ShortName>Comment</ShortName>
+          <Data Type="string" />
+    </Column>
+      <Column Use="required" Id="issued-by-openpeppol">
+      <ShortName>Issued by OpenPeppol?</ShortName>
+          <Data Type="boolean" />
+    </Column>
+      <Column Use="optional" Id="bis-version">
+      <ShortName>BIS version</ShortName>
+          <Data Type="string" />
+    </Column>
+      <Column Use="required" Id="domain-community">
+      <ShortName>Domain Community</ShortName>
+          <Data Type="string" />
+    </Column>
+      <Column Use="required" Id="process-ids">
+      <ShortName>Associated Process/Profile Identifier(s)</ShortName>
+          <Data Type="string" />
+    </Column>
+      <Key Id="schemeKey">
+      <ShortName>Peppol Document Type Identifier Scheme</ShortName>
+          <ColumnRef Ref="scheme" />
+    </Key>
+      <Key Id="valueKey">
+      <ShortName>Peppol Document Type Identifier Value</ShortName>
+          <ColumnRef Ref="value" />
+    </Key>
+  </ColumnSet>
+  <SimpleCodeList>
+    <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>Virtual Company Dossier</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:www.peppol.eu:schema:xsd:VirtualCompanyDossier-1::VirtualCompanyDossier##urn:www.cenbii.eu:transaction:biicoretrdm991:ver0.1:#urn:www.peppol.eu:bis:peppol991a:ver1.0::0.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.0.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>2</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>PRAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::none</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>Virtual Company Dossier Package</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:www.peppol.eu:schema:xsd:VirtualCompanyDossierPackage-1::VirtualCompanyDossierPackage##urn:www.cenbii.eu:transaction:biicoretrdm992:ver0.1:#urn:www.peppol.eu:bis:peppol992a:ver1.0::0.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.0.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>2</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>PRAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::none</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>Catalogue Template</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:www.peppol.eu:schema:xsd:CatalogueTemplate-1::CatalogueTemplate##urn:www.cenbii.eu:transaction:biicoretrdm993:ver0.1:#urn:www.peppol.eu:bis:peppol993a:ver1.0::0.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.0.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>2</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>PRAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::none</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Catalogue profile Catalogue V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Catalogue-2::Catalogue##urn:www.cenbii.eu:transaction:biicoretrdm019:ver1.0:#urn:www.peppol.eu:bis:peppol1a:ver1.0::2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.0.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>2</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver1.0
+cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Catalogue profile ApplicationResponse V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2::ApplicationResponse##urn:www.cenbii.eu:transaction:biicoretrdm057:ver1.0:#urn:www.peppol.eu:bis:peppol1a:ver1.0::2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.0.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>2</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Catalogue profile ApplicationResponse V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2::ApplicationResponse##urn:www.cenbii.eu:transaction:biicoretrdm058:ver1.0:#urn:www.peppol.eu:bis:peppol1a:ver1.0::2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.0.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>2</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver1.0
+cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Catalogue profile V4</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Catalogue-2::Catalogue##urn:www.cenbii.eu:transaction:biitrns019:ver2.0:extended:urn:www.peppol.eu:bis:peppol1a:ver4.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Order profile V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Order-2::Order##urn:www.cenbii.eu:transaction:biicoretrdm001:ver1.0:#urn:www.peppol.eu:bis:peppol3a:ver1.0::2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.0.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>2</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii03:ver1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Order profile V2</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Order-2::Order##urn:www.cenbii.eu:transaction:biitrns001:ver2.0:extended:urn:www.peppol.eu:bis:peppol03a:ver2.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>Typo in name!</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>2</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii03:ver2.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Order profile V2</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Order-2::Order##urn:www.cenbii.eu:transaction:biitrns001:ver2.0:extended:urn:www.peppol.eu:bis:peppol3a:ver2.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>2</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii03:ver2.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Invoice profile V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:www.cenbii.eu:transaction:biicoretrdm010:ver1.0:#urn:www.peppol.eu:bis:peppol4a:ver1.0::2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.0.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>2</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii04:ver1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Invoice profile V2</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:www.cenbii.eu:transaction:biitrns010:ver2.0:extended:urn:www.peppol.eu:bis:peppol4a:ver2.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>2</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii04:ver2.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Billing profile Invoice V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:www.cenbii.eu:transaction:biicoretrdm010:ver1.0:#urn:www.peppol.eu:bis:peppol5a:ver1.0::2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.1.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>2</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii05:ver1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Billing profile CreditNote V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:www.cenbii.eu:transaction:biicoretrdm014:ver1.0:#urn:www.peppol.eu:bis:peppol5a:ver1.0::2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.1.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>2</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii05:ver1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Billing profile Invoice V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:www.cenbii.eu:transaction:biicoretrdm015:ver1.0:#urn:www.peppol.eu:bis:peppol5a:ver1.0::2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.1.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>2</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii05:ver1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Billing profile Invoice V2</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:www.cenbii.eu:transaction:biitrns010:ver2.0:extended:urn:www.peppol.eu:bis:peppol5a:ver2.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>2</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii05:ver2.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Billing profile CreditNote V2</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:www.cenbii.eu:transaction:biitrns014:ver2.0:extended:urn:www.peppol.eu:bis:peppol5a:ver2.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>2</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii05:ver2.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Procurement profile Order V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Order-2::Order##urn:www.cenbii.eu:transaction:biicoretrdm001:ver1.0:#urn:www.peppol.eu:bis:peppol6a:ver1.0::2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.0.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii06:ver1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Procurement profile OrderResponseSimple V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:OrderResponseSimple-2::OrderResponseSimple##urn:www.cenbii.eu:transaction:biicoretrdm002:ver1.0:#urn:www.peppol.eu:bis:peppol6a:ver1.0::2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.0.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii06:ver1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Procurement profile OrderResponseSimple V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:OrderResponseSimple-2::OrderResponseSimple##urn:www.cenbii.eu:transaction:biicoretrdm003:ver1.0:#urn:www.peppol.eu:bis:peppol6a:ver1.0::2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.0.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii06:ver1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Procurement profile Invoice V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:www.cenbii.eu:transaction:biicoretrdm010:ver1.0:#urn:www.peppol.eu:bis:peppol6a:ver1.0::2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.0.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii06:ver1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Procurement profile CreditNote V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:www.cenbii.eu:transaction:biicoretrdm014:ver1.0:#urn:www.peppol.eu:bis:peppol6a:ver1.0::2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.0.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii06:ver1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Procurement profile Invoice V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:www.cenbii.eu:transaction:biicoretrdm015:ver1.0:#urn:www.peppol.eu:bis:peppol6a:ver1.0::2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.0.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii06:ver1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>EHF Invoice V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:www.cenbii.eu:transaction:biicoretrdm010:ver1.0:#urn:www.peppol.eu:bis:peppol4a:ver1.0#urn:www.difi.no:ehf:faktura:ver1::2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.1.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>2</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii04:ver1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>Standalone Credit Note according to EHF V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:www.cenbii.eu:transaction:biicoretrdm014:ver1.0:#urn:www.cenbii.eu:profile:biixx:ver1.0#urn:www.difi.no:ehf:kreditnota:ver1::2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.1.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii05:ver2.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Ordering profile Order V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Order-2::Order##urn:www.cenbii.eu:transaction:biitrns001:ver2.0:extended:urn:www.peppol.eu:bis:peppol28a:ver1.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii28:ver2.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Ordering profile OrderResponse V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2::Order##urn:www.cenbii.eu:transaction:biitrns076:ver2.0:extended:urn:www.peppol.eu:bis:peppol28a:ver1.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>Typo in name!</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii28:ver2.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Ordering profile OrderResponse V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2::OrderResponse##urn:www.cenbii.eu:transaction:biitrns076:ver2.0:extended:urn:www.peppol.eu:bis:peppol28a:ver1.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii28:ver2.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Despatch Advice V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2::DespatchAdvice##urn:www.cenbii.eu:transaction:biitrns016:ver1.0:extended:urn:www.peppol.eu:bis:peppol30a:ver1.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii30:ver2.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Message Level Response V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2::ApplicationResponse##urn:www.cenbii.eu:transaction:biitrns071:ver2.0:extended:urn:www.peppol.eu:bis:peppol36a:ver1.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii36:ver2.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL BIS Billing UBL Invoice V3</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>2</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL BIS Billing UBL CreditNote V3</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>2</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>DHSC Customized Ordering profile Order V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Order-2::Order##urn:www.cenbii.eu:transaction:biitrns001:ver2.0:extended:urn:www.peppol.eu:bis:peppol28a:ver1.0:extended:urn:fdc:peppol-authority.co.uk:spec:ordering:ver1.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii28:ver2.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>DHSC Customized Ordering profile OrderResponse V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2::Order##urn:www.cenbii.eu:transaction:biitrns076:ver2.0:extended:urn:www.peppol.eu:bis:peppol28a:ver1.0:extended:urn:fdc:peppol-authority.co.uk:spec:ordering:ver1.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii28:ver2.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL BIS Billing CII Invoice V3</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100::CrossIndustryInvoice##urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0::D16B</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>Procurement procedure subscription Request V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:ExpressionOfInterestRequest-2::ExpressionOfInterestRequest##urn:www.cenbii.eu:transaction:biitrdm081:ver3.0:extended:urn:fdc:peppol.eu:2017:pracc:t001:ver1.0::2.2</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>PRAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:pracc:p001:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>Procurement procedure subscription Response V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:ExpressionOfInterestResponse-2::ExpressionOfInterestResponse##urn:www.cenbii.eu:transaction:biitrdm082:ver3.0:extended:urn:fdc:peppol.eu:2017:pracc:t002:ver1.0::2.2</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>PRAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:pracc:p001:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>Procurement document access TenderStatusRequest V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:TenderStatusRequest-2::TenderStatusRequest##urn:www.cenbii.eu:transaction:biitrdm097:ver3.0:extended:urn:fdc:peppol.eu:2017:pracc:t003:ver1.0::2.2</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>PRAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:pracc:p002:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>Procurement document access CallForTenders V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CallForTenders-2::CallForTenders##urn:www.cenbii.eu:transaction:biitrdm083:ver3.0:extended:urn:fdc:peppol.eu:2017:pracc:t004:ver1.0::2.2</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>PRAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:pracc:p002:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>Tender Submission TenderReceipt V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:TenderReceipt-2::TenderReceipt##urn:www.cenbii.eu:transaction:biitrdm045:ver3.0:extended:urn:fdc:peppol.eu:2017:pracc:t006:ver1.0::2.2</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>PRAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:pracc:p003:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>Tender Submission Tender V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Tender-2::Tender##urn:www.cenbii.eu:transaction:biitrdm090:ver3.0:extended:urn:fdc:peppol.eu:2017:pracc:t005:ver1.0::2.2</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>PRAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:pracc:p003:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>XRechnung UBL Invoice V1.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.1::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>5</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>XRechnung UBL CreditNote V1.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.1::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>5</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>XRechnung CII Invoice V1.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100::CrossIndustryInvoice##urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.1::D16B</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>5</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>OIOUBL UtilityStatement V2.02</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oioubl:names:specification:oioubl:schema:xsd:UtilityStatement-2::UtilityStatement##OIOUBL-2.02::2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>oioubl-procid-ubl::Reference-Utility-1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>OIOUBL Reminder V2.02</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Reminder-2::Reminder##OIOUBL-2.02::2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>oioubl-procid-ubl::Procurement-ReminderOnly-1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>UBL.BE Invoice 3.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#conformant#urn:UBL.BE:1.0.0.20180214::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>UBL.BE Credit Note 3.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:cen.eu:en16931:2017#conformant#urn:UBL.BE:1.0.0.20180214::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Invoice Response V1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2::ApplicationResponse##urn:www.peppol.eu:transaction:biitrns111:ver1.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>4</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>1</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.peppol.eu:profile:bis63a:ver1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Catalogue transaction 3.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Catalogue-2::Catalogue##urn:fdc:peppol.eu:poacc:trns:catalogue:3::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>4</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:catalogue_only:3
+cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:catalogue_wo_response:3</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Catalogue Response transaction 3.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2::ApplicationResponse##urn:fdc:peppol.eu:poacc:trns:catalogue_response:3::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>4</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:catalogue_only:3</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Order transaction 3.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Order-2::Order##urn:fdc:peppol.eu:poacc:trns:order:3::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>4</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3
+cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:order_only:3</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Invoice Response transaction 3.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2::ApplicationResponse##urn:fdc:peppol.eu:poacc:trns:invoice_response:3::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>4</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:invoice_response:3</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Punch Out transaction 3.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Catalogue-2::Catalogue##urn:fdc:peppol.eu:poacc:trns:punch_out:3::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>4</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:punch_out:3</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Order Response transaction 3.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2::OrderResponse##urn:fdc:peppol.eu:poacc:trns:order_response:3::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>4</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Despatch Advice transaction 3.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2::DespatchAdvice##urn:fdc:peppol.eu:poacc:trns:despatch_advice:3::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>4</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:despatch_advice:3</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Order Agreement transaction 3.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2::OrderResponse##urn:fdc:peppol.eu:poacc:trns:order_agreement:3::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>4</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:order_agreement:3</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEPPOL Message Level Response transaction 3.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2::ApplicationResponse##urn:fdc:peppol.eu:poacc:trns:mlr:3::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>4</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:mlr:3</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>SI-UBL 2.0 Invoice</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:fdc:nen.nl:nlcius:v1.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>4</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>SI-UBL 2.0 CreditNote</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:cen.eu:en16931:2017#compliant#urn:fdc:nen.nl:nlcius:v1.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>4</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>SG PEPPOL BIS Billing 3.0 Invoice</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#conformant#urn:fdc:peppol.eu:2017:poacc:billing:international:sg:3.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>4</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>SG PEPPOL BIS Billing 3.0 Credit Note</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::CreditNote##urn:cen.eu:en16931:2017#conformant#urn:fdc:peppol.eu:2017:poacc:billing:international:sg:3.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>4</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>6</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>Typo in name!</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>SG PEPPOL BIS Billing 3.0 Credit Note</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:cen.eu:en16931:2017#conformant#urn:fdc:peppol.eu:2017:poacc:billing:international:sg:3.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>6</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>XRechnung UBL Invoice V1.2</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.2::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>5</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-117: deprecate per 2021-01-01</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>XRechnung UBL CreditNote V1.2</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.2::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>5</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-117: deprecate per 2021-01-01</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>XRechnung CII Invoice V1.2</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100::CrossIndustryInvoice##urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.2::D16B</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>5</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-117: deprecate per 2021-01-01</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEF.PL Accounting Note v1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:fdc:www.efaktura.gov.pl:ver1.0:trns:account_corr:ver1.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>6</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-75</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:www.efaktura.gov.pl:ver1.0:account_corr:ver1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEF.PL Correcting Invoice v1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0#extended#urn:fdc:www.efaktura.gov.pl:ver1.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>6</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-76</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:www.efaktura.gov.pl:ver1.0:corr_inv:ver1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>PEF.PL Receipt Advice v1</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:ReceiptAdvice-2::ReceiptAdvice##urn:fdc:www.efaktura.gov.pl:ver1.0:trns:receipt_advice:ver1.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>6</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-78</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:www.efaktura.gov.pl:ver1.0:receipt_advice:ver1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>AU-NZ PEPPOL BIS Billing 3.0 Invoice</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#conformant#urn:fdc:peppol.eu:2017:poacc:billing:international:aunz:3.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>6</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-102</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>AU-NZ PEPPOL BIS Billing 3.0 CreditNote</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:cen.eu:en16931:2017#conformant#urn:fdc:peppol.eu:2017:poacc:billing:international:aunz:3.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>6</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-102</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="bis-version">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>AU-NZ Self-Billing 3.0 Invoice</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#conformant#urn:fdc:peppol.eu:2017:poacc:selfbilling:international:aunz:3.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>6</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-102</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>AU-NZ Self-Billing 3.0 CreditNote</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:cen.eu:en16931:2017#conformant#urn:fdc:peppol.eu:2017:poacc:selfbilling:international:aunz:3.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>6</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-102</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>SI-UBL 1.2 Invoice</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:www.cenbii.eu:transaction:biitrns010:ver2.0:extended:urn:www.peppol.eu:bis:peppol4a:ver2.0:extended:urn:www.simplerinvoicing.org:si:si-ubl:ver1.2::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>6</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-107</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii04:ver1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>SI-UBL 1.2 Order</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Order-2::Order##urn:www.cenbii.eu:transaction:biitrns001:ver2.0:extended:urn:www.peppol.eu:bis:peppol3a:ver2.0:extended:urn:www.simplerinvoicing.org:si:si-ubl:ver1.2::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>6</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-107</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii03:ver2.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>XRechnung UBL Invoice V1.3</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.3::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-117; TICC-136</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>XRechnung UBL CreditNote V1.3</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.3::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-117; TICC-136</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>XRechnung CII Invoice V1.3</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100::CrossIndustryInvoice##urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.3::16B</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-117; TICC-136</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>XRechnung UBL Invoice V2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-118</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>XRechnung UBL CreditNote V2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-118</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>XRechnung CII Invoice V2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100::CrossIndustryInvoice##urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0::16B</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-118</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>XRechnung UBL Invoice V1.3 Extension</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.3#conformant#urn:xoev-de:kosit:extension:xrechnung_1.3::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-135</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>XRechnung UBL CreditNote V1.3 Extension</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.3#conformant#urn:xoev-de:kosit:extension:xrechnung_1.3::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-135</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>XRechnung CII Invoice V1.3 Extension</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100::CrossIndustryInvoice##urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_1.3#conformant#urn:xoev-de:kosit:extension:xrechnung_1.3::16B</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-135</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>SI-UBL 2.0 G-Account Extension</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:fdc:nen.nl:nlcius:v1.0#conformant#urn:fdc:nen.nl:gaccount:v1.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-124</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>EHF Advanced Order Initiation 3.0 (invalid)</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Order-2::Order##urn:fdc:peppol.eu:poacc:trns:order:3:extended:urn:fdc:anskaffelser.no:2019:ehf:spec:3.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7.3</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-129</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:09:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>EHF Advanced Order Change 3.0 (invalid)</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:OrderChange-2::OrderChange##urn:fdc:anskaffelser.no:2019:ehf:spec:adv-order-change:3.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7.3</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-129</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:09:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>EHF Advanced Order Cancellation 3.0 (invalid)</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:OrderCancellation-2::OrderCancellation##urn:fdc:anskaffelser.no:2019:ehf:spec:adv-order-cancellation:3.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7.3</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-129</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:09:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>EHF Advanced Order Response 3.0 (invalid)</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2::OrderResponse##urn:fdc:peppol.eu:poacc:trns:order_response:3:extended:urn:fdc:anskaffelser.no:2019:ehf:spec:3.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7.3</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-129</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:09:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>EN 16931 UBL Invoice</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>PEPPOL-2534</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:en16931:any</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>EN 16931 UBL CreditNote</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:cen.eu:en16931:2017::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>PEPPOL-2534</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:en16931:any</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>EN 16931 CII Invoice</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100::CrossIndustryInvoice##urn:cen.eu:en16931:2017::D16B</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>PEPPOL-2534</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:en16931:any</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>XRechnung UBL Invoice V2.0 Extension</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0#conformant#urn:xoev-de:kosit:extension:xrechnung_2.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-135</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>XRechnung UBL CreditNote V2.0 Extension</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0#conformant#urn:xoev-de:kosit:extension:xrechnung_2.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-135</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>XRechnung CII Invoice V2.0 Extension</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100::CrossIndustryInvoice##urn:cen.eu:en16931:2017#compliant#urn:xoev-de:kosit:standard:xrechnung_2.0#conformant#urn:xoev-de:kosit:extension:xrechnung_2.0::16B</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-135</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>SimpleOrder_IT</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Order-2::Order##urn:fdc:peppol.eu:poacc:trns:order:3:restrictive:urn:www.agid.gov.it:trns:ordine:3.1::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-137</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:order_only:3</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>OrderResponse_IT</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2::OrderResponse##urn:fdc:peppol.eu:poacc:trns:order_response:3:restrictive:urn:www.agid.gov.it:trns:risposta_ordine:3.0::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-137</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>DespatchAdvice_IT</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2::DespatchAdvice##urn:fdc:peppol.eu:poacc:trns:despatch_advice:3:extended:urn:www.agid.gov.it:trns:ddt:3.1::2.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7.2</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-139</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:despatch_advice:3</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>German Peppol Usage Evaluation AP</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:kosit:names:spec:peppol-reporting:schema:xsd:Reporting-1::APData##Reporting::1.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7.3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-155</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:kosit:profile:reporting:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>EHF Advanced Order Initiation 3.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Order-2::Order##urn:fdc:peppol.eu:poacc:trns:order:3:extended:urn:fdc:anskaffelser.no:2019:ehf:spec:3.0::2.2</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7.3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-156</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:09:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>EHF Advanced Order Change 3.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:OrderChange-2::OrderChange##urn:fdc:anskaffelser.no:2019:ehf:spec:adv-order-change:3.0::2.2</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7.3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-156</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:09:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>EHF Advanced Order Cancellation 3.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:OrderCancellation-2::OrderCancellation##urn:fdc:anskaffelser.no:2019:ehf:spec:adv-order-cancellation:3.0::2.2</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7.3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-156</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:09:1.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>EHF Advanced Order Response 3.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2::OrderResponse##urn:fdc:peppol.eu:poacc:trns:order_response:3:extended:urn:fdc:anskaffelser.no:2019:ehf:spec:3.0::2.2</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>7.3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="comment">
+        <SimpleValue>TICC-156</SimpleValue>
+      </Value>
+          <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+          <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+          <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:09:1.0</SimpleValue>
+      </Value>
+    </Row>
+  </SimpleCodeList>
+</gc:CodeList>
