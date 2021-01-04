@@ -21,7 +21,7 @@
   <parent>
     <groupId>com.helger</groupId>
     <artifactId>parent-pom</artifactId>
-    <version>1.11.2</version>
+    <version>1.11.3</version>
   </parent>
   <artifactId>peppol-edec-codelists-tools</artifactId>
   <version>7.3</version>
