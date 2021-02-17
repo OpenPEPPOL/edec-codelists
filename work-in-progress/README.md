@@ -6,15 +6,17 @@ The actual released code lists now reside on https://docs.peppol.eu/edelivery/co
 
 See https://docs.peppol.eu/edelivery/codelists/changelog.html for all changes.
 
-## for 7.4
+## Version 7.4
 
 * Participant identifier schemes
     * Deprecated <code>9956</code> - BE:CBE in favour of <code>0208</code> - <a href="https://openpeppol.atlassian.net/browse/TICC-164" target="_blank">TICC-164</a>
     * Improved the descriptive texts of <code>0208</code> - <a href="https://openpeppol.atlassian.net/browse/TICC-164" target="_blank">TICC-164</a>
 
 * Document type identifiers
-
+    * Fixed a typo in the identifier schemes "XRechnung CII Invoice V2.0" and "XRechnung CII Invoice V2.0 Extension" (invalid syntax version) - <a href="https://openpeppol.atlassian.net/browse/TICC-159" target="_blank">TICC-159</a>
+    
 * Transport profiles
+    * *No changes so far*
 
 ## backlog
 
