@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gc:CodeList xmlns:gc="http://docs.oasis-open.org/codelist/ns/genericode/1.0/" xmlns="">
+  <Annotation>
+    <AppInfo>
+      <ext:info xmlns:ext="urn:peppol.eu:codelist:gc-annotation">This is an OpenPeppol EDEC Code List.
+Official source: https://docs.peppol.eu/edelivery/codelists/
+
+This file was automatically generated.
+Do NOT edit!</ext:info>
+    </AppInfo>
+  </Annotation>
+  <Identification>
+    <ShortName>Peppol Code Lists - Transport profiles</ShortName>
+      <Version>7.4</Version>
+      <CanonicalUri>urn:peppol.eu:names:identifier:transport-profile</CanonicalUri>
+      <CanonicalVersionUri>urn:peppol.eu:names:identifier:transport-profile7.4</CanonicalVersionUri>
+  </Identification>
+  <ColumnSet>
+    <Column Use="required" Id="protocol">
+      <ShortName>Protocol</ShortName>
+          <Data Type="string" />
+    </Column>
+      <Column Use="required" Id="profile-version">
+      <ShortName>Profile Version</ShortName>
+          <Data Type="string" />
+    </Column>
+      <Column Use="required" Id="profile-id">
+      <ShortName>Profile ID</ShortName>
+          <Data Type="string" />
+    </Column>
+      <Column Use="required" Id="since">
+      <ShortName>Since</ShortName>
+          <Data Type="string" />
+    </Column>
+      <Column Use="required" Id="deprecated">
+      <ShortName>Deprecated?</ShortName>
+          <Data Type="boolean" />
+    </Column>
+      <Column Use="optional" Id="deprecated-since">
+      <ShortName>Deprecated since</ShortName>
+          <Data Type="string" />
+    </Column>
+      <Key Id="profile-idKey">
+      <ShortName>Profile ID</ShortName>
+          <ColumnRef Ref="profile-id" />
+    </Key>
+  </ColumnSet>
+  <SimpleCodeList>
+    <Row>
+      <Value ColumnRef="protocol">
+        <SimpleValue>START</SimpleValue>
+      </Value>
+          <Value ColumnRef="profile-version">
+        <SimpleValue>1.0.1</SimpleValue>
+      </Value>
+          <Value ColumnRef="profile-id">
+        <SimpleValue>busdox-transport-start</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.0.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>1.0.0</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="protocol">
+        <SimpleValue>AS2</SimpleValue>
+      </Value>
+          <Value ColumnRef="profile-version">
+        <SimpleValue>1.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="profile-id">
+        <SimpleValue>busdox-transport-as2-ver1p0</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>1.0.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="protocol">
+        <SimpleValue>AS4</SimpleValue>
+      </Value>
+          <Value ColumnRef="profile-version">
+        <SimpleValue>1.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="profile-id">
+        <SimpleValue>peppol-transport-as4-v1_0</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>2</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated-since">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="protocol">
+        <SimpleValue>AS4</SimpleValue>
+      </Value>
+          <Value ColumnRef="profile-version">
+        <SimpleValue>2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="profile-id">
+        <SimpleValue>peppol-transport-as4-v2_0</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="protocol">
+        <SimpleValue>AS2</SimpleValue>
+      </Value>
+          <Value ColumnRef="profile-version">
+        <SimpleValue>2.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="profile-id">
+        <SimpleValue>busdox-transport-as2-ver2p0</SimpleValue>
+      </Value>
+          <Value ColumnRef="since">
+        <SimpleValue>5</SimpleValue>
+      </Value>
+          <Value ColumnRef="deprecated">
+        <SimpleValue>false</SimpleValue>
+      </Value>
+    </Row>
+  </SimpleCodeList>
+</gc:CodeList>

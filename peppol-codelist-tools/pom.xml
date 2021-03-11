@@ -24,7 +24,7 @@
     <version>1.11.3</version>
   </parent>
   <artifactId>peppol-edec-codelists-tools</artifactId>
-  <version>7.3</version>
+  <version>7.4</version>
   <packaging>jar</packaging>
   <name>peppol-edec-codelists-tools</name>
   <url>https://github.com/openpeppol/edec-codelists/peppol-codelist-tools</url>
@@ -81,7 +81,7 @@
       <dependency>
         <groupId>com.helger.peppol</groupId>
         <artifactId>peppol-commons-parent-pom</artifactId>
-        <version>8.3.1</version>
+        <version>8.4.1</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -139,9 +139,9 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.jvnet.jaxb2.maven2</groupId>
-        <artifactId>maven-jaxb2-plugin</artifactId>
-        <version>0.14.0</version>
+        <groupId>com.evolvedbinary.maven.jvnet</groupId>
+        <artifactId>jaxb2-maven-plugin</artifactId>
+        <version>0.15.0</version>
         <executions>
           <execution>
             <goals>
