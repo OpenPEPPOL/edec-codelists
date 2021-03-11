@@ -19,6 +19,7 @@ import javax.annotation.Nonnull;
 
 import com.helger.genericode.v10.ColumnSet;
 import com.helger.genericode.v10.Row;
+import com.helger.html.hc.html.tabular.HCRow;
 import com.helger.json.IJsonObject;
 import com.helger.xml.microdom.IMicroElement;
 
@@ -42,4 +43,7 @@ public interface IModelRow
 
   @Nonnull
   Row getAsGCRow (@Nonnull ColumnSet aColumnSet);
+
+  @Nonnull
+  HCRow getAsHtmlTableBodyRow ();
 }

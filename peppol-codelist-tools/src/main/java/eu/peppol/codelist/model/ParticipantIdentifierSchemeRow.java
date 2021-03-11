@@ -25,6 +25,8 @@ import com.helger.commons.url.URLHelper;
 import com.helger.genericode.v10.CodeListDocument;
 import com.helger.genericode.v10.ColumnSet;
 import com.helger.genericode.v10.Row;
+import com.helger.html.css.DefaultCSSClassProvider;
+import com.helger.html.hc.html.tabular.HCRow;
 import com.helger.json.IJsonObject;
 import com.helger.json.JsonObject;
 import com.helger.xml.microdom.IMicroElement;
@@ -148,7 +150,7 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
     return ret;
   }
 
-  public static void addColumns (@Nonnull final CodeListDocument aCLDoc)
+  public static void addGCColumns (@Nonnull final CodeListDocument aCLDoc)
   {
     final ColumnSet aColumnSet = aCLDoc.getColumnSet ();
     GCHelper.addHeaderColumn (aColumnSet, SCHEME_ID, true, true, "Scheme ID", ECodeListDataType.STRING);
@@ -185,6 +187,48 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
     ret.add (VALIDATION_RULES, m_sValidationRules);
     ret.add (USAGE, m_sUsage);
     return ret;
+  }
+
+  @Nonnull
+  public static HCRow getAsHtmlTableHeaderRow ()
+  {
+    final HCRow aRow = new HCRow (true);
+    aRow.addCell ("Scheme ID");
+    aRow.addCell ("ICD Value");
+    aRow.addCell ("Country Code");
+    aRow.addCell ("Scheme Name");
+    aRow.addCell ("Issuing Organisation");
+    aRow.addCell ("Since");
+    aRow.addCell ("Deprecated?");
+    aRow.addCell ("Deprecated since");
+    aRow.addCell ("Structure of Code");
+    aRow.addCell ("Display Requirements");
+    aRow.addCell ("Peppol Examples");
+    aRow.addCell ("Validation Rules");
+    aRow.addCell ("Usage Notes");
+    return aRow;
+  }
+
+  @Nonnull
+  public HCRow getAsHtmlTableBodyRow ()
+  {
+    final HCRow aRow = new HCRow ();
+    aRow.addCell (m_sSchemeID);
+    aRow.addCell (m_sISO6523);
+    aRow.addCell (m_sCountry);
+    aRow.addCell (m_sSchemeName);
+    aRow.addCell (m_sIssuingAgency);
+    aRow.addCell (m_sSince);
+    aRow.addCell (Boolean.toString (m_bDeprecated));
+    aRow.addCell (m_sDeprecatedSince);
+    aRow.addCell (m_sStructure);
+    aRow.addCell (m_sDisplay);
+    aRow.addCell (m_sExamples);
+    aRow.addCell (m_sValidationRules);
+    aRow.addCell (m_sUsage);
+    if (m_bDeprecated)
+      aRow.addClass (DefaultCSSClassProvider.create ("table-warning"));
+    return aRow;
   }
 
   @Nonnull

@@ -69,9 +69,10 @@ public abstract class AbstractConvertV7 extends AbstractConverter
       aRow.checkConsistency ();
 
     // Create files
-    createGenericodeFile (aRows, DocTypeRow.CODE_LIST_NAME, DocTypeRow::addColumns, DocTypeRow.CODE_LIST_URI);
+    createGenericodeFile (aRows, DocTypeRow.CODE_LIST_NAME, DocTypeRow::addGCColumns, DocTypeRow.CODE_LIST_URI);
     createXMLFile (aRows, DocTypeRow.CODE_LIST_NAME, DocTypeRow.ROOT_ELEMENT_NAME);
     createJsonFile (aRows, DocTypeRow.CODE_LIST_NAME);
+    createHtmlFile (aRows, DocTypeRow.CODE_LIST_NAME, DocTypeRow::getAsHtmlTableHeaderRow);
   }
 
   private void _handleParticipantIdentifierSchemes (@Nonnull final Sheet aParticipantSheet)
@@ -89,10 +90,11 @@ public abstract class AbstractConvertV7 extends AbstractConverter
     // Create files
     createGenericodeFile (aRows,
                           ParticipantIdentifierSchemeRow.CODE_LIST_NAME,
-                          ParticipantIdentifierSchemeRow::addColumns,
+                          ParticipantIdentifierSchemeRow::addGCColumns,
                           ParticipantIdentifierSchemeRow.CODE_LIST_URI);
     createXMLFile (aRows, ParticipantIdentifierSchemeRow.CODE_LIST_NAME, ParticipantIdentifierSchemeRow.ROOT_ELEMENT_NAME);
     createJsonFile (aRows, ParticipantIdentifierSchemeRow.CODE_LIST_NAME);
+    createHtmlFile (aRows, ParticipantIdentifierSchemeRow.CODE_LIST_NAME, ParticipantIdentifierSchemeRow::getAsHtmlTableHeaderRow);
   }
 
   private void _handleTransportProfileIdentifiers (@Nonnull final Sheet aTPSheet)
@@ -108,9 +110,10 @@ public abstract class AbstractConvertV7 extends AbstractConverter
       aRow.checkConsistency ();
 
     // Create files
-    createGenericodeFile (aRows, TransportProfileRow.CODE_LIST_NAME, TransportProfileRow::addColumns, TransportProfileRow.CODE_LIST_URI);
+    createGenericodeFile (aRows, TransportProfileRow.CODE_LIST_NAME, TransportProfileRow::addGCColumns, TransportProfileRow.CODE_LIST_URI);
     createXMLFile (aRows, TransportProfileRow.CODE_LIST_NAME, TransportProfileRow.ROOT_ELEMENT_NAME);
     createJsonFile (aRows, TransportProfileRow.CODE_LIST_NAME);
+    createHtmlFile (aRows, TransportProfileRow.CODE_LIST_NAME, TransportProfileRow::getAsHtmlTableHeaderRow);
   }
 
   private void _handleProcessIdentifiers ()
@@ -125,9 +128,10 @@ public abstract class AbstractConvertV7 extends AbstractConverter
       aRow.checkConsistency ();
 
     // Create files
-    createGenericodeFile (aRows, ProcessRow.CODE_LIST_NAME, ProcessRow::addColumns, ProcessRow.CODE_LIST_URI);
+    createGenericodeFile (aRows, ProcessRow.CODE_LIST_NAME, ProcessRow::addGCColumns, ProcessRow.CODE_LIST_URI);
     createXMLFile (aRows, ProcessRow.CODE_LIST_NAME, ProcessRow.ROOT_ELEMENT_NAME);
     createJsonFile (aRows, ProcessRow.CODE_LIST_NAME);
+    createHtmlFile (aRows, ProcessRow.CODE_LIST_NAME, ProcessRow::getAsHtmlTableHeaderRow);
   }
 
   @Override

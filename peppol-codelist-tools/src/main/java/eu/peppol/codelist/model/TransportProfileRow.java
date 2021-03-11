@@ -24,6 +24,8 @@ import com.helger.commons.url.URLHelper;
 import com.helger.genericode.v10.CodeListDocument;
 import com.helger.genericode.v10.ColumnSet;
 import com.helger.genericode.v10.Row;
+import com.helger.html.css.DefaultCSSClassProvider;
+import com.helger.html.hc.html.tabular.HCRow;
 import com.helger.json.IJsonObject;
 import com.helger.json.JsonObject;
 import com.helger.xml.microdom.IMicroElement;
@@ -100,7 +102,7 @@ public final class TransportProfileRow implements IModelRow
     return ret;
   }
 
-  public static void addColumns (@Nonnull final CodeListDocument aCLDoc)
+  public static void addGCColumns (@Nonnull final CodeListDocument aCLDoc)
   {
     final ColumnSet aColumnSet = aCLDoc.getColumnSet ();
     GCHelper.addHeaderColumn (aColumnSet, PROTOCOL, false, true, "Protocol", ECodeListDataType.STRING);
@@ -123,6 +125,34 @@ public final class TransportProfileRow implements IModelRow
     ret.add (DEPRECATED, m_bDeprecated);
     ret.add (DEPRECATED_SINCE, m_sDeprecatedSince);
     return ret;
+  }
+
+  @Nonnull
+  public static HCRow getAsHtmlTableHeaderRow ()
+  {
+    final HCRow aRow = new HCRow (true);
+    aRow.addCell ("Protocol");
+    aRow.addCell ("Profile Version");
+    aRow.addCell ("Profile ID");
+    aRow.addCell ("Since");
+    aRow.addCell ("Deprecated?");
+    aRow.addCell ("Deprecated since");
+    return aRow;
+  }
+
+  @Nonnull
+  public HCRow getAsHtmlTableBodyRow ()
+  {
+    final HCRow aRow = new HCRow ();
+    aRow.addCell (m_sProtcol);
+    aRow.addCell (m_sProfileVersion);
+    aRow.addCell (m_sProfileID);
+    aRow.addCell (m_sSince);
+    aRow.addCell (Boolean.toString (m_bDeprecated));
+    aRow.addCell (m_sDeprecatedSince);
+    if (m_bDeprecated)
+      aRow.addClass (DefaultCSSClassProvider.create ("table-warning"));
+    return aRow;
   }
 
   @Nonnull

@@ -26,6 +26,8 @@ import com.helger.commons.url.URLHelper;
 import com.helger.genericode.v10.CodeListDocument;
 import com.helger.genericode.v10.ColumnSet;
 import com.helger.genericode.v10.Row;
+import com.helger.html.css.DefaultCSSClassProvider;
+import com.helger.html.hc.html.tabular.HCRow;
 import com.helger.json.IJsonObject;
 import com.helger.json.JsonObject;
 import com.helger.peppolid.IProcessIdentifier;
@@ -83,7 +85,7 @@ public final class ProcessRow implements IModelRow
     return ret;
   }
 
-  public static void addColumns (@Nonnull final CodeListDocument aCLDoc)
+  public static void addGCColumns (@Nonnull final CodeListDocument aCLDoc)
   {
     final ColumnSet aColumnSet = aCLDoc.getColumnSet ();
     GCHelper.addHeaderColumn (aColumnSet, SCHEME, true, true, "Peppol Identifier Scheme", ECodeListDataType.STRING);
@@ -100,6 +102,28 @@ public final class ProcessRow implements IModelRow
     ret.add (VALUE, m_sValue);
     ret.add (DEPRECATED, m_bDeprecated);
     return ret;
+  }
+
+  @Nonnull
+  public static HCRow getAsHtmlTableHeaderRow ()
+  {
+    final HCRow aRow = new HCRow (true);
+    aRow.addCell ("Peppol Identifier Scheme");
+    aRow.addCell ("Peppol Identifier Value");
+    aRow.addCell ("Deprecated?");
+    return aRow;
+  }
+
+  @Nonnull
+  public HCRow getAsHtmlTableBodyRow ()
+  {
+    final HCRow aRow = new HCRow ();
+    aRow.addCell (m_sScheme);
+    aRow.addCell (m_sValue);
+    aRow.addCell (Boolean.toString (m_bDeprecated));
+    if (m_bDeprecated)
+      aRow.addClass (DefaultCSSClassProvider.create ("table-warning"));
+    return aRow;
   }
 
   @Nonnull

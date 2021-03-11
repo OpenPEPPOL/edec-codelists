@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 import javax.annotation.Nonnull;
 
@@ -31,11 +32,29 @@ import com.helger.commons.annotation.Nonempty;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.file.FileHelper;
 import com.helger.commons.io.file.FileOperationManager;
+import com.helger.commons.io.file.SimpleFileIO;
 import com.helger.commons.io.stream.NonBlockingBufferedOutputStream;
+import com.helger.commons.url.SimpleURL;
 import com.helger.commons.version.Version;
 import com.helger.genericode.CGenericode;
 import com.helger.genericode.Genericode10CodeListMarshaller;
 import com.helger.genericode.v10.CodeListDocument;
+import com.helger.html.EHTMLVersion;
+import com.helger.html.css.DefaultCSSClassProvider;
+import com.helger.html.hc.config.HCConversionSettings;
+import com.helger.html.hc.html.embedded.EHCCORSSettings;
+import com.helger.html.hc.html.grouping.HCDiv;
+import com.helger.html.hc.html.metadata.EHCLinkType;
+import com.helger.html.hc.html.metadata.HCLink;
+import com.helger.html.hc.html.metadata.HCMeta;
+import com.helger.html.hc.html.metadata.HCStyle;
+import com.helger.html.hc.html.root.HCHtml;
+import com.helger.html.hc.html.sections.HCH1;
+import com.helger.html.hc.html.tabular.HCRow;
+import com.helger.html.hc.html.tabular.HCTable;
+import com.helger.html.hc.html.textlevel.HCA;
+import com.helger.html.hc.html.textlevel.HCEM;
+import com.helger.html.hc.render.HCRenderer;
 import com.helger.json.IJsonObject;
 import com.helger.json.JsonArray;
 import com.helger.json.JsonObject;
@@ -47,6 +66,7 @@ import com.helger.xml.microdom.IMicroNode;
 import com.helger.xml.microdom.MicroDocument;
 import com.helger.xml.microdom.serialize.MicroWriter;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
+import com.helger.xml.serialize.write.EXMLSerializeIndent;
 
 import eu.peppol.codelist.gc.GCHelper;
 import eu.peppol.codelist.model.IModelRow;
@@ -84,18 +104,6 @@ public abstract class AbstractConverter
     FileOperationManager.INSTANCE.createDirRecursiveIfNotExisting (m_aResultDir);
   }
 
-  protected final <T extends IModelRow> void createGenericodeFile (@Nonnull final ICommonsList <T> aRows,
-                                                                   @Nonnull final String sCodeListName,
-                                                                   @Nonnull final Consumer <CodeListDocument> aColumnProvider,
-                                                                   @Nonnull final URI sCodeListURI)
-  {
-    final CodeListDocument aCodeList = GCHelper.createEmptyCodeList (sCodeListName, m_aCodeListVersion, sCodeListURI);
-    aColumnProvider.accept (aCodeList);
-    for (final T aRow : aRows)
-      aCodeList.getSimpleCodeList ().addRow (aRow.getAsGCRow (aCodeList.getColumnSet ()));
-    _writeGenericodeFile (aCodeList, sCodeListName);
-  }
-
   /**
    * Write a Genericode 1.0 Document to disk
    *
@@ -121,6 +129,26 @@ public abstract class AbstractConverter
     LOGGER.info ("Wrote Genericode file '" + aDstFile.getPath () + "'");
   }
 
+  protected final <T extends IModelRow> void createGenericodeFile (@Nonnull final ICommonsList <T> aRows,
+                                                                   @Nonnull final String sCodeListName,
+                                                                   @Nonnull final Consumer <CodeListDocument> aColumnProvider,
+                                                                   @Nonnull final URI sCodeListURI)
+  {
+    final CodeListDocument aCodeList = GCHelper.createEmptyCodeList (sCodeListName, m_aCodeListVersion, sCodeListURI);
+    aColumnProvider.accept (aCodeList);
+    for (final T aRow : aRows)
+      aCodeList.getSimpleCodeList ().addRow (aRow.getAsGCRow (aCodeList.getColumnSet ()));
+    _writeGenericodeFile (aCodeList, sCodeListName);
+  }
+
+  private void _writeXMLFile (@Nonnull final IMicroNode aNode, @Nonnull final String sBasename)
+  {
+    final File aDstFile = new File (m_aResultDir, sBasename + m_sFilenameSuffix + ".xml");
+    if (MicroWriter.writeToFile (aNode, aDstFile).isFailure ())
+      throw new IllegalStateException ("Failed to write file '" + aDstFile.getPath () + "'");
+    LOGGER.info ("Wrote XML file '" + aDstFile.getPath () + "'");
+  }
+
   protected final <T extends IModelRow> void createXMLFile (@Nonnull final ICommonsList <T> aRows,
                                                             @Nonnull final String sCodeListName,
                                                             final String sRootElementName)
@@ -133,23 +161,6 @@ public abstract class AbstractConverter
     for (final T aRow : aRows)
       eRoot.appendChild (aRow.getAsElement ());
     _writeXMLFile (aDoc, sCodeListName);
-  }
-
-  private void _writeXMLFile (@Nonnull final IMicroNode aNode, @Nonnull final String sBasename)
-  {
-    final File aDstFile = new File (m_aResultDir, sBasename + m_sFilenameSuffix + ".xml");
-    if (MicroWriter.writeToFile (aNode, aDstFile).isFailure ())
-      throw new IllegalStateException ("Failed to write file '" + aDstFile.getPath () + "'");
-    LOGGER.info ("Wrote XML file '" + aDstFile.getPath () + "'");
-  }
-
-  protected final <T extends IModelRow> void createJsonFile (@Nonnull final ICommonsList <T> aRows, @Nonnull final String sCodeListName)
-  {
-    final IJsonObject aJson = new JsonObject ();
-    aJson.add ("version", m_aCodeListVersion.getAsString ());
-    aJson.add ("entry-count", aRows.size ());
-    aJson.addJson ("values", new JsonArray ().addAllMapped (aRows, T::getAsJson));
-    _writeJsonFile (aJson, sCodeListName);
   }
 
   private void _writeJsonFile (@Nonnull final IJsonObject aNode, @Nonnull final String sBasename)
@@ -167,6 +178,73 @@ public abstract class AbstractConverter
       throw new IllegalStateException ("Failed to write file '" + aDstFile.getPath () + "'", ex);
     }
     LOGGER.info ("Wrote JSON file '" + aDstFile.getPath () + "'");
+  }
+
+  protected final <T extends IModelRow> void createJsonFile (@Nonnull final ICommonsList <T> aRows, @Nonnull final String sCodeListName)
+  {
+    final IJsonObject aJson = new JsonObject ();
+    aJson.add ("version", m_aCodeListVersion.getAsString ());
+    aJson.add ("entry-count", aRows.size ());
+    aJson.addJson ("values", new JsonArray ().addAllMapped (aRows, T::getAsJson));
+    _writeJsonFile (aJson, sCodeListName);
+  }
+
+  private void _writeHtmlFile (@Nonnull final HCHtml aNode, @Nonnull final String sBasename)
+  {
+    final File aDstFile = new File (m_aResultDir, sBasename + m_sFilenameSuffix + ".html");
+    final HCConversionSettings aConversionSettings = new HCConversionSettings (EHTMLVersion.HTML5);
+    aConversionSettings.getXMLWriterSettings ().setIndent (EXMLSerializeIndent.ALIGN_ONLY);
+    final String sHtml = HCRenderer.getAsHTMLString (aNode, aConversionSettings);
+    if (SimpleFileIO.writeFile (aDstFile, sHtml, StandardCharsets.UTF_8).isFailure ())
+      throw new IllegalStateException ("Failed to write file '" + aDstFile.getPath () + "'");
+
+    LOGGER.info ("Wrote Html file '" + aDstFile.getPath () + "'");
+  }
+
+  protected final <T extends IModelRow> void createHtmlFile (@Nonnull final ICommonsList <T> aRows,
+                                                             @Nonnull final String sCodeListName,
+                                                             @Nonnull final Supplier <HCRow> aHeaderRowProvider)
+  {
+    final HCHtml aHtml = new HCHtml ();
+    aHtml.head ().metaElements ().add (new HCMeta ().setCharset (StandardCharsets.UTF_8.name ()));
+    aHtml.head ()
+         .metaElements ()
+         .add (new HCMeta ().setName ("viewport").setContent ("width=device-width, initial-scale=1, shrink-to-fit=no"));
+    aHtml.head ().setTitle (sCodeListName);
+    aHtml.head ()
+         .links ()
+         .add (new HCLink ().setRel (EHCLinkType.STYLESHEET)
+                            .setHref (new SimpleURL ("https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"))
+                            .setIntegrity ("sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l")
+                            .setCrossOrigin (EHCCORSSettings.ANONYMOUS));
+    if (false)
+      aHtml.head ().addCSS (new HCStyle (""));
+
+    final HCDiv aCont = aHtml.body ().addAndReturnChild (new HCDiv ().addClass (DefaultCSSClassProvider.create ("container-fluid")));
+
+    aCont.addChild (new HCH1 ().addChild (aHtml.head ().getTitle ()));
+    aCont.addChild (new HCDiv ().addChild (new HCDiv ().addChild ("Version " +
+                                                                  m_aCodeListVersion.getAsString () +
+                                                                  " with " +
+                                                                  aRows.size () +
+                                                                  " entries"))
+                                .addChild (new HCDiv ().addChild ("Info: yellow rows are the ones that are deprecated"))
+                                .addClass (DefaultCSSClassProvider.create ("alert"))
+                                .addClass (DefaultCSSClassProvider.create ("alert-info")));
+
+    final HCTable aTable = aCont.addAndReturnChild (new HCTable ());
+    aTable.addClass (DefaultCSSClassProvider.create ("table"));
+    aTable.addClass (DefaultCSSClassProvider.create ("thead-light"));
+    aTable.addClass (DefaultCSSClassProvider.create ("table-striped"));
+    if (false)
+      aTable.addClass (DefaultCSSClassProvider.create ("table-responsive"));
+    aTable.addHeaderRow (aHeaderRowProvider.get ());
+    for (final T aRow : aRows)
+      aTable.addBodyRow (aRow.getAsHtmlTableBodyRow ());
+    aCont.addChild (new HCDiv ().addChild (new HCEM ().addChild ("This document was created automatically. The official version is located at ")
+                                                      .addChild (new HCA (new SimpleURL ("https://docs.peppol.eu/edelivery/codelists/")).addChild ("https://docs.peppol.eu/edelivery/codelists/")))
+                                .addClass (DefaultCSSClassProvider.create ("my-3")));
+    _writeHtmlFile (aHtml, sCodeListName);
   }
 
   protected abstract void convert () throws Exception;

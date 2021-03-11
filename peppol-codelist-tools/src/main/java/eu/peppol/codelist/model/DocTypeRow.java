@@ -28,6 +28,9 @@ import com.helger.commons.url.URLHelper;
 import com.helger.genericode.v10.CodeListDocument;
 import com.helger.genericode.v10.ColumnSet;
 import com.helger.genericode.v10.Row;
+import com.helger.html.css.DefaultCSSClassProvider;
+import com.helger.html.hc.ext.HCExtHelper;
+import com.helger.html.hc.html.tabular.HCRow;
 import com.helger.json.IJsonArray;
 import com.helger.json.IJsonObject;
 import com.helger.json.JsonArray;
@@ -162,7 +165,7 @@ public final class DocTypeRow implements IModelRow
     return ret;
   }
 
-  public static void addColumns (@Nonnull final CodeListDocument aCLDoc)
+  public static void addGCColumns (@Nonnull final CodeListDocument aCLDoc)
   {
     final ColumnSet aColumnSet = aCLDoc.getColumnSet ();
     GCHelper.addHeaderColumn (aColumnSet, NAME, false, true, "Name", ECodeListDataType.STRING);
@@ -172,7 +175,7 @@ public final class DocTypeRow implements IModelRow
     GCHelper.addHeaderColumn (aColumnSet, DEPRECATED, false, true, "Deprecated?", ECodeListDataType.BOOLEAN);
     GCHelper.addHeaderColumn (aColumnSet, DEPRECATED_SINCE, false, false, "Deprecated since", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, COMMENT, false, false, "Comment", ECodeListDataType.STRING);
-    GCHelper.addHeaderColumn (aColumnSet, ISSUED_BY_OPENPEPPOL, false, true, "Issued by OpenPeppol?", ECodeListDataType.BOOLEAN);
+    GCHelper.addHeaderColumn (aColumnSet, ISSUED_BY_OPENPEPPOL, false, true, "Issued by OpenPEPPOL?", ECodeListDataType.BOOLEAN);
     GCHelper.addHeaderColumn (aColumnSet, BIS_VERSION, false, false, "BIS version", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, DOMAIN_COMMUNITY, false, true, "Domain Community", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet,
@@ -200,6 +203,44 @@ public final class DocTypeRow implements IModelRow
     ret.add (DOMAIN_COMMUNITY, m_sDomainCommunity);
     ret.add (PROCESS_ID_MANY, m_sProcessIDs);
     return ret;
+  }
+
+  @Nonnull
+  public static HCRow getAsHtmlTableHeaderRow ()
+  {
+    final HCRow aRow = new HCRow (true);
+    aRow.addCell ("Profile name");
+    aRow.addCell ("Peppol Document Type Identifier Scheme");
+    aRow.addCell ("Peppol Document Type Identifier Value");
+    aRow.addCell ("Since");
+    aRow.addCell ("Deprecated?");
+    aRow.addCell ("Deprecated since");
+    aRow.addCell ("Comment");
+    aRow.addCell ("Issued by OpenPEPPOL?");
+    aRow.addCell ("BIS version");
+    aRow.addCell ("Domain Community");
+    aRow.addCell ("Associated Process/Profile Identifier(s)");
+    return aRow;
+  }
+
+  @Nonnull
+  public HCRow getAsHtmlTableBodyRow ()
+  {
+    final HCRow aRow = new HCRow ();
+    aRow.addCell (m_sName);
+    aRow.addCell (m_sScheme);
+    aRow.addCell (m_sValue);
+    aRow.addCell (m_sSince);
+    aRow.addCell (Boolean.toString (m_bDeprecated));
+    aRow.addCell (m_sDeprecatedSince);
+    aRow.addCell (m_sComment);
+    aRow.addCell (Boolean.toString (m_bIssuedByOpenPeppol));
+    aRow.addCell (m_sBISVersion);
+    aRow.addCell (m_sDomainCommunity);
+    aRow.addCell (HCExtHelper.nl2brList (m_sProcessIDs));
+    if (m_bDeprecated)
+      aRow.addClass (DefaultCSSClassProvider.create ("table-warning"));
+    return aRow;
   }
 
   @Nonnull
