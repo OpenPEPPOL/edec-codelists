@@ -9,7 +9,7 @@ See https://docs.peppol.eu/edelivery/codelists/changelog.html for all changes.
 ## Version 7.5
 
 * Participant identifier schemes
-    * *No changes so far*
+    * Added `0209` - GS1 - GS1 identification keys - [TICC-138](https://openpeppol.atlassian.net/browse/TICC-138)
 
 * Document type identifiers
     * *No changes so far*
