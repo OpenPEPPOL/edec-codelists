@@ -12,7 +12,7 @@ See https://docs.peppol.eu/edelivery/codelists/changelog.html for all changes.
     * Added `0209` - GS1 - GS1 identification keys - [TICC-138](https://openpeppol.atlassian.net/browse/TICC-138)
 
 * Document type identifiers
-    * *No changes so far*
+    * The process identifier for "AU-NZ Self-Billing 3.0 Invoice" and "AU-NZ Self-Billing 3.0 CreditNote" has been corrected to be `urn:fdc:peppol.eu:2017:poacc:selfbilling:01:1.0`
     
 * Transport profiles
     * *No changes so far*
