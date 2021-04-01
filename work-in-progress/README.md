@@ -10,8 +10,8 @@ See https://docs.peppol.eu/edelivery/codelists/changelog.html for all changes.
 
 * Participant identifier schemes
     * Added `0209` - GS1 - GS1 identification keys - [TICC-138](https://openpeppol.atlassian.net/browse/TICC-138)
-    * Added `0210` - IT:CF - CODICE FISCALE - [TICC-171](https://openpeppol.atlassian.net/browse/TICC-171)
-    * Added `0211` - IT:VAT - PARTITA IVA - [TICC-171](https://openpeppol.atlassian.net/browse/TICC-171)
+    * Added `0210` - IT:CFI - CODICE FISCALE - [TICC-171](https://openpeppol.atlassian.net/browse/TICC-171)
+    * Added `0211` - IT:IVA - PARTITA IVA - [TICC-171](https://openpeppol.atlassian.net/browse/TICC-171)
     * Added `0212` - FI:ORG - Finnish Organization Identifier - [TICC-170](https://openpeppol.atlassian.net/browse/TICC-170)
     * Added `0213` - FI:VAT - Finnish Organization Value Add Tax Identifier - [TICC-170](https://openpeppol.atlassian.net/browse/TICC-170)
 
