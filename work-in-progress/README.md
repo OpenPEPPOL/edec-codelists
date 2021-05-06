@@ -16,8 +16,20 @@ See https://docs.peppol.eu/edelivery/codelists/changelog.html for all changes.
     * Added `0213` - FI:VAT - Finnish Organization Value Add Tax Identifier - [TICC-170](https://openpeppol.atlassian.net/browse/TICC-170)
 
 * Document type identifiers
-    * The process identifier for "AU-NZ Self-Billing 3.0 Invoice" and "AU-NZ Self-Billing 3.0 CreditNote" has been corrected to be `urn:fdc:peppol.eu:2017:poacc:selfbilling:01:1.0`
-    
+    * The process identifier for "AU-NZ Self-Billing 3.0 Invoice" and "AU-NZ Self-Billing 3.0 CreditNote" has been corrected to be `urn:fdc:peppol.eu:2017:poacc:selfbilling:01:1.0` - [TICC-173](https://openpeppol.atlassian.net/browse/TICC-173)
+    * Add the process identifier `cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3` to the document type "SimpleOrder_IT" - [TICC-177](https://openpeppol.atlassian.net/browse/TICC-177)
+
+* Transport profiles
+    * *No changes so far*
+
+## Version 7.5
+
+* Participant identifier schemes
+    * *No changes so far*
+
+* Document type identifiers
+    * *No changes so far*
+
 * Transport profiles
     * *No changes so far*
 
