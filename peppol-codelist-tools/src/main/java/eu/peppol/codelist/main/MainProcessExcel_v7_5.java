@@ -18,20 +18,20 @@ package eu.peppol.codelist.main;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import eu.peppol.codelist.ConvertV7_4;
+import eu.peppol.codelist.ConvertV7_5;
 
 /**
  * Utility class to create the Genericode files from the Excel code list.
  *
  * @author Philip Helger
  */
-public final class MainProcessExcel_v7_4
+public final class MainProcessExcel_v7_5
 {
-  private static final Logger LOGGER = LoggerFactory.getLogger (MainProcessExcel_v7_4.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger (MainProcessExcel_v7_5.class);
 
   public static void main (final String [] args) throws Exception
   {
-    new ConvertV7_4 ().run ();
+    new ConvertV7_5 ().run ();
     LOGGER.info ("Now run 'mvn license:format' on this project");
     LOGGER.info ("Than copy the output from 'ceated-codelists/vX.Y' to the respective 'publication/vX.Y' folder in the parent project");
   }

@@ -24,7 +24,7 @@
     <version>1.11.3</version>
   </parent>
   <artifactId>peppol-edec-codelists-tools</artifactId>
-  <version>7.4</version>
+  <version>7.5</version>
   <packaging>jar</packaging>
   <name>peppol-edec-codelists-tools</name>
   <url>https://github.com/openpeppol/edec-codelists/peppol-codelist-tools</url>
@@ -139,7 +139,11 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
     </dependency>
-
+    <dependency>
+      <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-impl</artifactId>
+    </dependency>
+    
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
