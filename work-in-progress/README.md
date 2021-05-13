@@ -20,20 +20,6 @@ See https://docs.peppol.eu/edelivery/codelists/changelog.html for all changes.
 * Transport profiles
     * *No changes so far*
 
-## Version 7.6
-
-* Participant identifier schemes
-    * *No changes so far*
-
-* Document type identifiers
-    * *No changes so far*
-
-* Process identifiers
-    * *No changes so far*
-
-* Transport profiles
-    * *No changes so far*
-
 ## backlog
 
 * Participant identifier schemes
