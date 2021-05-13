@@ -6,21 +6,16 @@ The actual released code lists now reside on https://docs.peppol.eu/edelivery/co
 
 See https://docs.peppol.eu/edelivery/codelists/changelog.html for all changes.
 
-## Version 7.5
+## Version 7.6
 
 * Participant identifier schemes
-    * Added `0209` - GS1 - GS1 identification keys - [TICC-138](https://openpeppol.atlassian.net/browse/TICC-138)
-    * Added `0210` - IT:CFI - CODICE FISCALE - [TICC-171](https://openpeppol.atlassian.net/browse/TICC-171)
-    * Added `0211` - IT:IVA - PARTITA IVA - [TICC-171](https://openpeppol.atlassian.net/browse/TICC-171)
-    * Added `0212` - FI:ORG - Finnish Organization Identifier - [TICC-170](https://openpeppol.atlassian.net/browse/TICC-170)
-    * Added `0213` - FI:VAT - Finnish Organization Value Add Tax Identifier - [TICC-170](https://openpeppol.atlassian.net/browse/TICC-170)
+    * *No changes so far*
 
 * Document type identifiers
     * *No changes so far*
 
 * Process identifiers
-    * The process identifier for "AU-NZ Self-Billing 3.0 Invoice" and "AU-NZ Self-Billing 3.0 CreditNote" has been corrected to be `urn:fdc:peppol.eu:2017:poacc:selfbilling:01:1.0` - [TICC-173](https://openpeppol.atlassian.net/browse/TICC-173)
-    * Added the process identifier `cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3` to the document type "SimpleOrder_IT" - [TICC-177](https://openpeppol.atlassian.net/browse/TICC-177)
+    * *No changes so far*
 
 * Transport profiles
     * *No changes so far*
