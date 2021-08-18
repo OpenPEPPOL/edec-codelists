@@ -36,7 +36,7 @@ import eu.peppol.codelist.model.ProcessRow;
 import eu.peppol.codelist.model.TransportProfileRow;
 
 /**
- * Handle V7 code lists
+ * Handle V7+V8 code lists
  *
  * @author Philip Helger
  */
@@ -137,7 +137,7 @@ public abstract class AbstractConvertV7 extends AbstractConverter
   @Override
   protected void convert () throws Exception
   {
-    final String sFilenameVersion = m_aCodeListVersion.getAsString (false);
+    final String sFilenameVersion = m_aCodeListVersion.getAsString (false, true);
 
     new CodeListSource ("Document types", sFilenameVersion, this::_handleDocumentTypes).readExcelSheet ();
     new CodeListSource ("Participant identifier schemes", sFilenameVersion, this::_handleParticipantIdentifierSchemes).readExcelSheet ();

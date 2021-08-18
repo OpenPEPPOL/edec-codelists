@@ -6,7 +6,7 @@ The actual released code lists now reside on https://docs.peppol.eu/edelivery/co
 
 See https://docs.peppol.eu/edelivery/codelists/changelog.html for all changes.
 
-## Version 7.6
+## Version 8.0
 
 * Participant identifier schemes
     * *No changes so far*

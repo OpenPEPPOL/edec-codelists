@@ -24,7 +24,7 @@
     <version>1.11.3</version>
   </parent>
   <artifactId>peppol-edec-codelists-tools</artifactId>
-  <version>7.5</version>
+  <version>8.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>peppol-edec-codelists-tools</name>
   <url>https://github.com/openpeppol/edec-codelists/peppol-codelist-tools</url>

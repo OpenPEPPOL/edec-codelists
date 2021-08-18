@@ -22,14 +22,13 @@ import com.helger.commons.version.Version;
  *
  * @author Philip Helger
  */
-@Deprecated
-public final class ConvertV7_5 extends AbstractConvertV7
+public final class ConvertV8_0 extends AbstractConvertV7
 {
-  public static final Version CODE_LIST_VERSION = new Version (7, 5);
-  public static final String DESTINATION_BASE_PATH = "created-codelists/v7.5/";
-  public static final String DESTINATION_FILENAME_SUFFIX = " v7.5";
+  public static final Version CODE_LIST_VERSION = new Version (8, 0);
+  public static final String DESTINATION_BASE_PATH = "created-codelists/v8.0-snapshot/";
+  public static final String DESTINATION_FILENAME_SUFFIX = " v8.0-snapshot";
 
-  public ConvertV7_5 ()
+  public ConvertV8_0 ()
   {
     super (CODE_LIST_VERSION, DESTINATION_BASE_PATH, DESTINATION_FILENAME_SUFFIX);
   }
