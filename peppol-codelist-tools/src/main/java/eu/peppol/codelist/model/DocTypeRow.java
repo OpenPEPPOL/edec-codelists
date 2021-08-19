@@ -20,6 +20,9 @@ import java.net.URI;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.helger.commons.collection.CollectionHelper;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.string.StringHelper;
@@ -37,6 +40,7 @@ import com.helger.json.JsonArray;
 import com.helger.json.JsonObject;
 import com.helger.peppolid.IProcessIdentifier;
 import com.helger.peppolid.factory.PeppolIdentifierFactory;
+import com.helger.peppolid.peppol.doctype.IPeppolDocumentTypeIdentifierParts;
 import com.helger.peppolid.peppol.doctype.PeppolDocumentTypeIdentifierParts;
 import com.helger.xml.microdom.IMicroElement;
 import com.helger.xml.microdom.MicroElement;
@@ -64,6 +68,8 @@ public final class DocTypeRow implements IModelRow
   private static final String DOMAIN_COMMUNITY = "domain-community";
   private static final String PROCESS_ID_ONE = "process-id";
   private static final String PROCESS_ID_MANY = "process-ids";
+
+  private static final Logger LOGGER = LoggerFactory.getLogger (DocTypeRow.class);
 
   public static final String CODE_LIST_NAME = "Peppol Code Lists - Document types";
   public static final URI CODE_LIST_URI = URLHelper.getAsURI ("urn:peppol.eu:names:identifier:document-type");
@@ -113,8 +119,15 @@ public final class DocTypeRow implements IModelRow
       throw new IllegalStateException ("Scheme does not match Peppol requirements");
     if (!PeppolIdentifierFactory.INSTANCE.isDocumentTypeIdentifierValueValid (m_sValue))
       throw new IllegalStateException ("Value does not match Peppol requirements");
-    if (PeppolDocumentTypeIdentifierParts.extractFromString (m_sValue) == null)
+    final IPeppolDocumentTypeIdentifierParts aParts = PeppolDocumentTypeIdentifierParts.extractFromString (m_sValue);
+    if (aParts == null)
       throw new IllegalStateException ("Value does not match detailed Peppol requirements");
+    // Consistency check for UBL document types
+    // Root NS: urn:oasis:names:specification:ubl:schema:xsd:OrderCancellation-2
+    // Local name: OrderCancellation
+    if (aParts.getRootNS ().endsWith ("-2"))
+      if (!m_bDeprecated && !aParts.getRootNS ().endsWith (aParts.getLocalName () + "-2"))
+        throw new IllegalStateException ("Value '" + m_sValue + "' seems to be inconsistent");
 
     if (m_bDeprecated && StringHelper.hasNoText (m_sDeprecatedSince))
       throw new IllegalStateException ("Code list entry is deprecated but there is no deprecated-since entry");
