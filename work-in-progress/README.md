@@ -8,6 +8,8 @@ See https://docs.peppol.eu/edelivery/codelists/changelog.html for all changes.
 
 ## Version 8.0
 
+The reason for the major version change, is the addition of the new "Payment" domain for official document types.
+
 * Participant identifier schemes
     * *No changes so far*
 
@@ -61,6 +63,26 @@ See https://docs.peppol.eu/edelivery/codelists/changelog.html for all changes.
     * Added "Tendering Answers V1.0" - [TICC-183](https://openpeppol.atlassian.net/browse/TICC-183)
     * Added "Tender Clarification Request V1.0" - [TICC-183](https://openpeppol.atlassian.net/browse/TICC-183)
     * Added "Tender Clarification Response V1.0" - [TICC-183](https://openpeppol.atlassian.net/browse/TICC-183)
+    * Added "EHF Catalogue 1.0 (Profile 1A) (Catalogue)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added "EHF Catalogue 1.0 (Profile 1A) (Catalogue Response)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added "EHF Ordering 1.0 (Profile 28A) (Order)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added "EHF Ordering 1.0 (Profile 28A) (Order Response)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added "EHF Despatch Advise 1.0 (Profile 30) (Despatch Advice)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added "EHF Reminder 1.1 (Profile XY) (Reminder)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added "EHF Catalogue 3.0 (Catalogue)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added "EHF Catalogue 3.0 (Catalogue Response)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added "EHF Ordering 3.0 (Order)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added "EHF Ordering 3.0 (Order Response)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added "EHF Order Agreement 3.0 (Order Agreement)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added "EHF Despatch Advice 3.0 (Despatch Advice)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added "EHF Reminder 3.0 (Reminder)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added "EHF Payment Request 3.0 (Payment Request)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added "EHF Forward Billing 3.0 (Invoice)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added "EHF Forward Billing 3.0 (Credit Note)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added "EHF Advanced Ordering 3.0 (Order)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added "EHF Advanced Ordering 3.0 (Order Cancellation)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added "EHF Advanced Ordering 3.0 (Order Change)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added "EHF Advanced Ordering 3.0 (Order Response)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)    
     
 * Process identifiers
     * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:01:1.0</code> to the document types "EHF Payment initiation (Profile 01) (Pain.001 Message)", "EHF Payment initiation (Profile 01) (Pain.002 Reception Acknowledgement)", "EHF Payment initiation (Profile 01) (Pain.002 Handling Exception)", "EHF Payment initiation (Profile 01) (Camt.054 Reception Acknowledgement)", "EHF Payment initiation (Profile 01) (Camt.054 Handling Exception)", "EHF Payment initiation (Profile 01) (Pain.001 Reception Acknowledgement)", "EHF Payment initiation (Profile 01) (Pain.001 Handling Exception)", "EHF Payment initiation (Profile 01) (Pain.002 Message)" and "EHF Payment initiation (Profile 01) (Camt.054 Message)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
@@ -72,7 +94,15 @@ See https://docs.peppol.eu/edelivery/codelists/changelog.html for all changes.
     * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:11:1.0</code> to the document types "EHF Payment Profile 11 (B2C account report)", "EHF Payment Profile 11 (Camt.052 Reception Acknowledgement)" and "EHF Payment Profile 11 (Camt.052 Handling Exception)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
     * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:peppol.eu:prac:bis:p004:1.0</code> to the document types "Tendering Questions V1.0" and "Tendering Answers V1.0" - [TICC-183](https://openpeppol.atlassian.net/browse/TICC-183)
     * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:peppol.eu:prac:bis:p005:1.0</code> to the document types "Tender Clarification Request V1.0" and "Tender Clarification Response V1.0" - [TICC-183](https://openpeppol.atlassian.net/browse/TICC-183)
-
+    * Added the process identifier <code>cenbii-procid-ubl::urn:www.cenbii.eu:profile:biixy:ver2.0</code> to the document type "EHF Reminder 1.1 (Profile XY) (Reminder)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:01:1.0</code> to the document types "EHF Catalogue 3.0 (Catalogue)" and "EHF Catalogue 3.0 (Catalogue Response)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:02:1.0</code> to the document types "EHF Ordering 3.0 (Order)" and "EHF Ordering 3.0 (Order Response)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:03:1.0</code> to the document type "EHF Order Agreement 3.0 (Order Agreement)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:05:1.0</code> to the document type "EHF Despatch Advice 3.0 (Despatch Advice)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:06:1.0</code> to the document type "EHF Reminder 3.0 (Reminder)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:07:1.0</code> to the document type "EHF Payment Request 3.0 (Payment Request)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:08:1.0</code> to the document types "EHF Forward Billing 3.0 (Invoice)" and "EHF Forward Billing 3.0 (Credit Note)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    
 * Transport profiles
     * *No changes so far*
 
