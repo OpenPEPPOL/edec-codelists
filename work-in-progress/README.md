@@ -84,6 +84,9 @@ The reason for the major version change, is the addition of the new "Payment" do
     * Added "EHF Advanced Ordering 3.0 (Order Change)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
     * Added "EHF Advanced Ordering 3.0 (Order Response)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
     * Fixed the element local name in the identifier value of "DHSC Customized Ordering profile OrderResponse V1" (was <code>Order</code> instead of <code>OrderResponse</code>) - [TICC-186](https://openpeppol.atlassian.net/browse/TICC-186)
+    * Added "XRechnung UBL Invoice V2.1" - [TICC-188](https://openpeppol.atlassian.net/browse/TICC-188)
+    * Added "XRechnung UBL CreditNote V2.1" - [TICC-188](https://openpeppol.atlassian.net/browse/TICC-188)
+    * Added "XRechnung CII Invoice V2.1" - [TICC-188](https://openpeppol.atlassian.net/browse/TICC-188)    
     
 * Process identifiers
     * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:01:1.0</code> to the document types "EHF Payment initiation (Profile 01) (Pain.001 Message)", "EHF Payment initiation (Profile 01) (Pain.002 Reception Acknowledgement)", "EHF Payment initiation (Profile 01) (Pain.002 Handling Exception)", "EHF Payment initiation (Profile 01) (Camt.054 Reception Acknowledgement)", "EHF Payment initiation (Profile 01) (Camt.054 Handling Exception)", "EHF Payment initiation (Profile 01) (Pain.001 Reception Acknowledgement)", "EHF Payment initiation (Profile 01) (Pain.001 Handling Exception)", "EHF Payment initiation (Profile 01) (Pain.002 Message)" and "EHF Payment initiation (Profile 01) (Camt.054 Message)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
