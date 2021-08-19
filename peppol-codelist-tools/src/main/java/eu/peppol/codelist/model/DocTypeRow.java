@@ -36,6 +36,8 @@ import com.helger.json.IJsonObject;
 import com.helger.json.JsonArray;
 import com.helger.json.JsonObject;
 import com.helger.peppolid.IProcessIdentifier;
+import com.helger.peppolid.factory.PeppolIdentifierFactory;
+import com.helger.peppolid.peppol.doctype.PeppolDocumentTypeIdentifierParts;
 import com.helger.xml.microdom.IMicroElement;
 import com.helger.xml.microdom.MicroElement;
 
@@ -106,6 +108,13 @@ public final class DocTypeRow implements IModelRow
         throw new IllegalStateException ("DomainCommunity is required");
     if (CollectionHelper.isEmpty (m_aProcessIDs))
       throw new IllegalStateException ("ProcessID is required");
+
+    if (!PeppolIdentifierFactory.INSTANCE.isDocumentTypeIdentifierSchemeValid (m_sScheme))
+      throw new IllegalStateException ("Scheme does not match Peppol requirements");
+    if (!PeppolIdentifierFactory.INSTANCE.isDocumentTypeIdentifierValueValid (m_sValue))
+      throw new IllegalStateException ("Value does not match Peppol requirements");
+    if (PeppolDocumentTypeIdentifierParts.extractFromString (m_sValue) == null)
+      throw new IllegalStateException ("Value does not match detailed Peppol requirements");
 
     if (m_bDeprecated && StringHelper.hasNoText (m_sDeprecatedSince))
       throw new IllegalStateException ("Code list entry is deprecated but there is no deprecated-since entry");
@@ -256,7 +265,7 @@ public final class DocTypeRow implements IModelRow
     ret.m_bDeprecated = ModelHelper.parseDeprecated (aRow[4]);
     ret.m_sDeprecatedSince = aRow[5];
     ret.m_sComment = aRow[6];
-    ret.m_bIssuedByOpenPeppol = ModelHelper.parseIssuedByOpenPEPPOL (aRow[7]);
+    ret.m_bIssuedByOpenPeppol = ModelHelper.parseIssuedByOpenPeppol (aRow[7]);
     ret.m_sBISVersion = aRow[8];
     ret.m_sDomainCommunity = aRow[9];
     ret.m_sProcessIDs = aRow[10];

@@ -31,6 +31,7 @@ import com.helger.html.hc.html.tabular.HCRow;
 import com.helger.json.IJsonObject;
 import com.helger.json.JsonObject;
 import com.helger.peppolid.IProcessIdentifier;
+import com.helger.peppolid.factory.PeppolIdentifierFactory;
 import com.helger.xml.microdom.IMicroElement;
 import com.helger.xml.microdom.MicroElement;
 
@@ -63,6 +64,11 @@ public final class ProcessRow implements IModelRow
       throw new IllegalStateException ("Scheme is required");
     if (StringHelper.hasNoText (m_sValue))
       throw new IllegalStateException ("Value is required");
+
+    if (!PeppolIdentifierFactory.INSTANCE.isProcessIdentifierSchemeValid (m_sScheme))
+      throw new IllegalStateException ("Scheme does not match Peppol requirements");
+    if (!PeppolIdentifierFactory.INSTANCE.isProcessIdentifierValueValid (m_sValue))
+      throw new IllegalStateException ("Value does not match Peppol requirements");
   }
 
   @Nonnull

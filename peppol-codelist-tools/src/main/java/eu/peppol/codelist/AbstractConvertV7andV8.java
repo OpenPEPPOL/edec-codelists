@@ -40,11 +40,11 @@ import eu.peppol.codelist.model.TransportProfileRow;
  *
  * @author Philip Helger
  */
-public abstract class AbstractConvertV7 extends AbstractConverter
+public abstract class AbstractConvertV7andV8 extends AbstractConverter
 {
   private final ICommonsMap <IProcessIdentifier, ICommonsList <DocTypeRow>> m_aProcIDs = new CommonsLinkedHashMap <> ();
 
-  public AbstractConvertV7 (@Nonnull final Version aCodeListVersion,
+  public AbstractConvertV7andV8 (@Nonnull final Version aCodeListVersion,
                             @Nonnull @Nonempty final String sResultDir,
                             @Nonnull final String sFilenameSuffix)
   {

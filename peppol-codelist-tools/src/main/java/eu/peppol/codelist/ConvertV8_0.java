@@ -18,11 +18,11 @@ package eu.peppol.codelist;
 import com.helger.commons.version.Version;
 
 /**
- * Handle V7.5 code lists
+ * Handle V8.0 code lists
  *
  * @author Philip Helger
  */
-public final class ConvertV8_0 extends AbstractConvertV7
+public final class ConvertV8_0 extends AbstractConvertV7andV8
 {
   public static final Version CODE_LIST_VERSION = new Version (8, 0);
   public static final String DESTINATION_BASE_PATH = "created-codelists/v8.0-snapshot/";

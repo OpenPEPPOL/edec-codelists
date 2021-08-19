@@ -43,7 +43,7 @@ final class ModelHelper
     return parseBoolean (s, DEFAULT_DEPRECATED);
   }
 
-  static boolean parseIssuedByOpenPEPPOL (final String s)
+  static boolean parseIssuedByOpenPeppol (final String s)
   {
     return parseBoolean (s, DEFAULT_ISSUED_BY_OPENPEPPOL);
   }
