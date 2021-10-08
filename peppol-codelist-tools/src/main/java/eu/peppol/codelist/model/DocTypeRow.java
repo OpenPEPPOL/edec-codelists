@@ -20,9 +20,6 @@ import java.net.URI;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.helger.commons.collection.CollectionHelper;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.string.StringHelper;
@@ -68,8 +65,6 @@ public final class DocTypeRow implements IModelRow
   private static final String DOMAIN_COMMUNITY = "domain-community";
   private static final String PROCESS_ID_ONE = "process-id";
   private static final String PROCESS_ID_MANY = "process-ids";
-
-  private static final Logger LOGGER = LoggerFactory.getLogger (DocTypeRow.class);
 
   public static final String CODE_LIST_NAME = "Peppol Code Lists - Document types";
   public static final URI CODE_LIST_URI = URLHelper.getAsURI ("urn:peppol.eu:names:identifier:document-type");
