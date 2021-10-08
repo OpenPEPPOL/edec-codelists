@@ -21,7 +21,7 @@
   <parent>
     <groupId>com.helger</groupId>
     <artifactId>parent-pom</artifactId>
-    <version>1.11.3</version>
+    <version>1.11.4</version>
   </parent>
   <artifactId>peppol-edec-codelists-tools</artifactId>
   <version>8.0-SNAPSHOT</version>
@@ -64,7 +64,7 @@
       <dependency>
         <groupId>com.helger.commons</groupId>
         <artifactId>ph-commons-parent-pom</artifactId>
-        <version>10.1.2</version>
+        <version>10.1.3</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -88,7 +88,7 @@
       <dependency>
         <groupId>com.helger.peppol</groupId>
         <artifactId>peppol-commons-parent-pom</artifactId>
-        <version>8.6.2</version>
+        <version>8.6.3</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>

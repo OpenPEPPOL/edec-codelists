@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2020 OpenPeppol AISBL (www.peppol.eu)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
