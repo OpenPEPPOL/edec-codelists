@@ -36,15 +36,15 @@ import eu.peppol.codelist.model.ProcessRow;
 import eu.peppol.codelist.model.TransportProfileRow;
 
 /**
- * Handle V7+V8 code lists
+ * Handle V8 code lists
  *
  * @author Philip Helger
  */
-public abstract class AbstractConvertV7andV8 extends AbstractConverter
+public abstract class AbstractConvertV8 extends AbstractConverter
 {
   private final ICommonsMap <IProcessIdentifier, ICommonsList <DocTypeRow>> m_aProcIDs = new CommonsLinkedHashMap <> ();
 
-  public AbstractConvertV7andV8 (@Nonnull final Version aCodeListVersion,
+  public AbstractConvertV8 (@Nonnull final Version aCodeListVersion,
                             @Nonnull @Nonempty final String sResultDir,
                             @Nonnull final String sFilenameSuffix)
   {

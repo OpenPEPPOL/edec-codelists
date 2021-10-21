@@ -23,7 +23,7 @@ import com.helger.commons.version.Version;
  * @author Philip Helger
  */
 @Deprecated
-public final class ConvertV7_5 extends AbstractConvertV7andV8
+public final class ConvertV7_5 extends AbstractConvertV7
 {
   public static final Version CODE_LIST_VERSION = new Version (7, 5);
   public static final String DESTINATION_BASE_PATH = "created-codelists/v7.5/";
