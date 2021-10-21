@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package eu.peppol.codelist;
+package eu.peppol.codelist.v8;
 
 import java.util.Map;
 
@@ -29,6 +29,8 @@ import com.helger.commons.collection.impl.ICommonsMap;
 import com.helger.commons.version.Version;
 import com.helger.peppolid.IProcessIdentifier;
 
+import eu.peppol.codelist.AbstractConverter;
+import eu.peppol.codelist.CodeListSource;
 import eu.peppol.codelist.excel.InMemoryXLSX;
 import eu.peppol.codelist.model.DocTypeRow;
 import eu.peppol.codelist.model.ParticipantIdentifierSchemeRow;
@@ -36,16 +38,15 @@ import eu.peppol.codelist.model.ProcessRow;
 import eu.peppol.codelist.model.TransportProfileRow;
 
 /**
- * Handle V7 code lists
+ * Handle V8 code lists
  *
  * @author Philip Helger
  */
-@Deprecated
-public abstract class AbstractConvertV7 extends AbstractConverter
+public abstract class AbstractConvertV8 extends AbstractConverter
 {
   private final ICommonsMap <IProcessIdentifier, ICommonsList <DocTypeRow>> m_aProcIDs = new CommonsLinkedHashMap <> ();
 
-  public AbstractConvertV7 (@Nonnull final Version aCodeListVersion,
+  public AbstractConvertV8 (@Nonnull final Version aCodeListVersion,
                             @Nonnull @Nonempty final String sResultDir,
                             @Nonnull final String sFilenameSuffix)
   {
@@ -58,7 +59,7 @@ public abstract class AbstractConvertV7 extends AbstractConverter
     final InMemoryXLSX aXLSX = InMemoryXLSX.read (aDocumentSheet, 11);
 
     // Convert to domain object
-    final ICommonsList <DocTypeRow> aRows = aXLSX.getAsList (DocTypeRow::createV7);
+    final ICommonsList <DocTypeRow> aRows = aXLSX.getAsList (DocTypeRow::createV8);
 
     // Collect all proc types
     for (final DocTypeRow aRow : aRows)
@@ -82,7 +83,7 @@ public abstract class AbstractConvertV7 extends AbstractConverter
     final InMemoryXLSX aXLSX = InMemoryXLSX.read (aParticipantSheet, 13);
 
     // Convert to domain object
-    final ICommonsList <ParticipantIdentifierSchemeRow> aRows = aXLSX.getAsList (ParticipantIdentifierSchemeRow::createV7);
+    final ICommonsList <ParticipantIdentifierSchemeRow> aRows = aXLSX.getAsList (ParticipantIdentifierSchemeRow::createV8);
 
     // Consistency checks
     for (final ParticipantIdentifierSchemeRow aRow : aRows)
@@ -104,7 +105,7 @@ public abstract class AbstractConvertV7 extends AbstractConverter
     final InMemoryXLSX aXLSX = InMemoryXLSX.read (aTPSheet, 6);
 
     // Convert to domain object
-    final ICommonsList <TransportProfileRow> aRows = aXLSX.getAsList (TransportProfileRow::createV7);
+    final ICommonsList <TransportProfileRow> aRows = aXLSX.getAsList (TransportProfileRow::createV8);
 
     // Consistency checks
     for (final TransportProfileRow aRow : aRows)

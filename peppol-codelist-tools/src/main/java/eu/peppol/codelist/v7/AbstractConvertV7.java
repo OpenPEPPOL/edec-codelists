@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package eu.peppol.codelist;
+package eu.peppol.codelist.v7;
 
 import java.util.Map;
 
@@ -29,6 +29,8 @@ import com.helger.commons.collection.impl.ICommonsMap;
 import com.helger.commons.version.Version;
 import com.helger.peppolid.IProcessIdentifier;
 
+import eu.peppol.codelist.AbstractConverter;
+import eu.peppol.codelist.CodeListSource;
 import eu.peppol.codelist.excel.InMemoryXLSX;
 import eu.peppol.codelist.model.DocTypeRow;
 import eu.peppol.codelist.model.ParticipantIdentifierSchemeRow;
@@ -36,15 +38,16 @@ import eu.peppol.codelist.model.ProcessRow;
 import eu.peppol.codelist.model.TransportProfileRow;
 
 /**
- * Handle V8 code lists
+ * Handle V7 code lists
  *
  * @author Philip Helger
  */
-public abstract class AbstractConvertV8 extends AbstractConverter
+@Deprecated
+public abstract class AbstractConvertV7 extends AbstractConverter
 {
   private final ICommonsMap <IProcessIdentifier, ICommonsList <DocTypeRow>> m_aProcIDs = new CommonsLinkedHashMap <> ();
 
-  public AbstractConvertV8 (@Nonnull final Version aCodeListVersion,
+  public AbstractConvertV7 (@Nonnull final Version aCodeListVersion,
                             @Nonnull @Nonempty final String sResultDir,
                             @Nonnull final String sFilenameSuffix)
   {

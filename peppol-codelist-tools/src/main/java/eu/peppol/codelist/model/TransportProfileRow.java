@@ -46,8 +46,18 @@ public final class TransportProfileRow implements IModelRow
   private static final String PROFILE_VERSION = "profile-version";
   private static final String PROFILE_ID = "profile-id";
   private static final String SINCE = "since";
+  @Deprecated
+  @SuppressWarnings ("unused")
+  // Deprecated in V8
   private static final String DEPRECATED = "deprecated";
+  @Deprecated
+  @SuppressWarnings ("unused")
+  // Deprecated in V8
   private static final String DEPRECATED_SINCE = "deprecated-since";
+  // New in V8
+  private static final String STATE = "state";
+  // New in V8
+  private static final String DEPRECATION_VERSION = "deprecation-version";
 
   public static final String CODE_LIST_NAME = "Peppol Code Lists - Transport profiles";
   public static final URI CODE_LIST_URI = URLHelper.getAsURI ("urn:peppol.eu:names:identifier:transport-profile");
@@ -57,8 +67,8 @@ public final class TransportProfileRow implements IModelRow
   private String m_sProfileVersion;
   private String m_sProfileID;
   private String m_sSince;
-  private boolean m_bDeprecated;
-  private String m_sDeprecatedSince;
+  private ERowState m_eState;
+  private String m_sDeprecationVersion;
 
   public void checkConsistency ()
   {
@@ -70,8 +80,10 @@ public final class TransportProfileRow implements IModelRow
       throw new IllegalStateException ("Profile ID is required");
     if (StringHelper.hasNoText (m_sSince))
       throw new IllegalStateException ("Since is required");
+    if (m_eState == null)
+      throw new IllegalStateException ("State is required");
 
-    if (m_bDeprecated && StringHelper.hasNoText (m_sDeprecatedSince))
+    if (m_eState.isDeprecated () && StringHelper.hasNoText (m_sDeprecationVersion))
       throw new IllegalStateException ("Code list entry is deprecated but there is no deprecated-since entry");
   }
 
@@ -83,8 +95,8 @@ public final class TransportProfileRow implements IModelRow
     ret.setAttribute (PROFILE_VERSION, m_sProfileVersion);
     ret.setAttribute (PROFILE_ID, m_sProfileID);
     ret.setAttribute (SINCE, m_sSince);
-    ret.setAttribute (DEPRECATED, m_bDeprecated);
-    ret.setAttribute (DEPRECATED_SINCE, m_sDeprecatedSince);
+    ret.setAttribute (STATE, m_eState.getID ());
+    ret.setAttribute (DEPRECATION_VERSION, m_sDeprecationVersion);
     return ret;
   }
 
@@ -96,9 +108,9 @@ public final class TransportProfileRow implements IModelRow
     ret.add (PROFILE_VERSION, m_sProfileVersion);
     ret.add (PROFILE_ID, m_sProfileID);
     ret.add (SINCE, m_sSince);
-    ret.add (DEPRECATED, m_bDeprecated);
-    if (StringHelper.hasText (m_sDeprecatedSince))
-      ret.add (DEPRECATED_SINCE, m_sDeprecatedSince);
+    ret.add (STATE, m_eState.getID ());
+    if (StringHelper.hasText (m_sDeprecationVersion))
+      ret.add (DEPRECATION_VERSION, m_sDeprecationVersion);
     return ret;
   }
 
@@ -109,8 +121,8 @@ public final class TransportProfileRow implements IModelRow
     GCHelper.addHeaderColumn (aColumnSet, PROFILE_VERSION, false, true, "Profile Version", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, PROFILE_ID, true, true, "Profile ID", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, SINCE, false, true, "Since", ECodeListDataType.STRING);
-    GCHelper.addHeaderColumn (aColumnSet, DEPRECATED, false, true, "Deprecated?", ECodeListDataType.BOOLEAN);
-    GCHelper.addHeaderColumn (aColumnSet, DEPRECATED_SINCE, false, false, "Deprecated since", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet, STATE, false, true, "State", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet, DEPRECATION_VERSION, false, false, "Deprecation version", ECodeListDataType.STRING);
   }
 
   @Nonnull
@@ -122,8 +134,8 @@ public final class TransportProfileRow implements IModelRow
     ret.add (PROFILE_VERSION, m_sProfileVersion);
     ret.add (PROFILE_ID, m_sProfileID);
     ret.add (SINCE, m_sSince);
-    ret.add (DEPRECATED, m_bDeprecated);
-    ret.add (DEPRECATED_SINCE, m_sDeprecatedSince);
+    ret.add (STATE, m_eState.getID ());
+    ret.add (DEPRECATION_VERSION, m_sDeprecationVersion);
     return ret;
   }
 
@@ -135,8 +147,8 @@ public final class TransportProfileRow implements IModelRow
     aRow.addCell ("Profile Version");
     aRow.addCell ("Profile ID");
     aRow.addCell ("Since");
-    aRow.addCell ("Deprecated?");
-    aRow.addCell ("Deprecated since");
+    aRow.addCell ("State");
+    aRow.addCell ("Deprecation version");
     return aRow;
   }
 
@@ -148,14 +160,18 @@ public final class TransportProfileRow implements IModelRow
     aRow.addCell (m_sProfileVersion);
     aRow.addCell (m_sProfileID);
     aRow.addCell (m_sSince);
-    aRow.addCell (Boolean.toString (m_bDeprecated));
-    aRow.addCell (m_sDeprecatedSince);
-    if (m_bDeprecated)
-      aRow.addClass (DefaultCSSClassProvider.create ("table-warning"));
+    aRow.addCell (m_eState.getDisplayName ());
+    aRow.addCell (m_sDeprecationVersion);
+    if (m_eState.isRemoved ())
+      aRow.addClass (DefaultCSSClassProvider.create ("table-danger"));
+    else
+      if (m_eState.isDeprecated ())
+        aRow.addClass (DefaultCSSClassProvider.create ("table-warning"));
     return aRow;
   }
 
   @Nonnull
+  @Deprecated
   public static TransportProfileRow createV7 (@Nonnull final String [] aRow)
   {
     final TransportProfileRow ret = new TransportProfileRow ();
@@ -163,8 +179,21 @@ public final class TransportProfileRow implements IModelRow
     ret.m_sProfileVersion = aRow[1];
     ret.m_sProfileID = aRow[2];
     ret.m_sSince = aRow[3];
-    ret.m_bDeprecated = ModelHelper.parseDeprecated (aRow[4]);
-    ret.m_sDeprecatedSince = aRow[5];
+    ret.m_eState = ModelHelper.parseDeprecated (aRow[4]) ? ERowState.DEPRECATED : ERowState.ACTIVE;
+    ret.m_sDeprecationVersion = aRow[5];
+    return ret;
+  }
+
+  @Nonnull
+  public static TransportProfileRow createV8 (@Nonnull final String [] aRow)
+  {
+    final TransportProfileRow ret = new TransportProfileRow ();
+    ret.m_sProtcol = aRow[0];
+    ret.m_sProfileVersion = aRow[1];
+    ret.m_sProfileID = aRow[2];
+    ret.m_sSince = aRow[3];
+    ret.m_eState = ERowState.getFromIDOrThrow (aRow[4]);
+    ret.m_sDeprecationVersion = aRow[5];
     return ret;
   }
 }

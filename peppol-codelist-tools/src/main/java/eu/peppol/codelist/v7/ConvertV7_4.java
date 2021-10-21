@@ -13,23 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package eu.peppol.codelist;
+package eu.peppol.codelist.v7;
 
 import com.helger.commons.version.Version;
 
 /**
- * Handle V7 code list
+ * Handle V7.4 code lists
  *
  * @author Philip Helger
  */
 @Deprecated
-public final class ConvertV7_0 extends AbstractConvertV7
+public final class ConvertV7_4 extends AbstractConvertV7
 {
-  public static final Version CODE_LIST_VERSION = new Version (7);
-  public static final String DESTINATION_BASE_PATH = "created-codelists/v7/";
-  public static final String DESTINATION_FILENAME_SUFFIX = "V7";
+  public static final Version CODE_LIST_VERSION = new Version (7, 4);
+  public static final String DESTINATION_BASE_PATH = "created-codelists/v7.4/";
+  public static final String DESTINATION_FILENAME_SUFFIX = " v7.4";
 
-  public ConvertV7_0 ()
+  public ConvertV7_4 ()
   {
     super (CODE_LIST_VERSION, DESTINATION_BASE_PATH, DESTINATION_FILENAME_SUFFIX);
   }

@@ -48,7 +48,12 @@ public final class ProcessRow implements IModelRow
 {
   private static final String SCHEME = "scheme";
   private static final String VALUE = "value";
+  @Deprecated
+  @SuppressWarnings ("unused")
+  // Deprecated in V8
   private static final String DEPRECATED = "deprecated";
+  // New in V8
+  private static final String STATE = "state";
 
   public static final String CODE_LIST_NAME = "Peppol Code Lists - Processes";
   public static final URI CODE_LIST_URI = URLHelper.getAsURI ("urn:peppol.eu:names:identifier:process");
@@ -56,7 +61,7 @@ public final class ProcessRow implements IModelRow
 
   private String m_sScheme;
   private String m_sValue;
-  private boolean m_bDeprecated;
+  private ERowState m_eState;
 
   public void checkConsistency ()
   {
@@ -64,6 +69,8 @@ public final class ProcessRow implements IModelRow
       throw new IllegalStateException ("Scheme is required");
     if (StringHelper.hasNoText (m_sValue))
       throw new IllegalStateException ("Value is required");
+    if (m_eState == null)
+      throw new IllegalStateException ("State is required");
 
     if (!PeppolIdentifierFactory.INSTANCE.isProcessIdentifierSchemeValid (m_sScheme))
       throw new IllegalStateException ("Scheme does not match Peppol requirements");
@@ -77,7 +84,7 @@ public final class ProcessRow implements IModelRow
     final IMicroElement ret = new MicroElement ("process");
     ret.setAttribute (SCHEME, m_sScheme);
     ret.setAttribute (VALUE, m_sValue);
-    ret.setAttribute (DEPRECATED, m_bDeprecated);
+    ret.setAttribute (STATE, m_eState.getID ());
     return ret;
   }
 
@@ -87,7 +94,7 @@ public final class ProcessRow implements IModelRow
     final IJsonObject ret = new JsonObject ();
     ret.add (SCHEME, m_sScheme);
     ret.add (VALUE, m_sValue);
-    ret.add (DEPRECATED, m_bDeprecated);
+    ret.add (STATE, m_eState.getID ());
     return ret;
   }
 
@@ -96,7 +103,7 @@ public final class ProcessRow implements IModelRow
     final ColumnSet aColumnSet = aCLDoc.getColumnSet ();
     GCHelper.addHeaderColumn (aColumnSet, SCHEME, true, true, "Peppol Identifier Scheme", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, VALUE, true, true, "Peppol Identifier Value", ECodeListDataType.STRING);
-    GCHelper.addHeaderColumn (aColumnSet, DEPRECATED, false, true, "Deprecated?", ECodeListDataType.BOOLEAN);
+    GCHelper.addHeaderColumn (aColumnSet, STATE, false, true, "State", ECodeListDataType.STRING);
   }
 
   @Nonnull
@@ -106,7 +113,7 @@ public final class ProcessRow implements IModelRow
     final GCRowExt ret = new GCRowExt (aColumnSet);
     ret.add (SCHEME, m_sScheme);
     ret.add (VALUE, m_sValue);
-    ret.add (DEPRECATED, m_bDeprecated);
+    ret.add (STATE, m_eState.getID ());
     return ret;
   }
 
@@ -116,7 +123,7 @@ public final class ProcessRow implements IModelRow
     final HCRow aRow = new HCRow (true);
     aRow.addCell ("Peppol Identifier Scheme");
     aRow.addCell ("Peppol Identifier Value");
-    aRow.addCell ("Deprecated?");
+    aRow.addCell ("State");
     return aRow;
   }
 
@@ -126,9 +133,12 @@ public final class ProcessRow implements IModelRow
     final HCRow aRow = new HCRow ();
     aRow.addCell (m_sScheme);
     aRow.addCell (m_sValue);
-    aRow.addCell (Boolean.toString (m_bDeprecated));
-    if (m_bDeprecated)
-      aRow.addClass (DefaultCSSClassProvider.create ("table-warning"));
+    aRow.addCell (m_eState.getDisplayName ());
+    if (m_eState.isRemoved ())
+      aRow.addClass (DefaultCSSClassProvider.create ("table-danger"));
+    else
+      if (m_eState.isDeprecated ())
+        aRow.addClass (DefaultCSSClassProvider.create ("table-warning"));
     return aRow;
   }
 
@@ -139,7 +149,23 @@ public final class ProcessRow implements IModelRow
     final ProcessRow ret = new ProcessRow ();
     ret.m_sScheme = aProcID.getScheme ();
     ret.m_sValue = aProcID.getValue ();
-    ret.m_bDeprecated = aAllDocTypes.containsOnly (DocTypeRow::isDeprecated);
+    if (aAllDocTypes.containsAny (x -> x.getState ().isActive ()))
+    {
+      // If any document type is active, the process ID is also active
+      ret.m_eState = ERowState.ACTIVE;
+    }
+    else
+      if (aAllDocTypes.containsAny (x -> x.getState ().isDeprecated ()))
+      {
+        // If no document types is active but at least one is deprecated, this
+        // process is also deprecated
+        ret.m_eState = ERowState.DEPRECATED;
+      }
+      else
+      {
+        // All document types must be removed
+        ret.m_eState = ERowState.REMOVED;
+      }
     return ret;
   }
 }

@@ -57,8 +57,18 @@ public final class DocTypeRow implements IModelRow
   private static final String SCHEME = "scheme";
   private static final String VALUE = "value";
   private static final String SINCE = "since";
+  @Deprecated
+  @SuppressWarnings ("unused")
+  // Deprecated in V8
   private static final String DEPRECATED = "deprecated";
+  @Deprecated
+  @SuppressWarnings ("unused")
+  // Deprecated in V8
   private static final String DEPRECATED_SINCE = "deprecated-since";
+  // New in V8
+  private static final String STATE = "state";
+  // New in V8
+  private static final String DEPRECATION_VERSION = "deprecation-version";
   private static final String COMMENT = "comment";
   private static final String ISSUED_BY_OPENPEPPOL = "issued-by-openpeppol";
   private static final String BIS_VERSION = "bis-version";
@@ -74,8 +84,8 @@ public final class DocTypeRow implements IModelRow
   private String m_sScheme;
   private String m_sValue;
   private String m_sSince;
-  private boolean m_bDeprecated;
-  private String m_sDeprecatedSince;
+  private ERowState m_eState;
+  private String m_sDeprecationVersion;
   private String m_sComment;
   private boolean m_bIssuedByOpenPeppol;
   private String m_sBISVersion;
@@ -83,9 +93,10 @@ public final class DocTypeRow implements IModelRow
   private String m_sProcessIDs;
   private ICommonsList <IProcessIdentifier> m_aProcessIDs;
 
-  public boolean isDeprecated ()
+  @Nonnull
+  public ERowState getState ()
   {
-    return m_bDeprecated;
+    return m_eState;
   }
 
   @Nullable
@@ -100,6 +111,8 @@ public final class DocTypeRow implements IModelRow
       throw new IllegalStateException ("Name is required");
     if (StringHelper.hasNoText (m_sScheme))
       throw new IllegalStateException ("Scheme is required");
+    if (m_eState == null)
+      throw new IllegalStateException ("State is required");
     if (StringHelper.hasNoText (m_sValue))
       throw new IllegalStateException ("Value is required");
     if (StringHelper.hasNoText (m_sSince))
@@ -121,11 +134,11 @@ public final class DocTypeRow implements IModelRow
     // Root NS: urn:oasis:names:specification:ubl:schema:xsd:OrderCancellation-2
     // Local name: OrderCancellation
     if (aParts.getRootNS ().endsWith ("-2"))
-      if (!m_bDeprecated && !aParts.getRootNS ().endsWith (aParts.getLocalName () + "-2"))
+      if (m_eState.isActive () && !aParts.getRootNS ().endsWith (aParts.getLocalName () + "-2"))
         throw new IllegalStateException ("Value '" + m_sValue + "' seems to be inconsistent");
 
-    if (m_bDeprecated && StringHelper.hasNoText (m_sDeprecatedSince))
-      throw new IllegalStateException ("Code list entry is deprecated but there is no deprecated-since entry");
+    if (m_eState.isDeprecated () && StringHelper.hasNoText (m_sDeprecationVersion))
+      throw new IllegalStateException ("Code list entry is deprecated but there is no deprecated-version entry");
     if (m_bIssuedByOpenPeppol && StringHelper.hasNoText (m_sBISVersion))
       throw new IllegalStateException ("If issued by OpenPEPPOL, a BIS version is required");
     if (StringHelper.hasText (m_sBISVersion) && !StringParser.isUnsignedInt (m_sBISVersion))
@@ -140,8 +153,8 @@ public final class DocTypeRow implements IModelRow
     ret.setAttribute (SCHEME, m_sScheme);
     ret.setAttribute (VALUE, m_sValue);
     ret.setAttribute (SINCE, m_sSince);
-    ret.setAttribute (DEPRECATED, m_bDeprecated);
-    ret.setAttribute (DEPRECATED_SINCE, m_sDeprecatedSince);
+    ret.setAttribute (STATE, m_eState.getID ());
+    ret.setAttribute (DEPRECATION_VERSION, m_sDeprecationVersion);
     if (StringHelper.hasText (m_sComment))
       ret.appendElement (COMMENT).appendText (m_sComment);
     ret.setAttribute (ISSUED_BY_OPENPEPPOL, m_bIssuedByOpenPeppol);
@@ -163,9 +176,9 @@ public final class DocTypeRow implements IModelRow
     ret.add (SCHEME, m_sScheme);
     ret.add (VALUE, m_sValue);
     ret.add (SINCE, m_sSince);
-    ret.add (DEPRECATED, m_bDeprecated);
-    if (StringHelper.hasText (m_sDeprecatedSince))
-      ret.add (DEPRECATED_SINCE, m_sDeprecatedSince);
+    ret.add (STATE, m_eState.getID ());
+    if (StringHelper.hasText (m_sDeprecationVersion))
+      ret.add (DEPRECATION_VERSION, m_sDeprecationVersion);
     if (StringHelper.hasText (m_sComment))
       ret.add (COMMENT, m_sComment);
     ret.add (ISSUED_BY_OPENPEPPOL, m_bIssuedByOpenPeppol);
@@ -189,8 +202,8 @@ public final class DocTypeRow implements IModelRow
     GCHelper.addHeaderColumn (aColumnSet, SCHEME, true, true, "Peppol Document Type Identifier Scheme", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, VALUE, true, true, "Peppol Document Type Identifier Value", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, SINCE, false, true, "Since", ECodeListDataType.STRING);
-    GCHelper.addHeaderColumn (aColumnSet, DEPRECATED, false, true, "Deprecated?", ECodeListDataType.BOOLEAN);
-    GCHelper.addHeaderColumn (aColumnSet, DEPRECATED_SINCE, false, false, "Deprecated since", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet, STATE, false, true, "State", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet, DEPRECATION_VERSION, false, false, "Deprecation version", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, COMMENT, false, false, "Comment", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, ISSUED_BY_OPENPEPPOL, false, true, "Issued by OpenPEPPOL?", ECodeListDataType.BOOLEAN);
     GCHelper.addHeaderColumn (aColumnSet, BIS_VERSION, false, false, "BIS version", ECodeListDataType.STRING);
@@ -212,8 +225,8 @@ public final class DocTypeRow implements IModelRow
     ret.add (SCHEME, m_sScheme);
     ret.add (VALUE, m_sValue);
     ret.add (SINCE, m_sSince);
-    ret.add (DEPRECATED, m_bDeprecated);
-    ret.add (DEPRECATED_SINCE, m_sDeprecatedSince);
+    ret.add (STATE, m_eState.getID ());
+    ret.add (DEPRECATION_VERSION, m_sDeprecationVersion);
     ret.add (COMMENT, m_sComment);
     ret.add (ISSUED_BY_OPENPEPPOL, m_bIssuedByOpenPeppol);
     ret.add (BIS_VERSION, m_sBISVersion);
@@ -230,8 +243,8 @@ public final class DocTypeRow implements IModelRow
     aRow.addCell ("Peppol Document Type Identifier Scheme");
     aRow.addCell ("Peppol Document Type Identifier Value");
     aRow.addCell ("Since");
-    aRow.addCell ("Deprecated?");
-    aRow.addCell ("Deprecated since");
+    aRow.addCell ("State");
+    aRow.addCell ("Deprecation version");
     aRow.addCell ("Comment");
     aRow.addCell ("Issued by OpenPEPPOL?");
     aRow.addCell ("BIS version");
@@ -248,19 +261,23 @@ public final class DocTypeRow implements IModelRow
     aRow.addCell (m_sScheme);
     aRow.addCell (m_sValue);
     aRow.addCell (m_sSince);
-    aRow.addCell (Boolean.toString (m_bDeprecated));
-    aRow.addCell (m_sDeprecatedSince);
+    aRow.addCell (m_eState.getDisplayName ());
+    aRow.addCell (m_sDeprecationVersion);
     aRow.addCell (m_sComment);
     aRow.addCell (Boolean.toString (m_bIssuedByOpenPeppol));
     aRow.addCell (m_sBISVersion);
     aRow.addCell (m_sDomainCommunity);
     aRow.addCell (HCExtHelper.nl2brList (m_sProcessIDs));
-    if (m_bDeprecated)
-      aRow.addClass (DefaultCSSClassProvider.create ("table-warning"));
+    if (m_eState.isRemoved ())
+      aRow.addClass (DefaultCSSClassProvider.create ("table-danger"));
+    else
+      if (m_eState.isDeprecated ())
+        aRow.addClass (DefaultCSSClassProvider.create ("table-warning"));
     return aRow;
   }
 
   @Nonnull
+  @Deprecated
   public static DocTypeRow createV7 (@Nonnull final String [] aRow)
   {
     final DocTypeRow ret = new DocTypeRow ();
@@ -270,8 +287,29 @@ public final class DocTypeRow implements IModelRow
     ret.m_sScheme = aRow[1];
     ret.m_sValue = aRow[2];
     ret.m_sSince = aRow[3];
-    ret.m_bDeprecated = ModelHelper.parseDeprecated (aRow[4]);
-    ret.m_sDeprecatedSince = aRow[5];
+    ret.m_eState = ModelHelper.parseDeprecated (aRow[4]) ? ERowState.DEPRECATED : ERowState.ACTIVE;
+    ret.m_sDeprecationVersion = aRow[5];
+    ret.m_sComment = aRow[6];
+    ret.m_bIssuedByOpenPeppol = ModelHelper.parseIssuedByOpenPeppol (aRow[7]);
+    ret.m_sBISVersion = aRow[8];
+    ret.m_sDomainCommunity = aRow[9];
+    ret.m_sProcessIDs = aRow[10];
+    ret.m_aProcessIDs = ModelHelper.getAllProcessIDsFromMultilineString (ret.m_sProcessIDs);
+    return ret;
+  }
+
+  @Nonnull
+  public static DocTypeRow createV8 (@Nonnull final String [] aRow)
+  {
+    final DocTypeRow ret = new DocTypeRow ();
+    ret.m_sName = aRow[0];
+    if (StringHelper.hasNoText (ret.m_sName))
+      throw new IllegalStateException ("Empty name is not allowed");
+    ret.m_sScheme = aRow[1];
+    ret.m_sValue = aRow[2];
+    ret.m_sSince = aRow[3];
+    ret.m_eState = ERowState.getFromIDOrThrow (aRow[4]);
+    ret.m_sDeprecationVersion = aRow[5];
     ret.m_sComment = aRow[6];
     ret.m_bIssuedByOpenPeppol = ModelHelper.parseIssuedByOpenPeppol (aRow[7]);
     ret.m_sBISVersion = aRow[8];

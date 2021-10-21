@@ -50,8 +50,18 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
   private static final String SCHEME_NAME = "scheme-name";
   private static final String ISSUING_AGENCY = "issuing-agency";
   private static final String SINCE = "since";
+  @Deprecated
+  @SuppressWarnings ("unused")
+  // Deprecated in V8
   private static final String DEPRECATED = "deprecated";
+  @Deprecated
+  @SuppressWarnings ("unused")
+  // Deprecated in V8
   private static final String DEPRECATED_SINCE = "deprecated-since";
+  // New in V8
+  private static final String STATE = "state";
+  // New in V8
+  private static final String DEPRECATION_VERSION = "deprecation-version";
   private static final String STRUCTURE = "structure";
   private static final String DISPLAY = "display";
   private static final String EXAMPLES = "examples";
@@ -68,8 +78,8 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
   private String m_sSchemeName;
   private String m_sIssuingAgency;
   private String m_sSince;
-  private boolean m_bDeprecated;
-  private String m_sDeprecatedSince;
+  private ERowState m_eState;
+  private String m_sDeprecationVersion;
   private String m_sStructure;
   private String m_sDisplay;
   private String m_sExamples;
@@ -94,8 +104,10 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
       throw new IllegalStateException ("Scheme Name is required");
     if (StringHelper.hasNoText (m_sSince))
       throw new IllegalStateException ("Since is required");
-    if (m_bDeprecated && StringHelper.hasNoText (m_sDeprecatedSince))
-      throw new IllegalStateException ("Code list entry is deprecated but there is no deprecated-since entry");
+    if (m_eState == null)
+      throw new IllegalStateException ("State is required");
+    if (m_eState.isDeprecated () && StringHelper.hasNoText (m_sDeprecationVersion))
+      throw new IllegalStateException ("Code list entry is deprecated but there is no deprecation-version entry");
   }
 
   @Nonnull
@@ -108,8 +120,8 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
     ret.setAttribute (SCHEME_NAME, m_sSchemeName);
     ret.setAttribute (ISSUING_AGENCY, m_sIssuingAgency);
     ret.setAttribute (SINCE, m_sSince);
-    ret.setAttribute (DEPRECATED, m_bDeprecated);
-    ret.setAttribute (DEPRECATED_SINCE, m_sDeprecatedSince);
+    ret.setAttribute (STATE, m_eState.getID ());
+    ret.setAttribute (DEPRECATION_VERSION, m_sDeprecationVersion);
     if (StringHelper.hasText (m_sStructure))
       ret.appendElement (STRUCTURE).appendText (m_sStructure);
     if (StringHelper.hasText (m_sDisplay))
@@ -134,9 +146,9 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
     if (StringHelper.hasText (m_sIssuingAgency))
       ret.add (ISSUING_AGENCY, m_sIssuingAgency);
     ret.add (SINCE, m_sSince);
-    ret.add (DEPRECATED, m_bDeprecated);
-    if (StringHelper.hasText (m_sDeprecatedSince))
-      ret.add (DEPRECATED_SINCE, m_sDeprecatedSince);
+    ret.add (STATE, m_eState.getID ());
+    if (StringHelper.hasText (m_sDeprecationVersion))
+      ret.add (DEPRECATION_VERSION, m_sDeprecationVersion);
     if (StringHelper.hasText (m_sStructure))
       ret.add (STRUCTURE, m_sStructure);
     if (StringHelper.hasText (m_sDisplay))
@@ -159,8 +171,8 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
     GCHelper.addHeaderColumn (aColumnSet, SCHEME_NAME, true, true, "Scheme Name", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, ISSUING_AGENCY, false, false, "Issuing Organisation", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, SINCE, false, true, "Since", ECodeListDataType.STRING);
-    GCHelper.addHeaderColumn (aColumnSet, DEPRECATED, false, true, "Deprecated?", ECodeListDataType.BOOLEAN);
-    GCHelper.addHeaderColumn (aColumnSet, DEPRECATED_SINCE, false, false, "Deprecated since", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet, STATE, false, true, "State", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet, DEPRECATION_VERSION, false, false, "Deprecation version", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, STRUCTURE, false, false, "Structure of Code", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, DISPLAY, false, false, "Display Requirements", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, EXAMPLES, false, false, "Peppol Examples", ECodeListDataType.STRING);
@@ -179,8 +191,8 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
     ret.add (SCHEME_NAME, m_sSchemeName);
     ret.add (ISSUING_AGENCY, m_sIssuingAgency);
     ret.add (SINCE, m_sSince);
-    ret.add (DEPRECATED, m_bDeprecated);
-    ret.add (DEPRECATED_SINCE, m_sDeprecatedSince);
+    ret.add (STATE, m_eState.getID ());
+    ret.add (DEPRECATION_VERSION, m_sDeprecationVersion);
     ret.add (STRUCTURE, m_sStructure);
     ret.add (DISPLAY, m_sDisplay);
     ret.add (EXAMPLES, m_sExamples);
@@ -199,8 +211,8 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
     aRow.addCell ("Scheme Name");
     aRow.addCell ("Issuing Organisation");
     aRow.addCell ("Since");
-    aRow.addCell ("Deprecated?");
-    aRow.addCell ("Deprecated since");
+    aRow.addCell ("State");
+    aRow.addCell ("Deprecation version");
     aRow.addCell ("Structure of Code");
     aRow.addCell ("Display Requirements");
     aRow.addCell ("Peppol Examples");
@@ -219,19 +231,23 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
     aRow.addCell (m_sSchemeName);
     aRow.addCell (m_sIssuingAgency);
     aRow.addCell (m_sSince);
-    aRow.addCell (Boolean.toString (m_bDeprecated));
-    aRow.addCell (m_sDeprecatedSince);
+    aRow.addCell (m_eState.getDisplayName ());
+    aRow.addCell (m_sDeprecationVersion);
     aRow.addCell (m_sStructure);
     aRow.addCell (m_sDisplay);
     aRow.addCell (m_sExamples);
     aRow.addCell (m_sValidationRules);
     aRow.addCell (m_sUsage);
-    if (m_bDeprecated)
-      aRow.addClass (DefaultCSSClassProvider.create ("table-warning"));
+    if (m_eState.isRemoved ())
+      aRow.addClass (DefaultCSSClassProvider.create ("table-danger"));
+    else
+      if (m_eState.isDeprecated ())
+        aRow.addClass (DefaultCSSClassProvider.create ("table-warning"));
     return aRow;
   }
 
   @Nonnull
+  @Deprecated
   public static ParticipantIdentifierSchemeRow createV7 (@Nonnull final String [] aRow)
   {
     final ParticipantIdentifierSchemeRow ret = new ParticipantIdentifierSchemeRow ();
@@ -241,8 +257,28 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
     ret.m_sSchemeName = aRow[3];
     ret.m_sIssuingAgency = aRow[4];
     ret.m_sSince = aRow[5];
-    ret.m_bDeprecated = ModelHelper.parseDeprecated (aRow[6]);
-    ret.m_sDeprecatedSince = aRow[7];
+    ret.m_eState = ModelHelper.parseDeprecated (aRow[6]) ? ERowState.DEPRECATED : ERowState.ACTIVE;
+    ret.m_sDeprecationVersion = aRow[7];
+    ret.m_sStructure = aRow[8];
+    ret.m_sDisplay = aRow[9];
+    ret.m_sExamples = aRow[10];
+    ret.m_sValidationRules = aRow[11];
+    ret.m_sUsage = aRow[12];
+    return ret;
+  }
+
+  @Nonnull
+  public static ParticipantIdentifierSchemeRow createV8 (@Nonnull final String [] aRow)
+  {
+    final ParticipantIdentifierSchemeRow ret = new ParticipantIdentifierSchemeRow ();
+    ret.m_sSchemeID = aRow[0];
+    ret.m_sISO6523 = aRow[1];
+    ret.m_sCountry = aRow[2];
+    ret.m_sSchemeName = aRow[3];
+    ret.m_sIssuingAgency = aRow[4];
+    ret.m_sSince = aRow[5];
+    ret.m_eState = ERowState.getFromIDOrThrow (aRow[6]);
+    ret.m_sDeprecationVersion = aRow[7];
     ret.m_sStructure = aRow[8];
     ret.m_sDisplay = aRow[9];
     ret.m_sExamples = aRow[10];

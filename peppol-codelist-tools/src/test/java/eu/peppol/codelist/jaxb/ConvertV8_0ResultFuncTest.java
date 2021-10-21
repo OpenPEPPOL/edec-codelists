@@ -22,11 +22,11 @@ import java.io.File;
 
 import org.junit.Test;
 
-import eu.peppol.codelist.ConvertV8_0;
 import eu.peppol.codelist.model.DocTypeRow;
 import eu.peppol.codelist.model.ParticipantIdentifierSchemeRow;
 import eu.peppol.codelist.model.ProcessRow;
 import eu.peppol.codelist.model.TransportProfileRow;
+import eu.peppol.codelist.v8.ConvertV8_0;
 
 /**
  * Check if the created lists match the XSD.
