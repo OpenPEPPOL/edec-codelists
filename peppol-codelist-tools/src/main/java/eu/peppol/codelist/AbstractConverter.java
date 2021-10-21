@@ -224,18 +224,22 @@ public abstract class AbstractConverter
 
     aCont.addChild (new HCH1 ().addChild (aHtml.head ().getTitle ()));
 
-    final boolean bContainsDeprecatedRow = aRows.containsAny (x -> x.getState ().isDeprecated ());
-    final boolean bContainsRemovedRow = aRows.containsAny (x -> x.getState ().isRemoved ());
+    final int nDeprecatedRows = aRows.getCount (x -> x.getState ().isDeprecated ());
+    final int nRemovedRows = aRows.getCount (x -> x.getState ().isRemoved ());
 
     aCont.addChild (new HCDiv ().addChild (new HCDiv ().addChild ("Version " +
                                                                   m_aCodeListVersion.getAsString () +
                                                                   " with " +
                                                                   aRows.size () +
                                                                   " entries"))
-                                .addChild (bContainsDeprecatedRow ? new HCDiv ().addChild ("Info: yellow rows are the ones that contain deprecated entries")
-                                                                  : null)
-                                .addChild (bContainsRemovedRow ? new HCDiv ().addChild ("Info: red rows are the ones that contain removed entries")
+                                .addChild (nDeprecatedRows > 0 ? new HCDiv ().addChild ("Info: the " +
+                                                                                        nDeprecatedRows +
+                                                                                        " yellow rows are the ones that contain deprecated entries")
                                                                : null)
+                                .addChild (nRemovedRows > 0 ? new HCDiv ().addChild ("Info: the " +
+                                                                                     nRemovedRows +
+                                                                                     " red rows are the ones that contain removed entries")
+                                                            : null)
                                 .addClass (DefaultCSSClassProvider.create ("alert"))
                                 .addClass (DefaultCSSClassProvider.create ("alert-info")));
 
