@@ -86,6 +86,12 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
   private String m_sValidationRules;
   private String m_sUsage;
 
+  @Nonnull
+  public ERowState getState ()
+  {
+    return m_eState;
+  }
+
   public void checkConsistency ()
   {
     if (StringHelper.hasNoText (m_sSchemeID))

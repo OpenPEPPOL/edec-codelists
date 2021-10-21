@@ -223,12 +223,19 @@ public abstract class AbstractConverter
     final HCDiv aCont = aHtml.body ().addAndReturnChild (new HCDiv ().addClass (DefaultCSSClassProvider.create ("container-fluid")));
 
     aCont.addChild (new HCH1 ().addChild (aHtml.head ().getTitle ()));
+
+    final boolean bContainsDeprecatedRow = aRows.containsAny (x -> x.getState ().isDeprecated ());
+    final boolean bContainsRemovedRow = aRows.containsAny (x -> x.getState ().isRemoved ());
+
     aCont.addChild (new HCDiv ().addChild (new HCDiv ().addChild ("Version " +
                                                                   m_aCodeListVersion.getAsString () +
                                                                   " with " +
                                                                   aRows.size () +
                                                                   " entries"))
-                                .addChild (new HCDiv ().addChild ("Info: yellow rows are the ones that are deprecated"))
+                                .addChild (bContainsDeprecatedRow ? new HCDiv ().addChild ("Info: yellow rows are the ones that contain deprecated entries")
+                                                                  : null)
+                                .addChild (bContainsRemovedRow ? new HCDiv ().addChild ("Info: red rows are the ones that contain removed entries")
+                                                               : null)
                                 .addClass (DefaultCSSClassProvider.create ("alert"))
                                 .addClass (DefaultCSSClassProvider.create ("alert-info")));
 

@@ -31,6 +31,12 @@ import com.helger.xml.microdom.IMicroElement;
 public interface IModelRow
 {
   /**
+   * @return The state of this row. May not be <code>null</code>.
+   */
+  @Nonnull
+  ERowState getState ();
+
+  /**
    * Check the consistency of this row. Throws a runtime exception on error.
    */
   void checkConsistency ();

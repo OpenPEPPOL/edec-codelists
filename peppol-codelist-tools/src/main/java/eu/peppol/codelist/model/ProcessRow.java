@@ -63,6 +63,12 @@ public final class ProcessRow implements IModelRow
   private String m_sValue;
   private ERowState m_eState;
 
+  @Nonnull
+  public ERowState getState ()
+  {
+    return m_eState;
+  }
+
   public void checkConsistency ()
   {
     if (StringHelper.hasNoText (m_sScheme))

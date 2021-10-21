@@ -70,6 +70,12 @@ public final class TransportProfileRow implements IModelRow
   private ERowState m_eState;
   private String m_sDeprecationVersion;
 
+  @Nonnull
+  public ERowState getState ()
+  {
+    return m_eState;
+  }
+
   public void checkConsistency ()
   {
     if (StringHelper.hasNoText (m_sProtcol))
