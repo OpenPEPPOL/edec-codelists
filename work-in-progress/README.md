@@ -94,6 +94,9 @@ The column "Deprecated since" was renamed to "Deprecation version".
     * Added "XRechnung UBL Invoice V2.1 Extension" - [TICC-189](https://openpeppol.atlassian.net/browse/TICC-189)
     * Added "XRechnung UBL CreditNote V2.1 Extension" - [TICC-189](https://openpeppol.atlassian.net/browse/TICC-189)
     * Added "XRechnung CII Invoice V2.1 Extension" - [TICC-189](https://openpeppol.atlassian.net/browse/TICC-189)    
+    * Added "PL Faktura specjalizowana ver. 1.4" - [TICC-195](https://openpeppol.atlassian.net/browse/TICC-195)    
+    * Added "PL Faktura korygująca ver. 4.0" - [TICC-195](https://openpeppol.atlassian.net/browse/TICC-195)    
+    * Added "PL Nota korygująca ver. 1.4" - [TICC-195](https://openpeppol.atlassian.net/browse/TICC-195)    
  
 * Process identifiers
     * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:01:1.0</code> to the document types "EHF Payment initiation (Profile 01) (Pain.001 Message)", "EHF Payment initiation (Profile 01) (Pain.002 Reception Acknowledgement)", "EHF Payment initiation (Profile 01) (Pain.002 Handling Exception)", "EHF Payment initiation (Profile 01) (Camt.054 Reception Acknowledgement)", "EHF Payment initiation (Profile 01) (Camt.054 Handling Exception)", "EHF Payment initiation (Profile 01) (Pain.001 Reception Acknowledgement)", "EHF Payment initiation (Profile 01) (Pain.001 Handling Exception)", "EHF Payment initiation (Profile 01) (Pain.002 Message)" and "EHF Payment initiation (Profile 01) (Camt.054 Message)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
@@ -113,6 +116,9 @@ The column "Deprecated since" was renamed to "Deprecation version".
     * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:06:1.0</code> to the document type "EHF Reminder 3.0 (Reminder)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
     * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:07:1.0</code> to the document type "EHF Payment Request 3.0 (Payment Request)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
     * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:08:1.0</code> to the document types "EHF Forward Billing 3.0 (Invoice)" and "EHF Forward Billing 3.0 (Credit Note)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
+    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:www.efaktura.gov.pl:ver2.0:plinv:ver1.4</code> to the document type "PL Faktura specjalizowana ver. 1.4" - [TICC-195](https://openpeppol.atlassian.net/browse/TICC-195)
+    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:www.efaktura.gov.pl:ver2.0:corr_inv:ver4.0</code> to the document type "PL Faktura korygująca ver. 4.0" - [TICC-195](https://openpeppol.atlassian.net/browse/TICC-195)
+    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:www.efaktura.gov.pl:ver2.0:sbcn:ver1.4</code> to the document type "PL Nota korygująca ver. 1.4" - [TICC-195](https://openpeppol.atlassian.net/browse/TICC-195)
     
 * Transport profiles
     * *No changes so far*
