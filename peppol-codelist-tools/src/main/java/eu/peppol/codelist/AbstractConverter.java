@@ -207,15 +207,13 @@ public abstract class AbstractConverter
   {
     final HCHtml aHtml = new HCHtml ();
     aHtml.head ().metaElements ().add (new HCMeta ().setCharset (StandardCharsets.UTF_8.name ()));
-    aHtml.head ()
-         .metaElements ()
-         .add (new HCMeta ().setName ("viewport").setContent ("width=device-width, initial-scale=1, shrink-to-fit=no"));
+    aHtml.head ().metaElements ().add (new HCMeta ().setName ("viewport").setContent ("width=device-width, initial-scale=1"));
     aHtml.head ().setTitle (sCodeListName);
     aHtml.head ()
          .links ()
          .add (new HCLink ().setRel (EHCLinkType.STYLESHEET)
-                            .setHref (new SimpleURL ("https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"))
-                            .setIntegrity ("sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l")
+                            .setHref (new SimpleURL ("https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"))
+                            .setIntegrity ("sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3")
                             .setCrossOrigin (EHCCORSSettings.ANONYMOUS));
     if (false)
       aHtml.head ().addCSS (new HCStyle (""));
