@@ -243,10 +243,12 @@ public abstract class AbstractConverter
 
     final HCTable aTable = aCont.addAndReturnChild (new HCTable ());
     aTable.addClass (DefaultCSSClassProvider.create ("table"));
-    aTable.addClass (DefaultCSSClassProvider.create ("thead-light"));
+    if (false)
+      aTable.addClass (DefaultCSSClassProvider.create ("thead-light"));
     aTable.addClass (DefaultCSSClassProvider.create ("table-striped"));
     if (false)
       aTable.addClass (DefaultCSSClassProvider.create ("table-responsive"));
+    aTable.getHead ().addClass (DefaultCSSClassProvider.create ("table-light"));
     aTable.addHeaderRow (aHeaderRowProvider.get ());
     for (final T aRow : aRows)
       aTable.addBodyRow (aRow.getAsHtmlTableBodyRow ());
