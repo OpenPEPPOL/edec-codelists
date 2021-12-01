@@ -48,7 +48,7 @@ public final class CodeListSource
                          @Nonnull final IThrowingConsumer <? super Sheet, Exception> aHandler) throws IOException
   {
     // TODO change absolute path
-    m_aFile = new File ("../work-in-progress/PEPPOL Code Lists - " + sFilenamePart + " v" + sFilenameVersion + ".xlsx").getCanonicalFile ();
+    m_aFile = new File ("../work-in-progress/Peppol Code Lists - " + sFilenamePart + " v" + sFilenameVersion + ".xlsx").getCanonicalFile ();
     ValueEnforcer.isTrue (m_aFile.exists (), () -> "File '" + m_aFile.getAbsolutePath () + "' does not exist!");
     m_aHandler = aHandler;
   }

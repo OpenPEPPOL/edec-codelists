@@ -56,7 +56,7 @@ public abstract class AbstractConvertV8 extends AbstractConverter
   private void _handleDocumentTypes (@Nonnull final Sheet aDocumentSheet)
   {
     // Read Excel
-    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aDocumentSheet, 11);
+    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aDocumentSheet, 12);
 
     // Convert to domain object
     final ICommonsList <DocTypeRow> aRows = aXLSX.getAsList (DocTypeRow::createV8);
@@ -80,7 +80,7 @@ public abstract class AbstractConvertV8 extends AbstractConverter
   private void _handleParticipantIdentifierSchemes (@Nonnull final Sheet aParticipantSheet)
   {
     // Read Excel
-    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aParticipantSheet, 13);
+    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aParticipantSheet, 14);
 
     // Convert to domain object
     final ICommonsList <ParticipantIdentifierSchemeRow> aRows = aXLSX.getAsList (ParticipantIdentifierSchemeRow::createV8);
@@ -102,7 +102,7 @@ public abstract class AbstractConvertV8 extends AbstractConverter
   private void _handleTransportProfileIdentifiers (@Nonnull final Sheet aTPSheet)
   {
     // Read Excel
-    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aTPSheet, 6);
+    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aTPSheet, 7);
 
     // Convert to domain object
     final ICommonsList <TransportProfileRow> aRows = aXLSX.getAsList (TransportProfileRow::createV8);

@@ -16,9 +16,11 @@
 package eu.peppol.codelist.model;
 
 import java.net.URI;
+import java.time.LocalDate;
 
 import javax.annotation.Nonnull;
 
+import com.helger.commons.datetime.PDTWebDateHelper;
 import com.helger.commons.string.StringHelper;
 import com.helger.commons.url.URLHelper;
 import com.helger.genericode.v10.CodeListDocument;
@@ -45,19 +47,30 @@ public final class TransportProfileRow implements IModelRow
   private static final String PROTOCOL = "protocol";
   private static final String PROFILE_VERSION = "profile-version";
   private static final String PROFILE_ID = "profile-id";
+
+  @Deprecated
+  @SuppressWarnings ("unused")
+  // Deprecated in V8
   private static final String SINCE = "since";
+  // New in V8
+  private static final String INITIAL_RELEASE = "initial-release";
+
   @Deprecated
   @SuppressWarnings ("unused")
   // Deprecated in V8
   private static final String DEPRECATED = "deprecated";
+  // New in V8
+  private static final String STATE = "state";
+
   @Deprecated
   @SuppressWarnings ("unused")
   // Deprecated in V8
   private static final String DEPRECATED_SINCE = "deprecated-since";
   // New in V8
-  private static final String STATE = "state";
+  private static final String DEPRECATION_RELEASE = "deprecation-release";
+
   // New in V8
-  private static final String DEPRECATION_VERSION = "deprecation-version";
+  private static final String REMOVAL_DATE = "removal-date";
 
   public static final String CODE_LIST_NAME = "Peppol Code Lists - Transport profiles";
   public static final URI CODE_LIST_URI = URLHelper.getAsURI ("urn:peppol.eu:names:identifier:transport-profile");
@@ -66,9 +79,10 @@ public final class TransportProfileRow implements IModelRow
   private String m_sProtcol;
   private String m_sProfileVersion;
   private String m_sProfileID;
-  private String m_sSince;
+  private String m_sInitialRelease;
   private ERowState m_eState;
-  private String m_sDeprecationVersion;
+  private String m_sDeprecationRelease;
+  private LocalDate m_aRemovalDate;
 
   @Nonnull
   public ERowState getState ()
@@ -84,13 +98,15 @@ public final class TransportProfileRow implements IModelRow
       throw new IllegalStateException ("Profile Version is required");
     if (StringHelper.hasNoText (m_sProfileID))
       throw new IllegalStateException ("Profile ID is required");
-    if (StringHelper.hasNoText (m_sSince))
-      throw new IllegalStateException ("Since is required");
+    if (StringHelper.hasNoText (m_sInitialRelease))
+      throw new IllegalStateException ("Initial release is required");
     if (m_eState == null)
       throw new IllegalStateException ("State is required");
 
-    if (m_eState.isDeprecated () && StringHelper.hasNoText (m_sDeprecationVersion))
-      throw new IllegalStateException ("Code list entry is deprecated but there is no deprecated-since entry");
+    if (m_eState.isDeprecated () && StringHelper.hasNoText (m_sDeprecationRelease))
+      throw new IllegalStateException ("Code list entry has state 'deprecated' but there is no Deprecation release set");
+    if (m_eState.isRemoved () && m_aRemovalDate == null)
+      throw new IllegalStateException ("Code list entry has state 'removed' but there is no Removal date set");
   }
 
   @Nonnull
@@ -100,9 +116,12 @@ public final class TransportProfileRow implements IModelRow
     ret.setAttribute (PROTOCOL, m_sProtcol);
     ret.setAttribute (PROFILE_VERSION, m_sProfileVersion);
     ret.setAttribute (PROFILE_ID, m_sProfileID);
-    ret.setAttribute (SINCE, m_sSince);
+    ret.setAttribute (INITIAL_RELEASE, m_sInitialRelease);
     ret.setAttribute (STATE, m_eState.getID ());
-    ret.setAttribute (DEPRECATION_VERSION, m_sDeprecationVersion);
+    if (StringHelper.hasText (m_sDeprecationRelease))
+      ret.setAttribute (DEPRECATION_RELEASE, m_sDeprecationRelease);
+    if (m_aRemovalDate != null)
+      ret.setAttribute (REMOVAL_DATE, PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
     return ret;
   }
 
@@ -113,10 +132,12 @@ public final class TransportProfileRow implements IModelRow
     ret.add (PROTOCOL, m_sProtcol);
     ret.add (PROFILE_VERSION, m_sProfileVersion);
     ret.add (PROFILE_ID, m_sProfileID);
-    ret.add (SINCE, m_sSince);
+    ret.add (INITIAL_RELEASE, m_sInitialRelease);
     ret.add (STATE, m_eState.getID ());
-    if (StringHelper.hasText (m_sDeprecationVersion))
-      ret.add (DEPRECATION_VERSION, m_sDeprecationVersion);
+    if (StringHelper.hasText (m_sDeprecationRelease))
+      ret.add (DEPRECATION_RELEASE, m_sDeprecationRelease);
+    if (m_aRemovalDate != null)
+      ret.add (REMOVAL_DATE, PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
     return ret;
   }
 
@@ -126,9 +147,10 @@ public final class TransportProfileRow implements IModelRow
     GCHelper.addHeaderColumn (aColumnSet, PROTOCOL, false, true, "Protocol", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, PROFILE_VERSION, false, true, "Profile Version", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, PROFILE_ID, true, true, "Profile ID", ECodeListDataType.STRING);
-    GCHelper.addHeaderColumn (aColumnSet, SINCE, false, true, "Since", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet, INITIAL_RELEASE, false, true, "Initial release", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, STATE, false, true, "State", ECodeListDataType.STRING);
-    GCHelper.addHeaderColumn (aColumnSet, DEPRECATION_VERSION, false, false, "Deprecation version", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet, DEPRECATION_RELEASE, false, false, "Deprecation release", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet, REMOVAL_DATE, false, false, "Removal date", ECodeListDataType.DATE);
   }
 
   @Nonnull
@@ -139,9 +161,10 @@ public final class TransportProfileRow implements IModelRow
     ret.add (PROTOCOL, m_sProtcol);
     ret.add (PROFILE_VERSION, m_sProfileVersion);
     ret.add (PROFILE_ID, m_sProfileID);
-    ret.add (SINCE, m_sSince);
+    ret.add (INITIAL_RELEASE, m_sInitialRelease);
     ret.add (STATE, m_eState.getID ());
-    ret.add (DEPRECATION_VERSION, m_sDeprecationVersion);
+    ret.add (DEPRECATION_RELEASE, m_sDeprecationRelease);
+    ret.add (REMOVAL_DATE, PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
     return ret;
   }
 
@@ -152,9 +175,10 @@ public final class TransportProfileRow implements IModelRow
     aRow.addCell ("Protocol");
     aRow.addCell ("Profile Version");
     aRow.addCell ("Profile ID");
-    aRow.addCell ("Since");
+    aRow.addCell ("Initial release");
     aRow.addCell ("State");
-    aRow.addCell ("Deprecation version");
+    aRow.addCell ("Deprecation release");
+    aRow.addCell ("Removal date");
     return aRow;
   }
 
@@ -165,9 +189,10 @@ public final class TransportProfileRow implements IModelRow
     aRow.addCell (m_sProtcol);
     aRow.addCell (m_sProfileVersion);
     aRow.addCell (m_sProfileID);
-    aRow.addCell (m_sSince);
+    aRow.addCell (m_sInitialRelease);
     aRow.addCell (m_eState.getDisplayName ());
-    aRow.addCell (m_sDeprecationVersion);
+    aRow.addCell (m_sDeprecationRelease);
+    aRow.addCell (PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
     if (m_eState.isRemoved ())
       aRow.addClass (DefaultCSSClassProvider.create ("table-danger"));
     else
@@ -184,9 +209,10 @@ public final class TransportProfileRow implements IModelRow
     ret.m_sProtcol = aRow[0];
     ret.m_sProfileVersion = aRow[1];
     ret.m_sProfileID = aRow[2];
-    ret.m_sSince = aRow[3];
+    ret.m_sInitialRelease = aRow[3];
     ret.m_eState = ModelHelper.parseDeprecated (aRow[4]) ? ERowState.DEPRECATED : ERowState.ACTIVE;
-    ret.m_sDeprecationVersion = aRow[5];
+    ret.m_sDeprecationRelease = aRow[5];
+    ret.m_aRemovalDate = null;
     return ret;
   }
 
@@ -197,9 +223,10 @@ public final class TransportProfileRow implements IModelRow
     ret.m_sProtcol = aRow[0];
     ret.m_sProfileVersion = aRow[1];
     ret.m_sProfileID = aRow[2];
-    ret.m_sSince = aRow[3];
+    ret.m_sInitialRelease = aRow[3];
     ret.m_eState = ERowState.getFromIDOrThrow (aRow[4]);
-    ret.m_sDeprecationVersion = aRow[5];
+    ret.m_sDeprecationRelease = aRow[5];
+    ret.m_aRemovalDate = PDTWebDateHelper.getLocalDateFromXSD (aRow[6]);
     return ret;
   }
 }

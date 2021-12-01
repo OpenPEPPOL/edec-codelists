@@ -67,7 +67,7 @@ public class InMemoryXLSX
 
   @Nonnull
   @ReturnsMutableCopy
-  public <T> ICommonsList <T> getAsList (final Function <String [], T> aProvider)
+  public <T> ICommonsList <T> getAsList (@Nonnull final Function <String [], T> aProvider)
   {
     return new CommonsArrayList <> (m_aPayload, aProvider);
   }

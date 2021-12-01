@@ -16,12 +16,14 @@
 package eu.peppol.codelist.model;
 
 import java.net.URI;
+import java.time.LocalDate;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import com.helger.commons.collection.CollectionHelper;
 import com.helger.commons.collection.impl.ICommonsList;
+import com.helger.commons.datetime.PDTWebDateHelper;
 import com.helger.commons.string.StringHelper;
 import com.helger.commons.string.StringParser;
 import com.helger.commons.url.URLHelper;
@@ -56,19 +58,31 @@ public final class DocTypeRow implements IModelRow
   private static final String NAME = "name";
   private static final String SCHEME = "scheme";
   private static final String VALUE = "value";
+
+  @Deprecated
+  @SuppressWarnings ("unused")
+  // Deprecated in V8
   private static final String SINCE = "since";
+  // New in V8
+  private static final String INITIAL_RELEASE = "initial-release";
+
   @Deprecated
   @SuppressWarnings ("unused")
   // Deprecated in V8
   private static final String DEPRECATED = "deprecated";
+  // New in V8
+  private static final String STATE = "state";
+
   @Deprecated
   @SuppressWarnings ("unused")
   // Deprecated in V8
   private static final String DEPRECATED_SINCE = "deprecated-since";
   // New in V8
-  private static final String STATE = "state";
+  private static final String DEPRECATION_RELEASE = "deprecation-release";
+
   // New in V8
-  private static final String DEPRECATION_VERSION = "deprecation-version";
+  private static final String REMOVAL_DATE = "removal-date";
+
   private static final String COMMENT = "comment";
   private static final String ISSUED_BY_OPENPEPPOL = "issued-by-openpeppol";
   private static final String BIS_VERSION = "bis-version";
@@ -83,9 +97,10 @@ public final class DocTypeRow implements IModelRow
   private String m_sName;
   private String m_sScheme;
   private String m_sValue;
-  private String m_sSince;
+  private String m_sInitialRelease;
   private ERowState m_eState;
-  private String m_sDeprecationVersion;
+  private String m_sDeprecationRelease;
+  private LocalDate m_aRemovalDate;
   private String m_sComment;
   private boolean m_bIssuedByOpenPeppol;
   private String m_sBISVersion;
@@ -115,8 +130,8 @@ public final class DocTypeRow implements IModelRow
       throw new IllegalStateException ("State is required");
     if (StringHelper.hasNoText (m_sValue))
       throw new IllegalStateException ("Value is required");
-    if (StringHelper.hasNoText (m_sSince))
-      throw new IllegalStateException ("Since is required");
+    if (StringHelper.hasNoText (m_sInitialRelease))
+      throw new IllegalStateException ("Initial Release is required");
     if (false)
       if (StringHelper.hasNoText (m_sDomainCommunity))
         throw new IllegalStateException ("DomainCommunity is required");
@@ -137,10 +152,12 @@ public final class DocTypeRow implements IModelRow
       if (m_eState.isActive () && !aParts.getRootNS ().endsWith (aParts.getLocalName () + "-2"))
         throw new IllegalStateException ("Value '" + m_sValue + "' seems to be inconsistent");
 
-    if (m_eState.isDeprecated () && StringHelper.hasNoText (m_sDeprecationVersion))
-      throw new IllegalStateException ("Code list entry is deprecated but there is no deprecated-version entry");
+    if (m_eState.isDeprecated () && StringHelper.hasNoText (m_sDeprecationRelease))
+      throw new IllegalStateException ("Code list entry has state 'deprecated' but there is no Deprecation release set");
+    if (m_eState.isRemoved () && m_aRemovalDate == null)
+      throw new IllegalStateException ("Code list entry has state 'removed' but there is no Removal date set");
     if (m_bIssuedByOpenPeppol && StringHelper.hasNoText (m_sBISVersion))
-      throw new IllegalStateException ("If issued by OpenPEPPOL, a BIS version is required");
+      throw new IllegalStateException ("If issued by OpenPeppol, a BIS version is required");
     if (StringHelper.hasText (m_sBISVersion) && !StringParser.isUnsignedInt (m_sBISVersion))
       throw new IllegalStateException ("Code list entry has an invalid BIS version number - must be numeric");
   }
@@ -152,9 +169,12 @@ public final class DocTypeRow implements IModelRow
     ret.setAttribute (NAME, m_sName);
     ret.setAttribute (SCHEME, m_sScheme);
     ret.setAttribute (VALUE, m_sValue);
-    ret.setAttribute (SINCE, m_sSince);
+    ret.setAttribute (INITIAL_RELEASE, m_sInitialRelease);
     ret.setAttribute (STATE, m_eState.getID ());
-    ret.setAttribute (DEPRECATION_VERSION, m_sDeprecationVersion);
+    if (StringHelper.hasText (m_sDeprecationRelease))
+      ret.setAttribute (DEPRECATION_RELEASE, m_sDeprecationRelease);
+    if (m_aRemovalDate != null)
+      ret.setAttribute (REMOVAL_DATE, PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
     if (StringHelper.hasText (m_sComment))
       ret.appendElement (COMMENT).appendText (m_sComment);
     ret.setAttribute (ISSUED_BY_OPENPEPPOL, m_bIssuedByOpenPeppol);
@@ -175,10 +195,12 @@ public final class DocTypeRow implements IModelRow
     ret.add (NAME, m_sName);
     ret.add (SCHEME, m_sScheme);
     ret.add (VALUE, m_sValue);
-    ret.add (SINCE, m_sSince);
+    ret.add (INITIAL_RELEASE, m_sInitialRelease);
     ret.add (STATE, m_eState.getID ());
-    if (StringHelper.hasText (m_sDeprecationVersion))
-      ret.add (DEPRECATION_VERSION, m_sDeprecationVersion);
+    if (StringHelper.hasText (m_sDeprecationRelease))
+      ret.add (DEPRECATION_RELEASE, m_sDeprecationRelease);
+    if (m_aRemovalDate != null)
+      ret.add (REMOVAL_DATE, PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
     if (StringHelper.hasText (m_sComment))
       ret.add (COMMENT, m_sComment);
     ret.add (ISSUED_BY_OPENPEPPOL, m_bIssuedByOpenPeppol);
@@ -201,11 +223,12 @@ public final class DocTypeRow implements IModelRow
     GCHelper.addHeaderColumn (aColumnSet, NAME, false, true, "Name", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, SCHEME, true, true, "Peppol Document Type Identifier Scheme", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, VALUE, true, true, "Peppol Document Type Identifier Value", ECodeListDataType.STRING);
-    GCHelper.addHeaderColumn (aColumnSet, SINCE, false, true, "Since", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet, INITIAL_RELEASE, false, true, "Initial release", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, STATE, false, true, "State", ECodeListDataType.STRING);
-    GCHelper.addHeaderColumn (aColumnSet, DEPRECATION_VERSION, false, false, "Deprecation version", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet, DEPRECATION_RELEASE, false, false, "Deprecation release", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet, REMOVAL_DATE, false, false, "Removal date", ECodeListDataType.DATE);
     GCHelper.addHeaderColumn (aColumnSet, COMMENT, false, false, "Comment", ECodeListDataType.STRING);
-    GCHelper.addHeaderColumn (aColumnSet, ISSUED_BY_OPENPEPPOL, false, true, "Issued by OpenPEPPOL?", ECodeListDataType.BOOLEAN);
+    GCHelper.addHeaderColumn (aColumnSet, ISSUED_BY_OPENPEPPOL, false, true, "Issued by OpenPeppol?", ECodeListDataType.BOOLEAN);
     GCHelper.addHeaderColumn (aColumnSet, BIS_VERSION, false, false, "BIS version", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, DOMAIN_COMMUNITY, false, true, "Domain Community", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet,
@@ -224,9 +247,10 @@ public final class DocTypeRow implements IModelRow
     ret.add (NAME, m_sName);
     ret.add (SCHEME, m_sScheme);
     ret.add (VALUE, m_sValue);
-    ret.add (SINCE, m_sSince);
+    ret.add (INITIAL_RELEASE, m_sInitialRelease);
     ret.add (STATE, m_eState.getID ());
-    ret.add (DEPRECATION_VERSION, m_sDeprecationVersion);
+    ret.add (DEPRECATION_RELEASE, m_sDeprecationRelease);
+    ret.add (REMOVAL_DATE, PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
     ret.add (COMMENT, m_sComment);
     ret.add (ISSUED_BY_OPENPEPPOL, m_bIssuedByOpenPeppol);
     ret.add (BIS_VERSION, m_sBISVersion);
@@ -242,11 +266,12 @@ public final class DocTypeRow implements IModelRow
     aRow.addCell ("Profile name");
     aRow.addCell ("Peppol Document Type Identifier Scheme");
     aRow.addCell ("Peppol Document Type Identifier Value");
-    aRow.addCell ("Since");
+    aRow.addCell ("Initial Release");
     aRow.addCell ("State");
-    aRow.addCell ("Deprecation version");
+    aRow.addCell ("Deprecation release");
+    aRow.addCell ("Removal date");
     aRow.addCell ("Comment");
-    aRow.addCell ("Issued by OpenPEPPOL?");
+    aRow.addCell ("Issued by OpenPeppol?");
     aRow.addCell ("BIS version");
     aRow.addCell ("Domain Community");
     aRow.addCell ("Associated Process/Profile Identifier(s)");
@@ -260,9 +285,10 @@ public final class DocTypeRow implements IModelRow
     aRow.addCell (m_sName);
     aRow.addCell (m_sScheme);
     aRow.addCell (m_sValue);
-    aRow.addCell (m_sSince);
+    aRow.addCell (m_sInitialRelease);
     aRow.addCell (m_eState.getDisplayName ());
-    aRow.addCell (m_sDeprecationVersion);
+    aRow.addCell (m_sDeprecationRelease);
+    aRow.addCell (PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
     aRow.addCell (m_sComment);
     aRow.addCell (Boolean.toString (m_bIssuedByOpenPeppol));
     aRow.addCell (m_sBISVersion);
@@ -286,9 +312,10 @@ public final class DocTypeRow implements IModelRow
       throw new IllegalStateException ("Empty name is not allowed");
     ret.m_sScheme = aRow[1];
     ret.m_sValue = aRow[2];
-    ret.m_sSince = aRow[3];
+    ret.m_sInitialRelease = aRow[3];
     ret.m_eState = ModelHelper.parseDeprecated (aRow[4]) ? ERowState.DEPRECATED : ERowState.ACTIVE;
-    ret.m_sDeprecationVersion = aRow[5];
+    ret.m_sDeprecationRelease = aRow[5];
+    ret.m_aRemovalDate = null;
     ret.m_sComment = aRow[6];
     ret.m_bIssuedByOpenPeppol = ModelHelper.parseIssuedByOpenPeppol (aRow[7]);
     ret.m_sBISVersion = aRow[8];
@@ -307,14 +334,15 @@ public final class DocTypeRow implements IModelRow
       throw new IllegalStateException ("Empty name is not allowed");
     ret.m_sScheme = aRow[1];
     ret.m_sValue = aRow[2];
-    ret.m_sSince = aRow[3];
+    ret.m_sInitialRelease = aRow[3];
     ret.m_eState = ERowState.getFromIDOrThrow (aRow[4]);
-    ret.m_sDeprecationVersion = aRow[5];
-    ret.m_sComment = aRow[6];
-    ret.m_bIssuedByOpenPeppol = ModelHelper.parseIssuedByOpenPeppol (aRow[7]);
-    ret.m_sBISVersion = aRow[8];
-    ret.m_sDomainCommunity = aRow[9];
-    ret.m_sProcessIDs = aRow[10];
+    ret.m_sDeprecationRelease = aRow[5];
+    ret.m_aRemovalDate = PDTWebDateHelper.getLocalDateFromXSD (aRow[6]);
+    ret.m_sComment = aRow[7];
+    ret.m_bIssuedByOpenPeppol = ModelHelper.parseIssuedByOpenPeppol (aRow[8]);
+    ret.m_sBISVersion = aRow[9];
+    ret.m_sDomainCommunity = aRow[10];
+    ret.m_sProcessIDs = aRow[11];
     ret.m_aProcessIDs = ModelHelper.getAllProcessIDsFromMultilineString (ret.m_sProcessIDs);
     return ret;
   }

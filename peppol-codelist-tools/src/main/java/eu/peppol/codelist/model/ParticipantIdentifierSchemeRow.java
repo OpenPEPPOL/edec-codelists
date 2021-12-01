@@ -16,9 +16,11 @@
 package eu.peppol.codelist.model;
 
 import java.net.URI;
+import java.time.LocalDate;
 
 import javax.annotation.Nonnull;
 
+import com.helger.commons.datetime.PDTWebDateHelper;
 import com.helger.commons.regex.RegExHelper;
 import com.helger.commons.string.StringHelper;
 import com.helger.commons.url.URLHelper;
@@ -49,19 +51,31 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
   private static final String COUNTRY = "country";
   private static final String SCHEME_NAME = "scheme-name";
   private static final String ISSUING_AGENCY = "issuing-agency";
+
+  @Deprecated
+  @SuppressWarnings ("unused")
+  // Deprecated in V8
   private static final String SINCE = "since";
+  // New in V8
+  private static final String INITIAL_RELEASE = "initial-release";
+
   @Deprecated
   @SuppressWarnings ("unused")
   // Deprecated in V8
   private static final String DEPRECATED = "deprecated";
+  // New in V8
+  private static final String STATE = "state";
+
   @Deprecated
   @SuppressWarnings ("unused")
   // Deprecated in V8
   private static final String DEPRECATED_SINCE = "deprecated-since";
   // New in V8
-  private static final String STATE = "state";
+  private static final String DEPRECATION_RELEASE = "deprecation-release";
+
   // New in V8
-  private static final String DEPRECATION_VERSION = "deprecation-version";
+  private static final String REMOVAL_DATE = "removal-date";
+
   private static final String STRUCTURE = "structure";
   private static final String DISPLAY = "display";
   private static final String EXAMPLES = "examples";
@@ -77,9 +91,10 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
   private String m_sCountry;
   private String m_sSchemeName;
   private String m_sIssuingAgency;
-  private String m_sSince;
+  private String m_sInitialRelease;
   private ERowState m_eState;
-  private String m_sDeprecationVersion;
+  private String m_sDeprecationRelease;
+  private LocalDate m_aRemovalDate;
   private String m_sStructure;
   private String m_sDisplay;
   private String m_sExamples;
@@ -108,12 +123,14 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
       throw new IllegalStateException ("Country is required");
     if (StringHelper.hasNoText (m_sSchemeName))
       throw new IllegalStateException ("Scheme Name is required");
-    if (StringHelper.hasNoText (m_sSince))
-      throw new IllegalStateException ("Since is required");
+    if (StringHelper.hasNoText (m_sInitialRelease))
+      throw new IllegalStateException ("Initial Release is required");
     if (m_eState == null)
       throw new IllegalStateException ("State is required");
-    if (m_eState.isDeprecated () && StringHelper.hasNoText (m_sDeprecationVersion))
-      throw new IllegalStateException ("Code list entry is deprecated but there is no deprecation-version entry");
+    if (m_eState.isDeprecated () && StringHelper.hasNoText (m_sDeprecationRelease))
+      throw new IllegalStateException ("Code list entry has state 'deprecated' but there is no Deprecation release set");
+    if (m_eState.isRemoved () && m_aRemovalDate == null)
+      throw new IllegalStateException ("Code list entry has state 'removed' but there is no Removal date set");
   }
 
   @Nonnull
@@ -125,9 +142,12 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
     ret.setAttribute (COUNTRY, m_sCountry);
     ret.setAttribute (SCHEME_NAME, m_sSchemeName);
     ret.setAttribute (ISSUING_AGENCY, m_sIssuingAgency);
-    ret.setAttribute (SINCE, m_sSince);
+    ret.setAttribute (INITIAL_RELEASE, m_sInitialRelease);
     ret.setAttribute (STATE, m_eState.getID ());
-    ret.setAttribute (DEPRECATION_VERSION, m_sDeprecationVersion);
+    if (StringHelper.hasText (m_sDeprecationRelease))
+      ret.setAttribute (DEPRECATION_RELEASE, m_sDeprecationRelease);
+    if (m_aRemovalDate != null)
+      ret.setAttribute (REMOVAL_DATE, PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
     if (StringHelper.hasText (m_sStructure))
       ret.appendElement (STRUCTURE).appendText (m_sStructure);
     if (StringHelper.hasText (m_sDisplay))
@@ -151,10 +171,12 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
     ret.add (SCHEME_NAME, m_sSchemeName);
     if (StringHelper.hasText (m_sIssuingAgency))
       ret.add (ISSUING_AGENCY, m_sIssuingAgency);
-    ret.add (SINCE, m_sSince);
+    ret.add (INITIAL_RELEASE, m_sInitialRelease);
     ret.add (STATE, m_eState.getID ());
-    if (StringHelper.hasText (m_sDeprecationVersion))
-      ret.add (DEPRECATION_VERSION, m_sDeprecationVersion);
+    if (StringHelper.hasText (m_sDeprecationRelease))
+      ret.add (DEPRECATION_RELEASE, m_sDeprecationRelease);
+    if (m_aRemovalDate != null)
+      ret.add (REMOVAL_DATE, PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
     if (StringHelper.hasText (m_sStructure))
       ret.add (STRUCTURE, m_sStructure);
     if (StringHelper.hasText (m_sDisplay))
@@ -176,9 +198,10 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
     GCHelper.addHeaderColumn (aColumnSet, COUNTRY, true, true, "Country Code", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, SCHEME_NAME, true, true, "Scheme Name", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, ISSUING_AGENCY, false, false, "Issuing Organisation", ECodeListDataType.STRING);
-    GCHelper.addHeaderColumn (aColumnSet, SINCE, false, true, "Since", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet, INITIAL_RELEASE, false, true, "Initial Release", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, STATE, false, true, "State", ECodeListDataType.STRING);
-    GCHelper.addHeaderColumn (aColumnSet, DEPRECATION_VERSION, false, false, "Deprecation version", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet, DEPRECATION_RELEASE, false, false, "Deprecation release", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet, REMOVAL_DATE, false, false, "Removal date", ECodeListDataType.DATE);
     GCHelper.addHeaderColumn (aColumnSet, STRUCTURE, false, false, "Structure of Code", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, DISPLAY, false, false, "Display Requirements", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, EXAMPLES, false, false, "Peppol Examples", ECodeListDataType.STRING);
@@ -196,9 +219,10 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
     ret.add (COUNTRY, m_sCountry);
     ret.add (SCHEME_NAME, m_sSchemeName);
     ret.add (ISSUING_AGENCY, m_sIssuingAgency);
-    ret.add (SINCE, m_sSince);
+    ret.add (INITIAL_RELEASE, m_sInitialRelease);
     ret.add (STATE, m_eState.getID ());
-    ret.add (DEPRECATION_VERSION, m_sDeprecationVersion);
+    ret.add (DEPRECATION_RELEASE, m_sDeprecationRelease);
+    ret.add (REMOVAL_DATE, PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
     ret.add (STRUCTURE, m_sStructure);
     ret.add (DISPLAY, m_sDisplay);
     ret.add (EXAMPLES, m_sExamples);
@@ -216,9 +240,10 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
     aRow.addCell ("Country Code");
     aRow.addCell ("Scheme Name");
     aRow.addCell ("Issuing Organisation");
-    aRow.addCell ("Since");
+    aRow.addCell ("Initial release");
     aRow.addCell ("State");
-    aRow.addCell ("Deprecation version");
+    aRow.addCell ("Deprecation release");
+    aRow.addCell ("Removal date");
     aRow.addCell ("Structure of Code");
     aRow.addCell ("Display Requirements");
     aRow.addCell ("Peppol Examples");
@@ -236,9 +261,10 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
     aRow.addCell (m_sCountry);
     aRow.addCell (m_sSchemeName);
     aRow.addCell (m_sIssuingAgency);
-    aRow.addCell (m_sSince);
+    aRow.addCell (m_sInitialRelease);
     aRow.addCell (m_eState.getDisplayName ());
-    aRow.addCell (m_sDeprecationVersion);
+    aRow.addCell (m_sDeprecationRelease);
+    aRow.addCell (PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
     aRow.addCell (m_sStructure);
     aRow.addCell (m_sDisplay);
     aRow.addCell (m_sExamples);
@@ -262,9 +288,10 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
     ret.m_sCountry = aRow[2];
     ret.m_sSchemeName = aRow[3];
     ret.m_sIssuingAgency = aRow[4];
-    ret.m_sSince = aRow[5];
+    ret.m_sInitialRelease = aRow[5];
     ret.m_eState = ModelHelper.parseDeprecated (aRow[6]) ? ERowState.DEPRECATED : ERowState.ACTIVE;
-    ret.m_sDeprecationVersion = aRow[7];
+    ret.m_sDeprecationRelease = aRow[7];
+    ret.m_aRemovalDate = null;
     ret.m_sStructure = aRow[8];
     ret.m_sDisplay = aRow[9];
     ret.m_sExamples = aRow[10];
@@ -282,14 +309,15 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
     ret.m_sCountry = aRow[2];
     ret.m_sSchemeName = aRow[3];
     ret.m_sIssuingAgency = aRow[4];
-    ret.m_sSince = aRow[5];
+    ret.m_sInitialRelease = aRow[5];
     ret.m_eState = ERowState.getFromIDOrThrow (aRow[6]);
-    ret.m_sDeprecationVersion = aRow[7];
-    ret.m_sStructure = aRow[8];
-    ret.m_sDisplay = aRow[9];
-    ret.m_sExamples = aRow[10];
-    ret.m_sValidationRules = aRow[11];
-    ret.m_sUsage = aRow[12];
+    ret.m_sDeprecationRelease = aRow[7];
+    ret.m_aRemovalDate = PDTWebDateHelper.getLocalDateFromXSD (aRow[8]);
+    ret.m_sStructure = aRow[0];
+    ret.m_sDisplay = aRow[10];
+    ret.m_sExamples = aRow[11];
+    ret.m_sValidationRules = aRow[12];
+    ret.m_sUsage = aRow[13];
     return ret;
   }
 }

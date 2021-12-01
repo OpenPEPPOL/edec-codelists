@@ -21,14 +21,15 @@ import com.helger.commons.annotation.Nonempty;
 
 /**
  * Defines the data type for a source column
- * 
+ *
  * @author Philip Helger
  */
 public enum ECodeListDataType
 {
   STRING ("string"),
   BOOLEAN ("boolean"),
-  INT ("int");
+  INT ("int"),
+  DATE ("date");
 
   private final String m_sID;
 
