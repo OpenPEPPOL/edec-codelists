@@ -6,13 +6,6 @@ See https://docs.peppol.eu/edelivery/codelists/changelog.html for all changes.
 
 ## Version 8.1
 
-The reason for the major version change, is the addition of the new "Norwegian Payment" domain for official document types.
-Additionally there was a change in the layout of the documents.
-The column "Since" was renamed to "Initial release".
-The column "Deprecated?" (type boolean) was changed to "State" (type String).
-The column "Deprecated since" was renamed to "Deprecation release".
-A new column "Removal date" of type Date was added for future use. It was added after the column now named "Deprecation release".
-
 * Participant identifier schemes
     * *No changes so far*
 
