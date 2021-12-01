@@ -13,24 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package eu.peppol.codelist.v7;
+package eu.peppol.codelist.jaxb;
 
-import com.helger.commons.version.Version;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
 
 /**
- * Handle V7.5 code lists
+ * Test class for class {@link CCodelistsTest}.
  *
  * @author Philip Helger
  */
-@Deprecated
-public final class ConvertV7_5 extends AbstractConvertV7
+public final class CCodelistsTest
 {
-  public static final Version CODE_LIST_VERSION = new Version (7, 5);
-  public static final String DESTINATION_BASE_PATH = "created-codelists/v7.5/";
-  public static final String DESTINATION_FILENAME_SUFFIX = " v7.5";
-
-  public ConvertV7_5 ()
+  @Test
+  public void testBasic ()
   {
-    super (CODE_LIST_VERSION, DESTINATION_BASE_PATH, DESTINATION_FILENAME_SUFFIX);
+    assertTrue (CCodelists.XSD.exists ());
   }
 }

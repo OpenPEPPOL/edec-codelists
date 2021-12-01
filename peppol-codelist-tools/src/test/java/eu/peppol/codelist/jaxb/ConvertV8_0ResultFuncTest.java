@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 OpenPeppol AISBL (www.peppol.eu)
+ * Copyright (C) 2020-2021 OpenPeppol AISBL (www.peppol.eu)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,8 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import eu.peppol.codelist.model.DocTypeRow;
 import eu.peppol.codelist.model.ParticipantIdentifierSchemeRow;
@@ -35,13 +37,18 @@ import eu.peppol.codelist.v8.ConvertV8_0;
  */
 public final class ConvertV8_0ResultFuncTest
 {
+
+  private static final Logger LOGGER = LoggerFactory.getLogger (ConvertV8_0ResultFuncTest.class);
+
   @Test
   public void testReadDocTypes ()
   {
-    final DocumentTypeCodeListMarshaller m = new DocumentTypeCodeListMarshaller ();
     final File f = new File (ConvertV8_0.DESTINATION_BASE_PATH,
                              DocTypeRow.CODE_LIST_NAME + ConvertV8_0.DESTINATION_FILENAME_SUFFIX + ".xml");
     assertTrue (f.exists ());
+    LOGGER.info ("Trying to read and validate " + f.getAbsolutePath ());
+
+    final DocumentTypeCodeListMarshaller m = new DocumentTypeCodeListMarshaller ();
     final DocumentTypesType aList = m.read (f);
     assertNotNull (aList);
   }
@@ -49,10 +56,12 @@ public final class ConvertV8_0ResultFuncTest
   @Test
   public void testReadParticipantIdentifierSchemes ()
   {
-    final ParticipantIdentifierSchemeCodeListMarshaller m = new ParticipantIdentifierSchemeCodeListMarshaller ();
     final File f = new File (ConvertV8_0.DESTINATION_BASE_PATH,
                              ParticipantIdentifierSchemeRow.CODE_LIST_NAME + ConvertV8_0.DESTINATION_FILENAME_SUFFIX + ".xml");
     assertTrue (f.exists ());
+    LOGGER.info ("Trying to read and validate " + f.getAbsolutePath ());
+
+    final ParticipantIdentifierSchemeCodeListMarshaller m = new ParticipantIdentifierSchemeCodeListMarshaller ();
     final ParticipantIdentifierSchemesType aList = m.read (f);
     assertNotNull (aList);
   }
@@ -60,10 +69,12 @@ public final class ConvertV8_0ResultFuncTest
   @Test
   public void testReadProcesses ()
   {
-    final ProcessCodeListMarshaller m = new ProcessCodeListMarshaller ();
     final File f = new File (ConvertV8_0.DESTINATION_BASE_PATH,
                              ProcessRow.CODE_LIST_NAME + ConvertV8_0.DESTINATION_FILENAME_SUFFIX + ".xml");
     assertTrue (f.exists ());
+    LOGGER.info ("Trying to read and validate " + f.getAbsolutePath ());
+
+    final ProcessCodeListMarshaller m = new ProcessCodeListMarshaller ();
     final ProcessesType aList = m.read (f);
     assertNotNull (aList);
   }
@@ -71,10 +82,12 @@ public final class ConvertV8_0ResultFuncTest
   @Test
   public void testReadTransportProfiles ()
   {
-    final TransportProfileCodeListMarshaller m = new TransportProfileCodeListMarshaller ();
     final File f = new File (ConvertV8_0.DESTINATION_BASE_PATH,
                              TransportProfileRow.CODE_LIST_NAME + ConvertV8_0.DESTINATION_FILENAME_SUFFIX + ".xml");
     assertTrue (f.exists ());
+    LOGGER.info ("Trying to read and validate " + f.getAbsolutePath ());
+
+    final TransportProfileCodeListMarshaller m = new TransportProfileCodeListMarshaller ();
     final TransportProfilesType aList = m.read (f);
     assertNotNull (aList);
   }
