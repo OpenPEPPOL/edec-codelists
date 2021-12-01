@@ -4,7 +4,7 @@ This folder contains the **working drafts** are for Peppol code lists.
 The actual released code lists now reside on https://docs.peppol.eu/edelivery/codelists/
 See https://docs.peppol.eu/edelivery/codelists/changelog.html for all changes.
 
-## Version 8.0
+## Version 8.1
 
 The reason for the major version change, is the addition of the new "Norwegian Payment" domain for official document types.
 Additionally there was a change in the layout of the documents.
@@ -15,134 +15,12 @@ A new column "Removal date" of type Date was added for future use. It was added 
 
 * Participant identifier schemes
     * *No changes so far*
+
 * Document type identifiers
-    * Added "EHF Payment initiation (Profile 01) (Pain.001 Message)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Payment initiation (Profile 01) (Pain.002 Reception Acknowledgement)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Payment initiation (Profile 01) (Pain.002 Handling Exception)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Payment initiation (Profile 01) (Camt.054 Reception Acknowledgement)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Payment initiation (Profile 01) (Camt.054 Handling Exception)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Payment initiation (Profile 01) (Pain.001 Reception Acknowledgement)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Payment initiation (Profile 01) (Pain.001 Handling Exception)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Payment initiation (Profile 01) (Pain.002 Message)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Payment initiation (Profile 01) (Camt.054 Message)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Cancellation of General Credit transfer Initiation (Profile 02) (Camt.055 Message)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Cancellation of General Credit transfer Initiation (Profile 02) (Pain.002 Reception Acknowledgement)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Cancellation of General Credit transfer Initiation (Profile 02) (Pain.002 Handling Exception)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Cancellation of General Credit transfer Initiation (Profile 02) (Camt.029 Reception Acknowledgement)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Cancellation of General Credit transfer Initiation (Profile 02) (Camt.029 Handling Exception)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Cancellation of General Credit transfer Initiation (Profile 02) (Camt.055 Reception Acknowledgement)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Cancellation of General Credit transfer Initiation (Profile 02) (Camt.055 Handling Exception)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Cancellation of General Credit transfer Initiation (Profile 02) (Pain.002 Message)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Cancellation of General Credit transfer Initiation (Profile 02) (Camt.029 Message)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Salary payments (Profile 03) (Pain.001 Message)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Salary payments (Profile 03) (Pain.002 Reception Acknowledgement)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Salary payments (Profile 03) (Pain.002 Handling Exception)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Salary payments (Profile 03) (Camt.054 Reception Acknowledgement)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Salary payments (Profile 03) (Camt.054 Handling Exception)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Salary payments (Profile 03) (Pain.001 Reception Acknowledgement)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Salary payments (Profile 03) (Pain.001 Handling Exception)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Salary payments (Profile 03) (Pain.002 Message)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Salary payments (Profile 03) (Camt.054 Message)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Salary payments with request for cancellation (Profile 04) (Camt.055 Message)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Salary payments with request for cancellation (Profile 04) (Pain.002 Reception Acknowledgement)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Salary payments with request for cancellation (Profile 04) (Pain.002 Handling Exception)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Salary payments with request for cancellation (Profile 04) (Camt.029 Reception Acknowledgement)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Salary payments with request for cancellation (Profile 04) (Camt.029 Handling Exception)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Salary payments with request for cancellation (Profile 04) (Camt.055 Reception Acknowledgement)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Salary payments with request for cancellation (Profile 04) (Camt.055 Handling Exception)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Salary payments with request for cancellation (Profile 04) (Pain.002 Message)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Salary payments with request for cancellation (Profile 04) (Camt.029 Message)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Accounting/General Ledger/cash management (Profile 09) (B2C debit/credit notification)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Accounting/General Ledger/cash management (Profile 09) (Camt.054 Reception Acknowledgement)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Accounting/General Ledger/cash management (Profile 09) (Camt.054 Handling Exception)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Payment Profile 10 (B2C account statement)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Payment Profile 10 (Camt.053 Reception Acknowledgement)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Payment Profile 10 (Camt.053 Handling Exception)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Payment Profile 11 (B2C account report)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Payment Profile 11 (Camt.052 Reception Acknowledgement)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "EHF Payment Profile 11 (Camt.052 Handling Exception)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added "Tendering Questions V1.0" - [TICC-183](https://openpeppol.atlassian.net/browse/TICC-183)
-    * Added "Tendering Answers V1.0" - [TICC-183](https://openpeppol.atlassian.net/browse/TICC-183)
-    * Added "Tender Clarification Request V1.0" - [TICC-183](https://openpeppol.atlassian.net/browse/TICC-183)
-    * Added "Tender Clarification Response V1.0" - [TICC-183](https://openpeppol.atlassian.net/browse/TICC-183)
-    * Added "EHF Catalogue 1.0 (Profile 1A) (Catalogue)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added "EHF Catalogue 1.0 (Profile 1A) (Catalogue Response)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added "EHF Ordering 1.0 (Profile 28A) (Order)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added "EHF Ordering 1.0 (Profile 28A) (Order Response)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added "EHF Despatch Advise 1.0 (Profile 30) (Despatch Advice)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added "EHF Reminder 1.1 (Profile XY) (Reminder)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added "EHF Catalogue 3.0 (Catalogue)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added "EHF Catalogue 3.0 (Catalogue Response)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added "EHF Ordering 3.0 (Order)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added "EHF Ordering 3.0 (Order Response)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added "EHF Order Agreement 3.0 (Order Agreement)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added "EHF Despatch Advice 3.0 (Despatch Advice)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added "EHF Reminder 3.0 (Reminder)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added "EHF Payment Request 3.0 (Payment Request)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added "EHF Forward Billing 3.0 (Invoice)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added "EHF Forward Billing 3.0 (Credit Note)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added "EHF Advanced Ordering 3.0 (Order)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added "EHF Advanced Ordering 3.0 (Order Cancellation)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added "EHF Advanced Ordering 3.0 (Order Change)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added "EHF Advanced Ordering 3.0 (Order Response)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Fixed the element local name in the identifier value of "DHSC Customized Ordering profile OrderResponse V1" (was <code>Order</code> instead of <code>OrderResponse</code>) - [TICC-186](https://openpeppol.atlassian.net/browse/TICC-186)
-    * Added "XRechnung UBL Invoice V2.1" - [TICC-188](https://openpeppol.atlassian.net/browse/TICC-188)
-    * Added "XRechnung UBL CreditNote V2.1" - [TICC-188](https://openpeppol.atlassian.net/browse/TICC-188)
-    * Added "XRechnung CII Invoice V2.1" - [TICC-188](https://openpeppol.atlassian.net/browse/TICC-188)
-    * Added "XRechnung UBL Invoice V2.1 Extension" - [TICC-189](https://openpeppol.atlassian.net/browse/TICC-189)
-    * Added "XRechnung UBL CreditNote V2.1 Extension" - [TICC-189](https://openpeppol.atlassian.net/browse/TICC-189)
-    * Added "XRechnung CII Invoice V2.1 Extension" - [TICC-189](https://openpeppol.atlassian.net/browse/TICC-189)
-    * Added "PL Faktura specjalizowana ver. 1.4" - [TICC-195](https://openpeppol.atlassian.net/browse/TICC-195)
-    * Added "PL Faktura korygująca ver. 4.0" - [TICC-195](https://openpeppol.atlassian.net/browse/TICC-195)
-    * Added "PL Nota korygująca ver. 1.4" - [TICC-195](https://openpeppol.atlassian.net/browse/TICC-195)
-    * Added "Procurement procedure subscription / Subscribe to Procedure V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added "Procurement procedure subscription / Subscribe to Procedure Confirmation V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added "Procurement document access / Tender Status Inquiry V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added "Procurement document access / Call for Tenders V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added "Tender Submission / Tender V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added "Tender Submission / Tender Tender Reception Notification V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added "Call for Tender Question and Answers / Tendering Questions V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added "Call for Tender Question and Answers / Tendering Answers V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added "Tender Clarification / Tender Clarification Request V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added "Tender Clarification / Tender Clarification V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added "Search Notices / Search Notice Request V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added "Search Notices / Search Notice Response V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added "Tender Withdrawal / Tender Withdrawal V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added "Tender Withdrawal / Tender Withdrawal Notification V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added "Publish Notice / Publish Notice V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added "Publish Notice / Notice Publication Response V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added "Notify Awarding / Awarding Notification V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
+    * *No changes so far*
 
 * Process identifiers
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:01:1.0</code> to the document types "EHF Payment initiation (Profile 01) (Pain.001 Message)", "EHF Payment initiation (Profile 01) (Pain.002 Reception Acknowledgement)", "EHF Payment initiation (Profile 01) (Pain.002 Handling Exception)", "EHF Payment initiation (Profile 01) (Camt.054 Reception Acknowledgement)", "EHF Payment initiation (Profile 01) (Camt.054 Handling Exception)", "EHF Payment initiation (Profile 01) (Pain.001 Reception Acknowledgement)", "EHF Payment initiation (Profile 01) (Pain.001 Handling Exception)", "EHF Payment initiation (Profile 01) (Pain.002 Message)" and "EHF Payment initiation (Profile 01) (Camt.054 Message)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:02:1.0</code> to the document types "EHF Cancellation of General Credit transfer Initiation (Profile 02) (Camt.055 Message)", "EHF Cancellation of General Credit transfer Initiation (Profile 02) (Pain.002 Reception Acknowledgement)", "EHF Cancellation of General Credit transfer Initiation (Profile 02) (Pain.002 Handling Exception)", "EHF Cancellation of General Credit transfer Initiation (Profile 02) (Camt.029 Reception Acknowledgement)", "EHF Cancellation of General Credit transfer Initiation (Profile 02) (Camt.029 Handling Exception)", "EHF Cancellation of General Credit transfer Initiation (Profile 02) (Camt.055 Reception Acknowledgement)", "EHF Cancellation of General Credit transfer Initiation (Profile 02) (Camt.055 Handling Exception)", "EHF Cancellation of General Credit transfer Initiation (Profile 02) (Pain.002 Message)"and "EHF Cancellation of General Credit transfer Initiation (Profile 02) (Camt.029 Message)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:03:1.0</code> to the document types "EHF Salary payments (Profile 03) (Pain.001 Message)", "EHF Salary payments (Profile 03) (Pain.002 Reception Acknowledgement)", "EHF Salary payments (Profile 03) (Pain.002 Handling Exception)", "EHF Salary payments (Profile 03) (Camt.054 Reception Acknowledgement)", "EHF Salary payments (Profile 03) (Camt.054 Handling Exception)", "EHF Salary payments (Profile 03) (Pain.001 Reception Acknowledgement)", "EHF Salary payments (Profile 03) (Pain.001 Handling Exception)", "EHF Salary payments (Profile 03) (Pain.002 Message)" and "EHF Salary payments (Profile 03) (Camt.054 Message)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</code> to the document types "EHF Salary payments with request for cancellation (Profile 04) (Camt.055 Message)", "EHF Salary payments with request for cancellation (Profile 04) (Pain.002 Reception Acknowledgement)", "EHF Salary payments with request for cancellation (Profile 04) (Pain.002 Handling Exception)", "EHF Salary payments with request for cancellation (Profile 04) (Camt.029 Reception Acknowledgement)", "EHF Salary payments with request for cancellation (Profile 04) (Camt.029 Handling Exception)", "EHF Salary payments with request for cancellation (Profile 04) (Camt.055 Reception Acknowledgement)", "EHF Salary payments with request for cancellation (Profile 04) (Camt.055 Handling Exception)", "EHF Salary payments with request for cancellation (Profile 04) (Pain.002 Message)" and "EHF Salary payments with request for cancellation (Profile 04) (Camt.029 Message)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:09:1.0</code> to the document types "EHF Accounting/General Ledger/cash management (Profile 09) (B2C debit/credit notification)", "EHF Accounting/General Ledger/cash management (Profile 09) (Camt.054 Reception Acknowledgement)" and "EHF Accounting/General Ledger/cash management (Profile 09) (Camt.054 Handling Exception)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:10:1.0</code> to the document types "EHF Payment Profile 10 (B2C account statement)", "EHF Payment Profile 10 (Camt.053 Reception Acknowledgement)" and "EHF Payment Profile 10 (Camt.053 Handling Exception)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:11:1.0</code> to the document types "EHF Payment Profile 11 (B2C account report)", "EHF Payment Profile 11 (Camt.052 Reception Acknowledgement)" and "EHF Payment Profile 11 (Camt.052 Handling Exception)" - [TICC-180](https://openpeppol.atlassian.net/browse/TICC-180)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:peppol.eu:prac:bis:p004:1.0</code> to the document types "Tendering Questions V1.0" and "Tendering Answers V1.0" - [TICC-183](https://openpeppol.atlassian.net/browse/TICC-183)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:peppol.eu:prac:bis:p005:1.0</code> to the document types "Tender Clarification Request V1.0" and "Tender Clarification Response V1.0" - [TICC-183](https://openpeppol.atlassian.net/browse/TICC-183)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:www.cenbii.eu:profile:biixy:ver2.0</code> to the document type "EHF Reminder 1.1 (Profile XY) (Reminder)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:01:1.0</code> to the document types "EHF Catalogue 3.0 (Catalogue)" and "EHF Catalogue 3.0 (Catalogue Response)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:02:1.0</code> to the document types "EHF Ordering 3.0 (Order)" and "EHF Ordering 3.0 (Order Response)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:03:1.0</code> to the document type "EHF Order Agreement 3.0 (Order Agreement)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:05:1.0</code> to the document type "EHF Despatch Advice 3.0 (Despatch Advice)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:06:1.0</code> to the document type "EHF Reminder 3.0 (Reminder)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:07:1.0</code> to the document type "EHF Payment Request 3.0 (Payment Request)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:08:1.0</code> to the document types "EHF Forward Billing 3.0 (Invoice)" and "EHF Forward Billing 3.0 (Credit Note)" - [TICC-185](https://openpeppol.atlassian.net/browse/TICC-185)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:www.efaktura.gov.pl:ver2.0:plinv:ver1.4</code> to the document type "PL Faktura specjalizowana ver. 1.4" - [TICC-195](https://openpeppol.atlassian.net/browse/TICC-195)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:www.efaktura.gov.pl:ver2.0:corr_inv:ver4.0</code> to the document type "PL Faktura korygująca ver. 4.0" - [TICC-195](https://openpeppol.atlassian.net/browse/TICC-195)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:www.efaktura.gov.pl:ver2.0:sbcn:ver1.4</code> to the document type "PL Nota korygująca ver. 1.4" - [TICC-195](https://openpeppol.atlassian.net/browse/TICC-195)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:peppol.eu:prac:bis:p001:1.1</code> to the document types "Procurement procedure subscription / Subscribe to Procedure V1.1" and "Procurement procedure subscription / Subscribe to Procedure Confirmation V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:peppol.eu:prac:bis:p002:1.1</code> to the document types "Procurement document access / Tender Status Inquiry V1.1" and "Procurement document access / Call for Tenders V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:peppol.eu:prac:bis:p003:1.1</code> to the document types "Tender Submission / Tender V1.1" and "Tender Submission / Tender Tender Reception Notification V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:peppol.eu:prac:bis:p004:1.1</code> to the document types "Call for Tender Question and Answers / Tendering Questions V1.1" and "Call for Tender Question and Answers / Tendering Answers V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:peppol.eu:prac:bis:p005:1.1</code> to the document types "Tender Clarification / Tender Clarification Request V1.1" and "Tender Clarification / Tender Clarification V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:peppol.eu:prac:bis:p006:1.1</code> to the document types "Search Notices / Search Notice Request V1.1" and "Search Notices / Search Notice Response V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:peppol.eu:prac:bis:p007:1.1</code> to the document types "Tender Withdrawal / Tender Withdrawal V1.1" and "Tender Withdrawal / Tender Withdrawal Notification V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:peppol.eu:prac:bis:p008:1.1</code> to the document types "Publish Notice / Publish Notice V1.1" and "Publish Notice / Notice Publication Response V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:peppol.eu:prac:bis:p009:1.1</code> to the document type "Notify Awarding / Awarding Notification V1.1" - [TICC-199](https://openpeppol.atlassian.net/browse/TICC-199)
+    * *No changes so far*
 
 * Transport profiles
     * *No changes so far*
@@ -151,10 +29,4 @@ A new column "Removal date" of type Date was added for future use. It was added 
 
 * Participant identifier schemes
     * Deprecate 9906 (IT:VAT), 9910 (HU:VAT), 9914 (AT:VAT), 9920 (ES:VAT), 9922 (AD:VAT), 9923 (AL:VAT), 9924 (BA:VAT), 9925 (BE:VAT), 9926 (BG:VAT), 9927 (CH:VAT), 9928 (CY:VAT), 9929 (CZ:VAT), 9930 (DE:VAT), 9931 (EE:VAT), 9932 (GB:VAT), 9933 (GR:VAT), 9934 (HR:VAT), 9935 (IE:VAT), 9936 (LI:VAT), 9937 (LT:VAT), 9938 (LU:VAT), 9939 (LV:VAT), 9940 (MC:VAT), 9941 (ME:VAT), 9942 (MK:VAT), 9943 (MT:VAT), 9944 (NL:VAT), 9945 (PL:VAT), 9946 (PT:VAT), 9947 (RO:VAT), 9948 (RS:VAT), 9949 (SI:VAT), 9950 (SK:VAT), 9951 (SM:VAT), 9952 (TR:VAT), 9953 (VA:VAT), 9955 (SE:VAT) and 9957 (FR:VAT) and *Un*deprecated 9912 (EU:VAT) - [TICC-104](https://openpeppol.atlassian.net/browse/TICC-104)
-
-* Document type identifiers
-    * *No changes so far*
-
-* Transport profiles
-    * *No changes so far*
     
