@@ -26,7 +26,6 @@ import com.helger.commons.url.URLHelper;
 import com.helger.genericode.v10.CodeListDocument;
 import com.helger.genericode.v10.ColumnSet;
 import com.helger.genericode.v10.Row;
-import com.helger.html.css.DefaultCSSClassProvider;
 import com.helger.html.hc.html.tabular.HCRow;
 import com.helger.json.IJsonObject;
 import com.helger.json.JsonObject;
@@ -189,15 +188,15 @@ public final class TransportProfileRow implements IModelRow
     aRow.addCell (m_sProtcol);
     aRow.addCell (m_sProfileVersion);
     aRow.addCell (m_sProfileID);
-    aRow.addCell (m_sInitialRelease);
+    aRow.addAndReturnCell (m_sInitialRelease).addClass (ModelHelper.CSS_TEXT_END);
     aRow.addCell (m_eState.getDisplayName ());
-    aRow.addCell (m_sDeprecationRelease);
-    aRow.addCell (PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
+    aRow.addAndReturnCell (m_sDeprecationRelease).addClass (ModelHelper.CSS_TEXT_END);
+    aRow.addAndReturnCell (PDTWebDateHelper.getAsStringXSD (m_aRemovalDate)).addClass (ModelHelper.CSS_TEXT_END);
     if (m_eState.isRemoved ())
-      aRow.addClass (DefaultCSSClassProvider.create ("table-danger"));
+      aRow.addClass (ModelHelper.CSS_TABLE_DANGER);
     else
       if (m_eState.isDeprecated ())
-        aRow.addClass (DefaultCSSClassProvider.create ("table-warning"));
+        aRow.addClass (ModelHelper.CSS_TABLE_WARNING);
     return aRow;
   }
 

@@ -30,7 +30,6 @@ import com.helger.commons.url.URLHelper;
 import com.helger.genericode.v10.CodeListDocument;
 import com.helger.genericode.v10.ColumnSet;
 import com.helger.genericode.v10.Row;
-import com.helger.html.css.DefaultCSSClassProvider;
 import com.helger.html.hc.ext.HCExtHelper;
 import com.helger.html.hc.html.tabular.HCRow;
 import com.helger.json.IJsonArray;
@@ -285,20 +284,20 @@ public final class DocTypeRow implements IModelRow
     aRow.addCell (m_sName);
     aRow.addCell (m_sScheme);
     aRow.addCell (m_sValue);
-    aRow.addCell (m_sInitialRelease);
+    aRow.addAndReturnCell (m_sInitialRelease).addClass (ModelHelper.CSS_TEXT_END);
     aRow.addCell (m_eState.getDisplayName ());
-    aRow.addCell (m_sDeprecationRelease);
-    aRow.addCell (PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
+    aRow.addAndReturnCell (m_sDeprecationRelease).addClass (ModelHelper.CSS_TEXT_END);
+    aRow.addAndReturnCell (PDTWebDateHelper.getAsStringXSD (m_aRemovalDate)).addClass (ModelHelper.CSS_TEXT_END);
     aRow.addCell (m_sComment);
     aRow.addCell (Boolean.toString (m_bIssuedByOpenPeppol));
-    aRow.addCell (m_sBISVersion);
+    aRow.addAndReturnCell (m_sBISVersion).addClass (ModelHelper.CSS_TEXT_END);
     aRow.addCell (m_sDomainCommunity);
     aRow.addCell (HCExtHelper.nl2brList (m_sProcessIDs));
     if (m_eState.isRemoved ())
-      aRow.addClass (DefaultCSSClassProvider.create ("table-danger"));
+      aRow.addClass (ModelHelper.CSS_TABLE_DANGER);
     else
       if (m_eState.isDeprecated ())
-        aRow.addClass (DefaultCSSClassProvider.create ("table-warning"));
+        aRow.addClass (ModelHelper.CSS_TABLE_WARNING);
     return aRow;
   }
 
