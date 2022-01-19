@@ -70,6 +70,7 @@ import com.helger.xml.serialize.write.EXMLSerializeIndent;
 
 import eu.peppol.codelist.gc.GCHelper;
 import eu.peppol.codelist.model.IModelRow;
+import eu.peppol.codelist.model.ModelHelper;
 
 /**
  * Abstract base processor containing only version independent stuff.
@@ -205,6 +206,9 @@ public abstract class AbstractConverter
                                                              @Nonnull final String sCodeListName,
                                                              @Nonnull final Supplier <HCRow> aHeaderRowProvider)
   {
+    // Add number column only if the amount of entries reaches a certain size
+    final boolean bAddNumColumn = aRows.size () > 20;
+
     final HCHtml aHtml = new HCHtml ();
     aHtml.head ().metaElements ().add (new HCMeta ().setCharset (StandardCharsets.UTF_8.name ()));
     aHtml.head ().metaElements ().add (new HCMeta ().setName ("viewport").setContent ("width=device-width, initial-scale=1"));
@@ -238,6 +242,8 @@ public abstract class AbstractConverter
                                                                                      nRemovedRows +
                                                                                      " red rows are the ones that contain removed entries")
                                                             : null)
+                                .addChild (bAddNumColumn ? new HCDiv ().addChild ("Info: The first column is a counter for easier orientation in the list and has NO meaning at all.")
+                                                         : null)
                                 .addClass (DefaultCSSClassProvider.create ("alert"))
                                 .addClass (DefaultCSSClassProvider.create ("alert-info")));
 
@@ -249,9 +255,21 @@ public abstract class AbstractConverter
     if (false)
       aTable.addClass (DefaultCSSClassProvider.create ("table-responsive"));
     aTable.getHead ().addClass (DefaultCSSClassProvider.create ("table-light"));
-    aTable.addHeaderRow (aHeaderRowProvider.get ());
-    for (final T aRow : aRows)
-      aTable.addBodyRow (aRow.getAsHtmlTableBodyRow ());
+    {
+      final HCRow aHeaderRow = aHeaderRowProvider.get ();
+      if (bAddNumColumn)
+        aHeaderRow.addCellAt (0, "Num#");
+      aTable.addHeaderRow (aHeaderRow);
+      int nRowNum = 1;
+      for (final T aRow : aRows)
+      {
+        final HCRow aBodyRow = aRow.getAsHtmlTableBodyRow ();
+        if (bAddNumColumn)
+          aBodyRow.addCellAt (0).addChild (Integer.toString (nRowNum)).addClass (ModelHelper.CSS_TEXT_END);
+        aTable.addBodyRow (aBodyRow);
+        ++nRowNum;
+      }
+    }
     aCont.addChild (new HCDiv ().addChild (new HCEM ().addChild ("This document was created automatically."))
                                 .addChild (" The official version is located at ")
                                 .addChild (new HCA (new SimpleURL ("https://docs.peppol.eu/edelivery/codelists/")).addChild ("https://docs.peppol.eu/edelivery/codelists/"))

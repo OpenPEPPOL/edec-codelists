@@ -41,15 +41,31 @@ public interface IModelRow
    */
   void checkConsistency ();
 
+  /**
+   * @return The representation of this code list row for the format XML. Never
+   *         <code>null</code>
+   */
   @Nonnull
   IMicroElement getAsElement ();
 
+  /**
+   * @return The representation of this code list row for the format JSON. Never
+   *         <code>null</code>
+   */
   @Nonnull
   IJsonObject getAsJson ();
 
+  /**
+   * @return The representation of this code list row for the format GeneriCode.
+   *         Never <code>null</code>
+   */
   @Nonnull
   Row getAsGCRow (@Nonnull ColumnSet aColumnSet);
 
+  /**
+   * @return The representation of this code list row for the format HTML. Never
+   *         <code>null</code>
+   */
   @Nonnull
   HCRow getAsHtmlTableBodyRow ();
 }
