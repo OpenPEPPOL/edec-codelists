@@ -1,6 +1,6 @@
 {
   "version":"8",
-  "entry-count":65,
+  "entry-count":62,
   "values":[
     {
       "scheme":"cenbii-procid-ubl",
@@ -194,16 +194,6 @@
     },
     {
       "scheme":"cenbii-procid-ubl",
-      "value":"urn:fdc:bits.no:2017:profile:03:1.0",
-      "state":"active"
-    },
-    {
-      "scheme":"cenbii-procid-ubl",
-      "value":"urn:fdc:bits.no:2017:profile:04:1.0",
-      "state":"active"
-    },
-    {
-      "scheme":"cenbii-procid-ubl",
       "value":"urn:fdc:bits.no:2017:profile:09:1.0",
       "state":"active"
     },
@@ -235,11 +225,6 @@
     {
       "scheme":"cenbii-procid-ubl",
       "value":"urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:01:1.0",
-      "state":"active"
-    },
-    {
-      "scheme":"cenbii-procid-ubl",
-      "value":"urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:02:1.0",
       "state":"active"
     },
     {
