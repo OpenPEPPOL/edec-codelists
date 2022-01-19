@@ -252,9 +252,10 @@ public abstract class AbstractConverter
     aTable.addHeaderRow (aHeaderRowProvider.get ());
     for (final T aRow : aRows)
       aTable.addBodyRow (aRow.getAsHtmlTableBodyRow ());
-    aCont.addChild (new HCDiv ().addChild (new HCEM ().addChild ("This document was created automatically. The official version is located at ")
-                                                      .addChild (new HCA (new SimpleURL ("https://docs.peppol.eu/edelivery/codelists/")).addChild ("https://docs.peppol.eu/edelivery/codelists/")))
-                                .addClass (DefaultCSSClassProvider.create ("my-3")));
+    aCont.addChild (new HCDiv ().addChild (new HCEM ().addChild ("This document was created automatically."))
+                                .addChild (" The official version is located at ")
+                                .addChild (new HCA (new SimpleURL ("https://docs.peppol.eu/edelivery/codelists/")).addChild ("https://docs.peppol.eu/edelivery/codelists/"))
+                                .addClasses (DefaultCSSClassProvider.create ("alert"), DefaultCSSClassProvider.create ("alert-secondary")));
     _writeHtmlFile (aHtml, sCodeListName);
   }
 
