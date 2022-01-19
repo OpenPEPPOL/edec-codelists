@@ -20,6 +20,7 @@ import java.time.LocalDate;
 
 import javax.annotation.Nonnull;
 
+import com.helger.commons.annotation.Nonempty;
 import com.helger.commons.datetime.PDTWebDateHelper;
 import com.helger.commons.regex.RegExHelper;
 import com.helger.commons.string.StringHelper;
@@ -104,6 +105,13 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
   public ERowState getState ()
   {
     return m_eState;
+  }
+
+  @Nonnull
+  @Nonempty
+  public String getUniqueKey ()
+  {
+    return m_sSchemeID + ':' + m_sISO6523;
   }
 
   public void checkConsistency ()

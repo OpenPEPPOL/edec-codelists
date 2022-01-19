@@ -21,6 +21,7 @@ import java.time.LocalDate;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import com.helger.commons.annotation.Nonempty;
 import com.helger.commons.collection.CollectionHelper;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.datetime.PDTWebDateHelper;
@@ -107,16 +108,23 @@ public final class DocTypeRow implements IModelRow
   private String m_sProcessIDs;
   private ICommonsList <IProcessIdentifier> m_aProcessIDs;
 
+  @Nullable
+  public Iterable <IProcessIdentifier> getAllProcessIDs ()
+  {
+    return m_aProcessIDs;
+  }
+
   @Nonnull
   public ERowState getState ()
   {
     return m_eState;
   }
 
-  @Nullable
-  public Iterable <IProcessIdentifier> getAllProcessIDs ()
+  @Nonnull
+  @Nonempty
+  public String getUniqueKey ()
   {
-    return m_aProcessIDs;
+    return m_sScheme + ':' + m_sValue;
   }
 
   public void checkConsistency ()

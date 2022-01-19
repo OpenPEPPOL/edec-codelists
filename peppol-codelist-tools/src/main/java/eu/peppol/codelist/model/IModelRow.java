@@ -17,6 +17,7 @@ package eu.peppol.codelist.model;
 
 import javax.annotation.Nonnull;
 
+import com.helger.commons.annotation.Nonempty;
 import com.helger.genericode.v10.ColumnSet;
 import com.helger.genericode.v10.Row;
 import com.helger.html.hc.html.tabular.HCRow;
@@ -35,6 +36,15 @@ public interface IModelRow
    */
   @Nonnull
   ERowState getState ();
+
+  /**
+   * @return The unique key of this particular row. If the key consists of
+   *         multiple columns, the parts should just be aggregated and combined
+   *         with the colon (:) character.
+   */
+  @Nonnull
+  @Nonempty
+  String getUniqueKey ();
 
   /**
    * Check the consistency of this row. Throws a runtime exception on error.

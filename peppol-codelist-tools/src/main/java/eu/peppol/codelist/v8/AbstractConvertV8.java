@@ -23,9 +23,11 @@ import org.apache.poi.ss.usermodel.Sheet;
 
 import com.helger.commons.annotation.Nonempty;
 import com.helger.commons.collection.impl.CommonsArrayList;
+import com.helger.commons.collection.impl.CommonsHashSet;
 import com.helger.commons.collection.impl.CommonsLinkedHashMap;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.collection.impl.ICommonsMap;
+import com.helger.commons.collection.impl.ICommonsSet;
 import com.helger.commons.version.Version;
 import com.helger.peppolid.IProcessIdentifier;
 
@@ -67,8 +69,13 @@ public abstract class AbstractConvertV8 extends AbstractConverter
         m_aProcIDs.computeIfAbsent (aProcID, k -> new CommonsArrayList <> ()).add (aRow);
 
     // Consistency checks
+    final ICommonsSet <String> aKeys = new CommonsHashSet <> ();
     for (final DocTypeRow aRow : aRows)
+    {
       aRow.checkConsistency ();
+      if (!aKeys.add (aRow.getUniqueKey ()))
+        throw new IllegalStateException ("The unique key '" + aRow.getUniqueKey () + "' is contained more than once");
+    }
 
     // Create files
     createGenericodeFile (aRows, DocTypeRow.CODE_LIST_NAME, DocTypeRow::addGCColumns, DocTypeRow.CODE_LIST_URI);
@@ -86,8 +93,13 @@ public abstract class AbstractConvertV8 extends AbstractConverter
     final ICommonsList <ParticipantIdentifierSchemeRow> aRows = aXLSX.getAsList (ParticipantIdentifierSchemeRow::createV8);
 
     // Consistency checks
+    final ICommonsSet <String> aKeys = new CommonsHashSet <> ();
     for (final ParticipantIdentifierSchemeRow aRow : aRows)
+    {
       aRow.checkConsistency ();
+      if (!aKeys.add (aRow.getUniqueKey ()))
+        throw new IllegalStateException ("The unique key '" + aRow.getUniqueKey () + "' is contained more than once");
+    }
 
     // Create files
     createGenericodeFile (aRows,
@@ -108,8 +120,13 @@ public abstract class AbstractConvertV8 extends AbstractConverter
     final ICommonsList <TransportProfileRow> aRows = aXLSX.getAsList (TransportProfileRow::createV8);
 
     // Consistency checks
+    final ICommonsSet <String> aKeys = new CommonsHashSet <> ();
     for (final TransportProfileRow aRow : aRows)
+    {
       aRow.checkConsistency ();
+      if (!aKeys.add (aRow.getUniqueKey ()))
+        throw new IllegalStateException ("The unique key '" + aRow.getUniqueKey () + "' is contained more than once");
+    }
 
     // Create files
     createGenericodeFile (aRows, TransportProfileRow.CODE_LIST_NAME, TransportProfileRow::addGCColumns, TransportProfileRow.CODE_LIST_URI);
@@ -126,8 +143,13 @@ public abstract class AbstractConvertV8 extends AbstractConverter
       aRows.add (ProcessRow.createFromID (aEntry.getKey (), aEntry.getValue ()));
 
     // Consistency checks
+    final ICommonsSet <String> aKeys = new CommonsHashSet <> ();
     for (final ProcessRow aRow : aRows)
+    {
       aRow.checkConsistency ();
+      if (!aKeys.add (aRow.getUniqueKey ()))
+        throw new IllegalStateException ("The unique key '" + aRow.getUniqueKey () + "' is contained more than once");
+    }
 
     // Create files
     createGenericodeFile (aRows, ProcessRow.CODE_LIST_NAME, ProcessRow::addGCColumns, ProcessRow.CODE_LIST_URI);

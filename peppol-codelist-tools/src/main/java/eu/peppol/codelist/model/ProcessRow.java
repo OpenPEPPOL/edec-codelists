@@ -69,6 +69,13 @@ public final class ProcessRow implements IModelRow
     return m_eState;
   }
 
+  @Nonnull
+  @Nonempty
+  public String getUniqueKey ()
+  {
+    return m_sScheme + ':' + m_sValue;
+  }
+
   public void checkConsistency ()
   {
     if (StringHelper.hasNoText (m_sScheme))

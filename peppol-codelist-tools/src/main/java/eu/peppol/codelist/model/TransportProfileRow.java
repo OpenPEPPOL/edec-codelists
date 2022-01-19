@@ -20,6 +20,7 @@ import java.time.LocalDate;
 
 import javax.annotation.Nonnull;
 
+import com.helger.commons.annotation.Nonempty;
 import com.helger.commons.datetime.PDTWebDateHelper;
 import com.helger.commons.string.StringHelper;
 import com.helger.commons.url.URLHelper;
@@ -87,6 +88,13 @@ public final class TransportProfileRow implements IModelRow
   public ERowState getState ()
   {
     return m_eState;
+  }
+
+  @Nonnull
+  @Nonempty
+  public String getUniqueKey ()
+  {
+    return m_sProfileID;
   }
 
   public void checkConsistency ()
