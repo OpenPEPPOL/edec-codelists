@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (C) 2020 OpenPeppol AISBL (www.peppol.eu)
+    Copyright (C) 2020-2022 OpenPeppol AISBL (www.peppol.eu)
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -81,7 +81,7 @@
       <dependency>
         <groupId>com.helger.photon</groupId>
         <artifactId>ph-oton-parent-pom</artifactId>
-        <version>8.3.2</version>
+        <version>8.3.6</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>

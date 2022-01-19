@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 OpenPeppol AISBL (www.peppol.eu)
+ * Copyright (C) 2020-2022 OpenPeppol AISBL (www.peppol.eu)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package eu.peppol.codelist.model;
 
 import javax.annotation.Nonnull;
+import javax.annotation.concurrent.Immutable;
 
 import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
@@ -25,10 +26,12 @@ import com.helger.html.css.ICSSClassProvider;
 import com.helger.peppolid.IProcessIdentifier;
 import com.helger.peppolid.factory.PeppolIdentifierFactory;
 
-final class ModelHelper
+@Immutable
+public final class ModelHelper
 {
   public static final ICSSClassProvider CSS_TABLE_DANGER = DefaultCSSClassProvider.create ("table-danger");
   public static final ICSSClassProvider CSS_TABLE_WARNING = DefaultCSSClassProvider.create ("table-warning");
+  // Right align
   public static final ICSSClassProvider CSS_TEXT_END = DefaultCSSClassProvider.create ("text-end");
 
   private static final boolean DEFAULT_DEPRECATED = false;

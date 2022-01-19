@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 OpenPeppol AISBL (www.peppol.eu)
+ * Copyright (C) 2020-2022 OpenPeppol AISBL (www.peppol.eu)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,15 +41,31 @@ public interface IModelRow
    */
   void checkConsistency ();
 
+  /**
+   * @return The representation of this code list row for the format XML. Never
+   *         <code>null</code>
+   */
   @Nonnull
   IMicroElement getAsElement ();
 
+  /**
+   * @return The representation of this code list row for the format JSON. Never
+   *         <code>null</code>
+   */
   @Nonnull
   IJsonObject getAsJson ();
 
+  /**
+   * @return The representation of this code list row for the format GeneriCode.
+   *         Never <code>null</code>
+   */
   @Nonnull
   Row getAsGCRow (@Nonnull ColumnSet aColumnSet);
 
+  /**
+   * @return The representation of this code list row for the format HTML. Never
+   *         <code>null</code>
+   */
   @Nonnull
   HCRow getAsHtmlTableBodyRow ();
 }

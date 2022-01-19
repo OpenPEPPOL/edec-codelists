@@ -45,7 +45,7 @@ Do NOT edit!</ext:info>
           <Data Type="string" />
     </Column>
       <Column Use="required" Id="issued-by-openpeppol">
-      <ShortName>Issued by OpenPEPPOL?</ShortName>
+      <ShortName>Issued by OpenPeppol?</ShortName>
           <Data Type="boolean" />
     </Column>
       <Column Use="optional" Id="bis-version">

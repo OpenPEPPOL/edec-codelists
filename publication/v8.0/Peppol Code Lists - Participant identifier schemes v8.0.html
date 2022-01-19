@@ -1,0 +1,1636 @@
+<!--
+
+    Copyright (C) 2020-2022 OpenPeppol AISBL (www.peppol.eu)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<!DOCTYPE html>
+<html dir="ltr">
+<head title="Peppol Code Lists - Participant identifier schemes">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" crossorigin="anonymous" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" />
+</head>
+<body>
+<div class="container-fluid">
+<h1>Peppol Code Lists - Participant identifier schemes</h1>
+<div class="alert alert-info">
+<div>Version 8 with 88 entries</div>
+<div>Info: the 8 yellow rows are the ones that contain deprecated entries</div>
+<div>Info: The first column is a counter for easier orientation in the list and has NO meaning at all.</div>
+</div>
+<table class="table table-striped">
+<thead class="table-light">
+<tr>
+<th>Num#</th>
+<th>Scheme ID</th>
+<th>ICD Value</th>
+<th>Country Code</th>
+<th>Scheme Name</th>
+<th>Issuing Organisation</th>
+<th>Initial release</th>
+<th>State</th>
+<th>Deprecation release</th>
+<th>Removal date</th>
+<th>Structure of Code</th>
+<th>Display Requirements</th>
+<th>Peppol Examples</th>
+<th>Validation Rules</th>
+<th>Usage Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="text-end">1</td>
+<td>FR:SIRENE</td>
+<td>0002</td>
+<td>FR</td>
+<td>System Information et Repertoire des Entreprise et des Etablissements: SIRENE</td>
+<td>Institut National de la Statistique et des Etudes Economiques, (I.N.S.E.E.)</td>
+<td class="text-end">1.0.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>FR:SIRENE</td>
+<td>The 9 figure code number (SIREN) is written in groups of 3 characters. Example: 784 301 772
+The 14 figure code number is written in 3 groups of 3 characters and a single group of 5. Example: 784 301 772 00025</td>
+<td>784301772
+78430177200025</td>
+<td>RegEx: [0-9]{9}([0-9]{5})?
+Check digits: Luhn Algorithm</td>
+<td>1.1.1 - Changed from FR:SIRET to FR:SIRENE (see ISU Jira ISU-231)</td>
+</tr>
+<tr>
+<td class="text-end">2</td>
+<td>SE:ORGNR</td>
+<td>0007</td>
+<td>SE</td>
+<td>Organisationsnummer</td>
+<td>The National Tax Board</td>
+<td class="text-end">1.0.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>SE:ORGNR</td>
+<td>Single group of 10 digits.</td>
+<td>2120000787</td>
+<td>RegEx: [0-9]{10}
+Check digits: Luhn Algorithm</td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">3</td>
+<td>FR:SIRET</td>
+<td>0009</td>
+<td>FR</td>
+<td>SIRET-CODE</td>
+<td>DU PONT DE NEMOURS</td>
+<td class="text-end">1.1.1</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>FR:SIRET</td>
+<td>In four groups, Groups 1 - 3 = three digits each, Group 4 = five digits</td>
+<td>78430177200025</td>
+<td>RegEx: [0-9]{14}</td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">4</td>
+<td>FI:OVT</td>
+<td>0037</td>
+<td>FI</td>
+<td>LY-tunnus</td>
+<td>National Board of Taxes, (Verohallitus)</td>
+<td class="text-end">1.0.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>FI:OVT</td>
+<td>None</td>
+<td>0037:00371234567800001
+0037:1234567800001</td>
+<td>RegEx: 0037[0-9]{8}[0-9A-Z]{0,5}
+Check Digit: mod11 of 8-digit OrgCode (weights 2, 4, 8, 5, 10, 9, 7 [right to left] or 7, 9, 10, 5, 8, 4, 2, 1 [left to right])</td>
+<td>OVT identifier conforming to standard ISO6523.   
+- Constant 0037 (Finnish tax administration organisation code)
+- Finnish local tax ID, 8 characters with initial zero and no hyphen
++K4:K5</td>
+</tr>
+<tr>
+<td class="text-end">5</td>
+<td>DUNS</td>
+<td>0060</td>
+<td>international</td>
+<td>Data Universal Numbering System (D-U-N-S Number)</td>
+<td>Dun and Bradstreet Ltd</td>
+<td class="text-end">1.0.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>DUNS</td>
+<td>IIIIIIIIC where all characters are the digits 0, to 9, I = an identification digit and C = the check digit. When the prefix (P) is added the display requirement will be eleven digits, PPIIIIIIIIC.</td>
+<td>812810734</td>
+<td>RegEx: [0-9]{9}</td>
+<td>Check digits were removed to get a bigger number area
+UPIK search to validate DUNS numbers
+&quot;D&amp;B Direct 2.0&quot; API available</td>
+</tr>
+<tr>
+<td class="text-end">6</td>
+<td>GLN</td>
+<td>0088</td>
+<td>international</td>
+<td>Global Location Number</td>
+<td>GS1 GLN</td>
+<td class="text-end">1.0.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>GLN</td>
+<td>None</td>
+<td>1548079098355</td>
+<td>RegEx: [0-9]{13}
+Check Digit: mod10 (weights 1, 3)</td>
+<td>GLN-13 are the only supports supported atm</td>
+</tr>
+<tr>
+<td class="text-end">7</td>
+<td>DK:P</td>
+<td>0096</td>
+<td>DK</td>
+<td>DANISH CHAMBER OF COMMERCE Scheme</td>
+<td>Danish Chamber of Commerce</td>
+<td class="text-end">1.0.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>DK:P</td>
+<td>None</td>
+<td></td>
+<td>RegEx: [0-9]{17}
+Check Digits: mod97</td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">8</td>
+<td>IT:FTI</td>
+<td>0097</td>
+<td>IT</td>
+<td>FTI - Ediforum Italia</td>
+<td>FTI - Ediforum Italia</td>
+<td class="text-end">1.0.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>IT:FTI</td>
+<td>None</td>
+<td></td>
+<td>RegEx: [0-9]{11,16}
+The check digit algorithm is the one published in the Gazzetta Ufficiale no 345 of December 29 1976.</td>
+<td>We couldn&#39;t find the checksum algorithm in the scanned PDF of 1976
+Proposed to deprecate</td>
+</tr>
+<tr>
+<td class="text-end">9</td>
+<td>NL:KVK</td>
+<td>0106</td>
+<td>NL</td>
+<td>Vereniging van Kamers van Koophandel en Fabrieken in Nederland (Association of
+Chambers of Commerce and Industry in the Netherlands), Scheme</td>
+<td>Vereniging van Kamers van Koophandel en Fabrieken in Nederland</td>
+<td class="text-end">1.1.2</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>NL:KVK</td>
+<td>None</td>
+<td></td>
+<td>RegEx: [0-9]{17}
+Check Digits: mod97</td>
+<td>Real numbers seem to be 8 characters</td>
+</tr>
+<tr>
+<td class="text-end">10</td>
+<td>EU:NAL</td>
+<td>0130</td>
+<td>international</td>
+<td>Directorates of the European Commission</td>
+<td>European Commission, Information Directorate, Data Transmission Service</td>
+<td class="text-end">4</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>EU:NAL</td>
+<td>None</td>
+<td></td>
+<td></td>
+<td>Requested by TICC-10 and TICC-11;
+in SML since 2019-08-23</td>
+</tr>
+<tr>
+<td class="text-end">11</td>
+<td>IT:SIA</td>
+<td>0135</td>
+<td>IT</td>
+<td>SIA Object Identifiers</td>
+<td>SIA-Società Interbancaria per l&#39;Automazione S.p.A.</td>
+<td class="text-end">1.0.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>IT:SIA</td>
+<td>None</td>
+<td></td>
+<td></td>
+<td>Propose to deprecate</td>
+</tr>
+<tr>
+<td class="text-end">12</td>
+<td>IT:SECETI</td>
+<td>0142</td>
+<td>IT</td>
+<td>SECETI Object Identifiers</td>
+<td>Servizi Centralizzati SECETI S.p.A.</td>
+<td class="text-end">1.0.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>IT:SECETI</td>
+<td>None</td>
+<td></td>
+<td></td>
+<td>Propose to deprecate</td>
+</tr>
+<tr>
+<td class="text-end">13</td>
+<td>AU:ABN</td>
+<td>0151</td>
+<td>AU</td>
+<td>Australian Business Number (ABN) Scheme</td>
+<td>Australian Taxation Office</td>
+<td class="text-end">5</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>AU:ABN</td>
+<td>It is displayed as follows: -, XX XXX XXX XXX</td>
+<td>51 824 753 556</td>
+<td>RegEx: [0-9]{11}
+Check number: mod 89 (weights)
+* Subtract 1 from the first (left-most) digit of the ABN to give a new 11 digit number
+* Multiply each of the digits in this new number by a &quot;weighting factor&quot; based on its position as shown in the table below
+*Sum the resulting 11 products
+* Divide the sum total by 89, noting the remainder
+* If the remainder is zero the number is a valid ABN
+Weight: 10, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19</td>
+<td>https://abr.business.gov.au/Help/AbnFormat</td>
+</tr>
+<tr>
+<td class="text-end">14</td>
+<td>CH:UIDB</td>
+<td>0183</td>
+<td>CH</td>
+<td>Swiss Unique Business Identification Number (UIDB)</td>
+<td>Swiss Federal Statistical Office (FSO)</td>
+<td class="text-end">5</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>CH:UIDB</td>
+<td>There is no requirements. As suggested in the standards eCH-0097 (http://www.ech.ch) the transmission of the UID is without any separator.
+For display reason is suggested to use this format CHE-XXX.XXX.XXP minus-character (&#39;-&#39;) after &#39;CHE&#39; and separator dot-character (&#39;.&#39;) after 6th and 9th character</td>
+<td></td>
+<td>RegEx: CHE[0-9]{9}
+Check number: mod11 (weights: 5, 4, 3, 2, 7, 6, 5, 4)</td>
+<td>Also called &quot;Numéro d&#39;identification suisse des enterprises (IDE)&quot;</td>
+</tr>
+<tr>
+<td class="text-end">15</td>
+<td>DK:DIGST</td>
+<td>0184</td>
+<td>DK</td>
+<td>DIGSTORG</td>
+<td>DIGSTORG</td>
+<td class="text-end">1.2.1</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>DK:DIGST</td>
+<td>Group of 10 digits</td>
+<td></td>
+<td>RegEx: [0-9]{8}([0-9]{2})?</td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">16</td>
+<td>NL:OINO</td>
+<td>0190</td>
+<td>NL</td>
+<td>Organisatie-identificatienummer (OIN)</td>
+<td>Logius</td>
+<td class="text-end">2</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>NL:OINO</td>
+<td>In one group of 20 digits</td>
+<td>00000001820029336000</td>
+<td>RegEx: [0-9]{20}</td>
+<td>Get all OINs from http://portaal.digikoppeling.nl/registers/</td>
+</tr>
+<tr>
+<td class="text-end">17</td>
+<td>EE:CC</td>
+<td>0191</td>
+<td>EE</td>
+<td>Company code</td>
+<td>Centre of Registers and Information Systems of the Ministry of Justice</td>
+<td class="text-end">2</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>EE:CC</td>
+<td>None</td>
+<td>10137025</td>
+<td>RegEx: [1789][0-9]{7}
+CheckDigit as last char.
+Python code to check:
+def calc_check_digit(number):
+    &quot;&quot;&quot;Calculate the check digit.&quot;&quot;&quot;
+    check = sum(((i % 9) + 1) * int(n)
+                for i, n in enumerate(number[:-1])) % 11
+    if check == 10:
+        check = sum((((i + 2) % 9) + 1) * int(n)
+                    for i, n in enumerate(number[:-1])) % 11
+    return str(check % 10)</td>
+<td>See https://ariregister.rik.ee/index?lang=eng</td>
+</tr>
+<tr>
+<td class="text-end">18</td>
+<td>NO:ORG</td>
+<td>0192</td>
+<td>NO</td>
+<td>Organisasjonsnummer</td>
+<td>The Brønnøysund Register Centre</td>
+<td class="text-end">2</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>NO:ORG</td>
+<td>None</td>
+<td>745707327</td>
+<td>RegEx: [0-9]{9}
+Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3)</td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">19</td>
+<td>UBLBE</td>
+<td>0193</td>
+<td>BE</td>
+<td>UBL.BE Party Identifier</td>
+<td>UBL.BE</td>
+<td class="text-end">3</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>UBLBE</td>
+<td>None</td>
+<td></td>
+<td>RegEx: .{4,50}</td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">20</td>
+<td>SG:UEN</td>
+<td>0195</td>
+<td>SG</td>
+<td>Singapore Nationwide E-Invoice Framework</td>
+<td>lnfocomm Media Development Authority</td>
+<td class="text-end">4</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>SG:UEN</td>
+<td>None, except all fields are left justified</td>
+<td></td>
+<td>RegEx: [a-z]{2}[a-z]{3}([0-9]{8}|[0-9]{9}|[RST][0-9]{2}[a-z]{2}[0-9]{4})[0-9a-z]</td>
+<td>https://www.uen.gov.sg/ueninternet/faces/pages/admin/aboutUEN.jspx?_afrLoop=1018044967911865&amp;_afrWindowMode=0&amp;_adf.ctrl-state=fdr4mq9l0_26</td>
+</tr>
+<tr>
+<td class="text-end">21</td>
+<td>IS:KTNR</td>
+<td>0196</td>
+<td>IS</td>
+<td>Icelandic identifier</td>
+<td>Icelandic National Registry</td>
+<td class="text-end">4</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>IS:KTNR</td>
+<td>Whole string: nnnnnnnnnn
+Commonly displayed with hyphen between Y2 and R1, e.g. nnnnnn-nnnn</td>
+<td></td>
+<td>RegEx: [0-9]{10}
+Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">22</td>
+<td>DK:ERST</td>
+<td>0198</td>
+<td>DK</td>
+<td>ERSTORG</td>
+<td>The Danish Business Authority</td>
+<td class="text-end">5</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>DK:ERST</td>
+<td>10 characters, no space or other separator</td>
+<td></td>
+<td>RegEx: DK[0-9]{8}
+Check digit: mod11 (weights 2, 7, 6, 5, 4, 3, 2, 1)</td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">23</td>
+<td>LEI</td>
+<td>0199</td>
+<td>international</td>
+<td>Legal Entity Identifier (LEI)</td>
+<td>As of December 2018, there are 33 LEI issuing organizations in the world.</td>
+<td class="text-end">5</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>LEI</td>
+<td>The entire 20 character code (including the check digits)</td>
+<td></td>
+<td>RegEx: [A-Z0-9]{18}[0-9]{2}
+Check digit: mod97-10</td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">24</td>
+<td>LT:LEC</td>
+<td>0200</td>
+<td>LT</td>
+<td>Legal entity code</td>
+<td>State Enterprise Centre of Registers</td>
+<td class="text-end">5</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>LT:LEC</td>
+<td>None</td>
+<td>111963319</td>
+<td>RegEx: [0-9]{9}
+Check number: see text</td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">25</td>
+<td>IT:CUUO</td>
+<td>0201</td>
+<td>IT</td>
+<td>Codice Univoco Unità Organizzativa iPA</td>
+<td>Agenzia per l’Italia digitale</td>
+<td class="text-end">6</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>IT:CUUO</td>
+<td>None</td>
+<td></td>
+<td>RegEx: [0-9a-zA-Z]{6}
+No checkdigit</td>
+<td>&quot;Alphanumeric characters&quot;</td>
+</tr>
+<tr>
+<td class="text-end">26</td>
+<td>DE:LWID</td>
+<td>0204</td>
+<td>DE</td>
+<td>Leitweg-ID</td>
+<td>Koordinierungsstelle für IT-Standards (KoSIT)</td>
+<td class="text-end">6</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>DE:LWID</td>
+<td>Whole string</td>
+<td></td>
+<td>RegEx: [0-9]{2,12}(\-[0-9A-Z]{0,30})?\-[0-9]{2}</td>
+<td>The fine grained part is optional</td>
+</tr>
+<tr>
+<td class="text-end">27</td>
+<td>BE:EN</td>
+<td>0208</td>
+<td>BE</td>
+<td>Numero d&#39;entreprise / ondernemingsnummer / Unternehmensnummer</td>
+<td>Banque-Carrefour des Entreprises (BCE) / Kruispuntbank van Ondernemingen (KBO) / Zentrale Datenbank der Unternehmen (ZOU)
+Service public fédéral Economie, P.M.E. Classes moyennes et Energie</td>
+<td class="text-end">7</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>BE:EN</td>
+<td>The identification number can be displayed in the following ways:
+For enterprise numbers:
+- a group of four digits, then two groups of three digits, each group separated by a dot. Example: 1234.456.789
+- one digit, then three groups of three digits, each separated by a dot. Example: 1.234.456.789
+For establishment unit numbers:
+- one digit, then three groups of three digits, each separated by a dot. Example: 2.123.456.789</td>
+<td></td>
+<td>RegEx: 0[0-9]{9}
+Check digit: mod97
+See https://github.com/arthurdejong/python-stdnum/blob/master/stdnum/be/vat.py</td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">28</td>
+<td>GS1</td>
+<td>0209</td>
+<td>international</td>
+<td>GS1 identification keys</td>
+<td>GS1</td>
+<td class="text-end">7.5</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>GS1</td>
+<td>None</td>
+<td>414541000099999325412345678901234567890</td>
+<td>See document &quot;GS1 Application Standard for usage of ISO/IEC 6523 International Code Designator (ICD) 0209&quot;</td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">29</td>
+<td>IT:CFI</td>
+<td>0210</td>
+<td>IT</td>
+<td>CODICE FISCALE</td>
+<td>Agenzia delle Entrate</td>
+<td class="text-end">7.5</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>IT:CFI</td>
+<td></td>
+<td></td>
+<td>Character Repertoire : A to Z (upper case) and 0 to 9</td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">30</td>
+<td>IT:IVA</td>
+<td>0211</td>
+<td>IT</td>
+<td>PARTITA IVA</td>
+<td>Agenzia delle Entrate</td>
+<td class="text-end">7.5</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>IT:IVA</td>
+<td></td>
+<td></td>
+<td>RegEx: IT[0-9]{11}
+first 7: company identifiers
+next 3: province of residence (between &quot;001&quot; and &quot;100&quot;; or &quot;120&quot;, &quot;121&quot;, &quot;888&quot; &quot;999&quot;)
+Last: check digit
+Check digit: Luhn</td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">31</td>
+<td>FI:ORG</td>
+<td>0212</td>
+<td>FI</td>
+<td>Finnish Organization Identifier</td>
+<td>State Treasury of Finland / Valtiokonttori</td>
+<td class="text-end">7.5</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>FI:ORG</td>
+<td>Shall be presented as string so that leading zeros have to be present.
+Hyphen shall be present between last two digits.</td>
+<td></td>
+<td>Character Repertoire: digits 0-9 and hyphen &quot;-&quot;</td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">32</td>
+<td>FI:VAT</td>
+<td>0213</td>
+<td>FI</td>
+<td>Finnish Organization Value Add Tax Identifier</td>
+<td>State Treasury of Finland / Valtiokonttori</td>
+<td class="text-end">7.5</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>FI:VAT</td>
+<td>Shall be presented as string so that leading zeros have to be present. Two first characters have always fixed value FI.</td>
+<td></td>
+<td>Character Repertoire: digits 0-9 and FI</td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">33</td>
+<td>DK:CPR</td>
+<td>9901</td>
+<td>DK</td>
+<td>Danish Ministry of the Interior and Health</td>
+<td>Danish Ministry of the Interior and Health</td>
+<td class="text-end">1.0.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>DK:CPR</td>
+<td>None</td>
+<td></td>
+<td></td>
+<td>Personal identifier</td>
+</tr>
+<tr>
+<td class="text-end">34</td>
+<td>DK:CVR</td>
+<td>9902</td>
+<td>DK</td>
+<td>The Danish Commerce and Companies Agency</td>
+<td>The Danish Commerce and Companies Agency</td>
+<td class="text-end">1.0.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>DK:CVR</td>
+<td></td>
+<td>13585628</td>
+<td>RegEx: [1-9][0-9]{7}
+Check digit: mod11 (weights, 2, 7, 6, 5, 4, 3, 2, 1)</td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">35</td>
+<td>DK:SE</td>
+<td>9904</td>
+<td>DK</td>
+<td>Danish Ministry of Taxation, Central Customs and Tax Administration</td>
+<td>Danish Ministry of Taxation, Central Customs and Tax Administration</td>
+<td class="text-end">1.0.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>DK:SE</td>
+<td></td>
+<td>DK26769388</td>
+<td>RegEx: DK[0-9]{8}
+Taks: validate Check digit: mod11 (weights 2, 7, 6, 5, 4, 3, 2, 1)</td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">36</td>
+<td>DK:VANS</td>
+<td>9905</td>
+<td>DK</td>
+<td>Danish VANS providers</td>
+<td>Danish VANS providers</td>
+<td class="text-end">1.0.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>DK:VANS</td>
+<td></td>
+<td>DK26769388</td>
+<td></td>
+<td>Propose to deprecate (only 7 identifiers, only IBM - all look like test)</td>
+</tr>
+<tr>
+<td class="text-end">37</td>
+<td>IT:VAT</td>
+<td>9906</td>
+<td>IT</td>
+<td>Ufficio responsabile gestione partite IVA</td>
+<td></td>
+<td class="text-end">1.0.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>IT:VAT</td>
+<td></td>
+<td>IT06363391001</td>
+<td>RegEx: IT[0-9]{11}
+first 7: company identifiers
+next 3: province of residence (between &quot;001&quot; and &quot;100&quot;; or &quot;120&quot;, &quot;121&quot;, &quot;888&quot; &quot;999&quot;)
+Last: check digit
+Check digit: Luhn</td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">38</td>
+<td>IT:CF</td>
+<td>9907</td>
+<td>IT</td>
+<td>TAX Authority</td>
+<td>TAX Authority</td>
+<td class="text-end">1.0.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>IT:CF</td>
+<td></td>
+<td>RSSBBR69C48F839A</td>
+<td>RegEx: [0-9]{11} (company identification)
+first 7: company identifiers
+next 3: province of residence (between &quot;001&quot; and &quot;100&quot;; or &quot;120&quot;, &quot;121&quot;, &quot;888&quot; &quot;999&quot;)
+Last: check digit
+Check digit: Luhn
+
+RegEx: [A-Z]{6}[0-9LMNPQRSTUV]{2}[ABCDEHLMPRST][0-9LMNPQRSTUV]{2}[A-Z][0-9LMNPQRSTUV]{3}[A-Z] (personal identification)
+Check digit: https://github.com/arthurdejong/python-stdnum/blob/master/stdnum/it/codicefiscale.py</td>
+<td>NOTE: The &quot;CF&quot; is a Fiscal Code that can be &quot;personal&quot; or for a &quot;legal entity&quot;.
+The CF for legal entities is like the Italian VAT code (IT:VAT)</td>
+</tr>
+<tr>
+<td class="text-end">39</td>
+<td>NO:ORGNR</td>
+<td>9908</td>
+<td>NO</td>
+<td>Enhetsregisteret ved Bronnoysundregisterne</td>
+<td>The Brønnøysund Register Centre</td>
+<td class="text-end">1.0.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>NO:ORGNR</td>
+<td></td>
+<td></td>
+<td>RegEx: [0-9]{9}
+Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3)</td>
+<td>Same as 0192</td>
+</tr>
+<tr class="table-warning">
+<td class="text-end">40</td>
+<td>NO:VAT</td>
+<td>9909</td>
+<td>NO</td>
+<td>Norwegian VAT number</td>
+<td>Enhetsregisteret ved Bronnoysundregisterne</td>
+<td class="text-end">1.0.0</td>
+<td>Deprecated</td>
+<td class="text-end">1.1.0</td>
+<td class="text-end"></td>
+<td>NO:VAT</td>
+<td></td>
+<td>990399123MVA</td>
+<td>RegEx: NO[0-9]{9}MVA
+Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3)</td>
+<td>Numerical part is the OrgNumber</td>
+</tr>
+<tr>
+<td class="text-end">41</td>
+<td>HU:VAT</td>
+<td>9910</td>
+<td>HU</td>
+<td>Hungary VAT number</td>
+<td></td>
+<td class="text-end">1.0.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>HU:VAT</td>
+<td></td>
+<td></td>
+<td>RegEx: HU[0-9]{8}
+Check digit: https://github.com/arthurdejong/python-stdnum/blob/master/stdnum/hu/anum.py</td>
+<td></td>
+</tr>
+<tr class="table-warning">
+<td class="text-end">42</td>
+<td>EU:VAT</td>
+<td>9912</td>
+<td>international</td>
+<td>National ministries of Economy</td>
+<td></td>
+<td class="text-end">1.0.0</td>
+<td>Deprecated</td>
+<td class="text-end">1.1.0</td>
+<td class="text-end"></td>
+<td>EU:VAT</td>
+<td></td>
+<td></td>
+<td>RegEx: [A-Z]{2}[A-Z0-9]{,20}</td>
+<td>Proposed to undeprecate; longest known is 18 chars (incl. country code)
+Deprecated in 1.1.0</td>
+</tr>
+<tr>
+<td class="text-end">43</td>
+<td>EU:REID</td>
+<td>9913</td>
+<td>international</td>
+<td>Business Registers Network</td>
+<td>Business Registers Network</td>
+<td class="text-end">1.0.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>EU:REID</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Proposed to deprecate</td>
+</tr>
+<tr>
+<td class="text-end">44</td>
+<td>AT:VAT</td>
+<td>9914</td>
+<td>AT</td>
+<td>Österreichische Umsatzsteuer-Identifikationsnummer</td>
+<td></td>
+<td class="text-end">1.0.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>AT:VAT</td>
+<td></td>
+<td>ATU12345678</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">45</td>
+<td>AT:GOV</td>
+<td>9915</td>
+<td>AT</td>
+<td>Österreichisches Verwaltungs bzw. Organisationskennzeichen</td>
+<td></td>
+<td class="text-end">1.0.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>AT:GOV</td>
+<td></td>
+<td>b</td>
+<td>RegEx: [A-Z][A-Z0-9]*</td>
+<td>No entity behind id</td>
+</tr>
+<tr class="table-warning">
+<td class="text-end">46</td>
+<td>AT:CID</td>
+<td>9916</td>
+<td>AT</td>
+<td>Firmenidentifikationsnummer der Statistik Austria</td>
+<td></td>
+<td class="text-end">1.0.0</td>
+<td>Deprecated</td>
+<td class="text-end">1.0.2</td>
+<td class="text-end"></td>
+<td>AT:CID</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="table-warning">
+<td class="text-end">47</td>
+<td>IS:KT</td>
+<td>9917</td>
+<td>IS</td>
+<td>Icelandic National Registry</td>
+<td></td>
+<td class="text-end">1.0.0</td>
+<td>Deprecated</td>
+<td class="text-end">4</td>
+<td class="text-end"></td>
+<td>IS:KT</td>
+<td>Whole string: nnnnnnnnnn
+Commonly displayed with hyphen between Y2 and R1, e.g. nnnnnn-nnnn</td>
+<td></td>
+<td>RegEx: [0-9]{10}
+Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
+<td>In favour of 0196</td>
+</tr>
+<tr>
+<td class="text-end">48</td>
+<td>IBAN</td>
+<td>9918</td>
+<td>international</td>
+<td>SOCIETY FOR WORLDWIDE INTERBANK FINANCIAL, TELECOMMUNICATION S.W.I.F.T</td>
+<td>SOCIETY FOR WORLDWIDE INTERBANK FINANCIAL, TELECOMMUNICATION S.W.I.F.T</td>
+<td class="text-end">1.0.1</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>IBAN</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">49</td>
+<td>AT:KUR</td>
+<td>9919</td>
+<td>AT</td>
+<td>Kennziffer des Unternehmensregisters</td>
+<td></td>
+<td class="text-end">1.0.2</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>AT:KUR</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Propose to deprecated</td>
+</tr>
+<tr>
+<td class="text-end">50</td>
+<td>ES:VAT</td>
+<td>9920</td>
+<td>ES</td>
+<td>Agencia Española de Administración Tributaria</td>
+<td>Agencia Española de Administración Tributaria</td>
+<td class="text-end">1.0.2</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>ES:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="table-warning">
+<td class="text-end">51</td>
+<td>IT:IPA</td>
+<td>9921</td>
+<td>IT</td>
+<td>Indice delle Pubbliche Amministrazioni</td>
+<td>Indice delle Pubbliche Amministrazioni</td>
+<td class="text-end">1.1.0</td>
+<td>Deprecated</td>
+<td class="text-end">6</td>
+<td class="text-end"></td>
+<td>IT:IPA</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Propose to deprecate; not used in BIS 3</td>
+</tr>
+<tr>
+<td class="text-end">52</td>
+<td>AD:VAT</td>
+<td>9922</td>
+<td>AD</td>
+<td>Andorra VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>AD:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">53</td>
+<td>AL:VAT</td>
+<td>9923</td>
+<td>AL</td>
+<td>Albania VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>AL:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">54</td>
+<td>BA:VAT</td>
+<td>9924</td>
+<td>BA</td>
+<td>Bosnia and Herzegovina VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>BA:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">55</td>
+<td>BE:VAT</td>
+<td>9925</td>
+<td>BE</td>
+<td>Belgium VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>BE:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">56</td>
+<td>BG:VAT</td>
+<td>9926</td>
+<td>BG</td>
+<td>Bulgaria VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>BG:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">57</td>
+<td>CH:VAT</td>
+<td>9927</td>
+<td>CH</td>
+<td>Switzerland VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>CH:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">58</td>
+<td>CY:VAT</td>
+<td>9928</td>
+<td>CY</td>
+<td>Cyprus VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>CY:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">59</td>
+<td>CZ:VAT</td>
+<td>9929</td>
+<td>CZ</td>
+<td>Czech Republic VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>CZ:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">60</td>
+<td>DE:VAT</td>
+<td>9930</td>
+<td>DE</td>
+<td>Germany VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>DE:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">61</td>
+<td>EE:VAT</td>
+<td>9931</td>
+<td>EE</td>
+<td>Estonia VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>EE:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">62</td>
+<td>GB:VAT</td>
+<td>9932</td>
+<td>GB</td>
+<td>United Kingdom VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>GB:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">63</td>
+<td>GR:VAT</td>
+<td>9933</td>
+<td>GR</td>
+<td>Greece VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>GR:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">64</td>
+<td>HR:VAT</td>
+<td>9934</td>
+<td>HR</td>
+<td>Croatia VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>HR:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">65</td>
+<td>IE:VAT</td>
+<td>9935</td>
+<td>IE</td>
+<td>Ireland VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>IE:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">66</td>
+<td>LI:VAT</td>
+<td>9936</td>
+<td>LI</td>
+<td>Liechtenstein VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>LI:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">67</td>
+<td>LT:VAT</td>
+<td>9937</td>
+<td>LT</td>
+<td>Lithuania VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>LT:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">68</td>
+<td>LU:VAT</td>
+<td>9938</td>
+<td>LU</td>
+<td>Luxemburg VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>LU:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">69</td>
+<td>LV:VAT</td>
+<td>9939</td>
+<td>LV</td>
+<td>Latvia VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>LV:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">70</td>
+<td>MC:VAT</td>
+<td>9940</td>
+<td>MC</td>
+<td>Monaco VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>MC:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">71</td>
+<td>ME:VAT</td>
+<td>9941</td>
+<td>ME</td>
+<td>Montenegro VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>ME:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">72</td>
+<td>MK:VAT</td>
+<td>9942</td>
+<td>MK</td>
+<td>Macedonia, the former Yugoslav Republic of VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>MK:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">73</td>
+<td>MT:VAT</td>
+<td>9943</td>
+<td>MT</td>
+<td>Malta VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>MT:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">74</td>
+<td>NL:VAT</td>
+<td>9944</td>
+<td>NL</td>
+<td>Netherlands VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>NL:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">75</td>
+<td>PL:VAT</td>
+<td>9945</td>
+<td>PL</td>
+<td>Poland VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>PL:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">76</td>
+<td>PT:VAT</td>
+<td>9946</td>
+<td>PT</td>
+<td>Portugal VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>PT:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">77</td>
+<td>RO:VAT</td>
+<td>9947</td>
+<td>RO</td>
+<td>Romania VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>RO:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">78</td>
+<td>RS:VAT</td>
+<td>9948</td>
+<td>RS</td>
+<td>Serbia VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>RS:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">79</td>
+<td>SI:VAT</td>
+<td>9949</td>
+<td>SI</td>
+<td>Slovenia VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>SI:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">80</td>
+<td>SK:VAT</td>
+<td>9950</td>
+<td>SK</td>
+<td>Slovakia VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>SK:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">81</td>
+<td>SM:VAT</td>
+<td>9951</td>
+<td>SM</td>
+<td>San Marino VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>SM:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">82</td>
+<td>TR:VAT</td>
+<td>9952</td>
+<td>TR</td>
+<td>Turkey VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>TR:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">83</td>
+<td>VA:VAT</td>
+<td>9953</td>
+<td>VA</td>
+<td>Holy See (Vatican City State) VAT number</td>
+<td></td>
+<td class="text-end">1.1.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>VA:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="table-warning">
+<td class="text-end">84</td>
+<td>NL:OIN</td>
+<td>9954</td>
+<td>NL</td>
+<td>Dutch Originator&#39;s Identification Number</td>
+<td></td>
+<td class="text-end">1.1.3</td>
+<td>Deprecated</td>
+<td class="text-end">2</td>
+<td class="text-end"></td>
+<td>NL:OIN</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Deprecated by 0190</td>
+</tr>
+<tr>
+<td class="text-end">85</td>
+<td>SE:VAT</td>
+<td>9955</td>
+<td>SE</td>
+<td>Swedish VAT number</td>
+<td></td>
+<td class="text-end">1.2.0</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>SE:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="table-warning">
+<td class="text-end">86</td>
+<td>BE:CBE</td>
+<td>9956</td>
+<td>BE</td>
+<td>Belgian Crossroad Bank of Enterprise number</td>
+<td>Belgian Crossroad Bank of Enterprises</td>
+<td class="text-end">1.2.1</td>
+<td>Deprecated</td>
+<td class="text-end">7.4</td>
+<td class="text-end"></td>
+<td>BE:CBE</td>
+<td></td>
+<td>0899965307</td>
+<td>RegEx: 0[0-9]{9}
+Check digit: mod97
+See https://github.com/arthurdejong/python-stdnum/blob/master/stdnum/be/vat.py</td>
+<td></td>
+</tr>
+<tr>
+<td class="text-end">87</td>
+<td>FR:VAT</td>
+<td>9957</td>
+<td>FR</td>
+<td>French VAT number</td>
+<td></td>
+<td class="text-end">1.2.1</td>
+<td>Active</td>
+<td class="text-end"></td>
+<td class="text-end"></td>
+<td>FR:VAT</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="table-warning">
+<td class="text-end">88</td>
+<td>DE:LID</td>
+<td>9958</td>
+<td>DE</td>
+<td>German Leitweg ID</td>
+<td></td>
+<td class="text-end">3</td>
+<td>Deprecated</td>
+<td class="text-end">6</td>
+<td class="text-end"></td>
+<td>DE:LID</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Replaced by 0204</td>
+</tr>
+</tbody>
+</table>
+<div class="alert alert-secondary">
+<em>This document was created automatically.</em> The official version is located at <a href="https://docs.peppol.eu/edelivery/codelists/">https://docs.peppol.eu/edelivery/codelists/</a>
+</div>
+</div>
+</body>
+</html>

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 OpenPeppol AISBL (www.peppol.eu)
+ * Copyright (C) 2020-2022 OpenPeppol AISBL (www.peppol.eu)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ import com.helger.commons.io.resource.ClassPathResource;
 
 final class CCodelists
 {
-  public static final ClassPathResource XSD = new ClassPathResource ("/schemas/peppol-codelists-v1.xsd",
+  public static final ClassPathResource XSD = new ClassPathResource ("/schemas/peppol-codelists-v2.xsd",
                                                                      CCodelists.class.getClassLoader ());
 
   private CCodelists ()
