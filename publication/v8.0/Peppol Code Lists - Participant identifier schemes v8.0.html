@@ -28,10 +28,12 @@
 <div class="alert alert-info">
 <div>Version 8 with 88 entries</div>
 <div>Info: the 8 yellow rows are the ones that contain deprecated entries</div>
+<div>Info: The first column is a counter for easier orientation in the list and has NO meaning at all.</div>
 </div>
 <table class="table table-striped">
 <thead class="table-light">
 <tr>
+<th>Num#</th>
 <th>Scheme ID</th>
 <th>ICD Value</th>
 <th>Country Code</th>
@@ -50,6 +52,7 @@
 </thead>
 <tbody>
 <tr>
+<td class="text-end">1</td>
 <td>FR:SIRENE</td>
 <td>0002</td>
 <td>FR</td>
@@ -69,6 +72,7 @@ Check digits: Luhn Algorithm</td>
 <td>1.1.1 - Changed from FR:SIRET to FR:SIRENE (see ISU Jira ISU-231)</td>
 </tr>
 <tr>
+<td class="text-end">2</td>
 <td>SE:ORGNR</td>
 <td>0007</td>
 <td>SE</td>
@@ -86,6 +90,7 @@ Check digits: Luhn Algorithm</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">3</td>
 <td>FR:SIRET</td>
 <td>0009</td>
 <td>FR</td>
@@ -102,6 +107,7 @@ Check digits: Luhn Algorithm</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">4</td>
 <td>FI:OVT</td>
 <td>0037</td>
 <td>FI</td>
@@ -123,6 +129,7 @@ Check Digit: mod11 of 8-digit OrgCode (weights 2, 4, 8, 5, 10, 9, 7 [right to le
 +K4:K5</td>
 </tr>
 <tr>
+<td class="text-end">5</td>
 <td>DUNS</td>
 <td>0060</td>
 <td>international</td>
@@ -141,6 +148,7 @@ UPIK search to validate DUNS numbers
 &quot;D&amp;B Direct 2.0&quot; API available</td>
 </tr>
 <tr>
+<td class="text-end">6</td>
 <td>GLN</td>
 <td>0088</td>
 <td>international</td>
@@ -158,6 +166,7 @@ Check Digit: mod10 (weights 1, 3)</td>
 <td>GLN-13 are the only supports supported atm</td>
 </tr>
 <tr>
+<td class="text-end">7</td>
 <td>DK:P</td>
 <td>0096</td>
 <td>DK</td>
@@ -175,6 +184,7 @@ Check Digits: mod97</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">8</td>
 <td>IT:FTI</td>
 <td>0097</td>
 <td>IT</td>
@@ -193,6 +203,7 @@ The check digit algorithm is the one published in the Gazzetta Ufficiale no 345 
 Proposed to deprecate</td>
 </tr>
 <tr>
+<td class="text-end">9</td>
 <td>NL:KVK</td>
 <td>0106</td>
 <td>NL</td>
@@ -211,6 +222,7 @@ Check Digits: mod97</td>
 <td>Real numbers seem to be 8 characters</td>
 </tr>
 <tr>
+<td class="text-end">10</td>
 <td>EU:NAL</td>
 <td>0130</td>
 <td>international</td>
@@ -228,6 +240,7 @@ Check Digits: mod97</td>
 in SML since 2019-08-23</td>
 </tr>
 <tr>
+<td class="text-end">11</td>
 <td>IT:SIA</td>
 <td>0135</td>
 <td>IT</td>
@@ -244,6 +257,7 @@ in SML since 2019-08-23</td>
 <td>Propose to deprecate</td>
 </tr>
 <tr>
+<td class="text-end">12</td>
 <td>IT:SECETI</td>
 <td>0142</td>
 <td>IT</td>
@@ -260,6 +274,7 @@ in SML since 2019-08-23</td>
 <td>Propose to deprecate</td>
 </tr>
 <tr>
+<td class="text-end">13</td>
 <td>AU:ABN</td>
 <td>0151</td>
 <td>AU</td>
@@ -283,6 +298,7 @@ Weight: 10, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19</td>
 <td>https://abr.business.gov.au/Help/AbnFormat</td>
 </tr>
 <tr>
+<td class="text-end">14</td>
 <td>CH:UIDB</td>
 <td>0183</td>
 <td>CH</td>
@@ -301,6 +317,7 @@ Check number: mod11 (weights: 5, 4, 3, 2, 7, 6, 5, 4)</td>
 <td>Also called &quot;Numéro d&#39;identification suisse des enterprises (IDE)&quot;</td>
 </tr>
 <tr>
+<td class="text-end">15</td>
 <td>DK:DIGST</td>
 <td>0184</td>
 <td>DK</td>
@@ -317,6 +334,7 @@ Check number: mod11 (weights: 5, 4, 3, 2, 7, 6, 5, 4)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">16</td>
 <td>NL:OINO</td>
 <td>0190</td>
 <td>NL</td>
@@ -333,6 +351,7 @@ Check number: mod11 (weights: 5, 4, 3, 2, 7, 6, 5, 4)</td>
 <td>Get all OINs from http://portaal.digikoppeling.nl/registers/</td>
 </tr>
 <tr>
+<td class="text-end">17</td>
 <td>EE:CC</td>
 <td>0191</td>
 <td>EE</td>
@@ -359,6 +378,7 @@ def calc_check_digit(number):
 <td>See https://ariregister.rik.ee/index?lang=eng</td>
 </tr>
 <tr>
+<td class="text-end">18</td>
 <td>NO:ORG</td>
 <td>0192</td>
 <td>NO</td>
@@ -376,6 +396,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">19</td>
 <td>UBLBE</td>
 <td>0193</td>
 <td>BE</td>
@@ -392,6 +413,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">20</td>
 <td>SG:UEN</td>
 <td>0195</td>
 <td>SG</td>
@@ -408,6 +430,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3)</td>
 <td>https://www.uen.gov.sg/ueninternet/faces/pages/admin/aboutUEN.jspx?_afrLoop=1018044967911865&amp;_afrWindowMode=0&amp;_adf.ctrl-state=fdr4mq9l0_26</td>
 </tr>
 <tr>
+<td class="text-end">21</td>
 <td>IS:KTNR</td>
 <td>0196</td>
 <td>IS</td>
@@ -426,6 +449,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">22</td>
 <td>DK:ERST</td>
 <td>0198</td>
 <td>DK</td>
@@ -443,6 +467,7 @@ Check digit: mod11 (weights 2, 7, 6, 5, 4, 3, 2, 1)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">23</td>
 <td>LEI</td>
 <td>0199</td>
 <td>international</td>
@@ -460,6 +485,7 @@ Check digit: mod97-10</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">24</td>
 <td>LT:LEC</td>
 <td>0200</td>
 <td>LT</td>
@@ -477,6 +503,7 @@ Check number: see text</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">25</td>
 <td>IT:CUUO</td>
 <td>0201</td>
 <td>IT</td>
@@ -494,6 +521,7 @@ No checkdigit</td>
 <td>&quot;Alphanumeric characters&quot;</td>
 </tr>
 <tr>
+<td class="text-end">26</td>
 <td>DE:LWID</td>
 <td>0204</td>
 <td>DE</td>
@@ -510,6 +538,7 @@ No checkdigit</td>
 <td>The fine grained part is optional</td>
 </tr>
 <tr>
+<td class="text-end">27</td>
 <td>BE:EN</td>
 <td>0208</td>
 <td>BE</td>
@@ -534,6 +563,7 @@ See https://github.com/arthurdejong/python-stdnum/blob/master/stdnum/be/vat.py</
 <td></td>
 </tr>
 <tr>
+<td class="text-end">28</td>
 <td>GS1</td>
 <td>0209</td>
 <td>international</td>
@@ -550,6 +580,7 @@ See https://github.com/arthurdejong/python-stdnum/blob/master/stdnum/be/vat.py</
 <td></td>
 </tr>
 <tr>
+<td class="text-end">29</td>
 <td>IT:CFI</td>
 <td>0210</td>
 <td>IT</td>
@@ -566,6 +597,7 @@ See https://github.com/arthurdejong/python-stdnum/blob/master/stdnum/be/vat.py</
 <td></td>
 </tr>
 <tr>
+<td class="text-end">30</td>
 <td>IT:IVA</td>
 <td>0211</td>
 <td>IT</td>
@@ -586,6 +618,7 @@ Check digit: Luhn</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">31</td>
 <td>FI:ORG</td>
 <td>0212</td>
 <td>FI</td>
@@ -603,6 +636,7 @@ Hyphen shall be present between last two digits.</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">32</td>
 <td>FI:VAT</td>
 <td>0213</td>
 <td>FI</td>
@@ -619,6 +653,7 @@ Hyphen shall be present between last two digits.</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">33</td>
 <td>DK:CPR</td>
 <td>9901</td>
 <td>DK</td>
@@ -635,6 +670,7 @@ Hyphen shall be present between last two digits.</td>
 <td>Personal identifier</td>
 </tr>
 <tr>
+<td class="text-end">34</td>
 <td>DK:CVR</td>
 <td>9902</td>
 <td>DK</td>
@@ -652,6 +688,7 @@ Check digit: mod11 (weights, 2, 7, 6, 5, 4, 3, 2, 1)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">35</td>
 <td>DK:SE</td>
 <td>9904</td>
 <td>DK</td>
@@ -669,6 +706,7 @@ Taks: validate Check digit: mod11 (weights 2, 7, 6, 5, 4, 3, 2, 1)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">36</td>
 <td>DK:VANS</td>
 <td>9905</td>
 <td>DK</td>
@@ -685,6 +723,7 @@ Taks: validate Check digit: mod11 (weights 2, 7, 6, 5, 4, 3, 2, 1)</td>
 <td>Propose to deprecate (only 7 identifiers, only IBM - all look like test)</td>
 </tr>
 <tr>
+<td class="text-end">37</td>
 <td>IT:VAT</td>
 <td>9906</td>
 <td>IT</td>
@@ -705,6 +744,7 @@ Check digit: Luhn</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">38</td>
 <td>IT:CF</td>
 <td>9907</td>
 <td>IT</td>
@@ -729,6 +769,7 @@ Check digit: https://github.com/arthurdejong/python-stdnum/blob/master/stdnum/it
 The CF for legal entities is like the Italian VAT code (IT:VAT)</td>
 </tr>
 <tr>
+<td class="text-end">39</td>
 <td>NO:ORGNR</td>
 <td>9908</td>
 <td>NO</td>
@@ -746,6 +787,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3)</td>
 <td>Same as 0192</td>
 </tr>
 <tr class="table-warning">
+<td class="text-end">40</td>
 <td>NO:VAT</td>
 <td>9909</td>
 <td>NO</td>
@@ -763,6 +805,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3)</td>
 <td>Numerical part is the OrgNumber</td>
 </tr>
 <tr>
+<td class="text-end">41</td>
 <td>HU:VAT</td>
 <td>9910</td>
 <td>HU</td>
@@ -780,6 +823,7 @@ Check digit: https://github.com/arthurdejong/python-stdnum/blob/master/stdnum/hu
 <td></td>
 </tr>
 <tr class="table-warning">
+<td class="text-end">42</td>
 <td>EU:VAT</td>
 <td>9912</td>
 <td>international</td>
@@ -797,6 +841,7 @@ Check digit: https://github.com/arthurdejong/python-stdnum/blob/master/stdnum/hu
 Deprecated in 1.1.0</td>
 </tr>
 <tr>
+<td class="text-end">43</td>
 <td>EU:REID</td>
 <td>9913</td>
 <td>international</td>
@@ -813,6 +858,7 @@ Deprecated in 1.1.0</td>
 <td>Proposed to deprecate</td>
 </tr>
 <tr>
+<td class="text-end">44</td>
 <td>AT:VAT</td>
 <td>9914</td>
 <td>AT</td>
@@ -829,6 +875,7 @@ Deprecated in 1.1.0</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">45</td>
 <td>AT:GOV</td>
 <td>9915</td>
 <td>AT</td>
@@ -845,6 +892,7 @@ Deprecated in 1.1.0</td>
 <td>No entity behind id</td>
 </tr>
 <tr class="table-warning">
+<td class="text-end">46</td>
 <td>AT:CID</td>
 <td>9916</td>
 <td>AT</td>
@@ -861,6 +909,7 @@ Deprecated in 1.1.0</td>
 <td></td>
 </tr>
 <tr class="table-warning">
+<td class="text-end">47</td>
 <td>IS:KT</td>
 <td>9917</td>
 <td>IS</td>
@@ -879,6 +928,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td>In favour of 0196</td>
 </tr>
 <tr>
+<td class="text-end">48</td>
 <td>IBAN</td>
 <td>9918</td>
 <td>international</td>
@@ -895,6 +945,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">49</td>
 <td>AT:KUR</td>
 <td>9919</td>
 <td>AT</td>
@@ -911,6 +962,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td>Propose to deprecated</td>
 </tr>
 <tr>
+<td class="text-end">50</td>
 <td>ES:VAT</td>
 <td>9920</td>
 <td>ES</td>
@@ -927,6 +979,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr class="table-warning">
+<td class="text-end">51</td>
 <td>IT:IPA</td>
 <td>9921</td>
 <td>IT</td>
@@ -943,6 +996,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td>Propose to deprecate; not used in BIS 3</td>
 </tr>
 <tr>
+<td class="text-end">52</td>
 <td>AD:VAT</td>
 <td>9922</td>
 <td>AD</td>
@@ -959,6 +1013,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">53</td>
 <td>AL:VAT</td>
 <td>9923</td>
 <td>AL</td>
@@ -975,6 +1030,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">54</td>
 <td>BA:VAT</td>
 <td>9924</td>
 <td>BA</td>
@@ -991,6 +1047,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">55</td>
 <td>BE:VAT</td>
 <td>9925</td>
 <td>BE</td>
@@ -1007,6 +1064,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">56</td>
 <td>BG:VAT</td>
 <td>9926</td>
 <td>BG</td>
@@ -1023,6 +1081,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">57</td>
 <td>CH:VAT</td>
 <td>9927</td>
 <td>CH</td>
@@ -1039,6 +1098,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">58</td>
 <td>CY:VAT</td>
 <td>9928</td>
 <td>CY</td>
@@ -1055,6 +1115,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">59</td>
 <td>CZ:VAT</td>
 <td>9929</td>
 <td>CZ</td>
@@ -1071,6 +1132,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">60</td>
 <td>DE:VAT</td>
 <td>9930</td>
 <td>DE</td>
@@ -1087,6 +1149,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">61</td>
 <td>EE:VAT</td>
 <td>9931</td>
 <td>EE</td>
@@ -1103,6 +1166,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">62</td>
 <td>GB:VAT</td>
 <td>9932</td>
 <td>GB</td>
@@ -1119,6 +1183,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">63</td>
 <td>GR:VAT</td>
 <td>9933</td>
 <td>GR</td>
@@ -1135,6 +1200,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">64</td>
 <td>HR:VAT</td>
 <td>9934</td>
 <td>HR</td>
@@ -1151,6 +1217,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">65</td>
 <td>IE:VAT</td>
 <td>9935</td>
 <td>IE</td>
@@ -1167,6 +1234,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">66</td>
 <td>LI:VAT</td>
 <td>9936</td>
 <td>LI</td>
@@ -1183,6 +1251,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">67</td>
 <td>LT:VAT</td>
 <td>9937</td>
 <td>LT</td>
@@ -1199,6 +1268,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">68</td>
 <td>LU:VAT</td>
 <td>9938</td>
 <td>LU</td>
@@ -1215,6 +1285,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">69</td>
 <td>LV:VAT</td>
 <td>9939</td>
 <td>LV</td>
@@ -1231,6 +1302,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">70</td>
 <td>MC:VAT</td>
 <td>9940</td>
 <td>MC</td>
@@ -1247,6 +1319,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">71</td>
 <td>ME:VAT</td>
 <td>9941</td>
 <td>ME</td>
@@ -1263,6 +1336,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">72</td>
 <td>MK:VAT</td>
 <td>9942</td>
 <td>MK</td>
@@ -1279,6 +1353,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">73</td>
 <td>MT:VAT</td>
 <td>9943</td>
 <td>MT</td>
@@ -1295,6 +1370,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">74</td>
 <td>NL:VAT</td>
 <td>9944</td>
 <td>NL</td>
@@ -1311,6 +1387,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">75</td>
 <td>PL:VAT</td>
 <td>9945</td>
 <td>PL</td>
@@ -1327,6 +1404,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">76</td>
 <td>PT:VAT</td>
 <td>9946</td>
 <td>PT</td>
@@ -1343,6 +1421,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">77</td>
 <td>RO:VAT</td>
 <td>9947</td>
 <td>RO</td>
@@ -1359,6 +1438,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">78</td>
 <td>RS:VAT</td>
 <td>9948</td>
 <td>RS</td>
@@ -1375,6 +1455,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">79</td>
 <td>SI:VAT</td>
 <td>9949</td>
 <td>SI</td>
@@ -1391,6 +1472,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">80</td>
 <td>SK:VAT</td>
 <td>9950</td>
 <td>SK</td>
@@ -1407,6 +1489,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">81</td>
 <td>SM:VAT</td>
 <td>9951</td>
 <td>SM</td>
@@ -1423,6 +1506,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">82</td>
 <td>TR:VAT</td>
 <td>9952</td>
 <td>TR</td>
@@ -1439,6 +1523,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr>
+<td class="text-end">83</td>
 <td>VA:VAT</td>
 <td>9953</td>
 <td>VA</td>
@@ -1455,6 +1540,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr class="table-warning">
+<td class="text-end">84</td>
 <td>NL:OIN</td>
 <td>9954</td>
 <td>NL</td>
@@ -1471,6 +1557,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td>Deprecated by 0190</td>
 </tr>
 <tr>
+<td class="text-end">85</td>
 <td>SE:VAT</td>
 <td>9955</td>
 <td>SE</td>
@@ -1487,6 +1574,7 @@ Check digit: mod11 (weights 3, 2, 7, 6, 5, 4, 3, 2)</td>
 <td></td>
 </tr>
 <tr class="table-warning">
+<td class="text-end">86</td>
 <td>BE:CBE</td>
 <td>9956</td>
 <td>BE</td>
@@ -1505,6 +1593,7 @@ See https://github.com/arthurdejong/python-stdnum/blob/master/stdnum/be/vat.py</
 <td></td>
 </tr>
 <tr>
+<td class="text-end">87</td>
 <td>FR:VAT</td>
 <td>9957</td>
 <td>FR</td>
@@ -1521,6 +1610,7 @@ See https://github.com/arthurdejong/python-stdnum/blob/master/stdnum/be/vat.py</
 <td></td>
 </tr>
 <tr class="table-warning">
+<td class="text-end">88</td>
 <td>DE:LID</td>
 <td>9958</td>
 <td>DE</td>
