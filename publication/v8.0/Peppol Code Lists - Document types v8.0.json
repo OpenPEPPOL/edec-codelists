@@ -1714,6 +1714,10 @@
         {
           "scheme":"cenbii-procid-ubl",
           "value":"urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:09:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:02:1.0"
         }
       ]
     },
@@ -1762,6 +1766,10 @@
         {
           "scheme":"cenbii-procid-ubl",
           "value":"urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:09:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:02:1.0"
         }
       ]
     },
@@ -1778,6 +1786,10 @@
         {
           "scheme":"cenbii-procid-ubl",
           "value":"urn:fdc:bits.no:2017:profile:01:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:bits.no:2017:profile:03:1.0"
         }
       ]
     },
@@ -1794,6 +1806,18 @@
         {
           "scheme":"cenbii-procid-ubl",
           "value":"urn:fdc:bits.no:2017:profile:01:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:bits.no:2017:profile:02:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:bits.no:2017:profile:03:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:bits.no:2017:profile:04:1.0"
         }
       ]
     },
@@ -1810,6 +1834,18 @@
         {
           "scheme":"cenbii-procid-ubl",
           "value":"urn:fdc:bits.no:2017:profile:01:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:bits.no:2017:profile:02:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:bits.no:2017:profile:03:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:bits.no:2017:profile:04:1.0"
         }
       ]
     },
@@ -1826,6 +1862,10 @@
         {
           "scheme":"cenbii-procid-ubl",
           "value":"urn:fdc:bits.no:2017:profile:01:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:bits.no:2017:profile:03:1.0"
         }
       ]
     },
@@ -1842,6 +1882,14 @@
         {
           "scheme":"cenbii-procid-ubl",
           "value":"urn:fdc:bits.no:2017:profile:01:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:bits.no:2017:profile:03:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:bits.no:2017:profile:09:1.0"
         }
       ]
     },
@@ -1858,6 +1906,10 @@
         {
           "scheme":"cenbii-procid-ubl",
           "value":"urn:fdc:bits.no:2017:profile:01:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:bits.no:2017:profile:03:1.0"
         }
       ]
     },
@@ -1874,6 +1926,10 @@
         {
           "scheme":"cenbii-procid-ubl",
           "value":"urn:fdc:bits.no:2017:profile:01:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:bits.no:2017:profile:03:1.0"
         }
       ]
     },
@@ -1890,6 +1946,18 @@
         {
           "scheme":"cenbii-procid-ubl",
           "value":"urn:fdc:bits.no:2017:profile:01:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:bits.no:2017:profile:02:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:bits.no:2017:profile:03:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:bits.no:2017:profile:04:1.0"
         }
       ]
     },
@@ -1906,6 +1974,14 @@
         {
           "scheme":"cenbii-procid-ubl",
           "value":"urn:fdc:bits.no:2017:profile:01:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:bits.no:2017:profile:03:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:bits.no:2017:profile:09:1.0"
         }
       ]
     },
@@ -1922,6 +1998,10 @@
         {
           "scheme":"cenbii-procid-ubl",
           "value":"urn:fdc:bits.no:2017:profile:02:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:bits.no:2017:profile:04:1.0"
         }
       ]
     },
@@ -1938,6 +2018,10 @@
         {
           "scheme":"cenbii-procid-ubl",
           "value":"urn:fdc:bits.no:2017:profile:02:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:bits.no:2017:profile:04:1.0"
         }
       ]
     },
@@ -1954,6 +2038,10 @@
         {
           "scheme":"cenbii-procid-ubl",
           "value":"urn:fdc:bits.no:2017:profile:02:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:bits.no:2017:profile:04:1.0"
         }
       ]
     },
@@ -1970,6 +2058,10 @@
         {
           "scheme":"cenbii-procid-ubl",
           "value":"urn:fdc:bits.no:2017:profile:02:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:bits.no:2017:profile:04:1.0"
         }
       ]
     },
@@ -1986,6 +2078,10 @@
         {
           "scheme":"cenbii-procid-ubl",
           "value":"urn:fdc:bits.no:2017:profile:02:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:bits.no:2017:profile:04:1.0"
         }
       ]
     },
@@ -2002,6 +2098,10 @@
         {
           "scheme":"cenbii-procid-ubl",
           "value":"urn:fdc:bits.no:2017:profile:02:1.0"
+        },
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:fdc:bits.no:2017:profile:04:1.0"
         }
       ]
     },

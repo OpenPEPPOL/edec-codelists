@@ -3227,7 +3227,8 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3</SimpleValue>
         <SimpleValue>POAC</SimpleValue>
       </Value>
           <Value ColumnRef="process-ids">
-        <SimpleValue>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:09:1.0</SimpleValue>
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:09:1.0
+cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:02:1.0</SimpleValue>
       </Value>
     </Row>
       <Row>
@@ -3314,7 +3315,8 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3</SimpleValue>
         <SimpleValue>POAC</SimpleValue>
       </Value>
           <Value ColumnRef="process-ids">
-        <SimpleValue>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:09:1.0</SimpleValue>
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:09:1.0
+cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:02:1.0</SimpleValue>
       </Value>
     </Row>
       <Row>
@@ -3343,7 +3345,8 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3</SimpleValue>
         <SimpleValue>Norwegian Payment</SimpleValue>
       </Value>
           <Value ColumnRef="process-ids">
-        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:01:1.0</SimpleValue>
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:01:1.0
+cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:03:1.0</SimpleValue>
       </Value>
     </Row>
       <Row>
@@ -3372,7 +3375,10 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3</SimpleValue>
         <SimpleValue>Norwegian Payment</SimpleValue>
       </Value>
           <Value ColumnRef="process-ids">
-        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:01:1.0</SimpleValue>
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:01:1.0
+cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:02:1.0
+cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:03:1.0
+cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
     </Row>
       <Row>
@@ -3401,7 +3407,10 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3</SimpleValue>
         <SimpleValue>Norwegian Payment</SimpleValue>
       </Value>
           <Value ColumnRef="process-ids">
-        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:01:1.0</SimpleValue>
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:01:1.0
+cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:02:1.0
+cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:03:1.0
+cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
     </Row>
       <Row>
@@ -3430,7 +3439,8 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3</SimpleValue>
         <SimpleValue>Norwegian Payment</SimpleValue>
       </Value>
           <Value ColumnRef="process-ids">
-        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:01:1.0</SimpleValue>
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:01:1.0
+cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:03:1.0</SimpleValue>
       </Value>
     </Row>
       <Row>
@@ -3459,7 +3469,9 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3</SimpleValue>
         <SimpleValue>Norwegian Payment</SimpleValue>
       </Value>
           <Value ColumnRef="process-ids">
-        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:01:1.0</SimpleValue>
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:01:1.0
+cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:03:1.0
+cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:09:1.0</SimpleValue>
       </Value>
     </Row>
       <Row>
@@ -3488,7 +3500,8 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3</SimpleValue>
         <SimpleValue>Norwegian Payment</SimpleValue>
       </Value>
           <Value ColumnRef="process-ids">
-        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:01:1.0</SimpleValue>
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:01:1.0
+cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:03:1.0</SimpleValue>
       </Value>
     </Row>
       <Row>
@@ -3517,7 +3530,8 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3</SimpleValue>
         <SimpleValue>Norwegian Payment</SimpleValue>
       </Value>
           <Value ColumnRef="process-ids">
-        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:01:1.0</SimpleValue>
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:01:1.0
+cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:03:1.0</SimpleValue>
       </Value>
     </Row>
       <Row>
@@ -3546,7 +3560,10 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3</SimpleValue>
         <SimpleValue>Norwegian Payment</SimpleValue>
       </Value>
           <Value ColumnRef="process-ids">
-        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:01:1.0</SimpleValue>
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:01:1.0
+cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:02:1.0
+cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:03:1.0
+cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
     </Row>
       <Row>
@@ -3575,7 +3592,9 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3</SimpleValue>
         <SimpleValue>Norwegian Payment</SimpleValue>
       </Value>
           <Value ColumnRef="process-ids">
-        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:01:1.0</SimpleValue>
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:01:1.0
+cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:03:1.0
+cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:09:1.0</SimpleValue>
       </Value>
     </Row>
       <Row>
@@ -3604,7 +3623,8 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3</SimpleValue>
         <SimpleValue>Norwegian Payment</SimpleValue>
       </Value>
           <Value ColumnRef="process-ids">
-        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:02:1.0</SimpleValue>
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:02:1.0
+cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
     </Row>
       <Row>
@@ -3633,7 +3653,8 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3</SimpleValue>
         <SimpleValue>Norwegian Payment</SimpleValue>
       </Value>
           <Value ColumnRef="process-ids">
-        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:02:1.0</SimpleValue>
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:02:1.0
+cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
     </Row>
       <Row>
@@ -3662,7 +3683,8 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3</SimpleValue>
         <SimpleValue>Norwegian Payment</SimpleValue>
       </Value>
           <Value ColumnRef="process-ids">
-        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:02:1.0</SimpleValue>
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:02:1.0
+cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
     </Row>
       <Row>
@@ -3691,7 +3713,8 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3</SimpleValue>
         <SimpleValue>Norwegian Payment</SimpleValue>
       </Value>
           <Value ColumnRef="process-ids">
-        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:02:1.0</SimpleValue>
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:02:1.0
+cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
     </Row>
       <Row>
@@ -3720,7 +3743,8 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3</SimpleValue>
         <SimpleValue>Norwegian Payment</SimpleValue>
       </Value>
           <Value ColumnRef="process-ids">
-        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:02:1.0</SimpleValue>
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:02:1.0
+cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
     </Row>
       <Row>
@@ -3749,7 +3773,8 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3</SimpleValue>
         <SimpleValue>Norwegian Payment</SimpleValue>
       </Value>
           <Value ColumnRef="process-ids">
-        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:02:1.0</SimpleValue>
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:02:1.0
+cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
     </Row>
       <Row>

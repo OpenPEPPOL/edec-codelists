@@ -456,6 +456,17 @@ Do NOT edit!</ext:info>
         <SimpleValue>cenbii-procid-ubl</SimpleValue>
       </Value>
           <Value ColumnRef="value">
+        <SimpleValue>urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:02:1.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="state">
+        <SimpleValue>active</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="scheme">
+        <SimpleValue>cenbii-procid-ubl</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
         <SimpleValue>urn:fdc:bits.no:2017:profile:01:1.0</SimpleValue>
       </Value>
           <Value ColumnRef="state">
@@ -467,7 +478,29 @@ Do NOT edit!</ext:info>
         <SimpleValue>cenbii-procid-ubl</SimpleValue>
       </Value>
           <Value ColumnRef="value">
+        <SimpleValue>urn:fdc:bits.no:2017:profile:03:1.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="state">
+        <SimpleValue>active</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="scheme">
+        <SimpleValue>cenbii-procid-ubl</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
         <SimpleValue>urn:fdc:bits.no:2017:profile:02:1.0</SimpleValue>
+      </Value>
+          <Value ColumnRef="state">
+        <SimpleValue>active</SimpleValue>
+      </Value>
+    </Row>
+      <Row>
+      <Value ColumnRef="scheme">
+        <SimpleValue>cenbii-procid-ubl</SimpleValue>
+      </Value>
+          <Value ColumnRef="value">
+        <SimpleValue>urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
           <Value ColumnRef="state">
         <SimpleValue>active</SimpleValue>
