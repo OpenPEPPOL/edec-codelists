@@ -7,7 +7,13 @@ See https://docs.peppol.eu/edelivery/codelists/changelog.html for all changes.
 ## Version 8.1
 
 * Participant identifier schemes
-    * *No changes so far*
+    * Added 0147 - JP:SCC - Standard Company Code - POACC-506
+    * Added 0170 - JP:TCC - Teikoku Company Code - POACC-506
+    * Added 0188 - JP:SST - Corporate Number of The Social Security and Tax Number System - POACC-506
+    * Added 0215 - FI:NSI - Net service ID - POACC-473
+    * Added 0216 - FI:OVT2 - OVTcode - POACC-481
+    * Deprecated 9906 - IT:VAT - Ufficio responsabile gestione partite IVA - TICC-171
+    * Deprecated 9907 - IT:CF - TAX Authority - TICC-171
 
 * Document type identifiers
     * *No changes so far*
