@@ -22,14 +22,11 @@ See https://docs.peppol.eu/edelivery/codelists/changelog.html for all changes.
     * Added "XRechnung UBL Invoice V2.2 Extension" - TICC-205.
     * Added "XRechnung UBL CreditNote V2.2 Extension" - TICC-205.
     * Added "XRechnung CII Invoice V2.2 Extension" - TICC-205.
+    * Added "OpenPeppol End User Report" - TICC-213.
+    * Added "OpenPeppol Transaction Statistics Report" - TICC-213.
 
 * Process identifiers
-    * *No changes so far*
+    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:peppol.eu:oo:bis:reporting:1</code> to the document types "OpenPeppol End User Report" and "OpenPeppol Transaction Statistics Report" - TICC-213
 
 * Transport profiles
     * *No changes so far*
-
-## backlog
-
-* Participant identifier schemes (unlikely to happen)
-    * Deprecate 9906 (IT:VAT), 9910 (HU:VAT), 9914 (AT:VAT), 9920 (ES:VAT), 9922 (AD:VAT), 9923 (AL:VAT), 9924 (BA:VAT), 9925 (BE:VAT), 9926 (BG:VAT), 9927 (CH:VAT), 9928 (CY:VAT), 9929 (CZ:VAT), 9930 (DE:VAT), 9931 (EE:VAT), 9932 (GB:VAT), 9933 (GR:VAT), 9934 (HR:VAT), 9935 (IE:VAT), 9936 (LI:VAT), 9937 (LT:VAT), 9938 (LU:VAT), 9939 (LV:VAT), 9940 (MC:VAT), 9941 (ME:VAT), 9942 (MK:VAT), 9943 (MT:VAT), 9944 (NL:VAT), 9945 (PL:VAT), 9946 (PT:VAT), 9947 (RO:VAT), 9948 (RS:VAT), 9949 (SI:VAT), 9950 (SK:VAT), 9951 (SM:VAT), 9952 (TR:VAT), 9953 (VA:VAT), 9955 (SE:VAT) and 9957 (FR:VAT) and *Un*deprecated 9912 (EU:VAT) - [TICC-104](https://openpeppol.atlassian.net/browse/TICC-104)
