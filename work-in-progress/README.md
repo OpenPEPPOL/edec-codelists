@@ -16,7 +16,12 @@ See https://docs.peppol.eu/edelivery/codelists/changelog.html for all changes.
     * Deprecated 9907 - IT:CF - TAX Authority - TICC-171
 
 * Document type identifiers
-    * *No changes so far*
+    * Added "XRechnung UBL Invoice V2.2" - TICC-204.
+    * Added "XRechnung UBL CreditNote V2.2" - TICC-204.
+    * Added "XRechnung CII Invoice V2.2" - TICC-204.
+    * Added "XRechnung UBL Invoice V2.2 Extension" - TICC-205.
+    * Added "XRechnung UBL CreditNote V2.2 Extension" - TICC-205.
+    * Added "XRechnung CII Invoice V2.2 Extension" - TICC-205.
 
 * Process identifiers
     * *No changes so far*
