@@ -24,15 +24,14 @@ See https://docs.peppol.eu/edelivery/codelists/changelog.html for all changes.
     * Added "XRechnung CII Invoice V2.2 Extension" - TICC-205.
     * Added "OpenPeppol End User Report" - TICC-213.
     * Added "OpenPeppol Transaction Statistics Report" - TICC-213.
-    * Added "BEAst Advanced Despatch Advice only" - TICC-215.
-    * Added "BEAst Advanced Despatch Advice with Response" - TICC-215.
+    * Added "BEAst Advanced Despatch Advice" - TICC-215.
     * Added "BEAst Despatch Advice Response" - TICC-215.
     * Added "BEAst Weight Statement" - TICC-215.
 
 * Process identifiers
     * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:peppol.eu:oo:bis:reporting:1</code> to the document types "OpenPeppol End User Report" and "OpenPeppol Transaction Statistics Report" - TICC-213
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:peppol.eu:logistics:bis:despatch_advice_only:1</code> to the document type "BEAst Advanced Despatch Advice only" - TICC-215
-    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:peppol.eu:logistics:bis:despatch_advice_w_response:1</code> to the document types "BEAst Advanced Despatch Advice with Response" and "BEAst Despatch Advice Response" - TICC-215
+    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:peppol.eu:logistics:bis:despatch_advice_only:1</code> to the document type "BEAst Advanced Despatch Advice" - TICC-215
+    * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:peppol.eu:logistics:bis:despatch_advice_w_response:1</code> to the document types "BEAst Advanced Despatch Advice" and "BEAst Despatch Advice Response" - TICC-215
     * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:peppol.eu:logistics:bis:weight_statement:1</code> to the document type "BEAst Weight Statement" - TICC-215
     
 
