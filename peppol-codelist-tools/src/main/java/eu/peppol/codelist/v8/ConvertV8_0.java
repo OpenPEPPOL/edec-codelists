@@ -22,6 +22,7 @@ import com.helger.commons.version.Version;
  *
  * @author Philip Helger
  */
+@Deprecated
 public final class ConvertV8_0 extends AbstractConvertV8
 {
   public static final Version CODE_LIST_VERSION = new Version (8, 0);

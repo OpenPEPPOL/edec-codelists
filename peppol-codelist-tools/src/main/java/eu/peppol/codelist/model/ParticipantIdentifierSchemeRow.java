@@ -204,10 +204,20 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
     GCHelper.addHeaderColumn (aColumnSet, ISO6523, false, true, "ICD Value", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, COUNTRY, true, true, "Country Code", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, SCHEME_NAME, true, true, "Scheme Name", ECodeListDataType.STRING);
-    GCHelper.addHeaderColumn (aColumnSet, ISSUING_AGENCY, false, false, "Issuing Organisation", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet,
+                              ISSUING_AGENCY,
+                              false,
+                              false,
+                              "Issuing Organisation",
+                              ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, INITIAL_RELEASE, false, true, "Initial Release", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, STATE, false, true, "State", ECodeListDataType.STRING);
-    GCHelper.addHeaderColumn (aColumnSet, DEPRECATION_RELEASE, false, false, "Deprecation release", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet,
+                              DEPRECATION_RELEASE,
+                              false,
+                              false,
+                              "Deprecation release",
+                              ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, REMOVAL_DATE, false, false, "Removal date", ECodeListDataType.DATE);
     GCHelper.addHeaderColumn (aColumnSet, STRUCTURE, false, false, "Structure of Code", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, DISPLAY, false, false, "Display Requirements", ECodeListDataType.STRING);
@@ -320,7 +330,7 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
     ret.m_eState = ERowState.getFromIDOrThrow (aRow[6]);
     ret.m_sDeprecationRelease = aRow[7];
     ret.m_aRemovalDate = PDTWebDateHelper.getLocalDateFromXSD (aRow[8]);
-    ret.m_sStructure = aRow[0];
+    ret.m_sStructure = aRow[9];
     ret.m_sDisplay = aRow[10];
     ret.m_sExamples = aRow[11];
     ret.m_sValidationRules = aRow[12];

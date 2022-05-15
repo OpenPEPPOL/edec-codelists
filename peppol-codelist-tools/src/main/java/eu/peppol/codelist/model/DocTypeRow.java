@@ -164,7 +164,11 @@ public final class DocTypeRow implements IModelRow
     if (m_eState.isRemoved () && m_aRemovalDate == null)
       throw new IllegalStateException ("Code list entry has state 'removed' but there is no Removal date set");
     if (m_bIssuedByOpenPeppol && StringHelper.hasNoText (m_sBISVersion))
-      throw new IllegalStateException ("If issued by OpenPeppol, a BIS version is required");
+    {
+      // Exclusion for Reporting stuff
+      if (!"OO".equals (m_sDomainCommunity))
+        throw new IllegalStateException ("If issued by OpenPeppol, a BIS version is required");
+    }
     if (StringHelper.hasText (m_sBISVersion) && !StringParser.isUnsignedInt (m_sBISVersion))
       throw new IllegalStateException ("Code list entry has an invalid BIS version number - must be numeric");
   }
@@ -190,7 +194,9 @@ public final class DocTypeRow implements IModelRow
       ret.setAttribute (DOMAIN_COMMUNITY, m_sDomainCommunity);
     for (final IProcessIdentifier aProcID : m_aProcessIDs)
     {
-      ret.appendElement (PROCESS_ID_ONE).setAttribute (SCHEME, aProcID.getScheme ()).setAttribute (VALUE, aProcID.getValue ());
+      ret.appendElement (PROCESS_ID_ONE)
+         .setAttribute (SCHEME, aProcID.getScheme ())
+         .setAttribute (VALUE, aProcID.getValue ());
     }
     return ret;
   }
@@ -228,14 +234,34 @@ public final class DocTypeRow implements IModelRow
   {
     final ColumnSet aColumnSet = aCLDoc.getColumnSet ();
     GCHelper.addHeaderColumn (aColumnSet, NAME, false, true, "Name", ECodeListDataType.STRING);
-    GCHelper.addHeaderColumn (aColumnSet, SCHEME, true, true, "Peppol Document Type Identifier Scheme", ECodeListDataType.STRING);
-    GCHelper.addHeaderColumn (aColumnSet, VALUE, true, true, "Peppol Document Type Identifier Value", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet,
+                              SCHEME,
+                              true,
+                              true,
+                              "Peppol Document Type Identifier Scheme",
+                              ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet,
+                              VALUE,
+                              true,
+                              true,
+                              "Peppol Document Type Identifier Value",
+                              ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, INITIAL_RELEASE, false, true, "Initial release", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, STATE, false, true, "State", ECodeListDataType.STRING);
-    GCHelper.addHeaderColumn (aColumnSet, DEPRECATION_RELEASE, false, false, "Deprecation release", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet,
+                              DEPRECATION_RELEASE,
+                              false,
+                              false,
+                              "Deprecation release",
+                              ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, REMOVAL_DATE, false, false, "Removal date", ECodeListDataType.DATE);
     GCHelper.addHeaderColumn (aColumnSet, COMMENT, false, false, "Comment", ECodeListDataType.STRING);
-    GCHelper.addHeaderColumn (aColumnSet, ISSUED_BY_OPENPEPPOL, false, true, "Issued by OpenPeppol?", ECodeListDataType.BOOLEAN);
+    GCHelper.addHeaderColumn (aColumnSet,
+                              ISSUED_BY_OPENPEPPOL,
+                              false,
+                              true,
+                              "Issued by OpenPeppol?",
+                              ECodeListDataType.BOOLEAN);
     GCHelper.addHeaderColumn (aColumnSet, BIS_VERSION, false, false, "BIS version", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, DOMAIN_COMMUNITY, false, true, "Domain Community", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet,
