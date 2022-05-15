@@ -16,17 +16,17 @@ See https://docs.peppol.eu/edelivery/codelists/changelog.html for all changes.
     * Deprecated 9907 - IT:CF - TAX Authority - TICC-171
 
 * Document type identifiers
-    * Added "XRechnung UBL Invoice V2.2" - TICC-204.
-    * Added "XRechnung UBL CreditNote V2.2" - TICC-204.
-    * Added "XRechnung CII Invoice V2.2" - TICC-204.
-    * Added "XRechnung UBL Invoice V2.2 Extension" - TICC-205.
-    * Added "XRechnung UBL CreditNote V2.2 Extension" - TICC-205.
-    * Added "XRechnung CII Invoice V2.2 Extension" - TICC-205.
-    * Added "OpenPeppol End User Report" - TICC-213.
-    * Added "OpenPeppol Transaction Statistics Report" - TICC-213.
-    * Added "BEAst Advanced Despatch Advice" - TICC-215.
-    * Added "BEAst Despatch Advice Response" - TICC-215.
-    * Added "BEAst Weight Statement" - TICC-215.
+    * Added "XRechnung UBL Invoice V2.2" - TICC-204
+    * Added "XRechnung UBL CreditNote V2.2" - TICC-204
+    * Added "XRechnung CII Invoice V2.2" - TICC-204
+    * Added "XRechnung UBL Invoice V2.2 Extension" - TICC-205
+    * Added "XRechnung UBL CreditNote V2.2 Extension" - TICC-205
+    * Added "XRechnung CII Invoice V2.2 Extension" - TICC-205
+    * Added "OpenPeppol End User Report" - TICC-213
+    * Added "OpenPeppol Transaction Statistics Report" - TICC-213
+    * Added "BEAst Advanced Despatch Advice" - TICC-215
+    * Added "BEAst Despatch Advice Response" - TICC-215
+    * Added "BEAst Weight Statement" - TICC-215
 
 * Process identifiers
     * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:peppol.eu:oo:bis:reporting:1</code> to the document types "OpenPeppol End User Report" and "OpenPeppol Transaction Statistics Report" - TICC-213
