@@ -574,35 +574,6 @@ in SML since 2019-08-23</SimpleValue>
     </Row>
       <Row>
       <Value ColumnRef="schemeid">
-        <SimpleValue>JP:SCC</SimpleValue>
-      </Value>
-          <Value ColumnRef="iso6523">
-        <SimpleValue>0147</SimpleValue>
-      </Value>
-          <Value ColumnRef="country">
-        <SimpleValue>JP</SimpleValue>
-      </Value>
-          <Value ColumnRef="scheme-name">
-        <SimpleValue>Standard Company Code</SimpleValue>
-      </Value>
-          <Value ColumnRef="issuing-agency">
-        <SimpleValue>JIPDEC</SimpleValue>
-      </Value>
-          <Value ColumnRef="initial-release">
-        <SimpleValue>8.1</SimpleValue>
-      </Value>
-          <Value ColumnRef="state">
-        <SimpleValue>active</SimpleValue>
-      </Value>
-          <Value ColumnRef="structure">
-        <SimpleValue>12 characters (fixed length), First 6 characters identify an organization, Last 6 characters identify an organization part</SimpleValue>
-      </Value>
-          <Value ColumnRef="display">
-        <SimpleValue>12 characters preceded with 4 digit ICD code</SimpleValue>
-      </Value>
-    </Row>
-      <Row>
-      <Value ColumnRef="schemeid">
         <SimpleValue>AU:ABN</SimpleValue>
       </Value>
           <Value ColumnRef="iso6523">
@@ -648,36 +619,6 @@ Weight: 10, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19</SimpleValue>
       </Value>
           <Value ColumnRef="usage">
         <SimpleValue>https://abr.business.gov.au/Help/AbnFormat</SimpleValue>
-      </Value>
-    </Row>
-      <Row>
-      <Value ColumnRef="schemeid">
-        <SimpleValue>JP:TCC</SimpleValue>
-      </Value>
-          <Value ColumnRef="iso6523">
-        <SimpleValue>0170</SimpleValue>
-      </Value>
-          <Value ColumnRef="country">
-        <SimpleValue>JP</SimpleValue>
-      </Value>
-          <Value ColumnRef="scheme-name">
-        <SimpleValue>Teikoku Company Code</SimpleValue>
-      </Value>
-          <Value ColumnRef="issuing-agency">
-        <SimpleValue>TEIKOKU DATABANK LTD.</SimpleValue>
-      </Value>
-          <Value ColumnRef="initial-release">
-        <SimpleValue>8.1</SimpleValue>
-      </Value>
-          <Value ColumnRef="state">
-        <SimpleValue>active</SimpleValue>
-      </Value>
-          <Value ColumnRef="structure">
-        <SimpleValue>1) Eight identification digits and a check digit
-2) One check digit is based on TDB original computation</SimpleValue>
-      </Value>
-          <Value ColumnRef="display">
-        <SimpleValue>None</SimpleValue>
       </Value>
     </Row>
       <Row>
