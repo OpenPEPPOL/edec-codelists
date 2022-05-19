@@ -32,6 +32,12 @@ See https://docs.peppol.eu/edelivery/codelists/changelog.html for all changes.
     * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:peppol.eu:logistics:bis:despatch_advice_w_response:1</code> to the document types "BEAst Advanced Despatch Advice" and "BEAst Despatch Advice Response" - TICC-215
     * Added the process identifier <code>cenbii-procid-ubl::urn:fdc:peppol.eu:logistics:bis:weight_statement:1</code> to the document type "BEAst Weight Statement" - TICC-215
     
-
 * Transport profiles
     * *No changes so far*
+
+## Version 8.2
+
+* Document type identifiers
+    * Renamed "BEAst Advanced Despatch Advice" to "Logistics Advanced Despatch Advice"
+    * Renamed "BEAst Despatch Advice Response" to "Logistics Despatch Advice Response"
+    * Renamed "BEAst Weight Statement" to "Logistics Weight Statement"
