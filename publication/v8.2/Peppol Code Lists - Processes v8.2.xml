@@ -46,6 +46,7 @@ Do NOT edit!-->
   <process scheme="cenbii-procid-ubl" value="urn:fdc:peppol.eu:poacc:bis:catalogue_wo_response:3" state="active" />
   <process scheme="cenbii-procid-ubl" value="urn:fdc:peppol.eu:poacc:bis:ordering:3" state="active" />
   <process scheme="cenbii-procid-ubl" value="urn:fdc:peppol.eu:poacc:bis:order_only:3" state="active" />
+  <process scheme="cenbii-procid-ubl" value="urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3" state="active" />
   <process scheme="cenbii-procid-ubl" value="urn:fdc:peppol.eu:poacc:bis:invoice_response:3" state="active" />
   <process scheme="cenbii-procid-ubl" value="urn:fdc:peppol.eu:poacc:bis:punch_out:3" state="active" />
   <process scheme="cenbii-procid-ubl" value="urn:fdc:peppol.eu:poacc:bis:despatch_advice:3" state="active" />
@@ -92,5 +93,4 @@ Do NOT edit!-->
   <process scheme="cenbii-procid-ubl" value="urn:fdc:peppol.eu:logistics:bis:despatch_advice_w_response:1" state="active" />
   <process scheme="cenbii-procid-ubl" value="urn:fdc:peppol.eu:logistics:bis:weight_statement:1" state="active" />
   <process scheme="cenbii-procid-ubl" value="urn:fdc:www.efaktura.gov.pl:ver2.0:us:ver1.0" state="active" />
-  <process scheme="cenbii-procid-ubl" value="urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3" state="active" />
 </processes>

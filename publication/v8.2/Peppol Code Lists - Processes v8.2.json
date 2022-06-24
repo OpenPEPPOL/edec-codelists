@@ -124,6 +124,11 @@
     },
     {
       "scheme":"cenbii-procid-ubl",
+      "value":"urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3",
+      "state":"active"
+    },
+    {
+      "scheme":"cenbii-procid-ubl",
       "value":"urn:fdc:peppol.eu:poacc:bis:invoice_response:3",
       "state":"active"
     },
@@ -350,11 +355,6 @@
     {
       "scheme":"cenbii-procid-ubl",
       "value":"urn:fdc:www.efaktura.gov.pl:ver2.0:us:ver1.0",
-      "state":"active"
-    },
-    {
-      "scheme":"cenbii-procid-ubl",
-      "value":"urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3",
       "state":"active"
     }
   ]
