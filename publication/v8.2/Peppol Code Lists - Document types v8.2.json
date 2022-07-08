@@ -1,6 +1,6 @@
 {
   "version":"8.2",
-  "entry-count":187,
+  "entry-count":186,
   "values":[
     {
       "name":"Virtual Company Dossier",
@@ -885,7 +885,6 @@
       "value":"urn:oasis:names:specification:ubl:schema:xsd:Order-2::Order##urn:fdc:peppol.eu:poacc:trns:order:3::2.1",
       "initial-release":"4",
       "state":"active",
-      "comment":"TICC-219",
       "issued-by-openpeppol":true,
       "bis-version":"3",
       "domain-community":"POAC",
@@ -897,10 +896,6 @@
         {
           "scheme":"cenbii-procid-ubl",
           "value":"urn:fdc:peppol.eu:poacc:bis:order_only:3"
-        },
-        {
-          "scheme":"cenbii-procid-ubl",
-          "value":"urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3"
         }
       ]
     },
@@ -3127,53 +3122,35 @@
       ]
     },
     {
-      "name":"Peppol Order Change",
+      "name":"SETU Invoice v2.2",
       "scheme":"busdox-docid-qns",
-      "value":"urn:oasis:names:specification:ubl:schema:xsd:OrderChange-2::OrderChange##urn:fdc:peppol.eu:poacc:trns:order_change:3::2.3",
+      "value":"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:fdc:nen.nl:nlcius:v1.0#compliant#urn:fdc:setu.nl:invoice:v2.2::2.1",
       "initial-release":"8.2",
       "state":"active",
-      "comment":"TICC-219",
-      "issued-by-openpeppol":true,
-      "bis-version":"3",
+      "comment":"TICC-217",
+      "issued-by-openpeppol":false,
       "domain-community":"POAC",
       "process-ids":[
         {
           "scheme":"cenbii-procid-ubl",
-          "value":"urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3"
+          "value":"urn:fdc:peppol.eu:2017:poacc:billing:01:1.0"
         }
       ]
     },
     {
-      "name":"Peppol Order Cancellation",
+      "name":"JP PINT invoice",
       "scheme":"busdox-docid-qns",
-      "value":"urn:oasis:names:specification:ubl:schema:xsd:OrderCancellation-2::OrderCancellation##urn:fdc:peppol.eu:poacc:trns:order_cancellation:3::2.3",
+      "value":"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:fdc:peppol:jp:billing:3.0::2.1",
       "initial-release":"8.2",
       "state":"active",
-      "comment":"TICC-219",
+      "comment":"TICC-222",
       "issued-by-openpeppol":true,
       "bis-version":"3",
       "domain-community":"POAC",
       "process-ids":[
         {
           "scheme":"cenbii-procid-ubl",
-          "value":"urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3"
-        }
-      ]
-    },
-    {
-      "name":"Peppol Order Response Advanced",
-      "scheme":"busdox-docid-qns",
-      "value":"urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2::OrderResponse##urn:fdc:peppol.eu:poacc:trns:order_response_advanced:3::2.3",
-      "initial-release":"8.2",
-      "state":"active",
-      "comment":"TICC-219",
-      "issued-by-openpeppol":true,
-      "bis-version":"3",
-      "domain-community":"POAC",
-      "process-ids":[
-        {
-          "scheme":"cenbii-procid-ubl",
-          "value":"urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3"
+          "value":"urn:fdc:peppol.eu:2017:poacc:billing:01:1.0"
         }
       ]
     }

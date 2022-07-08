@@ -324,17 +324,6 @@ Do NOT edit!</ext:info>
         <SimpleValue>cenbii-procid-ubl</SimpleValue>
       </Value>
           <Value ColumnRef="value">
-        <SimpleValue>urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3</SimpleValue>
-      </Value>
-          <Value ColumnRef="state">
-        <SimpleValue>active</SimpleValue>
-      </Value>
-    </Row>
-      <Row>
-      <Value ColumnRef="scheme">
-        <SimpleValue>cenbii-procid-ubl</SimpleValue>
-      </Value>
-          <Value ColumnRef="value">
         <SimpleValue>urn:fdc:peppol.eu:poacc:bis:invoice_response:3</SimpleValue>
       </Value>
           <Value ColumnRef="state">

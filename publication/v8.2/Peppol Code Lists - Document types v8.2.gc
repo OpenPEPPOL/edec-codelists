@@ -1718,9 +1718,6 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:catalogue_wo_response:3</SimpleVa
           <Value ColumnRef="state">
         <SimpleValue>active</SimpleValue>
       </Value>
-          <Value ColumnRef="comment">
-        <SimpleValue>TICC-219</SimpleValue>
-      </Value>
           <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -1732,8 +1729,7 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:catalogue_wo_response:3</SimpleVa
       </Value>
           <Value ColumnRef="process-ids">
         <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3
-cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:order_only:3
-cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3</SimpleValue>
+cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:order_only:3</SimpleValue>
       </Value>
     </Row>
       <Row>
@@ -5623,13 +5619,13 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:logistics:bis:despatch_advice_w_response:1<
     </Row>
       <Row>
       <Value ColumnRef="name">
-        <SimpleValue>Peppol Order Change</SimpleValue>
+        <SimpleValue>SETU Invoice v2.2</SimpleValue>
       </Value>
           <Value ColumnRef="scheme">
         <SimpleValue>busdox-docid-qns</SimpleValue>
       </Value>
           <Value ColumnRef="value">
-        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:OrderChange-2::OrderChange##urn:fdc:peppol.eu:poacc:trns:order_change:3::2.3</SimpleValue>
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:fdc:nen.nl:nlcius:v1.0#compliant#urn:fdc:setu.nl:invoice:v2.2::2.1</SimpleValue>
       </Value>
           <Value ColumnRef="initial-release">
         <SimpleValue>8.2</SimpleValue>
@@ -5638,30 +5634,27 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:logistics:bis:despatch_advice_w_response:1<
         <SimpleValue>active</SimpleValue>
       </Value>
           <Value ColumnRef="comment">
-        <SimpleValue>TICC-219</SimpleValue>
+        <SimpleValue>TICC-217</SimpleValue>
       </Value>
           <Value ColumnRef="issued-by-openpeppol">
-        <SimpleValue>true</SimpleValue>
-      </Value>
-          <Value ColumnRef="bis-version">
-        <SimpleValue>3</SimpleValue>
+        <SimpleValue>false</SimpleValue>
       </Value>
           <Value ColumnRef="domain-community">
         <SimpleValue>POAC</SimpleValue>
       </Value>
           <Value ColumnRef="process-ids">
-        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3</SimpleValue>
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
       </Value>
     </Row>
       <Row>
       <Value ColumnRef="name">
-        <SimpleValue>Peppol Order Cancellation</SimpleValue>
+        <SimpleValue>JP PINT invoice</SimpleValue>
       </Value>
           <Value ColumnRef="scheme">
         <SimpleValue>busdox-docid-qns</SimpleValue>
       </Value>
           <Value ColumnRef="value">
-        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:OrderCancellation-2::OrderCancellation##urn:fdc:peppol.eu:poacc:trns:order_cancellation:3::2.3</SimpleValue>
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:fdc:peppol:jp:billing:3.0::2.1</SimpleValue>
       </Value>
           <Value ColumnRef="initial-release">
         <SimpleValue>8.2</SimpleValue>
@@ -5670,7 +5663,7 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:logistics:bis:despatch_advice_w_response:1<
         <SimpleValue>active</SimpleValue>
       </Value>
           <Value ColumnRef="comment">
-        <SimpleValue>TICC-219</SimpleValue>
+        <SimpleValue>TICC-222</SimpleValue>
       </Value>
           <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -5682,39 +5675,7 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:logistics:bis:despatch_advice_w_response:1<
         <SimpleValue>POAC</SimpleValue>
       </Value>
           <Value ColumnRef="process-ids">
-        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3</SimpleValue>
-      </Value>
-    </Row>
-      <Row>
-      <Value ColumnRef="name">
-        <SimpleValue>Peppol Order Response Advanced</SimpleValue>
-      </Value>
-          <Value ColumnRef="scheme">
-        <SimpleValue>busdox-docid-qns</SimpleValue>
-      </Value>
-          <Value ColumnRef="value">
-        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2::OrderResponse##urn:fdc:peppol.eu:poacc:trns:order_response_advanced:3::2.3</SimpleValue>
-      </Value>
-          <Value ColumnRef="initial-release">
-        <SimpleValue>8.2</SimpleValue>
-      </Value>
-          <Value ColumnRef="state">
-        <SimpleValue>active</SimpleValue>
-      </Value>
-          <Value ColumnRef="comment">
-        <SimpleValue>TICC-219</SimpleValue>
-      </Value>
-          <Value ColumnRef="issued-by-openpeppol">
-        <SimpleValue>true</SimpleValue>
-      </Value>
-          <Value ColumnRef="bis-version">
-        <SimpleValue>3</SimpleValue>
-      </Value>
-          <Value ColumnRef="domain-community">
-        <SimpleValue>POAC</SimpleValue>
-      </Value>
-          <Value ColumnRef="process-ids">
-        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3</SimpleValue>
+        <SimpleValue>cenbii-procid-ubl::urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</SimpleValue>
       </Value>
     </Row>
   </SimpleCodeList>
