@@ -90,7 +90,7 @@ public final class DocTypeRow implements IModelRow
   private static final String PROCESS_ID_ONE = "process-id";
   private static final String PROCESS_ID_MANY = "process-ids";
 
-  public static final String CODE_LIST_NAME = "Peppol Code Lists - Document types";
+  public static final String CODE_LIST_NAME = ModelHelper.CODELIST_NAME_PREFIX + "Document types";
   public static final URI CODE_LIST_URI = URLHelper.getAsURI ("urn:peppol.eu:names:identifier:document-type");
   public static final String ROOT_ELEMENT_NAME = "document-types";
 

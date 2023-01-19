@@ -82,7 +82,7 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
   private static final String VALIDATION_RULES = "validation-rules";
   private static final String USAGE = "usage";
 
-  public static final String CODE_LIST_NAME = "Peppol Code Lists - Participant identifier schemes";
+  public static final String CODE_LIST_NAME = ModelHelper.CODELIST_NAME_PREFIX + "Participant identifier schemes";
   public static final URI CODE_LIST_URI = URLHelper.getAsURI ("urn:peppol.eu:names:identifier:participant-identifier-scheme");
   public static final String ROOT_ELEMENT_NAME = "participant-identifier-schemes";
 

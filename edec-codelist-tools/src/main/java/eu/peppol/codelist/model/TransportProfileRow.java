@@ -72,7 +72,7 @@ public final class TransportProfileRow implements IModelRow
   // New in V8
   private static final String REMOVAL_DATE = "removal-date";
 
-  public static final String CODE_LIST_NAME = "Peppol Code Lists - Transport profiles";
+  public static final String CODE_LIST_NAME = ModelHelper.CODELIST_NAME_PREFIX + "Transport profiles";
   public static final URI CODE_LIST_URI = URLHelper.getAsURI ("urn:peppol.eu:names:identifier:transport-profile");
   public static final String ROOT_ELEMENT_NAME = "transport-profiles";
 
@@ -156,7 +156,12 @@ public final class TransportProfileRow implements IModelRow
     GCHelper.addHeaderColumn (aColumnSet, PROFILE_ID, true, true, "Profile ID", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, INITIAL_RELEASE, false, true, "Initial release", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, STATE, false, true, "State", ECodeListDataType.STRING);
-    GCHelper.addHeaderColumn (aColumnSet, DEPRECATION_RELEASE, false, false, "Deprecation release", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet,
+                              DEPRECATION_RELEASE,
+                              false,
+                              false,
+                              "Deprecation release",
+                              ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, REMOVAL_DATE, false, false, "Removal date", ECodeListDataType.DATE);
   }
 

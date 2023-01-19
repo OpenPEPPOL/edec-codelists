@@ -29,6 +29,8 @@ import com.helger.peppolid.factory.PeppolIdentifierFactory;
 @Immutable
 public final class ModelHelper
 {
+  // This has an impact on the created filename, so don't change
+  public static final String CODELIST_NAME_PREFIX = "Peppol Code Lists - ";
   public static final ICSSClassProvider CSS_TABLE_DANGER = DefaultCSSClassProvider.create ("table-danger");
   public static final ICSSClassProvider CSS_TABLE_WARNING = DefaultCSSClassProvider.create ("table-warning");
   // Right align
