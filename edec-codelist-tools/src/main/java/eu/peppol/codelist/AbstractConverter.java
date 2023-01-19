@@ -181,7 +181,8 @@ public abstract class AbstractConverter
     LOGGER.info ("Wrote JSON file '" + aDstFile.getPath () + "'");
   }
 
-  protected final <T extends IModelRow> void createJsonFile (@Nonnull final ICommonsList <T> aRows, @Nonnull final String sCodeListName)
+  protected final <T extends IModelRow> void createJsonFile (@Nonnull final ICommonsList <T> aRows,
+                                                             @Nonnull final String sCodeListName)
   {
     final IJsonObject aJson = new JsonObject ();
     aJson.add ("version", m_aCodeListVersion.getAsString ());
@@ -211,8 +212,10 @@ public abstract class AbstractConverter
 
     final HCHtml aHtml = new HCHtml ();
     aHtml.head ().metaElements ().add (new HCMeta ().setCharset (StandardCharsets.UTF_8.name ()));
-    aHtml.head ().metaElements ().add (new HCMeta ().setName ("viewport").setContent ("width=device-width, initial-scale=1"));
-    aHtml.head ().setTitle (sCodeListName);
+    aHtml.head ()
+         .metaElements ()
+         .add (new HCMeta ().setName ("viewport").setContent ("width=device-width, initial-scale=1"));
+    aHtml.head ().setPageTitle (sCodeListName);
     aHtml.head ()
          .links ()
          .add (new HCLink ().setRel (EHCLinkType.STYLESHEET)
@@ -222,9 +225,10 @@ public abstract class AbstractConverter
     if (false)
       aHtml.head ().addCSS (new HCStyle (""));
 
-    final HCDiv aCont = aHtml.body ().addAndReturnChild (new HCDiv ().addClass (DefaultCSSClassProvider.create ("container-fluid")));
+    final HCDiv aCont = aHtml.body ()
+                             .addAndReturnChild (new HCDiv ().addClass (DefaultCSSClassProvider.create ("container-fluid")));
 
-    aCont.addChild (new HCH1 ().addChild (aHtml.head ().getTitle ()));
+    aCont.addChild (new HCH1 ().addChild (aHtml.head ().getPageTitle ()));
 
     final int nDeprecatedRows = aRows.getCount (x -> x.getState ().isDeprecated ());
     final int nRemovedRows = aRows.getCount (x -> x.getState ().isRemoved ());
@@ -273,7 +277,8 @@ public abstract class AbstractConverter
     aCont.addChild (new HCDiv ().addChild (new HCEM ().addChild ("This document was created automatically."))
                                 .addChild (" The official version is located at ")
                                 .addChild (new HCA (new SimpleURL ("https://docs.peppol.eu/edelivery/codelists/")).addChild ("https://docs.peppol.eu/edelivery/codelists/"))
-                                .addClasses (DefaultCSSClassProvider.create ("alert"), DefaultCSSClassProvider.create ("alert-secondary")));
+                                .addClasses (DefaultCSSClassProvider.create ("alert"),
+                                             DefaultCSSClassProvider.create ("alert-secondary")));
     _writeHtmlFile (aHtml, sCodeListName);
   }
 
