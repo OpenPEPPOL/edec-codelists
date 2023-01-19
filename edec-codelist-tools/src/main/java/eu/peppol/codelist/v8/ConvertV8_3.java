@@ -13,26 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package eu.peppol.codelist.main;
+package eu.peppol.codelist.v8;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import eu.peppol.codelist.v8.ConvertV8_2;
+import com.helger.commons.version.Version;
 
 /**
- * Utility class to create the Genericode files from the Excel code list.
+ * Handle V8.3 code lists
  *
  * @author Philip Helger
  */
-public final class MainProcessExcel_v8_2
+public final class ConvertV8_3 extends AbstractConvertV8
 {
-  private static final Logger LOGGER = LoggerFactory.getLogger (MainProcessExcel_v8_2.class);
+  private static final int MAJOR = 8;
+  private static final int MINOR = 3;
+  public static final Version CODE_LIST_VERSION = new Version (MAJOR, MINOR);
+  public static final String DESTINATION_BASE_PATH = "created-codelists/v" + MAJOR + "." + MINOR + "/";
+  public static final String DESTINATION_FILENAME_SUFFIX = " v" + MAJOR + "." + MINOR;
 
-  public static void main (final String [] args) throws Exception
+  public ConvertV8_3 ()
   {
-    new ConvertV8_2 ().run ();
-    LOGGER.info ("Now run 'mvn license:format' on this project");
-    LOGGER.info ("Than copy the output from 'ceated-codelists/vX.Y' to the respective 'publication/vX.Y' folder in the parent project");
+    super (CODE_LIST_VERSION, DESTINATION_BASE_PATH, DESTINATION_FILENAME_SUFFIX);
   }
 }
