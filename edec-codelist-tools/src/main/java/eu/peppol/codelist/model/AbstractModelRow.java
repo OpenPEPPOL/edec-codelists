@@ -18,7 +18,14 @@ public abstract class AbstractModelRow implements IModelRow
   @Nullable
   protected static LocalDate getAsDate (@Nullable final String s)
   {
-    return StringHelper.hasNoText (s) ? null : JAN_1_1900.plusDays (Long.parseLong (s));
+    if (StringHelper.hasNoText (s))
+      return null;
+    /**
+     * If you choose to use MS Excel to check your work note 2 things: 1) Jan 1,
+     * 1900 is day 1 (not the number of days since Jan 1, 1900) and 2) according
+     * to Excel Feb 29, 1900 exists(a bug in their code they refuse to fix.)
+     */
+    return JAN_1_1900.plusDays (Long.parseLong (s) - 2);
   }
 
   @Nullable
