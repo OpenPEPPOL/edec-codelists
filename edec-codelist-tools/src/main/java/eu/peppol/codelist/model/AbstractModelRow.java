@@ -16,7 +16,7 @@ public abstract class AbstractModelRow implements IModelRow
   {}
 
   @Nullable
-  protected static LocalDate getAsDate (@Nullable final String s)
+  protected static LocalDate getLocalDateFromExcel (@Nullable final String s)
   {
     if (StringHelper.hasNoText (s))
       return null;
@@ -29,7 +29,7 @@ public abstract class AbstractModelRow implements IModelRow
   }
 
   @Nullable
-  protected static String getAt (final String [] a, final int n)
+  protected static String safeGetAtIndex (final String [] a, final int n)
   {
     return n < a.length ? a[n] : null;
   }

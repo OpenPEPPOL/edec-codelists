@@ -290,7 +290,7 @@ public final class ParticipantIdentifierSchemeRow extends AbstractModelRow
     ret.m_sInitialRelease = aRow[5];
     ret.m_eState = ERowState.getFromIDOrThrow (aRow[6]);
     ret.m_sDeprecationRelease = aRow[7];
-    ret.m_aRemovalDate = getAsDate (aRow[8]);
+    ret.m_aRemovalDate = getLocalDateFromExcel (aRow[8]);
     ret.m_sStructure = aRow[9];
     ret.m_sDisplay = aRow[10];
     ret.m_sExamples = aRow[11];

@@ -330,7 +330,7 @@ public final class DocTypeRow extends AbstractModelRow
     ret.m_sInitialRelease = aRow[3];
     ret.m_eState = ERowState.getFromIDOrThrow (aRow[4]);
     ret.m_sDeprecationRelease = aRow[5];
-    ret.m_aRemovalDate = getAsDate (aRow[6]);
+    ret.m_aRemovalDate = getLocalDateFromExcel (aRow[6]);
     ret.m_sComment = aRow[7];
     ret.m_bIssuedByOpenPeppol = ModelHelper.parseIssuedByOpenPeppol (aRow[8]);
     ret.m_sBISVersion = aRow[9];
