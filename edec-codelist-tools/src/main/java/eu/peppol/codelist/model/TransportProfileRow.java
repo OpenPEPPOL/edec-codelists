@@ -42,7 +42,7 @@ import eu.peppol.codelist.gc.GCRowExt;
  *
  * @author Philip Helger
  */
-public final class TransportProfileRow implements IModelRow
+public final class TransportProfileRow extends AbstractModelRow
 {
   private static final String PROTOCOL = "protocol";
   private static final String PROFILE_VERSION = "profile-version";
@@ -197,7 +197,10 @@ public final class TransportProfileRow implements IModelRow
     aRow.addCell (m_sProfileID);
     aRow.addAndReturnCell (m_sInitialRelease).addClass (ModelHelper.CSS_TEXT_END);
     aRow.addCell (m_eState.getDisplayName ());
-    aRow.addAndReturnCell (m_sDeprecationRelease).addClass (ModelHelper.CSS_TEXT_END);
+    if (StringHelper.hasText (m_sDeprecationRelease))
+      aRow.addAndReturnCell (m_sDeprecationRelease).addClass (ModelHelper.CSS_TEXT_END);
+    else
+      aRow.addCell ();
     aRow.addAndReturnCell (PDTWebDateHelper.getAsStringXSD (m_aRemovalDate)).addClass (ModelHelper.CSS_TEXT_END);
     if (m_eState.isRemoved ())
       aRow.addClass (ModelHelper.CSS_TABLE_DANGER);
@@ -218,8 +221,8 @@ public final class TransportProfileRow implements IModelRow
     ret.m_sInitialRelease = aRow[3];
     ret.m_eState = ERowState.getFromIDOrThrow (aRow[4]);
     ret.m_sDeprecationRelease = aRow[5];
-    ret.m_aRemovalDate = PDTWebDateHelper.getLocalDateFromXSD (aRow[6]);
-    ret.m_sComment = IModelRow.getAt (aRow, 7);
+    ret.m_aRemovalDate = getAsDate (aRow[6]);
+    ret.m_sComment = getAt (aRow, 7);
     return ret;
   }
 }

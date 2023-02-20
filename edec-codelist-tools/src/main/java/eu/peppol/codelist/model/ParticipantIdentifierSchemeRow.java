@@ -44,38 +44,21 @@ import eu.peppol.codelist.gc.GCRowExt;
  *
  * @author Philip Helger
  */
-public final class ParticipantIdentifierSchemeRow implements IModelRow
+public final class ParticipantIdentifierSchemeRow extends AbstractModelRow
 {
   private static final String SCHEME_ID = "schemeid";
   private static final String ISO6523 = "iso6523";
   private static final String COUNTRY = "country";
   private static final String SCHEME_NAME = "scheme-name";
   private static final String ISSUING_AGENCY = "issuing-agency";
-
-  @Deprecated
-  @SuppressWarnings ("unused")
-  // Deprecated in V8
-  private static final String SINCE = "since";
   // New in V8
   private static final String INITIAL_RELEASE = "initial-release";
-
-  @Deprecated
-  @SuppressWarnings ("unused")
-  // Deprecated in V8
-  private static final String DEPRECATED = "deprecated";
   // New in V8
   private static final String STATE = "state";
-
-  @Deprecated
-  @SuppressWarnings ("unused")
-  // Deprecated in V8
-  private static final String DEPRECATED_SINCE = "deprecated-since";
   // New in V8
   private static final String DEPRECATION_RELEASE = "deprecation-release";
-
   // New in V8
   private static final String REMOVAL_DATE = "removal-date";
-
   private static final String STRUCTURE = "structure";
   private static final String DISPLAY = "display";
   private static final String EXAMPLES = "examples";
@@ -296,28 +279,6 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
   }
 
   @Nonnull
-  @Deprecated
-  public static ParticipantIdentifierSchemeRow createV7 (@Nonnull final String [] aRow)
-  {
-    final ParticipantIdentifierSchemeRow ret = new ParticipantIdentifierSchemeRow ();
-    ret.m_sSchemeID = aRow[0];
-    ret.m_sISO6523 = aRow[1];
-    ret.m_sCountry = aRow[2];
-    ret.m_sSchemeName = aRow[3];
-    ret.m_sIssuingAgency = aRow[4];
-    ret.m_sInitialRelease = aRow[5];
-    ret.m_eState = ModelHelper.parseDeprecated (aRow[6]) ? ERowState.DEPRECATED : ERowState.ACTIVE;
-    ret.m_sDeprecationRelease = aRow[7];
-    ret.m_aRemovalDate = null;
-    ret.m_sStructure = aRow[8];
-    ret.m_sDisplay = aRow[9];
-    ret.m_sExamples = aRow[10];
-    ret.m_sValidationRules = aRow[11];
-    ret.m_sUsage = aRow[12];
-    return ret;
-  }
-
-  @Nonnull
   public static ParticipantIdentifierSchemeRow createV8 (@Nonnull final String [] aRow)
   {
     final ParticipantIdentifierSchemeRow ret = new ParticipantIdentifierSchemeRow ();
@@ -329,7 +290,7 @@ public final class ParticipantIdentifierSchemeRow implements IModelRow
     ret.m_sInitialRelease = aRow[5];
     ret.m_eState = ERowState.getFromIDOrThrow (aRow[6]);
     ret.m_sDeprecationRelease = aRow[7];
-    ret.m_aRemovalDate = PDTWebDateHelper.getLocalDateFromXSD (aRow[8]);
+    ret.m_aRemovalDate = getAsDate (aRow[8]);
     ret.m_sStructure = aRow[9];
     ret.m_sDisplay = aRow[10];
     ret.m_sExamples = aRow[11];

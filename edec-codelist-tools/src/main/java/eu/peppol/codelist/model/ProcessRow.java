@@ -48,10 +48,6 @@ public final class ProcessRow implements IModelRow
 {
   private static final String SCHEME = "scheme";
   private static final String VALUE = "value";
-  @Deprecated
-  @SuppressWarnings ("unused")
-  // Deprecated in V8
-  private static final String DEPRECATED = "deprecated";
   // New in V8
   private static final String STATE = "state";
 

@@ -53,36 +53,19 @@ import eu.peppol.codelist.gc.GCRowExt;
  *
  * @author Philip Helger
  */
-public final class DocTypeRow implements IModelRow
+public final class DocTypeRow extends AbstractModelRow
 {
   private static final String NAME = "name";
   private static final String SCHEME = "scheme";
   private static final String VALUE = "value";
-
-  @Deprecated
-  @SuppressWarnings ("unused")
-  // Deprecated in V8
-  private static final String SINCE = "since";
   // New in V8
   private static final String INITIAL_RELEASE = "initial-release";
-
-  @Deprecated
-  @SuppressWarnings ("unused")
-  // Deprecated in V8
-  private static final String DEPRECATED = "deprecated";
   // New in V8
   private static final String STATE = "state";
-
-  @Deprecated
-  @SuppressWarnings ("unused")
-  // Deprecated in V8
-  private static final String DEPRECATED_SINCE = "deprecated-since";
   // New in V8
   private static final String DEPRECATION_RELEASE = "deprecation-release";
-
   // New in V8
   private static final String REMOVAL_DATE = "removal-date";
-
   private static final String COMMENT = "comment";
   private static final String ISSUED_BY_OPENPEPPOL = "issued-by-openpeppol";
   private static final String BIS_VERSION = "bis-version";
@@ -336,29 +319,6 @@ public final class DocTypeRow implements IModelRow
   }
 
   @Nonnull
-  @Deprecated
-  public static DocTypeRow createV7 (@Nonnull final String [] aRow)
-  {
-    final DocTypeRow ret = new DocTypeRow ();
-    ret.m_sName = aRow[0];
-    if (StringHelper.hasNoText (ret.m_sName))
-      throw new IllegalStateException ("Empty name is not allowed");
-    ret.m_sScheme = aRow[1];
-    ret.m_sValue = aRow[2];
-    ret.m_sInitialRelease = aRow[3];
-    ret.m_eState = ModelHelper.parseDeprecated (aRow[4]) ? ERowState.DEPRECATED : ERowState.ACTIVE;
-    ret.m_sDeprecationRelease = aRow[5];
-    ret.m_aRemovalDate = null;
-    ret.m_sComment = aRow[6];
-    ret.m_bIssuedByOpenPeppol = ModelHelper.parseIssuedByOpenPeppol (aRow[7]);
-    ret.m_sBISVersion = aRow[8];
-    ret.m_sDomainCommunity = aRow[9];
-    ret.m_sProcessIDs = aRow[10];
-    ret.m_aProcessIDs = ModelHelper.getAllProcessIDsFromMultilineString (ret.m_sProcessIDs);
-    return ret;
-  }
-
-  @Nonnull
   public static DocTypeRow createV8 (@Nonnull final String [] aRow)
   {
     final DocTypeRow ret = new DocTypeRow ();
@@ -370,7 +330,7 @@ public final class DocTypeRow implements IModelRow
     ret.m_sInitialRelease = aRow[3];
     ret.m_eState = ERowState.getFromIDOrThrow (aRow[4]);
     ret.m_sDeprecationRelease = aRow[5];
-    ret.m_aRemovalDate = PDTWebDateHelper.getLocalDateFromXSD (aRow[6]);
+    ret.m_aRemovalDate = getAsDate (aRow[6]);
     ret.m_sComment = aRow[7];
     ret.m_bIssuedByOpenPeppol = ModelHelper.parseIssuedByOpenPeppol (aRow[8]);
     ret.m_sBISVersion = aRow[9];
