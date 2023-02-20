@@ -47,30 +47,16 @@ public final class TransportProfileRow implements IModelRow
   private static final String PROTOCOL = "protocol";
   private static final String PROFILE_VERSION = "profile-version";
   private static final String PROFILE_ID = "profile-id";
-
-  @Deprecated
-  @SuppressWarnings ("unused")
-  // Deprecated in V8
-  private static final String SINCE = "since";
   // New in V8
   private static final String INITIAL_RELEASE = "initial-release";
-
-  @Deprecated
-  @SuppressWarnings ("unused")
-  // Deprecated in V8
-  private static final String DEPRECATED = "deprecated";
   // New in V8
   private static final String STATE = "state";
-
-  @Deprecated
-  @SuppressWarnings ("unused")
-  // Deprecated in V8
-  private static final String DEPRECATED_SINCE = "deprecated-since";
   // New in V8
   private static final String DEPRECATION_RELEASE = "deprecation-release";
-
   // New in V8
   private static final String REMOVAL_DATE = "removal-date";
+  // New in V8.4
+  private static final String COMMENT = "comment";
 
   public static final String CODE_LIST_NAME = ModelHelper.CODELIST_NAME_PREFIX + "Transport profiles";
   public static final URI CODE_LIST_URI = URLHelper.getAsURI ("urn:peppol.eu:names:identifier:transport-profile");
@@ -83,6 +69,7 @@ public final class TransportProfileRow implements IModelRow
   private ERowState m_eState;
   private String m_sDeprecationRelease;
   private LocalDate m_aRemovalDate;
+  private String m_sComment;
 
   @Nonnull
   public ERowState getState ()
@@ -129,6 +116,8 @@ public final class TransportProfileRow implements IModelRow
       ret.setAttribute (DEPRECATION_RELEASE, m_sDeprecationRelease);
     if (m_aRemovalDate != null)
       ret.setAttribute (REMOVAL_DATE, PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
+    if (StringHelper.hasText (m_sComment))
+      ret.setAttribute (COMMENT, m_sComment);
     return ret;
   }
 
@@ -145,6 +134,8 @@ public final class TransportProfileRow implements IModelRow
       ret.add (DEPRECATION_RELEASE, m_sDeprecationRelease);
     if (m_aRemovalDate != null)
       ret.add (REMOVAL_DATE, PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
+    if (StringHelper.hasText (m_sComment))
+      ret.add (COMMENT, m_sComment);
     return ret;
   }
 
@@ -163,6 +154,7 @@ public final class TransportProfileRow implements IModelRow
                               "Deprecation release",
                               ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, REMOVAL_DATE, false, false, "Removal date", ECodeListDataType.DATE);
+    GCHelper.addHeaderColumn (aColumnSet, COMMENT, false, false, "Comment", ECodeListDataType.STRING);
   }
 
   @Nonnull
@@ -177,6 +169,7 @@ public final class TransportProfileRow implements IModelRow
     ret.add (STATE, m_eState.getID ());
     ret.add (DEPRECATION_RELEASE, m_sDeprecationRelease);
     ret.add (REMOVAL_DATE, PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
+    ret.add (COMMENT, m_sComment);
     return ret;
   }
 
@@ -191,6 +184,7 @@ public final class TransportProfileRow implements IModelRow
     aRow.addCell ("State");
     aRow.addCell ("Deprecation release");
     aRow.addCell ("Removal date");
+    aRow.addCell ("Comment");
     return aRow;
   }
 
@@ -210,22 +204,8 @@ public final class TransportProfileRow implements IModelRow
     else
       if (m_eState.isDeprecated ())
         aRow.addClass (ModelHelper.CSS_TABLE_WARNING);
+    aRow.addCell (m_sComment);
     return aRow;
-  }
-
-  @Nonnull
-  @Deprecated
-  public static TransportProfileRow createV7 (@Nonnull final String [] aRow)
-  {
-    final TransportProfileRow ret = new TransportProfileRow ();
-    ret.m_sProtcol = aRow[0];
-    ret.m_sProfileVersion = aRow[1];
-    ret.m_sProfileID = aRow[2];
-    ret.m_sInitialRelease = aRow[3];
-    ret.m_eState = ModelHelper.parseDeprecated (aRow[4]) ? ERowState.DEPRECATED : ERowState.ACTIVE;
-    ret.m_sDeprecationRelease = aRow[5];
-    ret.m_aRemovalDate = null;
-    return ret;
   }
 
   @Nonnull
@@ -239,6 +219,7 @@ public final class TransportProfileRow implements IModelRow
     ret.m_eState = ERowState.getFromIDOrThrow (aRow[4]);
     ret.m_sDeprecationRelease = aRow[5];
     ret.m_aRemovalDate = PDTWebDateHelper.getLocalDateFromXSD (aRow[6]);
+    ret.m_sComment = IModelRow.getAt (aRow, 7);
     return ret;
   }
 }

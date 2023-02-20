@@ -16,6 +16,7 @@
 package eu.peppol.codelist.model;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import com.helger.commons.annotation.Nonempty;
 import com.helger.genericode.v10.ColumnSet;
@@ -78,4 +79,10 @@ public interface IModelRow
    */
   @Nonnull
   HCRow getAsHtmlTableBodyRow ();
+
+  @Nullable
+  static String getAt (final String [] a, final int n)
+  {
+    return n < a.length ? a[n] : null;
+  }
 }

@@ -18,10 +18,11 @@ package eu.peppol.codelist.v8;
 import com.helger.commons.version.Version;
 
 /**
- * Handle V8.3 code lists
+ * Handle V8.3.1 code lists
  *
  * @author Philip Helger
  */
+@Deprecated
 public final class ConvertV8_3_1 extends AbstractConvertV8
 {
   private static final int MAJOR = 8;
