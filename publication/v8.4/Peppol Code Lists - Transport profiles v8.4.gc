@@ -76,6 +76,9 @@ Do NOT edit!</ext:info>
       <Value ColumnRef="removal-date">
         <SimpleValue>2023-08-24</SimpleValue>
       </Value>
+      <Value ColumnRef="comment">
+        <SimpleValue>TICC-248</SimpleValue>
+      </Value>
     </Row>
     <Row>
       <Value ColumnRef="protocol">
@@ -99,6 +102,9 @@ Do NOT edit!</ext:info>
       <Value ColumnRef="removal-date">
         <SimpleValue>2023-08-24</SimpleValue>
       </Value>
+      <Value ColumnRef="comment">
+        <SimpleValue>TICC-249</SimpleValue>
+      </Value>
     </Row>
     <Row>
       <Value ColumnRef="protocol">
@@ -121,6 +127,9 @@ Do NOT edit!</ext:info>
       </Value>
       <Value ColumnRef="removal-date">
         <SimpleValue>2023-08-24</SimpleValue>
+      </Value>
+      <Value ColumnRef="comment">
+        <SimpleValue>TICC-248</SimpleValue>
       </Value>
     </Row>
     <Row>
@@ -161,6 +170,9 @@ Do NOT edit!</ext:info>
       </Value>
       <Value ColumnRef="removal-date">
         <SimpleValue>2023-08-24</SimpleValue>
+      </Value>
+      <Value ColumnRef="comment">
+        <SimpleValue>TICC-249</SimpleValue>
       </Value>
     </Row>
   </SimpleCodeList>

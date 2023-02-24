@@ -9,7 +9,8 @@
       "initial-release":"1.0.0",
       "state":"removed",
       "deprecation-release":"1.0.0",
-      "removal-date":"2023-08-24"
+      "removal-date":"2023-08-24",
+      "comment":"TICC-248"
     },
     {
       "protocol":"AS2",
@@ -18,7 +19,8 @@
       "initial-release":"1.0.0",
       "state":"removed",
       "deprecation-release":"7",
-      "removal-date":"2023-08-24"
+      "removal-date":"2023-08-24",
+      "comment":"TICC-249"
     },
     {
       "protocol":"AS4",
@@ -27,7 +29,8 @@
       "initial-release":"2",
       "state":"removed",
       "deprecation-release":"3",
-      "removal-date":"2023-08-24"
+      "removal-date":"2023-08-24",
+      "comment":"TICC-248"
     },
     {
       "protocol":"AS4",
@@ -43,7 +46,8 @@
       "initial-release":"5",
       "state":"removed",
       "deprecation-release":"8.4",
-      "removal-date":"2023-08-24"
+      "removal-date":"2023-08-24",
+      "comment":"TICC-249"
     }
   ]
 }
