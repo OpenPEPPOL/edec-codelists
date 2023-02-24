@@ -24,6 +24,7 @@ import com.helger.commons.annotation.Nonempty;
 import com.helger.commons.datetime.PDTWebDateHelper;
 import com.helger.commons.regex.RegExHelper;
 import com.helger.commons.string.StringHelper;
+import com.helger.commons.string.StringParser;
 import com.helger.commons.url.URLHelper;
 import com.helger.genericode.v10.CodeListDocument;
 import com.helger.genericode.v10.ColumnSet;
@@ -64,6 +65,7 @@ public final class ParticipantIdentifierSchemeRow extends AbstractModelRow
   private static final String EXAMPLES = "examples";
   private static final String VALIDATION_RULES = "validation-rules";
   private static final String USAGE = "usage";
+  private static final String REGISTRABLE = "registrable";
 
   public static final String CODE_LIST_NAME = ModelHelper.CODELIST_NAME_PREFIX + "Participant identifier schemes";
   public static final URI CODE_LIST_URI = URLHelper.getAsURI ("urn:peppol.eu:names:identifier:participant-identifier-scheme");
@@ -83,6 +85,7 @@ public final class ParticipantIdentifierSchemeRow extends AbstractModelRow
   private String m_sExamples;
   private String m_sValidationRules;
   private String m_sUsage;
+  private boolean m_bRegistrable;
 
   @Nonnull
   public ERowState getState ()
@@ -148,6 +151,7 @@ public final class ParticipantIdentifierSchemeRow extends AbstractModelRow
       ret.appendElement (VALIDATION_RULES).appendText (m_sValidationRules);
     if (StringHelper.hasText (m_sUsage))
       ret.appendElement (USAGE).appendText (m_sUsage);
+    ret.appendElement (REGISTRABLE).appendText (Boolean.toString (m_bRegistrable));
     return ret;
   }
 
@@ -177,6 +181,7 @@ public final class ParticipantIdentifierSchemeRow extends AbstractModelRow
       ret.add (VALIDATION_RULES, m_sValidationRules);
     if (StringHelper.hasText (m_sUsage))
       ret.add (USAGE, m_sUsage);
+    ret.add (REGISTRABLE, m_bRegistrable);
     return ret;
   }
 
@@ -207,6 +212,7 @@ public final class ParticipantIdentifierSchemeRow extends AbstractModelRow
     GCHelper.addHeaderColumn (aColumnSet, EXAMPLES, false, false, "Peppol Examples", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, VALIDATION_RULES, false, false, "Validation Rules", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, USAGE, false, false, "Usage Notes", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet, REGISTRABLE, false, false, "Registrable?", ECodeListDataType.BOOLEAN);
   }
 
   @Nonnull
@@ -228,6 +234,7 @@ public final class ParticipantIdentifierSchemeRow extends AbstractModelRow
     ret.add (EXAMPLES, m_sExamples);
     ret.add (VALIDATION_RULES, m_sValidationRules);
     ret.add (USAGE, m_sUsage);
+    ret.add (REGISTRABLE, m_bRegistrable);
     return ret;
   }
 
@@ -249,6 +256,7 @@ public final class ParticipantIdentifierSchemeRow extends AbstractModelRow
     aRow.addCell ("Peppol Examples");
     aRow.addCell ("Validation Rules");
     aRow.addCell ("Usage Notes");
+    aRow.addCell ("Registrable?");
     return aRow;
   }
 
@@ -275,6 +283,7 @@ public final class ParticipantIdentifierSchemeRow extends AbstractModelRow
     else
       if (m_eState.isDeprecated ())
         aRow.addClass (ModelHelper.CSS_TABLE_WARNING);
+    aRow.addCell (Boolean.toString (m_bRegistrable));
     return aRow;
   }
 
@@ -296,6 +305,7 @@ public final class ParticipantIdentifierSchemeRow extends AbstractModelRow
     ret.m_sExamples = aRow[11];
     ret.m_sValidationRules = aRow[12];
     ret.m_sUsage = aRow[13];
+    ret.m_bRegistrable = StringParser.parseBool (aRow[13]);
     return ret;
   }
 }
