@@ -305,7 +305,7 @@ public final class ParticipantIdentifierSchemeRow extends AbstractModelRow
     ret.m_sExamples = aRow[11];
     ret.m_sValidationRules = aRow[12];
     ret.m_sUsage = aRow[13];
-    ret.m_bRegistrable = StringParser.parseBool (aRow[13]);
+    ret.m_bRegistrable = StringParser.parseBool (aRow[14]);
     return ret;
   }
 }

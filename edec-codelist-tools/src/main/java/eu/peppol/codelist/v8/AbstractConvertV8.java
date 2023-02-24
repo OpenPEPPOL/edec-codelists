@@ -87,7 +87,7 @@ public abstract class AbstractConvertV8 extends AbstractConverter
   private void _handleParticipantIdentifierSchemes (@Nonnull final Sheet aParticipantSheet)
   {
     // Read Excel
-    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aParticipantSheet, 14);
+    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aParticipantSheet, 15);
 
     // Convert to domain object
     final ICommonsList <ParticipantIdentifierSchemeRow> aRows = aXLSX.getAsList (ParticipantIdentifierSchemeRow::createV8);
@@ -106,15 +106,19 @@ public abstract class AbstractConvertV8 extends AbstractConverter
                           ParticipantIdentifierSchemeRow.CODE_LIST_NAME,
                           ParticipantIdentifierSchemeRow::addGCColumns,
                           ParticipantIdentifierSchemeRow.CODE_LIST_URI);
-    createXMLFile (aRows, ParticipantIdentifierSchemeRow.CODE_LIST_NAME, ParticipantIdentifierSchemeRow.ROOT_ELEMENT_NAME);
+    createXMLFile (aRows,
+                   ParticipantIdentifierSchemeRow.CODE_LIST_NAME,
+                   ParticipantIdentifierSchemeRow.ROOT_ELEMENT_NAME);
     createJsonFile (aRows, ParticipantIdentifierSchemeRow.CODE_LIST_NAME);
-    createHtmlFile (aRows, ParticipantIdentifierSchemeRow.CODE_LIST_NAME, ParticipantIdentifierSchemeRow::getAsHtmlTableHeaderRow);
+    createHtmlFile (aRows,
+                    ParticipantIdentifierSchemeRow.CODE_LIST_NAME,
+                    ParticipantIdentifierSchemeRow::getAsHtmlTableHeaderRow);
   }
 
   private void _handleTransportProfileIdentifiers (@Nonnull final Sheet aTPSheet)
   {
     // Read Excel
-    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aTPSheet, 7);
+    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aTPSheet, 8);
 
     // Convert to domain object
     final ICommonsList <TransportProfileRow> aRows = aXLSX.getAsList (TransportProfileRow::createV8);
@@ -129,7 +133,10 @@ public abstract class AbstractConvertV8 extends AbstractConverter
     }
 
     // Create files
-    createGenericodeFile (aRows, TransportProfileRow.CODE_LIST_NAME, TransportProfileRow::addGCColumns, TransportProfileRow.CODE_LIST_URI);
+    createGenericodeFile (aRows,
+                          TransportProfileRow.CODE_LIST_NAME,
+                          TransportProfileRow::addGCColumns,
+                          TransportProfileRow.CODE_LIST_URI);
     createXMLFile (aRows, TransportProfileRow.CODE_LIST_NAME, TransportProfileRow.ROOT_ELEMENT_NAME);
     createJsonFile (aRows, TransportProfileRow.CODE_LIST_NAME);
     createHtmlFile (aRows, TransportProfileRow.CODE_LIST_NAME, TransportProfileRow::getAsHtmlTableHeaderRow);
@@ -164,8 +171,12 @@ public abstract class AbstractConvertV8 extends AbstractConverter
     final String sFilenameVersion = m_aCodeListVersion.getAsString (false, true);
 
     new CodeListSource ("Document types", sFilenameVersion, this::_handleDocumentTypes).readExcelSheet ();
-    new CodeListSource ("Participant identifier schemes", sFilenameVersion, this::_handleParticipantIdentifierSchemes).readExcelSheet ();
-    new CodeListSource ("Transport profiles", sFilenameVersion, this::_handleTransportProfileIdentifiers).readExcelSheet ();
+    new CodeListSource ("Participant identifier schemes",
+                        sFilenameVersion,
+                        this::_handleParticipantIdentifierSchemes).readExcelSheet ();
+    new CodeListSource ("Transport profiles",
+                        sFilenameVersion,
+                        this::_handleTransportProfileIdentifiers).readExcelSheet ();
 
     _handleProcessIdentifiers ();
   }
