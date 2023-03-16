@@ -18,7 +18,7 @@ package eu.peppol.codelist.main;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import eu.peppol.codelist.v8.ConvertV8_4;
+import eu.peppol.codelist.v8.ConvertV8_5;
 
 /**
  * Utility class to create the Genericode files from the Excel code list.
@@ -31,7 +31,7 @@ public final class MainProcessExcelCodeLists
 
   public static void main (final String [] args) throws Exception
   {
-    new ConvertV8_4 ().run ();
+    new ConvertV8_5 ().run ();
     LOGGER.info ("Now run 'mvn license:format' on this project");
     LOGGER.info ("Than copy the output from 'ceated-codelists/vX.Y' to the respective 'publication/vX.Y' folder in the parent project");
   }

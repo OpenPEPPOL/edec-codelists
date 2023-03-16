@@ -22,6 +22,7 @@ import com.helger.commons.version.Version;
  *
  * @author Philip Helger
  */
+@Deprecated
 public final class ConvertV8_4 extends AbstractConvertV8
 {
   private static final int MAJOR = 8;
