@@ -19,7 +19,7 @@ import com.helger.commons.io.resource.ClassPathResource;
 
 final class CCodelists
 {
-  public static final ClassPathResource XSD = new ClassPathResource ("/schemas/peppol-codelists-v2.xsd",
+  public static final ClassPathResource XSD = new ClassPathResource ("/external/schemas/peppol-codelists-v2.2.xsd",
                                                                      CCodelists.class.getClassLoader ());
 
   private CCodelists ()
