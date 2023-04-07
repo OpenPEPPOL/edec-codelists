@@ -17,10 +17,8 @@
 
 -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns="" 
            id="Identifiers" 
-           elementFormDefault="qualified"
-           targetNamespace="">
+           elementFormDefault="qualified">
   <xs:annotation>
     <xs:documentation>
       OpenPeppol Code list schemas.
@@ -28,7 +26,7 @@
       
       Schema version: 1
       Author: Philip Helger, OpenPeppol OO
-      Last update: 2020-05-06
+      Last update: 2023-04-07
     </xs:documentation>
   </xs:annotation>
   
