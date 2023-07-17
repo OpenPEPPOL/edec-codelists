@@ -43,18 +43,21 @@ import com.helger.html.EHTMLVersion;
 import com.helger.html.css.DefaultCSSClassProvider;
 import com.helger.html.hc.config.HCConversionSettings;
 import com.helger.html.hc.html.embedded.EHCCORSSettings;
+import com.helger.html.hc.html.forms.HCButton;
 import com.helger.html.hc.html.grouping.HCDiv;
 import com.helger.html.hc.html.metadata.EHCLinkType;
 import com.helger.html.hc.html.metadata.HCLink;
 import com.helger.html.hc.html.metadata.HCMeta;
 import com.helger.html.hc.html.metadata.HCStyle;
 import com.helger.html.hc.html.root.HCHtml;
+import com.helger.html.hc.html.script.HCScriptInline;
 import com.helger.html.hc.html.sections.HCH1;
 import com.helger.html.hc.html.tabular.HCRow;
 import com.helger.html.hc.html.tabular.HCTable;
 import com.helger.html.hc.html.textlevel.HCA;
 import com.helger.html.hc.html.textlevel.HCEM;
 import com.helger.html.hc.render.HCRenderer;
+import com.helger.html.js.UnparsedJSCodeProvider;
 import com.helger.json.IJsonObject;
 import com.helger.json.JsonArray;
 import com.helger.json.JsonObject;
@@ -231,25 +234,79 @@ public abstract class AbstractConverter
     aCont.addChild (new HCH1 ().addChild (aHtml.head ().getPageTitle ()));
 
     final int nDeprecatedRows = aRows.getCount (x -> x.getState ().isDeprecated ());
+    final boolean bHasDeprecated = nDeprecatedRows > 0;
     final int nRemovedRows = aRows.getCount (x -> x.getState ().isRemoved ());
+    final boolean bHasRemoved = nRemovedRows > 0;
 
     aCont.addChild (new HCDiv ().addChild (new HCDiv ().addChild ("Version " +
                                                                   m_aCodeListVersion.getAsString () +
                                                                   " with " +
                                                                   aRows.size () +
                                                                   " entries"))
-                                .addChild (nDeprecatedRows > 0 ? new HCDiv ().addChild ("Info: the " +
-                                                                                        nDeprecatedRows +
-                                                                                        " yellow rows are the ones that contain deprecated entries")
-                                                               : null)
-                                .addChild (nRemovedRows > 0 ? new HCDiv ().addChild ("Info: the " +
-                                                                                     nRemovedRows +
-                                                                                     " red rows are the ones that contain removed entries")
-                                                            : null)
+                                .addChild (bHasDeprecated ? new HCDiv ().addChild ("Info: the " +
+                                                                                   nDeprecatedRows +
+                                                                                   " yellow rows are the ones that contain deprecated entries")
+                                                          : null)
+                                .addChild (bHasRemoved ? new HCDiv ().addChild ("Info: the " +
+                                                                                nRemovedRows +
+                                                                                " red rows are the ones that contain removed entries")
+                                                       : null)
                                 .addChild (bAddNumColumn ? new HCDiv ().addChild ("Info: The first column is a counter for easier orientation in the list and has NO meaning at all.")
                                                          : null)
                                 .addClass (DefaultCSSClassProvider.create ("alert"))
                                 .addClass (DefaultCSSClassProvider.create ("alert-info")));
+
+    if (bHasDeprecated || bHasRemoved)
+    {
+      final HCDiv aButtonRow = new HCDiv ().addClass (DefaultCSSClassProvider.create ("my-3"));
+      String sJS = "";
+      if (bHasDeprecated)
+      {
+        final String sHide = "Hide " + nDeprecatedRows + " Deprecated";
+        final String sShow = "Show " + nDeprecatedRows + " Deprecated";
+        final String sIDButtonDeprecated = "btdep";
+        sJS += "var showDep=true;" +
+               "function toggleDep(){" +
+               "let rows=document.querySelectorAll('tr.table-warning'), i;" +
+               "for(i=0;i<rows.length;++i)" +
+               "  rows[i].style.display = rows[i].style.display==='none'?'table-row':'none';" +
+               "showDep = !showDep;" +
+               "document.getElementById('" +
+               sIDButtonDeprecated +
+               "').firstChild.data=showDep?'" +
+               sHide +
+               "':'" +
+               sShow +
+               "';" +
+               "}";
+        aButtonRow.addChild (new HCButton (sHide).setID (sIDButtonDeprecated)
+                                                 .setOnClick (new UnparsedJSCodeProvider ("toggleDep();return false;")));
+      }
+      if (bHasRemoved)
+      {
+        final String sHide = "Hide " + nRemovedRows + " Removed";
+        final String sShow = "Show " + nRemovedRows + " Removed";
+        final String sIDButtonRemoved = "btrem";
+        sJS += "var showRem=true;" +
+               "function toggleRem(){" +
+               "let rows=document.querySelectorAll('tr.table-danger'), i;" +
+               "for(i=0;i<rows.length;++i)" +
+               "  rows[i].style.display = rows[i].style.display==='none'?'table-row':'none';" +
+               "showRem = !showRem;" +
+               "document.getElementById('" +
+               sIDButtonRemoved +
+               "').firstChild.data=showRem?'" +
+               sHide +
+               "':'" +
+               sShow +
+               "';" +
+               "}";
+        aButtonRow.addChild (new HCButton (sHide).setID (sIDButtonRemoved)
+                                                 .setOnClick (new UnparsedJSCodeProvider ("toggleRem();return false;")));
+      }
+      aHtml.head ().addJS (new HCScriptInline (new UnparsedJSCodeProvider (sJS)));
+      aCont.addChild (aButtonRow);
+    }
 
     final HCTable aTable = aCont.addAndReturnChild (new HCTable ());
     aTable.addClass (DefaultCSSClassProvider.create ("table"));
