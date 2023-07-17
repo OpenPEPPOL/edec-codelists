@@ -267,10 +267,10 @@ public abstract class AbstractConverter
         final String sIDButtonDeprecated = "btdep";
         sJS += "var showDep=true;" +
                "function toggleDep(){" +
-               "let rows=document.querySelectorAll('tr.table-warning'), i;" +
+               "let rows=document.querySelectorAll('tr.table-warning'),i;" +
                "for(i=0;i<rows.length;++i)" +
-               "  rows[i].style.display = rows[i].style.display==='none'?'table-row':'none';" +
-               "showDep = !showDep;" +
+               "rows[i].style.display=rows[i].style.display==='none'?'table-row':'none';" +
+               "showDep=!showDep;" +
                "document.getElementById('" +
                sIDButtonDeprecated +
                "').firstChild.data=showDep?'" +
@@ -289,10 +289,10 @@ public abstract class AbstractConverter
         final String sIDButtonRemoved = "btrem";
         sJS += "var showRem=true;" +
                "function toggleRem(){" +
-               "let rows=document.querySelectorAll('tr.table-danger'), i;" +
+               "let rows=document.querySelectorAll('tr.table-danger'),i;" +
                "for(i=0;i<rows.length;++i)" +
-               "  rows[i].style.display = rows[i].style.display==='none'?'table-row':'none';" +
-               "showRem = !showRem;" +
+               "rows[i].style.display=rows[i].style.display==='none'?'table-row':'none';" +
+               "showRem=!showRem;" +
                "document.getElementById('" +
                sIDButtonRemoved +
                "').firstChild.data=showRem?'" +
