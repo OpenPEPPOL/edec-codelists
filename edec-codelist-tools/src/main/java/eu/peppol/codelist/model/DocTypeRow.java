@@ -39,6 +39,7 @@ import com.helger.json.JsonArray;
 import com.helger.json.JsonObject;
 import com.helger.peppolid.IProcessIdentifier;
 import com.helger.peppolid.factory.PeppolIdentifierFactory;
+import com.helger.peppolid.peppol.PeppolIdentifierHelper;
 import com.helger.peppolid.peppol.doctype.IPeppolDocumentTypeIdentifierParts;
 import com.helger.peppolid.peppol.doctype.PeppolDocumentTypeIdentifierParts;
 import com.helger.xml.microdom.IMicroElement;
@@ -141,6 +142,33 @@ public final class DocTypeRow extends AbstractModelRow
     if (aParts.getRootNS ().endsWith ("-2"))
       if (m_eState.isActive () && !aParts.getRootNS ().endsWith (aParts.getLocalName () + "-2"))
         throw new IllegalStateException ("Value '" + m_sValue + "' seems to be inconsistent");
+
+    if (PeppolIdentifierHelper.DOCUMENT_TYPE_SCHEME_PEPPOL_DOCTYPE_WILDCARD.equals (m_sScheme))
+    {
+      // Add additional wild card tests
+      final String sCustomizationID = aParts.getCustomizationID ();
+
+      // Check allowed root parts
+      final boolean bIsBilling = sCustomizationID.startsWith ("urn:peppol:pint:billing-1");
+      final boolean bIsSelfBilling = sCustomizationID.startsWith ("urn:peppol:pint:selfbilling-1");
+      final boolean bIsNonTaxInvoice = sCustomizationID.startsWith ("urn:peppol:pint:nontaxinvoice-1");
+      if (!bIsBilling && !bIsSelfBilling && !bIsNonTaxInvoice)
+        throw new IllegalStateException ("The root part of the Customization ID '" +
+                                         sCustomizationID +
+                                         "' is not supported");
+
+      // These are assumptions for now - lets see how long they hold true
+      if (m_aProcessIDs.size () != 1)
+        throw new IllegalStateException ("For wildcard identifiers, only 1 process ID is allowed");
+      final String sProcessID = m_aProcessIDs.get (0).getURIEncoded ();
+
+      if ((bIsBilling || bIsNonTaxInvoice) && !"cenbii-procid-ubl::urn:peppol:bis:billing".equals (sProcessID))
+        throw new IllegalStateException ("For Billing Wildcard entries, the process ID '" + sProcessID + "' is wrong");
+      if (bIsSelfBilling && !"cenbii-procid-ubl::urn:peppol:bis:selfbilling".equals (sProcessID))
+        throw new IllegalStateException ("For Selfbilling Wildcard entries, the process ID '" +
+                                         sProcessID +
+                                         "' is wrong");
+    }
 
     if (m_eState.isDeprecated () && StringHelper.hasNoText (m_sDeprecationRelease))
       throw new IllegalStateException ("Code list entry has state 'deprecated' but there is no Deprecation release set");
