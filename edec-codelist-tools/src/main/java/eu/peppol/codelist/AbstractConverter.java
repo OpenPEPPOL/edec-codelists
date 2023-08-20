@@ -82,7 +82,7 @@ import eu.peppol.codelist.model.ModelHelper;
  */
 public abstract class AbstractConverter
 {
-  public static final String DO_NOT_EDIT = "This is an OpenPeppol EDEC Code List.\n" +
+  public static final String DO_NOT_EDIT = "This is an OpenPeppol eDEC Code List.\n" +
                                            "Official source: https://docs.peppol.eu/edelivery/codelists/\n" +
                                            "\n" +
                                            "This file was automatically generated.\n" +
