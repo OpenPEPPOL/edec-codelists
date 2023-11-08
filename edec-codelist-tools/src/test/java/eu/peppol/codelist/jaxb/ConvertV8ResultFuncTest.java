@@ -28,7 +28,7 @@ import eu.peppol.codelist.model.DocTypeRow;
 import eu.peppol.codelist.model.ParticipantIdentifierSchemeRow;
 import eu.peppol.codelist.model.ProcessRow;
 import eu.peppol.codelist.model.TransportProfileRow;
-import eu.peppol.codelist.v8.ConvertV8_6;
+import eu.peppol.codelist.v8.ConvertV8_7;
 
 /**
  * Check if the created lists match the XSD.
@@ -42,8 +42,8 @@ public final class ConvertV8ResultFuncTest
   @Test
   public void testReadDocTypes ()
   {
-    final File f = new File (ConvertV8_6.DESTINATION_BASE_PATH,
-                             DocTypeRow.CODE_LIST_NAME + ConvertV8_6.DESTINATION_FILENAME_SUFFIX + ".xml");
+    final File f = new File (ConvertV8_7.DESTINATION_BASE_PATH,
+                             DocTypeRow.CODE_LIST_NAME + ConvertV8_7.DESTINATION_FILENAME_SUFFIX + ".xml");
     assertTrue (f.exists ());
     LOGGER.info ("Trying to read and validate " + f.getAbsolutePath ());
 
@@ -55,9 +55,9 @@ public final class ConvertV8ResultFuncTest
   @Test
   public void testReadParticipantIdentifierSchemes ()
   {
-    final File f = new File (ConvertV8_6.DESTINATION_BASE_PATH,
+    final File f = new File (ConvertV8_7.DESTINATION_BASE_PATH,
                              ParticipantIdentifierSchemeRow.CODE_LIST_NAME +
-                                                                ConvertV8_6.DESTINATION_FILENAME_SUFFIX +
+                                                                ConvertV8_7.DESTINATION_FILENAME_SUFFIX +
                                                                 ".xml");
     assertTrue (f.exists ());
     LOGGER.info ("Trying to read and validate " + f.getAbsolutePath ());
@@ -70,8 +70,8 @@ public final class ConvertV8ResultFuncTest
   @Test
   public void testReadProcesses ()
   {
-    final File f = new File (ConvertV8_6.DESTINATION_BASE_PATH,
-                             ProcessRow.CODE_LIST_NAME + ConvertV8_6.DESTINATION_FILENAME_SUFFIX + ".xml");
+    final File f = new File (ConvertV8_7.DESTINATION_BASE_PATH,
+                             ProcessRow.CODE_LIST_NAME + ConvertV8_7.DESTINATION_FILENAME_SUFFIX + ".xml");
     assertTrue (f.exists ());
     LOGGER.info ("Trying to read and validate " + f.getAbsolutePath ());
 
@@ -83,8 +83,8 @@ public final class ConvertV8ResultFuncTest
   @Test
   public void testReadTransportProfiles ()
   {
-    final File f = new File (ConvertV8_6.DESTINATION_BASE_PATH,
-                             TransportProfileRow.CODE_LIST_NAME + ConvertV8_6.DESTINATION_FILENAME_SUFFIX + ".xml");
+    final File f = new File (ConvertV8_7.DESTINATION_BASE_PATH,
+                             TransportProfileRow.CODE_LIST_NAME + ConvertV8_7.DESTINATION_FILENAME_SUFFIX + ".xml");
     assertTrue (f.exists ());
     LOGGER.info ("Trying to read and validate " + f.getAbsolutePath ());
 

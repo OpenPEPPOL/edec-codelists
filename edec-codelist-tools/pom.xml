@@ -24,7 +24,7 @@
     <version>2.0.4</version>
   </parent>
   <artifactId>edec-codelists-tools</artifactId>
-  <version>8.6</version>
+  <version>8.7</version>
   <packaging>jar</packaging>
   <name>edec-codelists-tools</name>
   <url>https://github.com/openpeppol/edec-codelists/peppol-codelist-tools</url>
@@ -81,7 +81,7 @@
       <dependency>
         <groupId>com.helger.photon</groupId>
         <artifactId>ph-oton-parent-pom</artifactId>
-        <version>9.2.0</version>
+        <version>9.2.1</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>

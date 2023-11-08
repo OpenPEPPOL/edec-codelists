@@ -32,7 +32,8 @@ import com.helger.commons.io.resource.FileSystemResource;
 import com.helger.commons.io.resource.IReadableResource;
 
 /**
- * Represent a single CodeList Excel source file.
+ * Represent a single CodeList Excel source file. Uses the version from "work in
+ * progress" folder.
  *
  * @author Philip Helger
  */
