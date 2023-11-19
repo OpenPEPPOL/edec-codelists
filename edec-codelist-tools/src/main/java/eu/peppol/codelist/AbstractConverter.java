@@ -222,8 +222,8 @@ public abstract class AbstractConverter
     aHtml.head ()
          .links ()
          .add (new HCLink ().setRel (EHCLinkType.STYLESHEET)
-                            .setHref (new SimpleURL ("https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"))
-                            .setIntegrity ("sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65")
+                            .setHref (new SimpleURL ("https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"))
+                            .setIntegrity ("sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN")
                             .setCrossOrigin (EHCCORSSettings.ANONYMOUS));
     if (false)
       aHtml.head ().addCSS (new HCStyle (""));
@@ -326,7 +326,12 @@ public abstract class AbstractConverter
       {
         final HCRow aBodyRow = aRow.getAsHtmlTableBodyRow ();
         if (bAddNumColumn)
-          aBodyRow.addCellAt (0).addChild (Integer.toString (nRowNum)).addClass (ModelHelper.CSS_TEXT_END);
+        {
+          final String sRowNum = Integer.toString (nRowNum);
+          aBodyRow.addCellAt (0)
+                  .addChild (new HCA ().setName (sRowNum).addChild (sRowNum))
+                  .addClass (ModelHelper.CSS_TEXT_END);
+        }
         aTable.addBodyRow (aBodyRow);
         ++nRowNum;
       }
