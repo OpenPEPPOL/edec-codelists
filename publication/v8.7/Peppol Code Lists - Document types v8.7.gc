@@ -7532,7 +7532,7 @@ TICC-255</SimpleValue>
         <SimpleValue>busdox-docid-qns</SimpleValue>
       </Value>
       <Value ColumnRef="value">
-        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#conformant#urn:xeinkauf. de:kosit:extension:xrechnung_3.0::2.1</SimpleValue>
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_3.0::2.1</SimpleValue>
       </Value>
       <Value ColumnRef="initial-release">
         <SimpleValue>8.7</SimpleValue>
@@ -7561,7 +7561,7 @@ TICC-255</SimpleValue>
         <SimpleValue>busdox-docid-qns</SimpleValue>
       </Value>
       <Value ColumnRef="value">
-        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#conformant#urn:xeinkauf. de:kosit:extension:xrechnung_3.0::2.1</SimpleValue>
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_3.0::2.1</SimpleValue>
       </Value>
       <Value ColumnRef="initial-release">
         <SimpleValue>8.7</SimpleValue>

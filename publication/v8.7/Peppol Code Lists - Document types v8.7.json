@@ -4107,7 +4107,7 @@
     {
       "name":"XRechnung UBL Invoice V3.0 Extension",
       "scheme":"busdox-docid-qns",
-      "value":"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#conformant#urn:xeinkauf. de:kosit:extension:xrechnung_3.0::2.1",
+      "value":"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_3.0::2.1",
       "initial-release":"8.7",
       "state":"active",
       "comment":"TICC-290",
@@ -4123,7 +4123,7 @@
     {
       "name":"XRechnung UBL CreditNote V3.0 Extension",
       "scheme":"busdox-docid-qns",
-      "value":"urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#conformant#urn:xeinkauf. de:kosit:extension:xrechnung_3.0::2.1",
+      "value":"urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_3.0#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_3.0::2.1",
       "initial-release":"8.7",
       "state":"active",
       "comment":"TICC-290",
