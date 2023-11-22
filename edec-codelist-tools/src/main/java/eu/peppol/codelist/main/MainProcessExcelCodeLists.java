@@ -18,8 +18,6 @@ package eu.peppol.codelist.main;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import eu.peppol.codelist.v8.ConvertV8_7;
-
 /**
  * Utility class to create the Genericode files from the Excel code list.
  *

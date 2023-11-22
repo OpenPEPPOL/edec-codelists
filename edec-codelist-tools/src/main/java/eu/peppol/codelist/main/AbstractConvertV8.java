@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package eu.peppol.codelist.v8;
+package eu.peppol.codelist.main;
 
 import java.util.Map;
 

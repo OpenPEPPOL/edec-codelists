@@ -24,11 +24,11 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import eu.peppol.codelist.main.ConvertV8_7;
 import eu.peppol.codelist.model.DocTypeRow;
 import eu.peppol.codelist.model.ParticipantIdentifierSchemeRow;
 import eu.peppol.codelist.model.ProcessRow;
 import eu.peppol.codelist.model.TransportProfileRow;
-import eu.peppol.codelist.v8.ConvertV8_7;
 
 /**
  * Check if the created lists match the XSD.
