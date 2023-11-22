@@ -83,7 +83,7 @@ public final class ProcessRow implements IModelRow
 
     if (!PeppolIdentifierFactory.INSTANCE.isProcessIdentifierSchemeValid (m_sScheme))
       throw new IllegalStateException ("Scheme does not match Peppol requirements");
-    if (!PeppolIdentifierFactory.INSTANCE.isProcessIdentifierValueValid (m_sValue))
+    if (!PeppolIdentifierFactory.INSTANCE.isProcessIdentifierValueValid (m_sScheme, m_sValue))
       throw new IllegalStateException ("Value does not match Peppol requirements");
   }
 
