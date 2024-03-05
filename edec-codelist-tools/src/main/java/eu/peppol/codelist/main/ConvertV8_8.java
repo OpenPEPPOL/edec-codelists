@@ -22,17 +22,17 @@ import com.helger.commons.version.Version;
  *
  * @author Philip Helger
  */
-public final class ConvertV8_7 extends AbstractConvertV8
+public final class ConvertV8_8 extends AbstractConvertV8
 {
   private static final int MAJOR = 8;
-  private static final int MINOR = 7;
+  private static final int MINOR = 8;
   private static final int MICRO = 0;
   private static final String STR_MICRO = MICRO < 1 ? "" : "." + MICRO;
   public static final Version CODE_LIST_VERSION = new Version (MAJOR, MINOR, MICRO);
   public static final String DESTINATION_BASE_PATH = "created-codelists/v" + MAJOR + "." + MINOR + STR_MICRO + "/";
   public static final String DESTINATION_FILENAME_SUFFIX = " v" + MAJOR + "." + MINOR + STR_MICRO;
 
-  public ConvertV8_7 ()
+  public ConvertV8_8 ()
   {
     super (CODE_LIST_VERSION, DESTINATION_BASE_PATH, DESTINATION_FILENAME_SUFFIX);
   }
