@@ -1,6 +1,6 @@
 {
   "version":"8.8",
-  "entry-count":248,
+  "entry-count":252,
   "values":[
     {
       "name":"Virtual Company Dossier",
@@ -4246,6 +4246,74 @@
       "initial-release":"8.8",
       "state":"active",
       "comment":"TICC-312",
+      "issued-by-openpeppol":true,
+      "bis-version":"3",
+      "domain-community":"POAC",
+      "process-ids":[
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:peppol:bis:selfbilling"
+        }
+      ]
+    },
+    {
+      "name":"MY PINT Invoice v1.0",
+      "scheme":"busdox-docid-qns",
+      "value":"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:peppol:pint:billing-1@my-1::2.1",
+      "initial-release":"8.8",
+      "state":"active",
+      "comment":"TICC-328",
+      "issued-by-openpeppol":true,
+      "bis-version":"3",
+      "domain-community":"POAC",
+      "process-ids":[
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:peppol:bis:billing"
+        }
+      ]
+    },
+    {
+      "name":"MY PINT Credit Note v1.0",
+      "scheme":"busdox-docid-qns",
+      "value":"urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:peppol:pint:billing-1@my-1::2.1",
+      "initial-release":"8.8",
+      "state":"active",
+      "comment":"TICC-328",
+      "issued-by-openpeppol":true,
+      "bis-version":"3",
+      "domain-community":"POAC",
+      "process-ids":[
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:peppol:bis:billing"
+        }
+      ]
+    },
+    {
+      "name":"MY PINT Self-Billing Invoice v1.0",
+      "scheme":"busdox-docid-qns",
+      "value":"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:peppol:pint:selfbilling-1@my-1::2.1",
+      "initial-release":"8.8",
+      "state":"active",
+      "comment":"TICC-328",
+      "issued-by-openpeppol":true,
+      "bis-version":"3",
+      "domain-community":"POAC",
+      "process-ids":[
+        {
+          "scheme":"cenbii-procid-ubl",
+          "value":"urn:peppol:bis:selfbilling"
+        }
+      ]
+    },
+    {
+      "name":"MY PINT Self-Billing Credit Note v1.0",
+      "scheme":"busdox-docid-qns",
+      "value":"urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:peppol:pint:selfbilling-1@my-1::2.1",
+      "initial-release":"8.8",
+      "state":"active",
+      "comment":"TICC-328",
       "issued-by-openpeppol":true,
       "bis-version":"3",
       "domain-community":"POAC",

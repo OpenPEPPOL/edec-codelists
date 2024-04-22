@@ -4,7 +4,7 @@ Official source: https://docs.peppol.eu/edelivery/codelists/
 
 This file was automatically generated.
 Do NOT edit!-->
-<document-types version="8.8" entry-count="248">
+<document-types version="8.8" entry-count="252">
   <document-type name="Virtual Company Dossier" scheme="busdox-docid-qns" value="urn:www.peppol.eu:schema:xsd:VirtualCompanyDossier-1::VirtualCompanyDossier##urn:www.cenbii.eu:transaction:biicoretrdm991:ver0.1:#urn:www.peppol.eu:bis:peppol991a:ver1.0::0.1" initial-release="1.0.0" state="deprecated" deprecation-release="2" issued-by-openpeppol="true" bis-version="1" domain-community="PRAC">
     <process-id scheme="cenbii-procid-ubl" value="none" />
   </document-type>
@@ -1021,6 +1021,22 @@ TICC-255</comment>
   </document-type>
   <document-type name="MY PINT Self-Billing Credit Note v1.0" scheme="peppol-doctype-wildcard" value="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:peppol:pint:selfbilling-1@my-1::2.1" initial-release="8.8" state="active" issued-by-openpeppol="true" bis-version="3" domain-community="POAC">
     <comment>TICC-312</comment>
+    <process-id scheme="cenbii-procid-ubl" value="urn:peppol:bis:selfbilling" />
+  </document-type>
+  <document-type name="MY PINT Invoice v1.0" scheme="busdox-docid-qns" value="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:peppol:pint:billing-1@my-1::2.1" initial-release="8.8" state="active" issued-by-openpeppol="true" bis-version="3" domain-community="POAC">
+    <comment>TICC-328</comment>
+    <process-id scheme="cenbii-procid-ubl" value="urn:peppol:bis:billing" />
+  </document-type>
+  <document-type name="MY PINT Credit Note v1.0" scheme="busdox-docid-qns" value="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:peppol:pint:billing-1@my-1::2.1" initial-release="8.8" state="active" issued-by-openpeppol="true" bis-version="3" domain-community="POAC">
+    <comment>TICC-328</comment>
+    <process-id scheme="cenbii-procid-ubl" value="urn:peppol:bis:billing" />
+  </document-type>
+  <document-type name="MY PINT Self-Billing Invoice v1.0" scheme="busdox-docid-qns" value="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:peppol:pint:selfbilling-1@my-1::2.1" initial-release="8.8" state="active" issued-by-openpeppol="true" bis-version="3" domain-community="POAC">
+    <comment>TICC-328</comment>
+    <process-id scheme="cenbii-procid-ubl" value="urn:peppol:bis:selfbilling" />
+  </document-type>
+  <document-type name="MY PINT Self-Billing Credit Note v1.0" scheme="busdox-docid-qns" value="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:peppol:pint:selfbilling-1@my-1::2.1" initial-release="8.8" state="active" issued-by-openpeppol="true" bis-version="3" domain-community="POAC">
+    <comment>TICC-328</comment>
     <process-id scheme="cenbii-procid-ubl" value="urn:peppol:bis:selfbilling" />
   </document-type>
 </document-types>

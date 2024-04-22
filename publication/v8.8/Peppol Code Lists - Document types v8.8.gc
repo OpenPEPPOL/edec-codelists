@@ -7810,5 +7810,133 @@ TICC-255</SimpleValue>
         <SimpleValue>cenbii-procid-ubl::urn:peppol:bis:selfbilling</SimpleValue>
       </Value>
     </Row>
+    <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>MY PINT Invoice v1.0</SimpleValue>
+      </Value>
+      <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+      <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:peppol:pint:billing-1@my-1::2.1</SimpleValue>
+      </Value>
+      <Value ColumnRef="initial-release">
+        <SimpleValue>8.8</SimpleValue>
+      </Value>
+      <Value ColumnRef="state">
+        <SimpleValue>active</SimpleValue>
+      </Value>
+      <Value ColumnRef="comment">
+        <SimpleValue>TICC-328</SimpleValue>
+      </Value>
+      <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+      <Value ColumnRef="bis-version">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+      <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+      <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:peppol:bis:billing</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>MY PINT Credit Note v1.0</SimpleValue>
+      </Value>
+      <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+      <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:peppol:pint:billing-1@my-1::2.1</SimpleValue>
+      </Value>
+      <Value ColumnRef="initial-release">
+        <SimpleValue>8.8</SimpleValue>
+      </Value>
+      <Value ColumnRef="state">
+        <SimpleValue>active</SimpleValue>
+      </Value>
+      <Value ColumnRef="comment">
+        <SimpleValue>TICC-328</SimpleValue>
+      </Value>
+      <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+      <Value ColumnRef="bis-version">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+      <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+      <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:peppol:bis:billing</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>MY PINT Self-Billing Invoice v1.0</SimpleValue>
+      </Value>
+      <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+      <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:peppol:pint:selfbilling-1@my-1::2.1</SimpleValue>
+      </Value>
+      <Value ColumnRef="initial-release">
+        <SimpleValue>8.8</SimpleValue>
+      </Value>
+      <Value ColumnRef="state">
+        <SimpleValue>active</SimpleValue>
+      </Value>
+      <Value ColumnRef="comment">
+        <SimpleValue>TICC-328</SimpleValue>
+      </Value>
+      <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+      <Value ColumnRef="bis-version">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+      <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+      <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:peppol:bis:selfbilling</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="name">
+        <SimpleValue>MY PINT Self-Billing Credit Note v1.0</SimpleValue>
+      </Value>
+      <Value ColumnRef="scheme">
+        <SimpleValue>busdox-docid-qns</SimpleValue>
+      </Value>
+      <Value ColumnRef="value">
+        <SimpleValue>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:peppol:pint:selfbilling-1@my-1::2.1</SimpleValue>
+      </Value>
+      <Value ColumnRef="initial-release">
+        <SimpleValue>8.8</SimpleValue>
+      </Value>
+      <Value ColumnRef="state">
+        <SimpleValue>active</SimpleValue>
+      </Value>
+      <Value ColumnRef="comment">
+        <SimpleValue>TICC-328</SimpleValue>
+      </Value>
+      <Value ColumnRef="issued-by-openpeppol">
+        <SimpleValue>true</SimpleValue>
+      </Value>
+      <Value ColumnRef="bis-version">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+      <Value ColumnRef="domain-community">
+        <SimpleValue>POAC</SimpleValue>
+      </Value>
+      <Value ColumnRef="process-ids">
+        <SimpleValue>cenbii-procid-ubl::urn:peppol:bis:selfbilling</SimpleValue>
+      </Value>
+    </Row>
   </SimpleCodeList>
 </gc:CodeList>
