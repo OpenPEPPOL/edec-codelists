@@ -37,6 +37,7 @@ public final class ModelHelper
   public static final ICSSClassProvider CSS_TEXT_END = DefaultCSSClassProvider.create ("text-end");
 
   private static final boolean DEFAULT_DEPRECATED = false;
+  private static final boolean DEFAULT_ABSTRACT = false;
   private static final boolean DEFAULT_ISSUED_BY_OPENPEPPOL = false;
 
   private ModelHelper ()
@@ -52,6 +53,11 @@ public final class ModelHelper
   static boolean parseDeprecated (final String s)
   {
     return parseBoolean (s, DEFAULT_DEPRECATED);
+  }
+
+  static boolean parseAbstract (final String s)
+  {
+    return parseBoolean (s, DEFAULT_ABSTRACT);
   }
 
   static boolean parseIssuedByOpenPeppol (final String s)

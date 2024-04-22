@@ -48,6 +48,10 @@ Do NOT edit!</ext:info>
       <ShortName>Comment</ShortName>
       <Data Type="string" />
     </Column>
+    <Column Use="required" Id="abstract">
+      <ShortName>Abstract?</ShortName>
+      <Data Type="boolean" />
+    </Column>
     <Column Use="required" Id="issued-by-openpeppol">
       <ShortName>Issued by OpenPeppol?</ShortName>
       <Data Type="boolean" />
@@ -93,6 +97,9 @@ Do NOT edit!</ext:info>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>2</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -124,6 +131,9 @@ Do NOT edit!</ext:info>
       </Value>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>2</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -157,6 +167,9 @@ Do NOT edit!</ext:info>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>2</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -188,6 +201,9 @@ Do NOT edit!</ext:info>
       </Value>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>2</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -222,6 +238,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>2</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -253,6 +272,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       </Value>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>2</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -287,6 +309,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>7</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -318,6 +343,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       </Value>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>2</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -354,6 +382,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>Typo in Customization ID!</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -385,6 +416,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       </Value>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>7</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -418,6 +452,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>2</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -449,6 +486,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       </Value>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>7</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -482,6 +522,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>2</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -513,6 +556,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       </Value>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>2</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -546,6 +592,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>2</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -577,6 +626,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       </Value>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>7</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -610,6 +662,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>7</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -641,6 +696,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       </Value>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>7</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -674,6 +732,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>7</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -705,6 +766,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       </Value>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>7</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -738,6 +802,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>7</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -769,6 +836,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       </Value>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>7</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -802,6 +872,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>7</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -834,6 +907,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>2</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -859,6 +935,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       </Value>
       <Value ColumnRef="state">
         <SimpleValue>active</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -888,6 +967,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       </Value>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>7</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -924,6 +1006,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>Typo in local name!</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -955,6 +1040,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       </Value>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>7</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -988,6 +1076,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>7</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -1020,6 +1111,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>7</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -1048,6 +1142,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       </Value>
       <Value ColumnRef="state">
         <SimpleValue>active</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -1078,6 +1175,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       <Value ColumnRef="state">
         <SimpleValue>active</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -1106,6 +1206,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
       </Value>
       <Value ColumnRef="state">
         <SimpleValue>active</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -1140,6 +1243,9 @@ cenbii-procid-ubl::urn:www.cenbii.eu:profile:bii01:ver2.0</SimpleValue>
         <SimpleValue>Typo in local name
 TICC-186</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -1169,6 +1275,9 @@ TICC-186</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-186</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -1194,6 +1303,9 @@ TICC-186</SimpleValue>
       </Value>
       <Value ColumnRef="state">
         <SimpleValue>active</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -1230,6 +1342,9 @@ TICC-186</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-252</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -1264,6 +1379,9 @@ TICC-186</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-252</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -1300,6 +1418,9 @@ TICC-186</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-252</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -1334,6 +1455,9 @@ TICC-186</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-252</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -1370,6 +1494,9 @@ TICC-186</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-252</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -1404,6 +1531,9 @@ TICC-186</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-252</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -1444,6 +1574,9 @@ TICC-186</SimpleValue>
         <SimpleValue>TICC-55
 TICC-245</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -1479,6 +1612,9 @@ TICC-245</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-55
 TICC-245</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -1516,6 +1652,9 @@ TICC-245</SimpleValue>
         <SimpleValue>TICC-55
 TICC-245</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -1544,6 +1683,9 @@ TICC-245</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-37</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -1574,6 +1716,9 @@ TICC-245</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-37</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -1602,6 +1747,9 @@ TICC-245</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-54</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -1632,6 +1780,9 @@ TICC-245</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-54</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -1660,6 +1811,9 @@ TICC-245</SimpleValue>
       </Value>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>7</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -1690,6 +1844,9 @@ TICC-245</SimpleValue>
       <Value ColumnRef="state">
         <SimpleValue>active</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -1719,6 +1876,9 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:catalogue_wo_response:3</SimpleVa
       </Value>
       <Value ColumnRef="state">
         <SimpleValue>active</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -1752,6 +1912,9 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:catalogue_wo_response:3</SimpleVa
       <Value ColumnRef="comment">
         <SimpleValue>TICC-219</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -1783,6 +1946,9 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3</SimpleValue>
       <Value ColumnRef="state">
         <SimpleValue>active</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -1811,6 +1977,9 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3</SimpleValue>
       </Value>
       <Value ColumnRef="state">
         <SimpleValue>active</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -1841,6 +2010,9 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3</SimpleValue>
       <Value ColumnRef="state">
         <SimpleValue>active</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -1869,6 +2041,9 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3</SimpleValue>
       </Value>
       <Value ColumnRef="state">
         <SimpleValue>active</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -1899,6 +2074,9 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3</SimpleValue>
       <Value ColumnRef="state">
         <SimpleValue>active</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -1927,6 +2105,9 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3</SimpleValue>
       </Value>
       <Value ColumnRef="state">
         <SimpleValue>active</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -1957,6 +2138,9 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3</SimpleValue>
       <Value ColumnRef="state">
         <SimpleValue>active</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -1983,6 +2167,9 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3</SimpleValue>
       <Value ColumnRef="state">
         <SimpleValue>active</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -2008,6 +2195,9 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3</SimpleValue>
       </Value>
       <Value ColumnRef="state">
         <SimpleValue>active</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -2045,6 +2235,9 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3</SimpleValue>
         <SimpleValue>PEPPOL-1859
 Typo in name!</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -2076,6 +2269,9 @@ Typo in name!</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>PEPPOL-1859</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -2117,6 +2313,9 @@ Typo in name!</SimpleValue>
 TICC-237
 TICC-245</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -2153,6 +2352,9 @@ TICC-245</SimpleValue>
         <SimpleValue>TICC-117
 TICC-237
 TICC-245</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -2191,6 +2393,9 @@ TICC-245</SimpleValue>
 TICC-237
 TICC-245</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -2219,6 +2424,9 @@ TICC-245</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-75</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -2249,6 +2457,9 @@ TICC-245</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-76</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -2278,6 +2489,9 @@ TICC-245</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-78</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -2306,6 +2520,9 @@ TICC-245</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-102</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -2338,6 +2555,9 @@ TICC-245</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-102</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -2372,6 +2592,9 @@ TICC-245</SimpleValue>
         <SimpleValue>TICC-102
 TICC-173</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -2401,6 +2624,9 @@ TICC-173</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-102
 TICC-173</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -2438,6 +2664,9 @@ TICC-173</SimpleValue>
         <SimpleValue>TICC-107
 TICC-287</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -2473,6 +2702,9 @@ TICC-287</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-107
 TICC-287</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -2511,6 +2743,9 @@ TICC-287</SimpleValue>
 TICC-136
 TICC-245</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -2547,6 +2782,9 @@ TICC-245</SimpleValue>
         <SimpleValue>TICC-117
 TICC-136
 TICC-245</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -2585,6 +2823,9 @@ TICC-245</SimpleValue>
 TICC-136
 TICC-245</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -2614,6 +2855,9 @@ TICC-245</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-118</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -2642,6 +2886,9 @@ TICC-245</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-118</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -2679,6 +2926,9 @@ TICC-245</SimpleValue>
         <SimpleValue>TICC-118
 TICC-245</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -2707,6 +2957,9 @@ TICC-245</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-159</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -2745,6 +2998,9 @@ TICC-245</SimpleValue>
 TICC-135
 TICC-245</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -2780,6 +3036,9 @@ TICC-245</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-135
 TICC-245</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -2817,6 +3076,9 @@ TICC-245</SimpleValue>
         <SimpleValue>TICC-135
 TICC-245</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -2845,6 +3107,9 @@ TICC-245</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-124</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -2878,6 +3143,9 @@ TICC-245</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-129</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -2909,6 +3177,9 @@ TICC-245</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-129</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -2942,6 +3213,9 @@ TICC-245</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-129</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -2974,6 +3248,9 @@ TICC-245</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-129</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -3002,6 +3279,9 @@ TICC-245</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>PEPPOL-2534</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -3032,6 +3312,9 @@ TICC-245</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>PEPPOL-2534</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -3060,6 +3343,9 @@ TICC-245</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>PEPPOL-2534</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -3090,6 +3376,9 @@ TICC-245</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-135</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -3118,6 +3407,9 @@ TICC-245</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-135</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -3156,6 +3448,9 @@ TICC-245</SimpleValue>
 TICC-135
 TICC-245</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -3184,6 +3479,9 @@ TICC-245</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-159</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -3215,6 +3513,9 @@ TICC-245</SimpleValue>
         <SimpleValue>TICC-137
 TICC-177</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -3245,6 +3546,9 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-137</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -3273,6 +3577,9 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-139</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -3310,6 +3617,9 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3</SimpleValue>
         <SimpleValue>TICC-155
 TICC-304</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -3335,6 +3645,9 @@ TICC-304</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-156</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -3366,6 +3679,9 @@ cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:02:1.0</SimpleV
       <Value ColumnRef="comment">
         <SimpleValue>TICC-156</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -3395,6 +3711,9 @@ cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:02:1.0</SimpleV
       <Value ColumnRef="comment">
         <SimpleValue>TICC-156</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -3423,6 +3742,9 @@ cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:02:1.0</SimpleV
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-156</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -3454,6 +3776,9 @@ cenbii-procid-ubl::urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:02:1.0</SimpleV
       <Value ColumnRef="comment">
         <SimpleValue>TICC-180</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -3483,6 +3808,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:03:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-180</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -3516,6 +3844,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-180</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -3548,6 +3879,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-180</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -3577,6 +3911,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:03:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-180</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -3609,6 +3946,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:09:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-180</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -3639,6 +3979,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:03:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-180</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -3668,6 +4011,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:03:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-180</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -3701,6 +4047,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-180</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -3732,6 +4081,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:09:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-180</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -3761,6 +4113,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-180</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -3792,6 +4147,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-180</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -3821,6 +4179,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-180</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -3852,6 +4213,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-180</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -3881,6 +4245,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-180</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -3912,6 +4279,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-180</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -3940,6 +4310,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-180</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -3970,6 +4343,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-180</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -3998,6 +4374,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-180</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -4028,6 +4407,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-180</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -4056,6 +4438,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-180</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -4086,6 +4471,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-180</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -4114,6 +4502,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-183</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -4147,6 +4538,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-183</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -4178,6 +4572,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-183</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -4211,6 +4608,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-183</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -4243,6 +4643,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-185</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -4271,6 +4674,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-185</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -4301,6 +4707,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-185</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -4329,6 +4738,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-185</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -4359,6 +4771,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-185</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -4387,6 +4802,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-185</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -4417,6 +4835,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-185</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -4445,6 +4866,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-185</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -4475,6 +4899,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-185</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -4503,6 +4930,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-185</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -4533,6 +4963,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-185</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -4561,6 +4994,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-185</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -4591,6 +5027,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-185</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -4619,6 +5058,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-185</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -4649,6 +5091,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-188</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -4677,6 +5122,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-188</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -4707,6 +5155,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-188</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -4735,6 +5186,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-189</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -4765,6 +5219,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-189</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -4793,6 +5250,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-189</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -4823,6 +5283,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-195</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -4851,6 +5314,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-195</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -4881,6 +5347,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-195</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -4909,6 +5378,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-199</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -4942,6 +5414,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-199</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -4973,6 +5448,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-199</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -5006,6 +5484,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-199</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -5037,6 +5518,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-199</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -5070,6 +5554,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-199</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -5101,6 +5588,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-199</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -5134,6 +5624,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-199</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -5165,6 +5658,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-199</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -5198,6 +5694,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-199</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -5229,6 +5728,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-199</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -5262,6 +5764,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-199</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -5293,6 +5798,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-199</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -5326,6 +5834,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-199</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -5358,6 +5869,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-199</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -5389,6 +5903,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-199</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -5427,6 +5944,9 @@ cenbii-procid-ubl::urn:fdc:bits.no:2017:profile:04:1.0</SimpleValue>
 TICC-252
 Typo in Customization ID</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -5460,6 +5980,9 @@ Typo in Customization ID</SimpleValue>
         <SimpleValue>TICC-199
 TICC-252</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -5492,6 +6015,9 @@ TICC-252</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-204</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -5520,6 +6046,9 @@ TICC-252</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-204</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -5550,6 +6079,9 @@ TICC-252</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-204</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -5578,6 +6110,9 @@ TICC-252</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-205</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -5608,6 +6143,9 @@ TICC-252</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-205</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -5636,6 +6174,9 @@ TICC-252</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-205</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -5670,6 +6211,9 @@ TICC-252</SimpleValue>
         <SimpleValue>TICC-213
 TICC-261</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -5703,6 +6247,9 @@ TICC-261</SimpleValue>
         <SimpleValue>TICC-213
 TICC-261</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -5732,6 +6279,9 @@ TICC-261</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-215
 TICC-255</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -5767,6 +6317,9 @@ cenbii-procid-ubl::urn:fdc:peppol.eu:logistics:bis:despatch_advice_w_response:1<
         <SimpleValue>TICC-215
 TICC-255</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -5800,6 +6353,9 @@ TICC-255</SimpleValue>
         <SimpleValue>TICC-215
 TICC-255</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -5832,6 +6388,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-216</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -5861,6 +6420,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-217</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -5889,6 +6451,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-222</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -5922,6 +6487,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-219</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -5953,6 +6521,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-219</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -5986,6 +6557,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-219</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -6018,6 +6592,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-243</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -6046,6 +6623,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-243</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -6076,6 +6656,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-243</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -6104,6 +6687,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-244</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -6134,6 +6720,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-244</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -6163,6 +6752,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-244</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -6191,6 +6783,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-254</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -6224,6 +6819,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-252</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -6255,6 +6853,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-252</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -6288,6 +6889,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-252</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -6319,6 +6923,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-252</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -6352,6 +6959,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-252</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -6383,6 +6993,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-252</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -6416,6 +7029,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-252</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -6447,6 +7063,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-252</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -6480,6 +7099,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-252</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -6511,6 +7133,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-252</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -6544,6 +7169,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-252</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -6575,6 +7203,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-252</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -6608,6 +7239,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-252</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -6639,6 +7273,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-252</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -6672,6 +7309,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-252</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -6703,6 +7343,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-267</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -6736,6 +7379,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-267</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -6767,6 +7413,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-267</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -6800,6 +7449,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-267</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -6831,6 +7483,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-267</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -6864,6 +7519,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-267</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -6896,6 +7554,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-266</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -6924,6 +7585,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-261</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -6954,6 +7618,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-261</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -6982,6 +7649,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-270</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>true</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -7015,6 +7685,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-270</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>true</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -7047,6 +7720,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-270</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -7078,6 +7754,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-270</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -7111,6 +7790,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-270</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -7143,6 +7825,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-270</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -7174,6 +7859,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-270</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -7207,6 +7895,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-279</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -7238,6 +7929,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-279</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -7271,6 +7965,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-279</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -7302,6 +7999,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-279</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -7335,6 +8035,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-279</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -7366,6 +8069,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-279</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -7399,6 +8105,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-279</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -7430,6 +8139,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-279</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -7463,6 +8175,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-291</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -7491,6 +8206,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-291</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -7521,6 +8239,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-291</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -7549,6 +8270,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-290</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
@@ -7579,6 +8303,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-290</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -7608,6 +8335,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-290</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>false</SimpleValue>
       </Value>
@@ -7636,6 +8366,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-297</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -7669,6 +8402,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-297</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -7700,6 +8436,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-312</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -7733,6 +8472,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-312</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -7765,6 +8507,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-312</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -7796,6 +8541,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-312</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -7829,6 +8577,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-328</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -7860,6 +8611,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-328</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
@@ -7893,6 +8647,9 @@ TICC-255</SimpleValue>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-328</SimpleValue>
       </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
+      </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>
       </Value>
@@ -7924,6 +8681,9 @@ TICC-255</SimpleValue>
       </Value>
       <Value ColumnRef="comment">
         <SimpleValue>TICC-328</SimpleValue>
+      </Value>
+      <Value ColumnRef="abstract">
+        <SimpleValue>false</SimpleValue>
       </Value>
       <Value ColumnRef="issued-by-openpeppol">
         <SimpleValue>true</SimpleValue>

@@ -68,6 +68,8 @@ public final class DocTypeRow extends AbstractModelRow
   // New in V8
   private static final String REMOVAL_DATE = "removal-date";
   private static final String COMMENT = "comment";
+  // New in V8.8
+  private static final String ABSTRACT = "abstract";
   private static final String ISSUED_BY_OPENPEPPOL = "issued-by-openpeppol";
   private static final String BIS_VERSION = "bis-version";
   private static final String DOMAIN_COMMUNITY = "domain-community";
@@ -86,6 +88,7 @@ public final class DocTypeRow extends AbstractModelRow
   private String m_sDeprecationRelease;
   private LocalDate m_aRemovalDate;
   private String m_sComment;
+  private boolean m_bAbstract;
   private boolean m_bIssuedByOpenPeppol;
   private String m_sBISVersion;
   private String m_sDomainCommunity;
@@ -136,6 +139,7 @@ public final class DocTypeRow extends AbstractModelRow
     final IPeppolDocumentTypeIdentifierParts aParts = PeppolDocumentTypeIdentifierParts.extractFromString (m_sValue);
     if (aParts == null)
       throw new IllegalStateException ("Value does not match detailed Peppol requirements");
+
     // Consistency check for UBL document types
     // Root NS: urn:oasis:names:specification:ubl:schema:xsd:OrderCancellation-2
     // Local name: OrderCancellation
@@ -164,6 +168,7 @@ public final class DocTypeRow extends AbstractModelRow
 
       if ((bIsBilling || bIsNonTaxInvoice) && !"cenbii-procid-ubl::urn:peppol:bis:billing".equals (sProcessID))
         throw new IllegalStateException ("For Billing Wildcard entries, the process ID '" + sProcessID + "' is wrong");
+
       if (bIsSelfBilling && !"cenbii-procid-ubl::urn:peppol:bis:selfbilling".equals (sProcessID))
         throw new IllegalStateException ("For Selfbilling Wildcard entries, the process ID '" +
                                          sProcessID +
@@ -199,6 +204,7 @@ public final class DocTypeRow extends AbstractModelRow
       ret.setAttribute (REMOVAL_DATE, PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
     if (StringHelper.hasText (m_sComment))
       ret.appendElement (COMMENT).appendText (m_sComment);
+    ret.setAttribute (ABSTRACT, m_bAbstract);
     ret.setAttribute (ISSUED_BY_OPENPEPPOL, m_bIssuedByOpenPeppol);
     ret.setAttribute (BIS_VERSION, m_sBISVersion);
     if (StringHelper.hasText (m_sDomainCommunity))
@@ -227,6 +233,7 @@ public final class DocTypeRow extends AbstractModelRow
       ret.add (REMOVAL_DATE, PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
     if (StringHelper.hasText (m_sComment))
       ret.add (COMMENT, m_sComment);
+    ret.add (ABSTRACT, m_bAbstract);
     ret.add (ISSUED_BY_OPENPEPPOL, m_bIssuedByOpenPeppol);
     if (StringHelper.hasText (m_sBISVersion))
       ret.add (BIS_VERSION, m_sBISVersion);
@@ -267,6 +274,7 @@ public final class DocTypeRow extends AbstractModelRow
                               ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, REMOVAL_DATE, false, false, "Removal date", ECodeListDataType.DATE);
     GCHelper.addHeaderColumn (aColumnSet, COMMENT, false, false, "Comment", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet, ABSTRACT, false, true, "Abstract?", ECodeListDataType.BOOLEAN);
     GCHelper.addHeaderColumn (aColumnSet,
                               ISSUED_BY_OPENPEPPOL,
                               false,
@@ -296,6 +304,7 @@ public final class DocTypeRow extends AbstractModelRow
     ret.add (DEPRECATION_RELEASE, m_sDeprecationRelease);
     ret.add (REMOVAL_DATE, PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
     ret.add (COMMENT, m_sComment);
+    ret.add (ABSTRACT, m_bAbstract);
     ret.add (ISSUED_BY_OPENPEPPOL, m_bIssuedByOpenPeppol);
     ret.add (BIS_VERSION, m_sBISVersion);
     ret.add (DOMAIN_COMMUNITY, m_sDomainCommunity);
@@ -315,6 +324,7 @@ public final class DocTypeRow extends AbstractModelRow
     aRow.addCell ("Deprecation release");
     aRow.addCell ("Removal date");
     aRow.addCell ("Comment");
+    aRow.addCell ("Abstract?");
     aRow.addCell ("Issued by OpenPeppol?");
     aRow.addCell ("BIS version");
     aRow.addCell ("Domain Community");
@@ -334,6 +344,7 @@ public final class DocTypeRow extends AbstractModelRow
     aRow.addAndReturnCell (m_sDeprecationRelease).addClass (ModelHelper.CSS_TEXT_END);
     aRow.addAndReturnCell (PDTWebDateHelper.getAsStringXSD (m_aRemovalDate)).addClass (ModelHelper.CSS_TEXT_END);
     aRow.addCell (m_sComment);
+    aRow.addCell (Boolean.toString (m_bAbstract));
     aRow.addCell (Boolean.toString (m_bIssuedByOpenPeppol));
     aRow.addAndReturnCell (m_sBISVersion).addClass (ModelHelper.CSS_TEXT_END);
     aRow.addCell (m_sDomainCommunity);
@@ -349,21 +360,23 @@ public final class DocTypeRow extends AbstractModelRow
   @Nonnull
   public static DocTypeRow createV8 (@Nonnull final String [] aRow)
   {
+    int nIndex = 0;
     final DocTypeRow ret = new DocTypeRow ();
-    ret.m_sName = aRow[0];
+    ret.m_sName = aRow[nIndex++];
     if (StringHelper.hasNoText (ret.m_sName))
       throw new IllegalStateException ("Empty name is not allowed");
-    ret.m_sScheme = aRow[1];
-    ret.m_sValue = aRow[2];
-    ret.m_sInitialRelease = aRow[3];
-    ret.m_eState = ERowState.getFromIDOrThrow (aRow[4]);
-    ret.m_sDeprecationRelease = aRow[5];
-    ret.m_aRemovalDate = getLocalDateFromExcel (aRow[6]);
-    ret.m_sComment = aRow[7];
-    ret.m_bIssuedByOpenPeppol = ModelHelper.parseIssuedByOpenPeppol (aRow[8]);
-    ret.m_sBISVersion = aRow[9];
-    ret.m_sDomainCommunity = aRow[10];
-    ret.m_sProcessIDs = aRow[11];
+    ret.m_sScheme = aRow[nIndex++];
+    ret.m_sValue = aRow[nIndex++];
+    ret.m_sInitialRelease = aRow[nIndex++];
+    ret.m_eState = ERowState.getFromIDOrThrow (aRow[nIndex++]);
+    ret.m_sDeprecationRelease = aRow[nIndex++];
+    ret.m_aRemovalDate = getLocalDateFromExcel (aRow[nIndex++]);
+    ret.m_sComment = aRow[nIndex++];
+    ret.m_bAbstract = ModelHelper.parseAbstract (aRow[nIndex++]);
+    ret.m_bIssuedByOpenPeppol = ModelHelper.parseIssuedByOpenPeppol (aRow[nIndex++]);
+    ret.m_sBISVersion = aRow[nIndex++];
+    ret.m_sDomainCommunity = aRow[nIndex++];
+    ret.m_sProcessIDs = aRow[nIndex++];
     ret.m_aProcessIDs = ModelHelper.getAllProcessIDsFromMultilineString (ret.m_sProcessIDs);
     return ret;
   }

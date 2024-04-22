@@ -58,7 +58,7 @@ public abstract class AbstractConvertV8 extends AbstractConverter
   private void _handleDocumentTypes (@Nonnull final Sheet aDocumentSheet)
   {
     // Read Excel
-    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aDocumentSheet, 12);
+    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aDocumentSheet, 13);
 
     // Convert to domain object
     final ICommonsList <DocTypeRow> aRows = aXLSX.getAsList (DocTypeRow::createV8);
