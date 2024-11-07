@@ -367,31 +367,6 @@ public final class DocTypeRow extends AbstractModelRow
   }
 
   @Nonnull
-  @Deprecated
-  public static DocTypeRow createV8 (@Nonnull final String [] aRow)
-  {
-    int nIndex = 0;
-    final DocTypeRow ret = new DocTypeRow ();
-    ret.m_sName = aRow[nIndex++];
-    if (StringHelper.hasNoText (ret.m_sName))
-      throw new IllegalStateException ("Empty name is not allowed");
-    ret.m_sScheme = aRow[nIndex++];
-    ret.m_sValue = aRow[nIndex++];
-    ret.m_sInitialRelease = aRow[nIndex++];
-    ret.m_eState = ERowState.getFromIDOrThrow (aRow[nIndex++]);
-    ret.m_sDeprecationRelease = aRow[nIndex++];
-    ret.m_aRemovalDate = getLocalDateFromExcel (aRow[nIndex++]);
-    ret.m_sComment = aRow[nIndex++];
-    ret.m_bAbstract = ModelHelper.parseAbstract (aRow[nIndex++]);
-    ret.m_bIssuedByOpenPeppol = ModelHelper.parseIssuedByOpenPeppol (aRow[nIndex++]);
-    ret.m_sBISVersion = aRow[nIndex++];
-    ret.m_sDomainCommunity = aRow[nIndex++];
-    ret.m_sProcessIDs = aRow[nIndex++];
-    ret.m_aProcessIDs = ModelHelper.getAllProcessIDsFromMultilineString (ret.m_sProcessIDs);
-    return ret;
-  }
-
-  @Nonnull
   public static DocTypeRow createV9 (@Nonnull final String [] aRow)
   {
     int nIndex = 0;

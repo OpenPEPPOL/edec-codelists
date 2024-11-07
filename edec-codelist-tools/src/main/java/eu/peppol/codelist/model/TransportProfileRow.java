@@ -212,7 +212,7 @@ public final class TransportProfileRow extends AbstractModelRow
   }
 
   @Nonnull
-  public static TransportProfileRow createV8 (@Nonnull final String [] aRow)
+  public static TransportProfileRow createV9 (@Nonnull final String [] aRow)
   {
     final TransportProfileRow ret = new TransportProfileRow ();
     ret.m_sProtcol = aRow[0];

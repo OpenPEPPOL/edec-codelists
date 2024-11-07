@@ -90,7 +90,7 @@ public abstract class AbstractConvertV9 extends AbstractConverter
     final InMemoryXLSX aXLSX = InMemoryXLSX.read (aParticipantSheet, 15);
 
     // Convert to domain object
-    final ICommonsList <ParticipantIdentifierSchemeRow> aRows = aXLSX.getAsList (ParticipantIdentifierSchemeRow::createV8);
+    final ICommonsList <ParticipantIdentifierSchemeRow> aRows = aXLSX.getAsList (ParticipantIdentifierSchemeRow::createV9);
 
     // Consistency checks
     final ICommonsSet <String> aKeys = new CommonsHashSet <> ();
@@ -121,7 +121,7 @@ public abstract class AbstractConvertV9 extends AbstractConverter
     final InMemoryXLSX aXLSX = InMemoryXLSX.read (aTPSheet, 8);
 
     // Convert to domain object
-    final ICommonsList <TransportProfileRow> aRows = aXLSX.getAsList (TransportProfileRow::createV8);
+    final ICommonsList <TransportProfileRow> aRows = aXLSX.getAsList (TransportProfileRow::createV9);
 
     // Consistency checks
     final ICommonsSet <String> aKeys = new CommonsHashSet <> ();

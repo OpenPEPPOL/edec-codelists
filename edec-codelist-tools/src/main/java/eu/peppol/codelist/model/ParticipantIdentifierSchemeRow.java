@@ -288,7 +288,7 @@ public final class ParticipantIdentifierSchemeRow extends AbstractModelRow
   }
 
   @Nonnull
-  public static ParticipantIdentifierSchemeRow createV8 (@Nonnull final String [] aRow)
+  public static ParticipantIdentifierSchemeRow createV9 (@Nonnull final String [] aRow)
   {
     final ParticipantIdentifierSchemeRow ret = new ParticipantIdentifierSchemeRow ();
     ret.m_sSchemeID = aRow[0];
