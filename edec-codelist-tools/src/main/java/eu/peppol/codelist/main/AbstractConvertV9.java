@@ -44,12 +44,11 @@ import eu.peppol.codelist.model.TransportProfileRow;
  *
  * @author Philip Helger
  */
-@Deprecated
-public abstract class AbstractConvertV8 extends AbstractConverter
+public abstract class AbstractConvertV9 extends AbstractConverter
 {
   private final ICommonsMap <IProcessIdentifier, ICommonsList <DocTypeRow>> m_aProcIDs = new CommonsLinkedHashMap <> ();
 
-  public AbstractConvertV8 (@Nonnull final Version aCodeListVersion,
+  public AbstractConvertV9 (@Nonnull final Version aCodeListVersion,
                             @Nonnull @Nonempty final String sResultDir,
                             @Nonnull final String sFilenameSuffix)
   {
@@ -59,10 +58,10 @@ public abstract class AbstractConvertV8 extends AbstractConverter
   private void _handleDocumentTypes (@Nonnull final Sheet aDocumentSheet)
   {
     // Read Excel
-    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aDocumentSheet, 13);
+    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aDocumentSheet, 14);
 
     // Convert to domain object
-    final ICommonsList <DocTypeRow> aRows = aXLSX.getAsList (DocTypeRow::createV8);
+    final ICommonsList <DocTypeRow> aRows = aXLSX.getAsList (DocTypeRow::createV9);
 
     // Collect all proc types
     for (final DocTypeRow aRow : aRows)

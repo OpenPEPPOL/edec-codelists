@@ -73,6 +73,8 @@ public final class DocTypeRow extends AbstractModelRow
   private static final String ISSUED_BY_OPENPEPPOL = "issued-by-openpeppol";
   private static final String BIS_VERSION = "bis-version";
   private static final String DOMAIN_COMMUNITY = "domain-community";
+  // New in V9.0
+  private static final String CATEGORY = "category";
   private static final String PROCESS_ID_ONE = "process-id";
   private static final String PROCESS_ID_MANY = "process-ids";
 
@@ -92,6 +94,7 @@ public final class DocTypeRow extends AbstractModelRow
   private boolean m_bIssuedByOpenPeppol;
   private String m_sBISVersion;
   private String m_sDomainCommunity;
+  private String m_sCategory;
   private String m_sProcessIDs;
   private ICommonsList <IProcessIdentifier> m_aProcessIDs;
 
@@ -129,6 +132,8 @@ public final class DocTypeRow extends AbstractModelRow
     if (false)
       if (StringHelper.hasNoText (m_sDomainCommunity))
         throw new IllegalStateException ("DomainCommunity is required");
+    if (StringHelper.hasNoText (m_sCategory))
+      throw new IllegalStateException ("Category is required");
     if (CollectionHelper.isEmpty (m_aProcessIDs))
       throw new IllegalStateException ("ProcessID is required");
 
@@ -209,6 +214,7 @@ public final class DocTypeRow extends AbstractModelRow
     ret.setAttribute (BIS_VERSION, m_sBISVersion);
     if (StringHelper.hasText (m_sDomainCommunity))
       ret.setAttribute (DOMAIN_COMMUNITY, m_sDomainCommunity);
+    ret.setAttribute (CATEGORY, m_sCategory);
     for (final IProcessIdentifier aProcID : m_aProcessIDs)
     {
       ret.appendElement (PROCESS_ID_ONE)
@@ -239,6 +245,7 @@ public final class DocTypeRow extends AbstractModelRow
       ret.add (BIS_VERSION, m_sBISVersion);
     if (StringHelper.hasText (m_sDomainCommunity))
       ret.add (DOMAIN_COMMUNITY, m_sDomainCommunity);
+    ret.add (CATEGORY, m_sCategory);
     {
       final IJsonArray aProcIDs = new JsonArray ();
       for (final IProcessIdentifier aProcID : m_aProcessIDs)
@@ -283,6 +290,7 @@ public final class DocTypeRow extends AbstractModelRow
                               ECodeListDataType.BOOLEAN);
     GCHelper.addHeaderColumn (aColumnSet, BIS_VERSION, false, false, "BIS version", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet, DOMAIN_COMMUNITY, false, true, "Domain Community", ECodeListDataType.STRING);
+    GCHelper.addHeaderColumn (aColumnSet, CATEGORY, false, true, "Category", ECodeListDataType.STRING);
     GCHelper.addHeaderColumn (aColumnSet,
                               PROCESS_ID_MANY,
                               false,
@@ -308,6 +316,7 @@ public final class DocTypeRow extends AbstractModelRow
     ret.add (ISSUED_BY_OPENPEPPOL, m_bIssuedByOpenPeppol);
     ret.add (BIS_VERSION, m_sBISVersion);
     ret.add (DOMAIN_COMMUNITY, m_sDomainCommunity);
+    ret.add (CATEGORY, m_sCategory);
     ret.add (PROCESS_ID_MANY, m_sProcessIDs);
     return ret;
   }
@@ -358,6 +367,7 @@ public final class DocTypeRow extends AbstractModelRow
   }
 
   @Nonnull
+  @Deprecated
   public static DocTypeRow createV8 (@Nonnull final String [] aRow)
   {
     int nIndex = 0;
@@ -376,6 +386,31 @@ public final class DocTypeRow extends AbstractModelRow
     ret.m_bIssuedByOpenPeppol = ModelHelper.parseIssuedByOpenPeppol (aRow[nIndex++]);
     ret.m_sBISVersion = aRow[nIndex++];
     ret.m_sDomainCommunity = aRow[nIndex++];
+    ret.m_sProcessIDs = aRow[nIndex++];
+    ret.m_aProcessIDs = ModelHelper.getAllProcessIDsFromMultilineString (ret.m_sProcessIDs);
+    return ret;
+  }
+
+  @Nonnull
+  public static DocTypeRow createV9 (@Nonnull final String [] aRow)
+  {
+    int nIndex = 0;
+    final DocTypeRow ret = new DocTypeRow ();
+    ret.m_sName = aRow[nIndex++];
+    if (StringHelper.hasNoText (ret.m_sName))
+      throw new IllegalStateException ("Empty name is not allowed");
+    ret.m_sScheme = aRow[nIndex++];
+    ret.m_sValue = aRow[nIndex++];
+    ret.m_sInitialRelease = aRow[nIndex++];
+    ret.m_eState = ERowState.getFromIDOrThrow (aRow[nIndex++]);
+    ret.m_sDeprecationRelease = aRow[nIndex++];
+    ret.m_aRemovalDate = getLocalDateFromExcel (aRow[nIndex++]);
+    ret.m_sComment = aRow[nIndex++];
+    ret.m_bAbstract = ModelHelper.parseAbstract (aRow[nIndex++]);
+    ret.m_bIssuedByOpenPeppol = ModelHelper.parseIssuedByOpenPeppol (aRow[nIndex++]);
+    ret.m_sBISVersion = aRow[nIndex++];
+    ret.m_sDomainCommunity = aRow[nIndex++];
+    ret.m_sCategory = aRow[nIndex++];
     ret.m_sProcessIDs = aRow[nIndex++];
     ret.m_aProcessIDs = ModelHelper.getAllProcessIDsFromMultilineString (ret.m_sProcessIDs);
     return ret;

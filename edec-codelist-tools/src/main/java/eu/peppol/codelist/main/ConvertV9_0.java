@@ -18,22 +18,21 @@ package eu.peppol.codelist.main;
 import com.helger.commons.version.Version;
 
 /**
- * Handle V8.x code lists
+ * Handle V9.x code lists
  *
  * @author Philip Helger
  */
-@Deprecated
-public final class ConvertV8_9 extends AbstractConvertV8
+public final class ConvertV9_0 extends AbstractConvertV9
 {
-  private static final int MAJOR = 8;
-  private static final int MINOR = 9;
+  private static final int MAJOR = 9;
+  private static final int MINOR = 0;
   private static final int MICRO = 0;
   private static final String STR_MICRO = MICRO < 1 ? "" : "." + MICRO;
   public static final Version CODE_LIST_VERSION = new Version (MAJOR, MINOR, MICRO);
   public static final String DESTINATION_BASE_PATH = "created-codelists/v" + MAJOR + "." + MINOR + STR_MICRO + "/";
   public static final String DESTINATION_FILENAME_SUFFIX = " v" + MAJOR + "." + MINOR + STR_MICRO;
 
-  public ConvertV8_9 ()
+  public ConvertV9_0 ()
   {
     super (CODE_LIST_VERSION, DESTINATION_BASE_PATH, DESTINATION_FILENAME_SUFFIX);
   }
