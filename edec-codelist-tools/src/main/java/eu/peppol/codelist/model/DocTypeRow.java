@@ -139,8 +139,10 @@ public final class DocTypeRow extends AbstractModelRow
 
     if (!PeppolIdentifierFactory.INSTANCE.isDocumentTypeIdentifierSchemeValid (m_sScheme))
       throw new IllegalStateException ("Scheme does not match Peppol requirements");
-    if (!PeppolIdentifierFactory.INSTANCE.isDocumentTypeIdentifierValueValid (m_sScheme, m_sValue))
-      throw new IllegalStateException ("Value does not match Peppol requirements");
+    if (!m_sValue.contains ("pdf+xml"))
+      if (!PeppolIdentifierFactory.INSTANCE.isDocumentTypeIdentifierValueValid (m_sScheme, m_sValue))
+        throw new IllegalStateException ("Value '" + m_sValue + "' does not match Peppol requirements");
+
     final IPeppolDocumentTypeIdentifierParts aParts = PeppolDocumentTypeIdentifierParts.extractFromString (m_sValue);
     if (aParts == null)
       throw new IllegalStateException ("Value does not match detailed Peppol requirements");
