@@ -41,7 +41,9 @@ import com.helger.peppolid.IProcessIdentifier;
 import com.helger.peppolid.factory.PeppolIdentifierFactory;
 import com.helger.peppolid.peppol.PeppolIdentifierHelper;
 import com.helger.peppolid.peppol.doctype.IPeppolDocumentTypeIdentifierParts;
+import com.helger.peppolid.peppol.doctype.IPeppolGenericDocumentTypeIdentifierParts;
 import com.helger.peppolid.peppol.doctype.PeppolDocumentTypeIdentifierParts;
+import com.helger.peppolid.peppol.doctype.PeppolGenericDocumentTypeIdentifierParts;
 import com.helger.xml.microdom.IMicroElement;
 import com.helger.xml.microdom.MicroElement;
 
@@ -143,16 +145,22 @@ public final class DocTypeRow extends AbstractModelRow
       if (!PeppolIdentifierFactory.INSTANCE.isDocumentTypeIdentifierValueValid (m_sScheme, m_sValue))
         throw new IllegalStateException ("Value '" + m_sValue + "' does not match Peppol requirements");
 
-    final IPeppolDocumentTypeIdentifierParts aParts = PeppolDocumentTypeIdentifierParts.extractFromString (m_sValue);
+    // Can be XML or non-XML
+    final IPeppolGenericDocumentTypeIdentifierParts aParts = PeppolGenericDocumentTypeIdentifierParts.extractFromString (m_sValue);
     if (aParts == null)
       throw new IllegalStateException ("Value does not match detailed Peppol requirements");
 
-    // Consistency check for UBL document types
-    // Root NS: urn:oasis:names:specification:ubl:schema:xsd:OrderCancellation-2
-    // Local name: OrderCancellation
-    if (aParts.getRootNS ().endsWith ("-2"))
-      if (m_eState.isActive () && !aParts.getRootNS ().endsWith (aParts.getLocalName () + "-2"))
-        throw new IllegalStateException ("Value '" + m_sValue + "' seems to be inconsistent");
+    if (PeppolDocumentTypeIdentifierParts.isSyntaxSpecificIDLookingLikeXML (aParts.getSyntaxSpecificID ()))
+    {
+      final IPeppolDocumentTypeIdentifierParts aXMLParts = PeppolDocumentTypeIdentifierParts.extractFromString (m_sValue);
+      // Consistency check for UBL document types
+      // Root NS:
+      // urn:oasis:names:specification:ubl:schema:xsd:OrderCancellation-2
+      // Local name: OrderCancellation
+      if (aXMLParts.getRootNS ().endsWith ("-2"))
+        if (m_eState.isActive () && !aXMLParts.getRootNS ().endsWith (aXMLParts.getLocalName () + "-2"))
+          throw new IllegalStateException ("Value '" + m_sValue + "' seems to be inconsistent");
+    }
 
     if (PeppolIdentifierHelper.DOCUMENT_TYPE_SCHEME_PEPPOL_DOCTYPE_WILDCARD.equals (m_sScheme))
     {

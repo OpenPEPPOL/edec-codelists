@@ -95,7 +95,7 @@
       <dependency>
         <groupId>com.helger.peppol</groupId>
         <artifactId>peppol-commons-parent-pom</artifactId>
-        <version>9.6.1</version>
+        <version>9.6.2-SNAPSHOT</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
