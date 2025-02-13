@@ -222,8 +222,8 @@ public abstract class AbstractConverter
     aHtml.head ()
          .links ()
          .add (new HCLink ().setRel (EHCLinkType.STYLESHEET)
-                            .setHref (new SimpleURL ("https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"))
-                            .setIntegrity ("sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN")
+                            .setHref (new SimpleURL ("https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"))
+                            .setIntegrity ("sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH")
                             .setCrossOrigin (EHCCORSSettings.ANONYMOUS));
     if (false)
       aHtml.head ().addCSS (new HCStyle (""));
