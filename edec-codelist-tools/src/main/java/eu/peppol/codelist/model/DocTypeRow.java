@@ -347,6 +347,7 @@ public final class DocTypeRow extends AbstractModelRow
     aRow.addCell ("Issued by OpenPeppol?");
     aRow.addCell ("BIS version");
     aRow.addCell ("Domain Community");
+    aRow.addCell ("Category");
     aRow.addCell ("Associated Process/Profile Identifier(s)");
     return aRow;
   }
@@ -367,6 +368,7 @@ public final class DocTypeRow extends AbstractModelRow
     aRow.addCell (Boolean.toString (m_bIssuedByOpenPeppol));
     aRow.addAndReturnCell (m_sBISVersion).addClass (ModelHelper.CSS_TEXT_END);
     aRow.addCell (m_sDomainCommunity);
+    aRow.addCell (m_sCategory);
     aRow.addCell (HCExtHelper.nl2brList (m_sProcessIDs));
     if (m_eState.isRemoved ())
       aRow.addClass (ModelHelper.CSS_TABLE_DANGER);
