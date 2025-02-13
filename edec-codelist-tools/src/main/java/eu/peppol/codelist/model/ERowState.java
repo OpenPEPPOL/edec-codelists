@@ -31,6 +31,7 @@ import com.helger.commons.name.IHasDisplayName;
 public enum ERowState implements IHasID <String>, IHasDisplayName
 {
   ACTIVE ("active", "Active"),
+  SCHEDULED_FOR_DEPRECATION ("deprecation-scheduled", "Scheduled for Deprecation"),
   DEPRECATED ("deprecated", "Deprecated"),
   REMOVED ("removed", "Removed");
 
@@ -60,6 +61,11 @@ public enum ERowState implements IHasID <String>, IHasDisplayName
   public boolean isActive ()
   {
     return this == ACTIVE;
+  }
+
+  public boolean isScheduledForDeprecation ()
+  {
+    return this == SCHEDULED_FOR_DEPRECATION;
   }
 
   public boolean isDeprecated ()

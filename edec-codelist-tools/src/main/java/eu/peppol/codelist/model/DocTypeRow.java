@@ -190,6 +190,8 @@ public final class DocTypeRow extends AbstractModelRow
                                          "' is wrong");
     }
 
+    if (m_eState.isScheduledForDeprecation () && StringHelper.hasNoText (m_sDeprecationRelease))
+      throw new IllegalStateException ("Code list entry has state 'scheduled for deprecation' but there is no Deprecation date set");
     if (m_eState.isDeprecated () && StringHelper.hasNoText (m_sDeprecationRelease))
       throw new IllegalStateException ("Code list entry has state 'deprecated' but there is no Deprecation release set");
     if (m_eState.isRemoved () && m_aRemovalDate == null)
@@ -373,7 +375,7 @@ public final class DocTypeRow extends AbstractModelRow
     if (m_eState.isRemoved ())
       aRow.addClass (ModelHelper.CSS_TABLE_DANGER);
     else
-      if (m_eState.isDeprecated ())
+      if (m_eState.isDeprecated () || m_eState.isScheduledForDeprecation ())
         aRow.addClass (ModelHelper.CSS_TABLE_WARNING);
     return aRow;
   }
@@ -390,7 +392,7 @@ public final class DocTypeRow extends AbstractModelRow
     ret.m_sValue = aRow[nIndex++];
     ret.m_sInitialRelease = aRow[nIndex++];
     ret.m_eState = ERowState.getFromIDOrThrow (aRow[nIndex++]);
-    ret.m_sDeprecationRelease = aRow[nIndex++];
+    ret.m_sDeprecationRelease = getDeprecationReleaseOrDate (aRow[nIndex++]);
     ret.m_aRemovalDate = getLocalDateFromExcel (aRow[nIndex++]);
     ret.m_sComment = aRow[nIndex++];
     ret.m_bAbstract = ModelHelper.parseAbstract (aRow[nIndex++]);

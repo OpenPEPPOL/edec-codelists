@@ -146,7 +146,7 @@ public final class ProcessRow implements IModelRow
     if (m_eState.isRemoved ())
       aRow.addClass (DefaultCSSClassProvider.create ("table-danger"));
     else
-      if (m_eState.isDeprecated ())
+      if (m_eState.isDeprecated () || m_eState.isScheduledForDeprecation ())
         aRow.addClass (DefaultCSSClassProvider.create ("table-warning"));
     return aRow;
   }
@@ -164,17 +164,24 @@ public final class ProcessRow implements IModelRow
       ret.m_eState = ERowState.ACTIVE;
     }
     else
-      if (aAllDocTypes.containsAny (x -> x.getState ().isDeprecated ()))
+      if (aAllDocTypes.containsAny (x -> x.getState ().isScheduledForDeprecation ()))
       {
-        // If no document types is active but at least one is deprecated, this
-        // process is also deprecated
-        ret.m_eState = ERowState.DEPRECATED;
+        // If no document types is active but at least one is scheduled for
+        // deprecation, this process is also scheduled for deprecation
+        ret.m_eState = ERowState.SCHEDULED_FOR_DEPRECATION;
       }
       else
-      {
-        // All document types must be removed
-        ret.m_eState = ERowState.REMOVED;
-      }
+        if (aAllDocTypes.containsAny (x -> x.getState ().isDeprecated ()))
+        {
+          // If no document types is active but at least one is deprecated, this
+          // process is also deprecated
+          ret.m_eState = ERowState.DEPRECATED;
+        }
+        else
+        {
+          // All document types must be removed
+          ret.m_eState = ERowState.REMOVED;
+        }
     return ret;
   }
 }

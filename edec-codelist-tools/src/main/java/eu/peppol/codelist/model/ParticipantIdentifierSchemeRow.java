@@ -120,6 +120,8 @@ public final class ParticipantIdentifierSchemeRow extends AbstractModelRow
       throw new IllegalStateException ("Initial Release is required");
     if (m_eState == null)
       throw new IllegalStateException ("State is required");
+    if (m_eState.isScheduledForDeprecation () && StringHelper.hasNoText (m_sDeprecationRelease))
+      throw new IllegalStateException ("Code list entry has state 'scheduled for deprecation' but there is no Deprecation date set");
     if (m_eState.isDeprecated () && StringHelper.hasNoText (m_sDeprecationRelease))
       throw new IllegalStateException ("Code list entry has state 'deprecated' but there is no Deprecation release set");
     if (m_eState.isRemoved () && m_aRemovalDate == null)
@@ -281,7 +283,7 @@ public final class ParticipantIdentifierSchemeRow extends AbstractModelRow
     if (m_eState.isRemoved ())
       aRow.addClass (ModelHelper.CSS_TABLE_DANGER);
     else
-      if (m_eState.isDeprecated ())
+      if (m_eState.isDeprecated () || m_eState.isScheduledForDeprecation ())
         aRow.addClass (ModelHelper.CSS_TABLE_WARNING);
     aRow.addCell (Boolean.toString (m_bRegistrable));
     return aRow;
@@ -298,7 +300,7 @@ public final class ParticipantIdentifierSchemeRow extends AbstractModelRow
     ret.m_sIssuingAgency = aRow[4];
     ret.m_sInitialRelease = aRow[5];
     ret.m_eState = ERowState.getFromIDOrThrow (aRow[6]);
-    ret.m_sDeprecationRelease = aRow[7];
+    ret.m_sDeprecationRelease = getDeprecationReleaseOrDate (aRow[7]);
     ret.m_aRemovalDate = getLocalDateFromExcel (aRow[8]);
     ret.m_sStructure = aRow[9];
     ret.m_sDisplay = aRow[10];

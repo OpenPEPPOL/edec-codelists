@@ -233,7 +233,8 @@ public abstract class AbstractConverter
 
     aCont.addChild (new HCH1 ().addChild (aHtml.head ().getPageTitle ()));
 
-    final int nDeprecatedRows = aRows.getCount (x -> x.getState ().isDeprecated ());
+    final int nDeprecatedRows = aRows.getCount (x -> x.getState ().isDeprecated () ||
+                                                     x.getState ().isScheduledForDeprecation ());
     final boolean bHasDeprecated = nDeprecatedRows > 0;
     final int nRemovedRows = aRows.getCount (x -> x.getState ().isRemoved ());
     final boolean bHasRemoved = nRemovedRows > 0;

@@ -17,11 +17,13 @@ package eu.peppol.codelist.model;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 
 import javax.annotation.Nullable;
 
 import com.helger.commons.datetime.PDTFactory;
 import com.helger.commons.string.StringHelper;
+import com.helger.commons.string.StringParser;
 
 public abstract class AbstractModelRow implements IModelRow
 {
@@ -47,5 +49,24 @@ public abstract class AbstractModelRow implements IModelRow
   protected static String safeGetAtIndex (final String [] a, final int n)
   {
     return n < a.length ? a[n] : null;
+  }
+
+  @Nullable
+  protected static String getDeprecationReleaseOrDate (@Nullable final String s)
+  {
+    if (s != null)
+    {
+      // By default this would be the deprecation release of the code list
+      // However, sometimes dates are stored as well - they can be identified by
+      // having a "large version number".
+      // It's the number of days since 1.1.1900
+      final int nNum = StringParser.parseInt (s, -1);
+      if (nNum > 10_000)
+      {
+        // Interpret as date instead
+        return DateTimeFormatter.ISO_LOCAL_DATE.format (JAN_1_1900.plusDays (nNum - 2));
+      }
+    }
+    return s;
   }
 }
