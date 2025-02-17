@@ -198,8 +198,9 @@ public final class DocTypeRow extends AbstractModelRow
       throw new IllegalStateException ("Code list entry has state 'removed' but there is no Removal date set");
     if (m_bIssuedByOpenPeppol && StringHelper.hasNoText (m_sBISVersion))
     {
-      // Exclusion for Reporting stuff
-      if (!"OO".equals (m_sDomainCommunity))
+      // Exclusion for OO Reporting stuff
+      // Exclusion for eB2B stuff
+      if (!"OO".equals (m_sDomainCommunity) && !"eB2B".equals (m_sDomainCommunity))
         throw new IllegalStateException ("If issued by OpenPeppol, a BIS version is required");
     }
     if (StringHelper.hasText (m_sBISVersion) && !StringParser.isUnsignedInt (m_sBISVersion))
