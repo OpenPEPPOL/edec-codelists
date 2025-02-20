@@ -171,8 +171,10 @@ public final class DocTypeRow extends AbstractModelRow
       final boolean bIsBilling = sCustomizationID.startsWith ("urn:peppol:pint:billing-1");
       final boolean bIsSelfBilling = sCustomizationID.startsWith ("urn:peppol:pint:selfbilling-1");
       final boolean bIsNonTaxInvoice = sCustomizationID.startsWith ("urn:peppol:pint:nontaxinvoice-1");
-      if (!bIsBilling && !bIsSelfBilling && !bIsNonTaxInvoice)
-        throw new IllegalStateException ("The root part of the Customization ID '" +
+      final boolean bIsTaxData = sCustomizationID.startsWith ("urn:peppol:pint:taxdata-1");
+      final boolean bIsTaxDataStatus = sCustomizationID.startsWith ("urn:peppol:pint:taxdatastatus-1");
+      if (!bIsBilling && !bIsSelfBilling && !bIsNonTaxInvoice && !bIsTaxData && !bIsTaxDataStatus)
+        throw new IllegalStateException ("The root part of the PINT Customization ID '" +
                                          sCustomizationID +
                                          "' is not supported");
 
@@ -200,7 +202,10 @@ public final class DocTypeRow extends AbstractModelRow
     {
       // Exclusion for OO Reporting stuff
       // Exclusion for eB2B stuff
-      if (!"OO".equals (m_sDomainCommunity) && !"eB2B".equals (m_sDomainCommunity))
+      // Exclusion for AE Tax Reporting
+      if (!"OO".equals (m_sDomainCommunity) &&
+          !"eB2B".equals (m_sDomainCommunity) &&
+          !"Tax Reporting".equals (m_sCategory))
         throw new IllegalStateException ("If issued by OpenPeppol, a BIS version is required");
     }
     if (StringHelper.hasText (m_sBISVersion) && !StringParser.isUnsignedInt (m_sBISVersion))
