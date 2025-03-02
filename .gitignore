@@ -11,3 +11,4 @@ target/
 .classpath 
 .pmd
 .project 
+.DS_Store
