@@ -8629,7 +8629,7 @@ TICC-343</SimpleValue>
         <SimpleValue>8.6</SimpleValue>
       </Value>
       <Value ColumnRef="state">
-        <SimpleValue>deprecated</SimpleValue>
+        <SimpleValue>removed</SimpleValue>
       </Value>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>9.1</SimpleValue>
@@ -8675,7 +8675,7 @@ TICC-377</SimpleValue>
         <SimpleValue>8.6</SimpleValue>
       </Value>
       <Value ColumnRef="state">
-        <SimpleValue>deprecated</SimpleValue>
+        <SimpleValue>removed</SimpleValue>
       </Value>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>9.1</SimpleValue>
@@ -8721,7 +8721,7 @@ TICC-377</SimpleValue>
         <SimpleValue>8.6</SimpleValue>
       </Value>
       <Value ColumnRef="state">
-        <SimpleValue>deprecated</SimpleValue>
+        <SimpleValue>removed</SimpleValue>
       </Value>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>9.1</SimpleValue>
@@ -8767,7 +8767,7 @@ TICC-377</SimpleValue>
         <SimpleValue>8.6</SimpleValue>
       </Value>
       <Value ColumnRef="state">
-        <SimpleValue>deprecated</SimpleValue>
+        <SimpleValue>removed</SimpleValue>
       </Value>
       <Value ColumnRef="deprecation-release">
         <SimpleValue>9.1</SimpleValue>

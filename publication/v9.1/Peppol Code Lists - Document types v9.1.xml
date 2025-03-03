@@ -958,25 +958,25 @@ TICC-343</comment>
     <comment>TICC-270</comment>
     <process-id scheme="cenbii-procid-ubl" value="urn:peppol:bis:billing" />
   </document-type>
-  <document-type name="A-NZ PINT Invoice v1.0" scheme="busdox-docid-qns" value="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:peppol:pint:billing-1@aunz-1::2.1" initial-release="8.6" state="deprecated" deprecation-release="9.1" removal-date="2025-03-01" abstract="false" issued-by-openpeppol="true" bis-version="3" domain-community="POAC" category="Invoice">
+  <document-type name="A-NZ PINT Invoice v1.0" scheme="busdox-docid-qns" value="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:peppol:pint:billing-1@aunz-1::2.1" initial-release="8.6" state="removed" deprecation-release="9.1" removal-date="2025-03-01" abstract="false" issued-by-openpeppol="true" bis-version="3" domain-community="POAC" category="Invoice">
     <comment>TICC-279
 TICC-374
 TICC-377</comment>
     <process-id scheme="cenbii-procid-ubl" value="urn:peppol:bis:billing" />
   </document-type>
-  <document-type name="A-NZ PINT Credit Note v1.0" scheme="busdox-docid-qns" value="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:peppol:pint:billing-1@aunz-1::2.1" initial-release="8.6" state="deprecated" deprecation-release="9.1" removal-date="2025-03-01" abstract="false" issued-by-openpeppol="true" bis-version="3" domain-community="POAC" category="Credit Note">
+  <document-type name="A-NZ PINT Credit Note v1.0" scheme="busdox-docid-qns" value="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:peppol:pint:billing-1@aunz-1::2.1" initial-release="8.6" state="removed" deprecation-release="9.1" removal-date="2025-03-01" abstract="false" issued-by-openpeppol="true" bis-version="3" domain-community="POAC" category="Credit Note">
     <comment>TICC-279
 TICC-374
 TICC-377</comment>
     <process-id scheme="cenbii-procid-ubl" value="urn:peppol:bis:billing" />
   </document-type>
-  <document-type name="A-NZ PINT Self-Billing Invoice v1.0" scheme="busdox-docid-qns" value="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:peppol:pint:selfbilling-1@aunz-1::2.1" initial-release="8.6" state="deprecated" deprecation-release="9.1" removal-date="2025-03-01" abstract="false" issued-by-openpeppol="false" bis-version="3" domain-community="POAC" category="Invoice">
+  <document-type name="A-NZ PINT Self-Billing Invoice v1.0" scheme="busdox-docid-qns" value="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:peppol:pint:selfbilling-1@aunz-1::2.1" initial-release="8.6" state="removed" deprecation-release="9.1" removal-date="2025-03-01" abstract="false" issued-by-openpeppol="false" bis-version="3" domain-community="POAC" category="Invoice">
     <comment>TICC-279
 TICC-374
 TICC-377</comment>
     <process-id scheme="cenbii-procid-ubl" value="urn:peppol:bis:selfbilling" />
   </document-type>
-  <document-type name="A-NZ PINT Self-Billing Credit Note v1.0" scheme="busdox-docid-qns" value="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:peppol:pint:selfbilling-1@aunz-1::2.1" initial-release="8.6" state="deprecated" deprecation-release="9.1" removal-date="2025-03-01" abstract="false" issued-by-openpeppol="false" bis-version="3" domain-community="POAC" category="Credit Note">
+  <document-type name="A-NZ PINT Self-Billing Credit Note v1.0" scheme="busdox-docid-qns" value="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:peppol:pint:selfbilling-1@aunz-1::2.1" initial-release="8.6" state="removed" deprecation-release="9.1" removal-date="2025-03-01" abstract="false" issued-by-openpeppol="false" bis-version="3" domain-community="POAC" category="Credit Note">
     <comment>TICC-279
 TICC-374
 TICC-377</comment>
