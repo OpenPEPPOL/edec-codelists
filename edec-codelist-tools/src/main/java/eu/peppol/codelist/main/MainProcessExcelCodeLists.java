@@ -29,7 +29,7 @@ public final class MainProcessExcelCodeLists
 
   public static void main (final String [] args) throws Exception
   {
-    new ConvertV9_1 ().run ();
+    new ConvertV9_2 ().run ();
     LOGGER.info ("Now run 'mvn license:format' on this project");
     LOGGER.info ("Than copy the output from 'ceated-codelists/vX.Y' to the respective 'publication/vX.Y' folder in the parent project");
   }
