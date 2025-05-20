@@ -577,9 +577,9 @@
       "issuing-agency":"Centre des technologies de l'information de l'Etat (CTIE)",
       "initial-release":"9.1",
       "state":"active",
-      "structure":"- 11 characters in total (Arabic numerals only)\n- 4 first digits = year\n- Digits 5-6 = legal form of the legal person\nChecksum: digit 11",
+      "structure":"- 11 characters in total (Arabic numerals only)\n- 4 first digits = year (may be 0000)\n- Digits 5-6 = legal form of the legal person\nChecksum: digit 11",
       "display":"None",
-      "validation-rules":"RegEx: [1-9][0-9]{10}",
+      "validation-rules":"RegEx: [0-9]{11}",
       "registrable":true
     },
     {
