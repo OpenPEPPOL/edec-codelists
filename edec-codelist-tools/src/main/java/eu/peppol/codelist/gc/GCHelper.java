@@ -32,7 +32,7 @@ import com.helger.genericode.v10.Key;
 import com.helger.genericode.v10.SimpleCodeList;
 import com.helger.genericode.v10.UseType;
 
-import eu.peppol.codelist.AbstractConverter;
+import eu.peppol.codelist.AbstractCodeListConverter;
 import eu.peppol.codelist.field.ECodeListDataType;
 import jakarta.xml.bind.JAXBElement;
 
@@ -54,7 +54,7 @@ public class GCHelper
     // create annotation
     final Annotation aAnnotation = new Annotation ();
     final AnyOtherContent aContent = new AnyOtherContent ();
-    aContent.addAny (new JAXBElement <> (QNAME_ANNOTATION, String.class, null, AbstractConverter.DO_NOT_EDIT));
+    aContent.addAny (new JAXBElement <> (QNAME_ANNOTATION, String.class, null, AbstractCodeListConverter.DO_NOT_EDIT));
     aAnnotation.setAppInfo (aContent);
     ret.setAnnotation (aAnnotation);
 

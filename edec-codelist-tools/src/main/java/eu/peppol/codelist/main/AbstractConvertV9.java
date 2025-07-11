@@ -31,12 +31,13 @@ import com.helger.commons.collection.impl.ICommonsSet;
 import com.helger.commons.version.Version;
 import com.helger.peppolid.IProcessIdentifier;
 
-import eu.peppol.codelist.AbstractConverter;
+import eu.peppol.codelist.AbstractCodeListConverter;
 import eu.peppol.codelist.CodeListSource;
 import eu.peppol.codelist.excel.InMemoryXLSX;
 import eu.peppol.codelist.model.DocTypeRow;
 import eu.peppol.codelist.model.ParticipantIdentifierSchemeRow;
 import eu.peppol.codelist.model.ProcessRow;
+import eu.peppol.codelist.model.SPISUseCaseRow;
 import eu.peppol.codelist.model.TransportProfileRow;
 
 /**
@@ -44,7 +45,7 @@ import eu.peppol.codelist.model.TransportProfileRow;
  *
  * @author Philip Helger
  */
-public abstract class AbstractConvertV9 extends AbstractConverter
+public abstract class AbstractConvertV9 extends AbstractCodeListConverter
 {
   private final ICommonsMap <IProcessIdentifier, ICommonsList <DocTypeRow>> m_aProcIDs = new CommonsLinkedHashMap <> ();
 
@@ -165,19 +166,44 @@ public abstract class AbstractConvertV9 extends AbstractConverter
     createHtmlFile (aRows, ProcessRow.CODE_LIST_NAME, ProcessRow::getAsHtmlTableHeaderRow);
   }
 
+  private void _handleSPISUserCaseIdentifiers (@Nonnull final Sheet aTPSheet)
+  {
+    // Read Excel
+    final InMemoryXLSX aXLSX = InMemoryXLSX.read (aTPSheet, 6);
+
+    // Convert to domain object
+    final ICommonsList <SPISUseCaseRow> aRows = aXLSX.getAsList (SPISUseCaseRow::createV9);
+
+    // Consistency checks
+    final ICommonsSet <String> aKeys = new CommonsHashSet <> ();
+    for (final SPISUseCaseRow aRow : aRows)
+    {
+      aRow.checkConsistency ();
+      if (!aKeys.add (aRow.getUniqueKey ()))
+        throw new IllegalStateException ("The unique key '" + aRow.getUniqueKey () + "' is contained more than once");
+    }
+
+    // Create files
+    createGenericodeFile (aRows,
+                          SPISUseCaseRow.CODE_LIST_NAME,
+                          SPISUseCaseRow::addGCColumns,
+                          SPISUseCaseRow.CODE_LIST_URI);
+    createXMLFile (aRows, SPISUseCaseRow.CODE_LIST_NAME, SPISUseCaseRow.ROOT_ELEMENT_NAME);
+    createJsonFile (aRows, SPISUseCaseRow.CODE_LIST_NAME);
+    createHtmlFile (aRows, SPISUseCaseRow.CODE_LIST_NAME, SPISUseCaseRow::getAsHtmlTableHeaderRow);
+  }
+
   @Override
   protected void convert () throws Exception
   {
     final String sFilenameVersion = m_aCodeListVersion.getAsString (false, true);
 
     new CodeListSource ("Document types", sFilenameVersion, this::_handleDocumentTypes).readExcelSheet ();
-    new CodeListSource ("Participant identifier schemes",
-                        sFilenameVersion,
-                        this::_handleParticipantIdentifierSchemes).readExcelSheet ();
-    new CodeListSource ("Transport profiles",
-                        sFilenameVersion,
-                        this::_handleTransportProfileIdentifiers).readExcelSheet ();
-
+    new CodeListSource ("Participant identifier schemes", sFilenameVersion, this::_handleParticipantIdentifierSchemes)
+                                                                                                                      .readExcelSheet ();
+    new CodeListSource ("Transport profiles", sFilenameVersion, this::_handleTransportProfileIdentifiers)
+                                                                                                         .readExcelSheet ();
     _handleProcessIdentifiers ();
+    new CodeListSource ("SPIS Use Case", sFilenameVersion, this::_handleSPISUserCaseIdentifiers).readExcelSheet ();
   }
 }

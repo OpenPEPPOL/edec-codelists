@@ -80,22 +80,22 @@ import eu.peppol.codelist.model.ModelHelper;
  *
  * @author Philip Helger
  */
-public abstract class AbstractConverter
+public abstract class AbstractCodeListConverter
 {
   public static final String DO_NOT_EDIT = "This is an OpenPeppol eDEC Code List.\n" +
                                            "Official source: https://docs.peppol.eu/edelivery/codelists/\n" +
                                            "\n" +
                                            "This file was automatically generated.\n" +
                                            "Do NOT edit!";
-  private static final Logger LOGGER = LoggerFactory.getLogger (AbstractConverter.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger (AbstractCodeListConverter.class);
 
   protected final Version m_aCodeListVersion;
   private final File m_aResultDir;
   private final String m_sFilenameSuffix;
 
-  protected AbstractConverter (@Nonnull final Version aCodeListVersion,
-                               @Nonnull @Nonempty final String sResultDir,
-                               @Nonnull final String sFilenameSuffix)
+  protected AbstractCodeListConverter (@Nonnull final Version aCodeListVersion,
+                                       @Nonnull @Nonempty final String sResultDir,
+                                       @Nonnull final String sFilenameSuffix)
   {
     ValueEnforcer.notNull (aCodeListVersion, "CodeListVersion");
     ValueEnforcer.notEmpty (sResultDir, "ResultDir");
@@ -114,8 +114,7 @@ public abstract class AbstractConverter
    * @param aCodeList
    *        The GC code list
    * @param sBasename
-   *        The filename to write to, relative to the result directory, no
-   *        extension.
+   *        The filename to write to, relative to the result directory, no extension.
    */
   private void _writeGenericodeFile (@Nonnull final CodeListDocument aCodeList, @Nonnull final String sBasename)
   {
@@ -260,26 +259,26 @@ public abstract class AbstractConverter
     if (bHasDeprecated || bHasRemoved)
     {
       final HCDiv aButtonRow = new HCDiv ().addClass (DefaultCSSClassProvider.create ("my-3"));
-      String sJS = "";
+      final StringBuilder sJS = new StringBuilder ();
       if (bHasDeprecated)
       {
         final String sHide = "Hide " + nDeprecatedRows + " Deprecated";
         final String sShow = "Show " + nDeprecatedRows + " Deprecated";
         final String sIDButtonDeprecated = "btdep";
-        sJS += "var showDep=true;" +
-               "function toggleDep(){" +
-               "let rows=document.querySelectorAll('tr.table-warning'),i;" +
-               "for(i=0;i<rows.length;++i)" +
-               "rows[i].style.display=rows[i].style.display==='none'?'table-row':'none';" +
-               "showDep=!showDep;" +
-               "document.getElementById('" +
-               sIDButtonDeprecated +
-               "').firstChild.data=showDep?'" +
-               sHide +
-               "':'" +
-               sShow +
-               "';" +
-               "}";
+        sJS.append ("var showDep=true;")
+           .append ("function toggleDep(){")
+           .append ("let rows=document.querySelectorAll('tr.table-warning'),i;")
+           .append ("for(i=0;i<rows.length;++i)")
+           .append ("rows[i].style.display=rows[i].style.display==='none'?'table-row':'none';")
+           .append ("showDep=!showDep;")
+           .append ("document.getElementById('")
+           .append (sIDButtonDeprecated)
+           .append ("').firstChild.data=showDep?'")
+           .append (sHide)
+           .append ("':'")
+           .append (sShow)
+           .append ("';")
+           .append ("}");
         aButtonRow.addChild (new HCButton (sHide).setID (sIDButtonDeprecated)
                                                  .setOnClick (new UnparsedJSCodeProvider ("toggleDep();return false;")));
       }
@@ -288,24 +287,24 @@ public abstract class AbstractConverter
         final String sHide = "Hide " + nRemovedRows + " Removed";
         final String sShow = "Show " + nRemovedRows + " Removed";
         final String sIDButtonRemoved = "btrem";
-        sJS += "var showRem=true;" +
-               "function toggleRem(){" +
-               "let rows=document.querySelectorAll('tr.table-danger'),i;" +
-               "for(i=0;i<rows.length;++i)" +
-               "rows[i].style.display=rows[i].style.display==='none'?'table-row':'none';" +
-               "showRem=!showRem;" +
-               "document.getElementById('" +
-               sIDButtonRemoved +
-               "').firstChild.data=showRem?'" +
-               sHide +
-               "':'" +
-               sShow +
-               "';" +
-               "}";
+        sJS.append ("var showRem=true;")
+           .append ("function toggleRem(){")
+           .append ("let rows=document.querySelectorAll('tr.table-danger'),i;")
+           .append ("for(i=0;i<rows.length;++i)")
+           .append ("rows[i].style.display=rows[i].style.display==='none'?'table-row':'none';")
+           .append ("showRem=!showRem;")
+           .append ("document.getElementById('")
+           .append (sIDButtonRemoved)
+           .append ("').firstChild.data=showRem?'")
+           .append (sHide)
+           .append ("':'")
+           .append (sShow)
+           .append ("';")
+           .append ("}");
         aButtonRow.addChild (new HCButton (sHide).setID (sIDButtonRemoved)
                                                  .setOnClick (new UnparsedJSCodeProvider ("toggleRem();return false;")));
       }
-      aHtml.head ().addJS (new HCScriptInline (new UnparsedJSCodeProvider (sJS)));
+      aHtml.head ().addJS (new HCScriptInline (new UnparsedJSCodeProvider (sJS.toString ())));
       aCont.addChild (aButtonRow);
     }
 
@@ -322,19 +321,31 @@ public abstract class AbstractConverter
       if (bAddNumColumn)
         aHeaderRow.addCellAt (0, "Num#");
       aTable.addHeaderRow (aHeaderRow);
-      int nRowNum = 1;
-      for (final T aRow : aRows)
+      if (aRows.isEmpty ())
       {
-        final HCRow aBodyRow = aRow.getAsHtmlTableBodyRow ();
-        if (bAddNumColumn)
+        // Empty code list
+        aTable.addBodyRow ()
+              .addAndReturnCell (new HCEM ().addChild ("No elements contained"))
+              .addClass (DefaultCSSClassProvider.create ("text-center"))
+              .setColspan (aHeaderRow.getCellCount ());
+      }
+      else
+      {
+        // Non-empty code list
+        int nRowNum = 1;
+        for (final T aRow : aRows)
         {
-          final String sRowNum = Integer.toString (nRowNum);
-          aBodyRow.addCellAt (0)
-                  .addChild (new HCA ().setName (sRowNum).addChild (sRowNum))
-                  .addClass (ModelHelper.CSS_TEXT_END);
+          final HCRow aBodyRow = aRow.getAsHtmlTableBodyRow ();
+          if (bAddNumColumn)
+          {
+            final String sRowNum = Integer.toString (nRowNum);
+            aBodyRow.addCellAt (0)
+                    .addChild (new HCA ().setName (sRowNum).addChild (sRowNum))
+                    .addClass (ModelHelper.CSS_TEXT_END);
+          }
+          aTable.addBodyRow (aBodyRow);
+          ++nRowNum;
         }
-        aTable.addBodyRow (aBodyRow);
-        ++nRowNum;
       }
     }
     aCont.addChild (new HCDiv ().addChild (new HCEM ().addChild ("This document was created automatically."))

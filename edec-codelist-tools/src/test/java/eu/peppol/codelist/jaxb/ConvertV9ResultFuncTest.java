@@ -24,7 +24,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import eu.peppol.codelist.main.ConvertV9_2;
+import eu.peppol.codelist.main.ConvertV9_3;
 import eu.peppol.codelist.model.DocTypeRow;
 import eu.peppol.codelist.model.ParticipantIdentifierSchemeRow;
 import eu.peppol.codelist.model.ProcessRow;
@@ -42,8 +42,8 @@ public final class ConvertV9ResultFuncTest
   @Test
   public void testReadDocTypes ()
   {
-    final File f = new File (ConvertV9_2.DESTINATION_BASE_PATH,
-                             DocTypeRow.CODE_LIST_NAME + ConvertV9_2.DESTINATION_FILENAME_SUFFIX + ".xml");
+    final File f = new File (ConvertV9_3.DESTINATION_BASE_PATH,
+                             DocTypeRow.CODE_LIST_NAME + ConvertV9_3.DESTINATION_FILENAME_SUFFIX + ".xml");
     assertTrue (f.exists ());
     LOGGER.info ("Trying to read and validate " + f.getAbsolutePath ());
 
@@ -55,9 +55,9 @@ public final class ConvertV9ResultFuncTest
   @Test
   public void testReadParticipantIdentifierSchemes ()
   {
-    final File f = new File (ConvertV9_2.DESTINATION_BASE_PATH,
+    final File f = new File (ConvertV9_3.DESTINATION_BASE_PATH,
                              ParticipantIdentifierSchemeRow.CODE_LIST_NAME +
-                                                                ConvertV9_2.DESTINATION_FILENAME_SUFFIX +
+                                                                ConvertV9_3.DESTINATION_FILENAME_SUFFIX +
                                                                 ".xml");
     assertTrue (f.exists ());
     LOGGER.info ("Trying to read and validate " + f.getAbsolutePath ());
@@ -70,8 +70,8 @@ public final class ConvertV9ResultFuncTest
   @Test
   public void testReadProcesses ()
   {
-    final File f = new File (ConvertV9_2.DESTINATION_BASE_PATH,
-                             ProcessRow.CODE_LIST_NAME + ConvertV9_2.DESTINATION_FILENAME_SUFFIX + ".xml");
+    final File f = new File (ConvertV9_3.DESTINATION_BASE_PATH,
+                             ProcessRow.CODE_LIST_NAME + ConvertV9_3.DESTINATION_FILENAME_SUFFIX + ".xml");
     assertTrue (f.exists ());
     LOGGER.info ("Trying to read and validate " + f.getAbsolutePath ());
 
@@ -83,8 +83,8 @@ public final class ConvertV9ResultFuncTest
   @Test
   public void testReadTransportProfiles ()
   {
-    final File f = new File (ConvertV9_2.DESTINATION_BASE_PATH,
-                             TransportProfileRow.CODE_LIST_NAME + ConvertV9_2.DESTINATION_FILENAME_SUFFIX + ".xml");
+    final File f = new File (ConvertV9_3.DESTINATION_BASE_PATH,
+                             TransportProfileRow.CODE_LIST_NAME + ConvertV9_3.DESTINATION_FILENAME_SUFFIX + ".xml");
     assertTrue (f.exists ());
     LOGGER.info ("Trying to read and validate " + f.getAbsolutePath ());
 

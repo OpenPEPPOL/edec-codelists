@@ -17,6 +17,7 @@ package eu.peppol.codelist.excel;
 
 import java.util.function.Function;
 
+import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
 
 import org.apache.poi.ss.usermodel.Row;
@@ -45,10 +46,11 @@ public class InMemoryXLSX
   private final String [] m_aShortNames;
   private final ICommonsList <String []> m_aPayload;
 
+  // Payload may be empty for new code lists
   protected InMemoryXLSX (@Nonnull final String [] aShortNames, @Nonnull final ICommonsList <String []> aPayload)
   {
     ValueEnforcer.notEmptyNoNullValue (aShortNames, "ShortNames");
-    ValueEnforcer.notEmptyNoNullValue (aPayload, "Payload");
+    ValueEnforcer.noNullValue (aPayload, "Payload");
     m_aShortNames = aShortNames;
     m_aPayload = aPayload;
   }
@@ -73,7 +75,7 @@ public class InMemoryXLSX
   }
 
   @Nonnull
-  public static InMemoryXLSX read (@Nonnull final Sheet aExcelSheet, final int nColumnCount)
+  public static InMemoryXLSX read (@Nonnull final Sheet aExcelSheet, @Nonnegative final int nColumnCount)
   {
     final String [] aShortNameRowData = new String [nColumnCount];
 
