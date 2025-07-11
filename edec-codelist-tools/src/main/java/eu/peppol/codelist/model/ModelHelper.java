@@ -35,6 +35,7 @@ public final class ModelHelper
   public static final ICSSClassProvider CSS_TABLE_WARNING = DefaultCSSClassProvider.create ("table-warning");
   // Right align
   public static final ICSSClassProvider CSS_TEXT_END = DefaultCSSClassProvider.create ("text-end");
+  public static final ICSSClassProvider CSS_WIDE_COLUMN = DefaultCSSClassProvider.create ("wide-column");
 
   private static final boolean DEFAULT_DEPRECATED = false;
   private static final boolean DEFAULT_ABSTRACT = false;

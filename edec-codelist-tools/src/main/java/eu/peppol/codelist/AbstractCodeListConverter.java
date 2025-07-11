@@ -224,8 +224,7 @@ public abstract class AbstractCodeListConverter
                             .setHref (new SimpleURL ("https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"))
                             .setIntegrity ("sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH")
                             .setCrossOrigin (EHCCORSSettings.ANONYMOUS));
-    if (false)
-      aHtml.head ().addCSS (new HCStyle (""));
+    aHtml.head ().addCSS (new HCStyle (".wide-column { min-width:20rem; }"));
 
     final HCDiv aCont = aHtml.body ()
                              .addAndReturnChild (new HCDiv ().addClass (DefaultCSSClassProvider.create ("container-fluid")));

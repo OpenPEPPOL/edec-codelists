@@ -29,6 +29,7 @@ import com.helger.commons.url.URLHelper;
 import com.helger.genericode.v10.CodeListDocument;
 import com.helger.genericode.v10.ColumnSet;
 import com.helger.genericode.v10.Row;
+import com.helger.html.hc.ext.HCExtHelper;
 import com.helger.html.hc.html.tabular.HCRow;
 import com.helger.json.IJsonObject;
 import com.helger.json.JsonObject;
@@ -40,8 +41,7 @@ import eu.peppol.codelist.gc.GCHelper;
 import eu.peppol.codelist.gc.GCRowExt;
 
 /**
- * Single row of a participant identifier scheme in a code list version
- * independent format.
+ * Single row of a participant identifier scheme in a code list version independent format.
  *
  * @author Philip Helger
  */
@@ -275,8 +275,8 @@ public final class ParticipantIdentifierSchemeRow extends AbstractModelRow
     aRow.addCell (m_eState.getDisplayName ());
     aRow.addAndReturnCell (m_sDeprecationRelease).addClass (ModelHelper.CSS_TEXT_END);
     aRow.addAndReturnCell (PDTWebDateHelper.getAsStringXSD (m_aRemovalDate)).addClass (ModelHelper.CSS_TEXT_END);
-    aRow.addCell (m_sStructure);
-    aRow.addCell (m_sDisplay);
+    aRow.addAndReturnCell (HCExtHelper.nl2brList (m_sStructure)).addClass (ModelHelper.CSS_WIDE_COLUMN);
+    aRow.addAndReturnCell (HCExtHelper.nl2brList (m_sDisplay)).addClass (ModelHelper.CSS_WIDE_COLUMN);
     aRow.addCell (m_sExamples);
     aRow.addCell (m_sValidationRules);
     aRow.addCell (m_sUsage);
