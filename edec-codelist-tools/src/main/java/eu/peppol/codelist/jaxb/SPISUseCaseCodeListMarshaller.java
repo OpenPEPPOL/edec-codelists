@@ -15,13 +15,15 @@
  */
 package eu.peppol.codelist.jaxb;
 
-import com.helger.commons.io.resource.ClassPathResource;
+import com.helger.commons.collection.impl.CommonsArrayList;
+import com.helger.jaxb.GenericJAXBMarshaller;
 
-final class CCodelists
+public class SPISUseCaseCodeListMarshaller extends GenericJAXBMarshaller <SpisUseCaseListType>
 {
-  public static final ClassPathResource XSD = new ClassPathResource ("/external/schemas/peppol-codelists-v2.6.xsd",
-                                                                     CCodelists.class.getClassLoader ());
-
-  private CCodelists ()
-  {}
+  public SPISUseCaseCodeListMarshaller ()
+  {
+    super (SpisUseCaseListType.class,
+           new CommonsArrayList <> (CCodelists.XSD),
+           x -> new ObjectFactory ().createSpisUseCase (x));
+  }
 }

@@ -95,7 +95,8 @@ public final class SPISUseCaseRow extends AbstractModelRow
   @Nonnull
   public IMicroElement getAsElement ()
   {
-    final IMicroElement ret = new MicroElement ("spis-use-case");
+    // Must differ from root element
+    final IMicroElement ret = new MicroElement ("item");
     ret.setAttribute (USE_CASE_ID, m_sUseCaseID);
     ret.setAttribute (INITIAL_RELEASE, m_sInitialRelease);
     ret.setAttribute (STATE, m_eState.getID ());

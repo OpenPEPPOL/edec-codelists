@@ -28,6 +28,7 @@ import eu.peppol.codelist.main.ConvertV9_3;
 import eu.peppol.codelist.model.DocTypeRow;
 import eu.peppol.codelist.model.ParticipantIdentifierSchemeRow;
 import eu.peppol.codelist.model.ProcessRow;
+import eu.peppol.codelist.model.SPISUseCaseRow;
 import eu.peppol.codelist.model.TransportProfileRow;
 
 /**
@@ -90,6 +91,19 @@ public final class ConvertV9ResultFuncTest
 
     final TransportProfileCodeListMarshaller m = new TransportProfileCodeListMarshaller ();
     final TransportProfilesType aList = m.read (f);
+    assertNotNull (aList);
+  }
+
+  @Test
+  public void testReadSpisUseCases ()
+  {
+    final File f = new File (ConvertV9_3.DESTINATION_BASE_PATH,
+                             SPISUseCaseRow.CODE_LIST_NAME + ConvertV9_3.DESTINATION_FILENAME_SUFFIX + ".xml");
+    assertTrue (f.exists ());
+    LOGGER.info ("Trying to read and validate " + f.getAbsolutePath ());
+
+    final SPISUseCaseCodeListMarshaller m = new SPISUseCaseCodeListMarshaller ();
+    final SpisUseCaseListType aList = m.read (f);
     assertNotNull (aList);
   }
 }
