@@ -19,11 +19,11 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 
-import javax.annotation.Nullable;
+import com.helger.base.string.StringHelper;
+import com.helger.base.string.StringParser;
+import com.helger.datetime.helper.PDTFactory;
 
-import com.helger.commons.datetime.PDTFactory;
-import com.helger.commons.string.StringHelper;
-import com.helger.commons.string.StringParser;
+import jakarta.annotation.Nullable;
 
 public abstract class AbstractModelRow implements IModelRow
 {
@@ -35,12 +35,12 @@ public abstract class AbstractModelRow implements IModelRow
   @Nullable
   protected static LocalDate getLocalDateFromExcel (@Nullable final String s)
   {
-    if (StringHelper.hasNoText (s))
+    if (StringHelper.isEmpty (s))
       return null;
     /**
-     * If you choose to use MS Excel to check your work note 2 things: 1) Jan 1,
-     * 1900 is day 1 (not the number of days since Jan 1, 1900) and 2) according
-     * to Excel Feb 29, 1900 exists(a bug in their code they refuse to fix.)
+     * If you choose to use MS Excel to check your work note 2 things: 1) Jan 1, 1900 is day 1 (not
+     * the number of days since Jan 1, 1900) and 2) according to Excel Feb 29, 1900 exists(a bug in
+     * their code they refuse to fix.)
      */
     return JAN_1_1900.plusDays (Long.parseLong (s) - 2);
   }

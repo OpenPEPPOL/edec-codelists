@@ -15,7 +15,7 @@
  */
 package eu.peppol.codelist.main;
 
-import com.helger.commons.version.Version;
+import com.helger.base.version.Version;
 
 /**
  * Handle V9.x code lists

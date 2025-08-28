@@ -17,12 +17,10 @@ package eu.peppol.codelist.model;
 
 import java.net.URI;
 
-import javax.annotation.Nonnull;
-
-import com.helger.commons.annotation.Nonempty;
-import com.helger.commons.collection.impl.ICommonsList;
-import com.helger.commons.string.StringHelper;
-import com.helger.commons.url.URLHelper;
+import com.helger.annotation.Nonempty;
+import com.helger.base.string.StringHelper;
+import com.helger.base.url.URLHelper;
+import com.helger.collection.commons.ICommonsList;
 import com.helger.genericode.v10.CodeListDocument;
 import com.helger.genericode.v10.ColumnSet;
 import com.helger.genericode.v10.Row;
@@ -38,6 +36,7 @@ import com.helger.xml.microdom.MicroElement;
 import eu.peppol.codelist.field.ECodeListDataType;
 import eu.peppol.codelist.gc.GCHelper;
 import eu.peppol.codelist.gc.GCRowExt;
+import jakarta.annotation.Nonnull;
 
 /**
  * Single row of a process in a code list version independent format.
@@ -74,9 +73,9 @@ public final class ProcessRow implements IModelRow
 
   public void checkConsistency ()
   {
-    if (StringHelper.hasNoText (m_sScheme))
+    if (StringHelper.isEmpty (m_sScheme))
       throw new IllegalStateException ("Scheme is required");
-    if (StringHelper.hasNoText (m_sValue))
+    if (StringHelper.isEmpty (m_sValue))
       throw new IllegalStateException ("Value is required");
     if (m_eState == null)
       throw new IllegalStateException ("State is required");

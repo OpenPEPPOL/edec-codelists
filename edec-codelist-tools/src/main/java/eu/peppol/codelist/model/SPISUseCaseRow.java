@@ -18,12 +18,10 @@ package eu.peppol.codelist.model;
 import java.net.URI;
 import java.time.LocalDate;
 
-import javax.annotation.Nonnull;
-
-import com.helger.commons.annotation.Nonempty;
-import com.helger.commons.datetime.PDTWebDateHelper;
-import com.helger.commons.string.StringHelper;
-import com.helger.commons.url.URLHelper;
+import com.helger.annotation.Nonempty;
+import com.helger.base.string.StringHelper;
+import com.helger.base.url.URLHelper;
+import com.helger.datetime.web.PDTWebDateHelper;
 import com.helger.genericode.v10.CodeListDocument;
 import com.helger.genericode.v10.ColumnSet;
 import com.helger.genericode.v10.Row;
@@ -36,6 +34,7 @@ import com.helger.xml.microdom.MicroElement;
 import eu.peppol.codelist.field.ECodeListDataType;
 import eu.peppol.codelist.gc.GCHelper;
 import eu.peppol.codelist.gc.GCRowExt;
+import jakarta.annotation.Nonnull;
 
 /**
  * Single row of a SPIS Use Case in a code list version independent format.
@@ -77,16 +76,16 @@ public final class SPISUseCaseRow extends AbstractModelRow
 
   public void checkConsistency ()
   {
-    if (StringHelper.hasNoText (m_sUseCaseID))
+    if (StringHelper.isEmpty (m_sUseCaseID))
       throw new IllegalStateException ("Use Case ID is required");
-    if (StringHelper.hasNoText (m_sInitialRelease))
+    if (StringHelper.isEmpty (m_sInitialRelease))
       throw new IllegalStateException ("Initial release is required");
     if (m_eState == null)
       throw new IllegalStateException ("State is required");
 
-    if (m_eState.isScheduledForDeprecation () && StringHelper.hasNoText (m_sDeprecationRelease))
+    if (m_eState.isScheduledForDeprecation () && StringHelper.isEmpty (m_sDeprecationRelease))
       throw new IllegalStateException ("Code list entry has state 'scheduled for deprecation' but there is no Deprecation date set");
-    if (m_eState.isDeprecated () && StringHelper.hasNoText (m_sDeprecationRelease))
+    if (m_eState.isDeprecated () && StringHelper.isEmpty (m_sDeprecationRelease))
       throw new IllegalStateException ("Code list entry has state 'deprecated' but there is no Deprecation release set");
     if (m_eState.isRemoved () && m_aRemovalDate == null)
       throw new IllegalStateException ("Code list entry has state 'removed' but there is no Removal date set");
@@ -100,11 +99,11 @@ public final class SPISUseCaseRow extends AbstractModelRow
     ret.setAttribute (USE_CASE_ID, m_sUseCaseID);
     ret.setAttribute (INITIAL_RELEASE, m_sInitialRelease);
     ret.setAttribute (STATE, m_eState.getID ());
-    if (StringHelper.hasText (m_sDeprecationRelease))
+    if (StringHelper.isNotEmpty (m_sDeprecationRelease))
       ret.setAttribute (DEPRECATION_RELEASE, m_sDeprecationRelease);
     if (m_aRemovalDate != null)
       ret.setAttribute (REMOVAL_DATE, PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
-    if (StringHelper.hasText (m_sComment))
+    if (StringHelper.isNotEmpty (m_sComment))
       ret.setAttribute (COMMENT, m_sComment);
     return ret;
   }
@@ -116,11 +115,11 @@ public final class SPISUseCaseRow extends AbstractModelRow
     ret.add (USE_CASE_ID, m_sUseCaseID);
     ret.add (INITIAL_RELEASE, m_sInitialRelease);
     ret.add (STATE, m_eState.getID ());
-    if (StringHelper.hasText (m_sDeprecationRelease))
+    if (StringHelper.isNotEmpty (m_sDeprecationRelease))
       ret.add (DEPRECATION_RELEASE, m_sDeprecationRelease);
     if (m_aRemovalDate != null)
       ret.add (REMOVAL_DATE, PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
-    if (StringHelper.hasText (m_sComment))
+    if (StringHelper.isNotEmpty (m_sComment))
       ret.add (COMMENT, m_sComment);
     return ret;
   }
@@ -175,7 +174,7 @@ public final class SPISUseCaseRow extends AbstractModelRow
     aRow.addCell (m_sUseCaseID);
     aRow.addAndReturnCell (m_sInitialRelease).addClass (ModelHelper.CSS_TEXT_END);
     aRow.addCell (m_eState.getDisplayName ());
-    if (StringHelper.hasText (m_sDeprecationRelease))
+    if (StringHelper.isNotEmpty (m_sDeprecationRelease))
       aRow.addAndReturnCell (m_sDeprecationRelease).addClass (ModelHelper.CSS_TEXT_END);
     else
       aRow.addCell ();

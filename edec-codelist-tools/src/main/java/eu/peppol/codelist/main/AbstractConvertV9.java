@@ -17,18 +17,16 @@ package eu.peppol.codelist.main;
 
 import java.util.Map;
 
-import javax.annotation.Nonnull;
-
 import org.apache.poi.ss.usermodel.Sheet;
 
-import com.helger.commons.annotation.Nonempty;
-import com.helger.commons.collection.impl.CommonsArrayList;
-import com.helger.commons.collection.impl.CommonsHashSet;
-import com.helger.commons.collection.impl.CommonsLinkedHashMap;
-import com.helger.commons.collection.impl.ICommonsList;
-import com.helger.commons.collection.impl.ICommonsMap;
-import com.helger.commons.collection.impl.ICommonsSet;
-import com.helger.commons.version.Version;
+import com.helger.annotation.Nonempty;
+import com.helger.base.version.Version;
+import com.helger.collection.commons.CommonsArrayList;
+import com.helger.collection.commons.CommonsHashSet;
+import com.helger.collection.commons.CommonsLinkedHashMap;
+import com.helger.collection.commons.ICommonsList;
+import com.helger.collection.commons.ICommonsMap;
+import com.helger.collection.commons.ICommonsSet;
 import com.helger.peppolid.IProcessIdentifier;
 
 import eu.peppol.codelist.AbstractCodeListConverter;
@@ -39,6 +37,7 @@ import eu.peppol.codelist.model.ParticipantIdentifierSchemeRow;
 import eu.peppol.codelist.model.ProcessRow;
 import eu.peppol.codelist.model.SPISUseCaseRow;
 import eu.peppol.codelist.model.TransportProfileRow;
+import jakarta.annotation.Nonnull;
 
 /**
  * Handle V8 code lists

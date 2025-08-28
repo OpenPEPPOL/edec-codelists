@@ -18,16 +18,13 @@ package eu.peppol.codelist.model;
 import java.net.URI;
 import java.time.LocalDate;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
-import com.helger.commons.annotation.Nonempty;
-import com.helger.commons.collection.CollectionHelper;
-import com.helger.commons.collection.impl.ICommonsList;
-import com.helger.commons.datetime.PDTWebDateHelper;
-import com.helger.commons.string.StringHelper;
-import com.helger.commons.string.StringParser;
-import com.helger.commons.url.URLHelper;
+import com.helger.annotation.Nonempty;
+import com.helger.base.string.StringHelper;
+import com.helger.base.string.StringParser;
+import com.helger.base.url.URLHelper;
+import com.helger.collection.CollectionHelper;
+import com.helger.collection.commons.ICommonsList;
+import com.helger.datetime.web.PDTWebDateHelper;
 import com.helger.genericode.v10.CodeListDocument;
 import com.helger.genericode.v10.ColumnSet;
 import com.helger.genericode.v10.Row;
@@ -50,6 +47,8 @@ import com.helger.xml.microdom.MicroElement;
 import eu.peppol.codelist.field.ECodeListDataType;
 import eu.peppol.codelist.gc.GCHelper;
 import eu.peppol.codelist.gc.GCRowExt;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 /**
  * Single row of a document type in a code list version independent format.
@@ -121,20 +120,20 @@ public final class DocTypeRow extends AbstractModelRow
 
   public void checkConsistency ()
   {
-    if (StringHelper.hasNoText (m_sName))
+    if (StringHelper.isEmpty (m_sName))
       throw new IllegalStateException ("Name is required");
-    if (StringHelper.hasNoText (m_sScheme))
+    if (StringHelper.isEmpty (m_sScheme))
       throw new IllegalStateException ("Scheme is required");
     if (m_eState == null)
       throw new IllegalStateException ("State is required");
-    if (StringHelper.hasNoText (m_sValue))
+    if (StringHelper.isEmpty (m_sValue))
       throw new IllegalStateException ("Value is required");
-    if (StringHelper.hasNoText (m_sInitialRelease))
+    if (StringHelper.isEmpty (m_sInitialRelease))
       throw new IllegalStateException ("Initial Release is required");
     if (false)
-      if (StringHelper.hasNoText (m_sDomainCommunity))
+      if (StringHelper.isEmpty (m_sDomainCommunity))
         throw new IllegalStateException ("DomainCommunity is required");
-    if (StringHelper.hasNoText (m_sCategory))
+    if (StringHelper.isEmpty (m_sCategory))
       throw new IllegalStateException ("Category is required");
     if (CollectionHelper.isEmpty (m_aProcessIDs))
       throw new IllegalStateException ("ProcessID is required");
@@ -192,13 +191,13 @@ public final class DocTypeRow extends AbstractModelRow
                                          "' is wrong");
     }
 
-    if (m_eState.isScheduledForDeprecation () && StringHelper.hasNoText (m_sDeprecationRelease))
+    if (m_eState.isScheduledForDeprecation () && StringHelper.isEmpty (m_sDeprecationRelease))
       throw new IllegalStateException ("Code list entry has state 'scheduled for deprecation' but there is no Deprecation date set");
-    if (m_eState.isDeprecated () && StringHelper.hasNoText (m_sDeprecationRelease))
+    if (m_eState.isDeprecated () && StringHelper.isEmpty (m_sDeprecationRelease))
       throw new IllegalStateException ("Code list entry has state 'deprecated' but there is no Deprecation release set");
     if (m_eState.isRemoved () && m_aRemovalDate == null)
       throw new IllegalStateException ("Code list entry has state 'removed' but there is no Removal date set");
-    if (m_bIssuedByOpenPeppol && StringHelper.hasNoText (m_sBISVersion))
+    if (m_bIssuedByOpenPeppol && StringHelper.isEmpty (m_sBISVersion))
     {
       // Exclusion for OO Reporting stuff
       // Exclusion for eB2B stuff
@@ -208,7 +207,7 @@ public final class DocTypeRow extends AbstractModelRow
           !"Tax Reporting".equals (m_sCategory))
         throw new IllegalStateException ("If issued by OpenPeppol, a BIS version is required");
     }
-    if (StringHelper.hasText (m_sBISVersion) && !StringParser.isUnsignedInt (m_sBISVersion))
+    if (StringHelper.isNotEmpty (m_sBISVersion) && !StringParser.isUnsignedInt (m_sBISVersion))
       throw new IllegalStateException ("Code list entry has an invalid BIS version number - must be numeric");
   }
 
@@ -221,21 +220,21 @@ public final class DocTypeRow extends AbstractModelRow
     ret.setAttribute (VALUE, m_sValue);
     ret.setAttribute (INITIAL_RELEASE, m_sInitialRelease);
     ret.setAttribute (STATE, m_eState.getID ());
-    if (StringHelper.hasText (m_sDeprecationRelease))
+    if (StringHelper.isNotEmpty (m_sDeprecationRelease))
       ret.setAttribute (DEPRECATION_RELEASE, m_sDeprecationRelease);
     if (m_aRemovalDate != null)
       ret.setAttribute (REMOVAL_DATE, PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
-    if (StringHelper.hasText (m_sComment))
-      ret.appendElement (COMMENT).appendText (m_sComment);
+    if (StringHelper.isNotEmpty (m_sComment))
+      ret.addElement (COMMENT).addText (m_sComment);
     ret.setAttribute (ABSTRACT, m_bAbstract);
     ret.setAttribute (ISSUED_BY_OPENPEPPOL, m_bIssuedByOpenPeppol);
     ret.setAttribute (BIS_VERSION, m_sBISVersion);
-    if (StringHelper.hasText (m_sDomainCommunity))
+    if (StringHelper.isNotEmpty (m_sDomainCommunity))
       ret.setAttribute (DOMAIN_COMMUNITY, m_sDomainCommunity);
     ret.setAttribute (CATEGORY, m_sCategory);
     for (final IProcessIdentifier aProcID : m_aProcessIDs)
     {
-      ret.appendElement (PROCESS_ID_ONE)
+      ret.addElement (PROCESS_ID_ONE)
          .setAttribute (SCHEME, aProcID.getScheme ())
          .setAttribute (VALUE, aProcID.getValue ());
     }
@@ -251,24 +250,24 @@ public final class DocTypeRow extends AbstractModelRow
     ret.add (VALUE, m_sValue);
     ret.add (INITIAL_RELEASE, m_sInitialRelease);
     ret.add (STATE, m_eState.getID ());
-    if (StringHelper.hasText (m_sDeprecationRelease))
+    if (StringHelper.isNotEmpty (m_sDeprecationRelease))
       ret.add (DEPRECATION_RELEASE, m_sDeprecationRelease);
     if (m_aRemovalDate != null)
       ret.add (REMOVAL_DATE, PDTWebDateHelper.getAsStringXSD (m_aRemovalDate));
-    if (StringHelper.hasText (m_sComment))
+    if (StringHelper.isNotEmpty (m_sComment))
       ret.add (COMMENT, m_sComment);
     ret.add (ABSTRACT, m_bAbstract);
     ret.add (ISSUED_BY_OPENPEPPOL, m_bIssuedByOpenPeppol);
-    if (StringHelper.hasText (m_sBISVersion))
+    if (StringHelper.isNotEmpty (m_sBISVersion))
       ret.add (BIS_VERSION, m_sBISVersion);
-    if (StringHelper.hasText (m_sDomainCommunity))
+    if (StringHelper.isNotEmpty (m_sDomainCommunity))
       ret.add (DOMAIN_COMMUNITY, m_sDomainCommunity);
     ret.add (CATEGORY, m_sCategory);
     {
       final IJsonArray aProcIDs = new JsonArray ();
       for (final IProcessIdentifier aProcID : m_aProcessIDs)
         aProcIDs.add (new JsonObject ().add (SCHEME, aProcID.getScheme ()).add (VALUE, aProcID.getValue ()));
-      ret.addJson (PROCESS_ID_MANY, aProcIDs);
+      ret.add (PROCESS_ID_MANY, aProcIDs);
     }
     return ret;
   }
@@ -392,7 +391,7 @@ public final class DocTypeRow extends AbstractModelRow
     int nIndex = 0;
     final DocTypeRow ret = new DocTypeRow ();
     ret.m_sName = aRow[nIndex++];
-    if (StringHelper.hasNoText (ret.m_sName))
+    if (StringHelper.isEmpty (ret.m_sName))
       throw new IllegalStateException ("Empty name is not allowed");
     ret.m_sScheme = aRow[nIndex++];
     ret.m_sValue = aRow[nIndex++];

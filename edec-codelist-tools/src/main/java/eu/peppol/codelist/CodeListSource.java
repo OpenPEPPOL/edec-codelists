@@ -18,18 +18,18 @@ package eu.peppol.codelist;
 import java.io.File;
 import java.io.IOException;
 
-import javax.annotation.Nonnull;
-
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.helger.commons.ValueEnforcer;
-import com.helger.commons.functional.IThrowingConsumer;
-import com.helger.commons.io.resource.FileSystemResource;
-import com.helger.commons.io.resource.IReadableResource;
+import com.helger.base.enforce.ValueEnforcer;
+import com.helger.base.functional.IThrowingConsumer;
+import com.helger.io.resource.FileSystemResource;
+import com.helger.io.resource.IReadableResource;
+
+import jakarta.annotation.Nonnull;
 
 /**
  * Represent a single CodeList Excel source file. Uses the version from "work in

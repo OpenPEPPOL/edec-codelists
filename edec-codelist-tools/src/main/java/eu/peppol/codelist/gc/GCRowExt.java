@@ -15,13 +15,13 @@
  */
 package eu.peppol.codelist.gc;
 
-import javax.annotation.Nonnull;
-
-import com.helger.commons.string.StringHelper;
+import com.helger.base.string.StringHelper;
 import com.helger.genericode.Genericode10Helper;
 import com.helger.genericode.v10.ColumnSet;
 import com.helger.genericode.v10.Row;
 import com.helger.genericode.v10.Value;
+
+import jakarta.annotation.Nonnull;
 
 public final class GCRowExt extends Row
 {
@@ -34,7 +34,7 @@ public final class GCRowExt extends Row
 
   public void add (final String sColumnID, final String sValue)
   {
-    if (StringHelper.hasText (sValue))
+    if (StringHelper.isNotEmpty (sValue))
     {
       // Create a single value in the current row
       final Value aValue = new Value ();

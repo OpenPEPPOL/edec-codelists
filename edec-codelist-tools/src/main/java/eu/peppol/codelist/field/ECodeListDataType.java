@@ -15,9 +15,9 @@
  */
 package eu.peppol.codelist.field;
 
-import javax.annotation.Nonnull;
+import com.helger.annotation.Nonempty;
 
-import com.helger.commons.annotation.Nonempty;
+import jakarta.annotation.Nonnull;
 
 /**
  * Defines the data type for a source column

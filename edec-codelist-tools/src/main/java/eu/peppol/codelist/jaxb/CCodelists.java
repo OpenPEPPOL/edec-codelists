@@ -15,7 +15,7 @@
  */
 package eu.peppol.codelist.jaxb;
 
-import com.helger.commons.io.resource.ClassPathResource;
+import com.helger.io.resource.ClassPathResource;
 
 final class CCodelists
 {

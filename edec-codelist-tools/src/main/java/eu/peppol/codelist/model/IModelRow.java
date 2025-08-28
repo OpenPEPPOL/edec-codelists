@@ -15,14 +15,14 @@
  */
 package eu.peppol.codelist.model;
 
-import javax.annotation.Nonnull;
-
-import com.helger.commons.annotation.Nonempty;
+import com.helger.annotation.Nonempty;
 import com.helger.genericode.v10.ColumnSet;
 import com.helger.genericode.v10.Row;
 import com.helger.html.hc.html.tabular.HCRow;
 import com.helger.json.IJsonObject;
 import com.helger.xml.microdom.IMicroElement;
+
+import jakarta.annotation.Nonnull;
 
 /**
  * Base interface for a single item in a code list.

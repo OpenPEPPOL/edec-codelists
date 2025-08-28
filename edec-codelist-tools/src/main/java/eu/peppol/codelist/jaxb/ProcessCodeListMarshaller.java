@@ -15,7 +15,7 @@
  */
 package eu.peppol.codelist.jaxb;
 
-import com.helger.commons.collection.impl.CommonsArrayList;
+import com.helger.collection.commons.CommonsArrayList;
 import com.helger.jaxb.GenericJAXBMarshaller;
 
 public class ProcessCodeListMarshaller extends GenericJAXBMarshaller <ProcessesType>

@@ -17,10 +17,9 @@ package eu.peppol.codelist.gc;
 
 import java.net.URI;
 
-import javax.annotation.Nonnull;
 import javax.xml.namespace.QName;
 
-import com.helger.commons.version.Version;
+import com.helger.base.version.Version;
 import com.helger.genericode.Genericode10Helper;
 import com.helger.genericode.v10.Annotation;
 import com.helger.genericode.v10.AnyOtherContent;
@@ -34,6 +33,7 @@ import com.helger.genericode.v10.UseType;
 
 import eu.peppol.codelist.AbstractCodeListConverter;
 import eu.peppol.codelist.field.ECodeListDataType;
+import jakarta.annotation.Nonnull;
 import jakarta.xml.bind.JAXBElement;
 
 public class GCHelper

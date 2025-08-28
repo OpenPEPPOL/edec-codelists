@@ -15,16 +15,17 @@
  */
 package eu.peppol.codelist.model;
 
-import javax.annotation.Nonnull;
-import javax.annotation.concurrent.Immutable;
-
-import com.helger.commons.collection.impl.CommonsArrayList;
-import com.helger.commons.collection.impl.ICommonsList;
-import com.helger.commons.string.StringHelper;
+import com.helger.annotation.concurrent.Immutable;
+import com.helger.base.string.StringHelper;
+import com.helger.base.string.StringReplace;
+import com.helger.collection.commons.CommonsArrayList;
+import com.helger.collection.commons.ICommonsList;
 import com.helger.html.css.DefaultCSSClassProvider;
 import com.helger.html.css.ICSSClassProvider;
 import com.helger.peppolid.IProcessIdentifier;
 import com.helger.peppolid.factory.PeppolIdentifierFactory;
+
+import jakarta.annotation.Nonnull;
 
 @Immutable
 public final class ModelHelper
@@ -46,7 +47,7 @@ public final class ModelHelper
 
   static boolean parseBoolean (final String s, final boolean bFallback)
   {
-    if (StringHelper.hasText (s))
+    if (StringHelper.isNotEmpty (s))
       return "1".equals (s) || "true".equalsIgnoreCase (s) || "yes".equalsIgnoreCase (s);
     return bFallback;
   }
@@ -70,10 +71,10 @@ public final class ModelHelper
   static ICommonsList <IProcessIdentifier> getAllProcessIDsFromMultilineString (@Nonnull final String sProcessIDs)
   {
     final ICommonsList <IProcessIdentifier> ret = new CommonsArrayList <> ();
-    for (final String s : StringHelper.getExploded ('\n', StringHelper.replaceAll (sProcessIDs, '\r', '\n')))
+    for (final String s : StringHelper.getExploded ('\n', StringReplace.replaceAll (sProcessIDs, '\r', '\n')))
     {
       final String sProcessID = s.trim ();
-      if (StringHelper.hasNoText (sProcessID))
+      if (StringHelper.isEmpty (sProcessID))
         throw new IllegalStateException ("Found empty process ID in '" + sProcessIDs + "'");
       final IProcessIdentifier aProcID = PeppolIdentifierFactory.INSTANCE.parseProcessIdentifier (sProcessID);
       if (aProcID == null)

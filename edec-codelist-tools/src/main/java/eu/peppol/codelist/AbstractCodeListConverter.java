@@ -22,20 +22,14 @@ import java.nio.charset.StandardCharsets;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-import javax.annotation.Nonnull;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.helger.commons.ValueEnforcer;
-import com.helger.commons.annotation.Nonempty;
-import com.helger.commons.collection.impl.ICommonsList;
-import com.helger.commons.io.file.FileHelper;
-import com.helger.commons.io.file.FileOperationManager;
-import com.helger.commons.io.file.SimpleFileIO;
-import com.helger.commons.io.stream.NonBlockingBufferedOutputStream;
-import com.helger.commons.url.SimpleURL;
-import com.helger.commons.version.Version;
+import com.helger.annotation.Nonempty;
+import com.helger.base.enforce.ValueEnforcer;
+import com.helger.base.io.nonblocking.NonBlockingBufferedOutputStream;
+import com.helger.base.version.Version;
+import com.helger.collection.commons.ICommonsList;
 import com.helger.genericode.CGenericode;
 import com.helger.genericode.Genericode10CodeListMarshaller;
 import com.helger.genericode.v10.CodeListDocument;
@@ -58,11 +52,15 @@ import com.helger.html.hc.html.textlevel.HCA;
 import com.helger.html.hc.html.textlevel.HCEM;
 import com.helger.html.hc.render.HCRenderer;
 import com.helger.html.js.UnparsedJSCodeProvider;
+import com.helger.io.file.FileHelper;
+import com.helger.io.file.FileOperationManager;
+import com.helger.io.file.SimpleFileIO;
 import com.helger.json.IJsonObject;
 import com.helger.json.JsonArray;
 import com.helger.json.JsonObject;
 import com.helger.json.serialize.JsonWriter;
 import com.helger.json.serialize.JsonWriterSettings;
+import com.helger.url.SimpleURL;
 import com.helger.xml.microdom.IMicroDocument;
 import com.helger.xml.microdom.IMicroElement;
 import com.helger.xml.microdom.IMicroNode;
@@ -74,6 +72,7 @@ import com.helger.xml.serialize.write.EXMLSerializeIndent;
 import eu.peppol.codelist.gc.GCHelper;
 import eu.peppol.codelist.model.IModelRow;
 import eu.peppol.codelist.model.ModelHelper;
+import jakarta.annotation.Nonnull;
 
 /**
  * Abstract base processor containing only version independent stuff.
@@ -157,12 +156,12 @@ public abstract class AbstractCodeListConverter
                                                             final String sRootElementName)
   {
     final IMicroDocument aDoc = new MicroDocument ();
-    aDoc.appendComment (DO_NOT_EDIT);
-    final IMicroElement eRoot = aDoc.appendElement (sRootElementName);
+    aDoc.addComment (DO_NOT_EDIT);
+    final IMicroElement eRoot = aDoc.addElement (sRootElementName);
     eRoot.setAttribute ("version", m_aCodeListVersion.getAsString ());
     eRoot.setAttribute ("entry-count", aRows.size ());
     for (final T aRow : aRows)
-      eRoot.appendChild (aRow.getAsElement ());
+      eRoot.addChild (aRow.getAsElement ());
     _writeXMLFile (aDoc, sCodeListName);
   }
 
@@ -189,7 +188,7 @@ public abstract class AbstractCodeListConverter
     final IJsonObject aJson = new JsonObject ();
     aJson.add ("version", m_aCodeListVersion.getAsString ());
     aJson.add ("entry-count", aRows.size ());
-    aJson.addJson ("values", new JsonArray ().addAllMapped (aRows, T::getAsJson));
+    aJson.add ("values", new JsonArray ().addAllMapped (aRows, T::getAsJson));
     _writeJsonFile (aJson, sCodeListName);
   }
 
