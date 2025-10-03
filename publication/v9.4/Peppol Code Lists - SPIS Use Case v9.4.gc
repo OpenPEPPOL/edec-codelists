@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gc:CodeList xmlns:gc="http://docs.oasis-open.org/codelist/ns/genericode/1.0/" xmlns="">
+  <Annotation>
+    <AppInfo>
+      <ext:info xmlns:ext="urn:peppol.eu:codelist:gc-annotation">This is an OpenPeppol eDEC Code List.
+Official source: https://docs.peppol.eu/edelivery/codelists/
+
+This file was automatically generated.
+Do NOT edit!</ext:info>
+    </AppInfo>
+  </Annotation>
+  <Identification>
+    <ShortName>Peppol Code Lists - SPIS Use Case</ShortName>
+    <Version>9.4</Version>
+    <CanonicalUri>urn:peppol.eu:names:identifier:spis-use-case</CanonicalUri>
+    <CanonicalVersionUri>urn:peppol.eu:names:identifier:spis-use-case9.4</CanonicalVersionUri>
+  </Identification>
+  <ColumnSet>
+    <Column Id="use-case-id" Use="required">
+      <ShortName>Use Case ID</ShortName>
+      <Data Type="string" />
+    </Column>
+    <Column Id="initial-release" Use="required">
+      <ShortName>Initial release</ShortName>
+      <Data Type="string" />
+    </Column>
+    <Column Id="state" Use="required">
+      <ShortName>State</ShortName>
+      <Data Type="string" />
+    </Column>
+    <Column Id="deprecation-release" Use="optional">
+      <ShortName>Deprecation release</ShortName>
+      <Data Type="string" />
+    </Column>
+    <Column Id="removal-date" Use="optional">
+      <ShortName>Removal date</ShortName>
+      <Data Type="date" />
+    </Column>
+    <Column Id="comment" Use="optional">
+      <ShortName>Comment</ShortName>
+      <Data Type="string" />
+    </Column>
+  </ColumnSet>
+  <SimpleCodeList>
+    <Row>
+      <Value ColumnRef="use-case-id">
+        <SimpleValue>MLS</SimpleValue>
+      </Value>
+      <Value ColumnRef="initial-release">
+        <SimpleValue>9.4</SimpleValue>
+      </Value>
+      <Value ColumnRef="state">
+        <SimpleValue>active</SimpleValue>
+      </Value>
+      <Value ColumnRef="comment">
+        <SimpleValue>TICC-410</SimpleValue>
+      </Value>
+    </Row>
+  </SimpleCodeList>
+</gc:CodeList>

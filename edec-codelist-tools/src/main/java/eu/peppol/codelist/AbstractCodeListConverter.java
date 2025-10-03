@@ -239,8 +239,8 @@ public abstract class AbstractCodeListConverter
     aCont.addChild (new HCDiv ().addChild (new HCDiv ().addChild ("Version " +
                                                                   m_aCodeListVersion.getAsString () +
                                                                   " with " +
-                                                                  aRows.size () +
-                                                                  " entries"))
+                                                                  (aRows.size () == 1 ? "1 entry" : aRows.size () +
+                                                                                                    " entries")))
                                 .addChild (bHasDeprecated ? new HCDiv ().addChild ("Info: the " +
                                                                                    nDeprecatedRows +
                                                                                    " yellow rows are the ones that contain deprecated entries")

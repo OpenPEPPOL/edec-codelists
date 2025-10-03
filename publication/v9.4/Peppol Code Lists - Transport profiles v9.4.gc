@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gc:CodeList xmlns:gc="http://docs.oasis-open.org/codelist/ns/genericode/1.0/" xmlns="">
+  <Annotation>
+    <AppInfo>
+      <ext:info xmlns:ext="urn:peppol.eu:codelist:gc-annotation">This is an OpenPeppol eDEC Code List.
+Official source: https://docs.peppol.eu/edelivery/codelists/
+
+This file was automatically generated.
+Do NOT edit!</ext:info>
+    </AppInfo>
+  </Annotation>
+  <Identification>
+    <ShortName>Peppol Code Lists - Transport profiles</ShortName>
+    <Version>9.4</Version>
+    <CanonicalUri>urn:peppol.eu:names:identifier:transport-profile</CanonicalUri>
+    <CanonicalVersionUri>urn:peppol.eu:names:identifier:transport-profile9.4</CanonicalVersionUri>
+  </Identification>
+  <ColumnSet>
+    <Column Id="protocol" Use="required">
+      <ShortName>Protocol</ShortName>
+      <Data Type="string" />
+    </Column>
+    <Column Id="profile-version" Use="required">
+      <ShortName>Profile Version</ShortName>
+      <Data Type="string" />
+    </Column>
+    <Column Id="profile-id" Use="required">
+      <ShortName>Profile ID</ShortName>
+      <Data Type="string" />
+    </Column>
+    <Column Id="initial-release" Use="required">
+      <ShortName>Initial release</ShortName>
+      <Data Type="string" />
+    </Column>
+    <Column Id="state" Use="required">
+      <ShortName>State</ShortName>
+      <Data Type="string" />
+    </Column>
+    <Column Id="deprecation-release" Use="optional">
+      <ShortName>Deprecation release</ShortName>
+      <Data Type="string" />
+    </Column>
+    <Column Id="removal-date" Use="optional">
+      <ShortName>Removal date</ShortName>
+      <Data Type="date" />
+    </Column>
+    <Column Id="comment" Use="optional">
+      <ShortName>Comment</ShortName>
+      <Data Type="string" />
+    </Column>
+    <Key Id="profile-idKey">
+      <ShortName>Profile ID</ShortName>
+      <ColumnRef Ref="profile-id" />
+    </Key>
+  </ColumnSet>
+  <SimpleCodeList>
+    <Row>
+      <Value ColumnRef="protocol">
+        <SimpleValue>START</SimpleValue>
+      </Value>
+      <Value ColumnRef="profile-version">
+        <SimpleValue>1.0.1</SimpleValue>
+      </Value>
+      <Value ColumnRef="profile-id">
+        <SimpleValue>busdox-transport-start</SimpleValue>
+      </Value>
+      <Value ColumnRef="initial-release">
+        <SimpleValue>1.0.0</SimpleValue>
+      </Value>
+      <Value ColumnRef="state">
+        <SimpleValue>removed</SimpleValue>
+      </Value>
+      <Value ColumnRef="deprecation-release">
+        <SimpleValue>1.0.0</SimpleValue>
+      </Value>
+      <Value ColumnRef="removal-date">
+        <SimpleValue>2023-09-06</SimpleValue>
+      </Value>
+      <Value ColumnRef="comment">
+        <SimpleValue>TICC-248</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="protocol">
+        <SimpleValue>AS2</SimpleValue>
+      </Value>
+      <Value ColumnRef="profile-version">
+        <SimpleValue>1.0</SimpleValue>
+      </Value>
+      <Value ColumnRef="profile-id">
+        <SimpleValue>busdox-transport-as2-ver1p0</SimpleValue>
+      </Value>
+      <Value ColumnRef="initial-release">
+        <SimpleValue>1.0.0</SimpleValue>
+      </Value>
+      <Value ColumnRef="state">
+        <SimpleValue>removed</SimpleValue>
+      </Value>
+      <Value ColumnRef="deprecation-release">
+        <SimpleValue>7</SimpleValue>
+      </Value>
+      <Value ColumnRef="removal-date">
+        <SimpleValue>2023-09-06</SimpleValue>
+      </Value>
+      <Value ColumnRef="comment">
+        <SimpleValue>TICC-249</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="protocol">
+        <SimpleValue>AS4</SimpleValue>
+      </Value>
+      <Value ColumnRef="profile-version">
+        <SimpleValue>1.0</SimpleValue>
+      </Value>
+      <Value ColumnRef="profile-id">
+        <SimpleValue>peppol-transport-as4-v1_0</SimpleValue>
+      </Value>
+      <Value ColumnRef="initial-release">
+        <SimpleValue>2</SimpleValue>
+      </Value>
+      <Value ColumnRef="state">
+        <SimpleValue>removed</SimpleValue>
+      </Value>
+      <Value ColumnRef="deprecation-release">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+      <Value ColumnRef="removal-date">
+        <SimpleValue>2023-09-06</SimpleValue>
+      </Value>
+      <Value ColumnRef="comment">
+        <SimpleValue>TICC-248</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="protocol">
+        <SimpleValue>AS4</SimpleValue>
+      </Value>
+      <Value ColumnRef="profile-version">
+        <SimpleValue>2.0</SimpleValue>
+      </Value>
+      <Value ColumnRef="profile-id">
+        <SimpleValue>peppol-transport-as4-v2_0</SimpleValue>
+      </Value>
+      <Value ColumnRef="initial-release">
+        <SimpleValue>3</SimpleValue>
+      </Value>
+      <Value ColumnRef="state">
+        <SimpleValue>active</SimpleValue>
+      </Value>
+    </Row>
+    <Row>
+      <Value ColumnRef="protocol">
+        <SimpleValue>AS2</SimpleValue>
+      </Value>
+      <Value ColumnRef="profile-version">
+        <SimpleValue>2.0</SimpleValue>
+      </Value>
+      <Value ColumnRef="profile-id">
+        <SimpleValue>busdox-transport-as2-ver2p0</SimpleValue>
+      </Value>
+      <Value ColumnRef="initial-release">
+        <SimpleValue>5</SimpleValue>
+      </Value>
+      <Value ColumnRef="state">
+        <SimpleValue>removed</SimpleValue>
+      </Value>
+      <Value ColumnRef="deprecation-release">
+        <SimpleValue>8.4</SimpleValue>
+      </Value>
+      <Value ColumnRef="removal-date">
+        <SimpleValue>2023-09-06</SimpleValue>
+      </Value>
+      <Value ColumnRef="comment">
+        <SimpleValue>TICC-249</SimpleValue>
+      </Value>
+    </Row>
+  </SimpleCodeList>
+</gc:CodeList>

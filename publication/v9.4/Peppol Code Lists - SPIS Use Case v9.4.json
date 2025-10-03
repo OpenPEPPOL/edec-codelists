@@ -1,0 +1,12 @@
+{
+  "version":"9.4",
+  "entry-count":1,
+  "values":[
+    {
+      "use-case-id":"MLS",
+      "initial-release":"9.4",
+      "state":"active",
+      "comment":"TICC-410"
+    }
+  ]
+}
