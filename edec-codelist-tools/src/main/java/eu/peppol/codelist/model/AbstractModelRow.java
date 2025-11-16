@@ -19,11 +19,13 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 
+import org.jspecify.annotations.Nullable;
+
 import com.helger.base.string.StringHelper;
 import com.helger.base.string.StringParser;
 import com.helger.datetime.helper.PDTFactory;
 
-import jakarta.annotation.Nullable;
+
 
 public abstract class AbstractModelRow implements IModelRow
 {

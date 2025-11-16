@@ -15,19 +15,19 @@
  */
 package eu.peppol.codelist.gc;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.base.string.StringHelper;
 import com.helger.genericode.Genericode10Helper;
 import com.helger.genericode.v10.ColumnSet;
 import com.helger.genericode.v10.Row;
 import com.helger.genericode.v10.Value;
 
-import jakarta.annotation.Nonnull;
-
 public final class GCRowExt extends Row
 {
   private final ColumnSet m_aColumnSet;
 
-  public GCRowExt (@Nonnull final ColumnSet aColumnSet)
+  public GCRowExt (@NonNull final ColumnSet aColumnSet)
   {
     m_aColumnSet = aColumnSet;
   }

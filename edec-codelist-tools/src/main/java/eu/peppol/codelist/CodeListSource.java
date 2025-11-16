@@ -21,6 +21,7 @@ import java.io.IOException;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,8 +29,6 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.base.functional.IThrowingConsumer;
 import com.helger.io.resource.FileSystemResource;
 import com.helger.io.resource.IReadableResource;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Represent a single CodeList Excel source file. Uses the version from "work in
@@ -44,9 +43,9 @@ public final class CodeListSource
   private final File m_aFile;
   private final IThrowingConsumer <? super Sheet, Exception> m_aHandler;
 
-  public CodeListSource (@Nonnull final String sFilenamePart,
-                         @Nonnull final String sFilenameVersion,
-                         @Nonnull final IThrowingConsumer <? super Sheet, Exception> aHandler) throws IOException
+  public CodeListSource (@NonNull final String sFilenamePart,
+                         @NonNull final String sFilenameVersion,
+                         @NonNull final IThrowingConsumer <? super Sheet, Exception> aHandler) throws IOException
   {
     m_aFile = new File ("../work-in-progress/Peppol Code Lists - " +
                         sFilenamePart +

@@ -22,6 +22,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -72,7 +73,6 @@ import com.helger.xml.serialize.write.EXMLSerializeIndent;
 import eu.peppol.codelist.gc.GCHelper;
 import eu.peppol.codelist.model.IModelRow;
 import eu.peppol.codelist.model.ModelHelper;
-import jakarta.annotation.Nonnull;
 
 /**
  * Abstract base processor containing only version independent stuff.
@@ -92,9 +92,9 @@ public abstract class AbstractCodeListConverter
   private final File m_aResultDir;
   private final String m_sFilenameSuffix;
 
-  protected AbstractCodeListConverter (@Nonnull final Version aCodeListVersion,
-                                       @Nonnull @Nonempty final String sResultDir,
-                                       @Nonnull final String sFilenameSuffix)
+  protected AbstractCodeListConverter (@NonNull final Version aCodeListVersion,
+                                       @NonNull @Nonempty final String sResultDir,
+                                       @NonNull final String sFilenameSuffix)
   {
     ValueEnforcer.notNull (aCodeListVersion, "CodeListVersion");
     ValueEnforcer.notEmpty (sResultDir, "ResultDir");
@@ -115,7 +115,7 @@ public abstract class AbstractCodeListConverter
    * @param sBasename
    *        The filename to write to, relative to the result directory, no extension.
    */
-  private void _writeGenericodeFile (@Nonnull final CodeListDocument aCodeList, @Nonnull final String sBasename)
+  private void _writeGenericodeFile (@NonNull final CodeListDocument aCodeList, @NonNull final String sBasename)
   {
     final MapBasedNamespaceContext aNsCtx = new MapBasedNamespaceContext ();
     aNsCtx.addMapping ("gc", CGenericode.GENERICODE_10_NAMESPACE_URI);
@@ -131,10 +131,10 @@ public abstract class AbstractCodeListConverter
     LOGGER.info ("Wrote Genericode file '" + aDstFile.getPath () + "'");
   }
 
-  protected final <T extends IModelRow> void createGenericodeFile (@Nonnull final ICommonsList <T> aRows,
-                                                                   @Nonnull final String sCodeListName,
-                                                                   @Nonnull final Consumer <CodeListDocument> aColumnProvider,
-                                                                   @Nonnull final URI sCodeListURI)
+  protected final <T extends IModelRow> void createGenericodeFile (@NonNull final ICommonsList <T> aRows,
+                                                                   @NonNull final String sCodeListName,
+                                                                   @NonNull final Consumer <CodeListDocument> aColumnProvider,
+                                                                   @NonNull final URI sCodeListURI)
   {
     final CodeListDocument aCodeList = GCHelper.createEmptyCodeList (sCodeListName, m_aCodeListVersion, sCodeListURI);
     aColumnProvider.accept (aCodeList);
@@ -143,7 +143,7 @@ public abstract class AbstractCodeListConverter
     _writeGenericodeFile (aCodeList, sCodeListName);
   }
 
-  private void _writeXMLFile (@Nonnull final IMicroNode aNode, @Nonnull final String sBasename)
+  private void _writeXMLFile (@NonNull final IMicroNode aNode, @NonNull final String sBasename)
   {
     final File aDstFile = new File (m_aResultDir, sBasename + m_sFilenameSuffix + ".xml");
     if (MicroWriter.writeToFile (aNode, aDstFile).isFailure ())
@@ -151,8 +151,8 @@ public abstract class AbstractCodeListConverter
     LOGGER.info ("Wrote XML file '" + aDstFile.getPath () + "'");
   }
 
-  protected final <T extends IModelRow> void createXMLFile (@Nonnull final ICommonsList <T> aRows,
-                                                            @Nonnull final String sCodeListName,
+  protected final <T extends IModelRow> void createXMLFile (@NonNull final ICommonsList <T> aRows,
+                                                            @NonNull final String sCodeListName,
                                                             final String sRootElementName)
   {
     final IMicroDocument aDoc = new MicroDocument ();
@@ -165,7 +165,7 @@ public abstract class AbstractCodeListConverter
     _writeXMLFile (aDoc, sCodeListName);
   }
 
-  private void _writeJsonFile (@Nonnull final IJsonObject aNode, @Nonnull final String sBasename)
+  private void _writeJsonFile (@NonNull final IJsonObject aNode, @NonNull final String sBasename)
   {
     final File aDstFile = new File (m_aResultDir, sBasename + m_sFilenameSuffix + ".json");
     try (final NonBlockingBufferedOutputStream aOS = FileHelper.getBufferedOutputStream (aDstFile))
@@ -182,8 +182,8 @@ public abstract class AbstractCodeListConverter
     LOGGER.info ("Wrote JSON file '" + aDstFile.getPath () + "'");
   }
 
-  protected final <T extends IModelRow> void createJsonFile (@Nonnull final ICommonsList <T> aRows,
-                                                             @Nonnull final String sCodeListName)
+  protected final <T extends IModelRow> void createJsonFile (@NonNull final ICommonsList <T> aRows,
+                                                             @NonNull final String sCodeListName)
   {
     final IJsonObject aJson = new JsonObject ();
     aJson.add ("version", m_aCodeListVersion.getAsString ());
@@ -192,7 +192,7 @@ public abstract class AbstractCodeListConverter
     _writeJsonFile (aJson, sCodeListName);
   }
 
-  private void _writeHtmlFile (@Nonnull final HCHtml aNode, @Nonnull final String sBasename)
+  private void _writeHtmlFile (@NonNull final HCHtml aNode, @NonNull final String sBasename)
   {
     final File aDstFile = new File (m_aResultDir, sBasename + m_sFilenameSuffix + ".html");
     final HCConversionSettings aConversionSettings = new HCConversionSettings (EHTMLVersion.HTML5);
@@ -204,9 +204,9 @@ public abstract class AbstractCodeListConverter
     LOGGER.info ("Wrote Html file '" + aDstFile.getPath () + "'");
   }
 
-  protected final <T extends IModelRow> void createHtmlFile (@Nonnull final ICommonsList <T> aRows,
-                                                             @Nonnull final String sCodeListName,
-                                                             @Nonnull final Supplier <HCRow> aHeaderRowProvider)
+  protected final <T extends IModelRow> void createHtmlFile (@NonNull final ICommonsList <T> aRows,
+                                                             @NonNull final String sCodeListName,
+                                                             @NonNull final Supplier <HCRow> aHeaderRowProvider)
   {
     // Add number column only if the amount of entries reaches a certain size
     final boolean bAddNumColumn = aRows.size () > 20;

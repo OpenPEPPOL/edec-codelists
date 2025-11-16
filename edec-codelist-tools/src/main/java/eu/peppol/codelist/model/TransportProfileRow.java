@@ -18,6 +18,8 @@ package eu.peppol.codelist.model;
 import java.net.URI;
 import java.time.LocalDate;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.Nonempty;
 import com.helger.base.string.StringHelper;
 import com.helger.base.url.URLHelper;
@@ -34,7 +36,6 @@ import com.helger.xml.microdom.MicroElement;
 import eu.peppol.codelist.field.ECodeListDataType;
 import eu.peppol.codelist.gc.GCHelper;
 import eu.peppol.codelist.gc.GCRowExt;
-import jakarta.annotation.Nonnull;
 
 /**
  * Single row of a transport profile in a code list version independent format.
@@ -70,13 +71,13 @@ public final class TransportProfileRow extends AbstractModelRow
   private LocalDate m_aRemovalDate;
   private String m_sComment;
 
-  @Nonnull
+  @NonNull
   public ERowState getState ()
   {
     return m_eState;
   }
 
-  @Nonnull
+  @NonNull
   @Nonempty
   public String getUniqueKey ()
   {
@@ -104,7 +105,7 @@ public final class TransportProfileRow extends AbstractModelRow
       throw new IllegalStateException ("Code list entry has state 'removed' but there is no Removal date set");
   }
 
-  @Nonnull
+  @NonNull
   public IMicroElement getAsElement ()
   {
     final IMicroElement ret = new MicroElement ("transport-profile");
@@ -122,7 +123,7 @@ public final class TransportProfileRow extends AbstractModelRow
     return ret;
   }
 
-  @Nonnull
+  @NonNull
   public IJsonObject getAsJson ()
   {
     final IJsonObject ret = new JsonObject ();
@@ -140,7 +141,7 @@ public final class TransportProfileRow extends AbstractModelRow
     return ret;
   }
 
-  public static void addGCColumns (@Nonnull final CodeListDocument aCLDoc)
+  public static void addGCColumns (@NonNull final CodeListDocument aCLDoc)
   {
     final ColumnSet aColumnSet = aCLDoc.getColumnSet ();
     GCHelper.addHeaderColumn (aColumnSet, PROTOCOL, false, true, "Protocol", ECodeListDataType.STRING);
@@ -158,8 +159,8 @@ public final class TransportProfileRow extends AbstractModelRow
     GCHelper.addHeaderColumn (aColumnSet, COMMENT, false, false, "Comment", ECodeListDataType.STRING);
   }
 
-  @Nonnull
-  public Row getAsGCRow (@Nonnull final ColumnSet aColumnSet)
+  @NonNull
+  public Row getAsGCRow (@NonNull final ColumnSet aColumnSet)
   {
     // Create Genericode row
     final GCRowExt ret = new GCRowExt (aColumnSet);
@@ -174,7 +175,7 @@ public final class TransportProfileRow extends AbstractModelRow
     return ret;
   }
 
-  @Nonnull
+  @NonNull
   public static HCRow getAsHtmlTableHeaderRow ()
   {
     final HCRow aRow = new HCRow (true);
@@ -189,7 +190,7 @@ public final class TransportProfileRow extends AbstractModelRow
     return aRow;
   }
 
-  @Nonnull
+  @NonNull
   public HCRow getAsHtmlTableBodyRow ()
   {
     final HCRow aRow = new HCRow ();
@@ -212,8 +213,8 @@ public final class TransportProfileRow extends AbstractModelRow
     return aRow;
   }
 
-  @Nonnull
-  public static TransportProfileRow createV9 (@Nonnull final String [] aRow)
+  @NonNull
+  public static TransportProfileRow createV9 (@NonNull final String [] aRow)
   {
     final TransportProfileRow ret = new TransportProfileRow ();
     ret.m_sProtcol = aRow[0];

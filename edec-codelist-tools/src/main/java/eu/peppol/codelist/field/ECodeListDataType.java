@@ -15,9 +15,9 @@
  */
 package eu.peppol.codelist.field;
 
-import com.helger.annotation.Nonempty;
+import org.jspecify.annotations.NonNull;
 
-import jakarta.annotation.Nonnull;
+import com.helger.annotation.Nonempty;
 
 /**
  * Defines the data type for a source column
@@ -33,12 +33,12 @@ public enum ECodeListDataType
 
   private final String m_sID;
 
-  ECodeListDataType (@Nonnull @Nonempty final String sID)
+  ECodeListDataType (@NonNull @Nonempty final String sID)
   {
     m_sID = sID;
   }
 
-  @Nonnull
+  @NonNull
   @Nonempty
   public String getID ()
   {

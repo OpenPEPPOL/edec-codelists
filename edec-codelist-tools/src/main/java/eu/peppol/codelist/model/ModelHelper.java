@@ -15,6 +15,8 @@
  */
 package eu.peppol.codelist.model;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.string.StringHelper;
 import com.helger.base.string.StringReplace;
@@ -24,8 +26,6 @@ import com.helger.html.css.DefaultCSSClassProvider;
 import com.helger.html.css.ICSSClassProvider;
 import com.helger.peppolid.IProcessIdentifier;
 import com.helger.peppolid.factory.PeppolIdentifierFactory;
-
-import jakarta.annotation.Nonnull;
 
 @Immutable
 public final class ModelHelper
@@ -67,8 +67,8 @@ public final class ModelHelper
     return parseBoolean (s, DEFAULT_ISSUED_BY_OPENPEPPOL);
   }
 
-  @Nonnull
-  static ICommonsList <IProcessIdentifier> getAllProcessIDsFromMultilineString (@Nonnull final String sProcessIDs)
+  @NonNull
+  static ICommonsList <IProcessIdentifier> getAllProcessIDsFromMultilineString (@NonNull final String sProcessIDs)
   {
     final ICommonsList <IProcessIdentifier> ret = new CommonsArrayList <> ();
     for (final String s : StringHelper.getExploded ('\n', StringReplace.replaceAll (sProcessIDs, '\r', '\n')))

@@ -18,6 +18,9 @@ package eu.peppol.codelist.model;
 import java.net.URI;
 import java.time.LocalDate;
 
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
+
 import com.helger.annotation.Nonempty;
 import com.helger.base.string.StringHelper;
 import com.helger.base.string.StringParser;
@@ -47,8 +50,7 @@ import com.helger.xml.microdom.MicroElement;
 import eu.peppol.codelist.field.ECodeListDataType;
 import eu.peppol.codelist.gc.GCHelper;
 import eu.peppol.codelist.gc.GCRowExt;
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
+
 
 /**
  * Single row of a document type in a code list version independent format.
@@ -105,13 +107,13 @@ public final class DocTypeRow extends AbstractModelRow
     return m_aProcessIDs;
   }
 
-  @Nonnull
+  @NonNull
   public ERowState getState ()
   {
     return m_eState;
   }
 
-  @Nonnull
+  @NonNull
   @Nonempty
   public String getUniqueKey ()
   {
@@ -211,7 +213,7 @@ public final class DocTypeRow extends AbstractModelRow
       throw new IllegalStateException ("Code list entry has an invalid BIS version number - must be numeric");
   }
 
-  @Nonnull
+  @NonNull
   public IMicroElement getAsElement ()
   {
     final IMicroElement ret = new MicroElement ("document-type");
@@ -241,7 +243,7 @@ public final class DocTypeRow extends AbstractModelRow
     return ret;
   }
 
-  @Nonnull
+  @NonNull
   public IJsonObject getAsJson ()
   {
     final IJsonObject ret = new JsonObject ();
@@ -272,7 +274,7 @@ public final class DocTypeRow extends AbstractModelRow
     return ret;
   }
 
-  public static void addGCColumns (@Nonnull final CodeListDocument aCLDoc)
+  public static void addGCColumns (@NonNull final CodeListDocument aCLDoc)
   {
     final ColumnSet aColumnSet = aCLDoc.getColumnSet ();
     GCHelper.addHeaderColumn (aColumnSet, NAME, false, true, "Name", ECodeListDataType.STRING);
@@ -316,8 +318,8 @@ public final class DocTypeRow extends AbstractModelRow
                               ECodeListDataType.STRING);
   }
 
-  @Nonnull
-  public Row getAsGCRow (@Nonnull final ColumnSet aColumnSet)
+  @NonNull
+  public Row getAsGCRow (@NonNull final ColumnSet aColumnSet)
   {
     // Create Genericode row
     final GCRowExt ret = new GCRowExt (aColumnSet);
@@ -338,7 +340,7 @@ public final class DocTypeRow extends AbstractModelRow
     return ret;
   }
 
-  @Nonnull
+  @NonNull
   public static HCRow getAsHtmlTableHeaderRow ()
   {
     final HCRow aRow = new HCRow (true);
@@ -359,7 +361,7 @@ public final class DocTypeRow extends AbstractModelRow
     return aRow;
   }
 
-  @Nonnull
+  @NonNull
   public HCRow getAsHtmlTableBodyRow ()
   {
     final HCRow aRow = new HCRow ();
@@ -385,8 +387,8 @@ public final class DocTypeRow extends AbstractModelRow
     return aRow;
   }
 
-  @Nonnull
-  public static DocTypeRow createV9 (@Nonnull final String [] aRow)
+  @NonNull
+  public static DocTypeRow createV9 (@NonNull final String [] aRow)
   {
     int nIndex = 0;
     final DocTypeRow ret = new DocTypeRow ();

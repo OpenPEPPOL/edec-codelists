@@ -19,6 +19,7 @@ import java.util.function.Function;
 
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,8 +32,6 @@ import com.helger.collection.commons.ICommonsList;
 import com.helger.collection.iterator.ArrayIterator;
 import com.helger.peppolid.IProcessIdentifier;
 import com.helger.poi.excel.ExcelReadHelper;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Read an Excel into memory
@@ -47,7 +46,7 @@ public class InMemoryXLSX
   private final ICommonsList <String []> m_aPayload;
 
   // Payload may be empty for new code lists
-  protected InMemoryXLSX (@Nonnull final String [] aShortNames, @Nonnull final ICommonsList <String []> aPayload)
+  protected InMemoryXLSX (@NonNull final String [] aShortNames, @NonNull final ICommonsList <String []> aPayload)
   {
     ValueEnforcer.notEmptyNoNullValue (aShortNames, "ShortNames");
     ValueEnforcer.noNullValue (aPayload, "Payload");
@@ -55,27 +54,27 @@ public class InMemoryXLSX
     m_aPayload = aPayload;
   }
 
-  @Nonnull
+  @NonNull
   public Iterable <String> getShortNames ()
   {
     return new ArrayIterator <> (m_aShortNames);
   }
 
-  @Nonnull
+  @NonNull
   public Iterable <String []> getPayload ()
   {
     return m_aPayload;
   }
 
-  @Nonnull
+  @NonNull
   @ReturnsMutableCopy
-  public <T> ICommonsList <T> getAsList (@Nonnull final Function <String [], T> aProvider)
+  public <T> ICommonsList <T> getAsList (@NonNull final Function <String [], T> aProvider)
   {
     return new CommonsArrayList <> (m_aPayload, aProvider);
   }
 
-  @Nonnull
-  public static InMemoryXLSX read (@Nonnull final Sheet aExcelSheet, @Nonnegative final int nColumnCount)
+  @NonNull
+  public static InMemoryXLSX read (@NonNull final Sheet aExcelSheet, @Nonnegative final int nColumnCount)
   {
     final String [] aShortNameRowData = new String [nColumnCount];
 
@@ -116,8 +115,8 @@ public class InMemoryXLSX
     return new InMemoryXLSX (aShortNameRowData, aPayload);
   }
 
-  @Nonnull
-  public static InMemoryXLSX createForProcessIDs (@Nonnull final ICommonsList <IProcessIdentifier> aProcIDs)
+  @NonNull
+  public static InMemoryXLSX createForProcessIDs (@NonNull final ICommonsList <IProcessIdentifier> aProcIDs)
   {
     final ICommonsList <String []> aPayload = new CommonsArrayList <> (aProcIDs.size ());
     for (final IProcessIdentifier aItem : aProcIDs)

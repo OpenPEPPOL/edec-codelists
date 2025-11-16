@@ -18,6 +18,8 @@ package eu.peppol.codelist.model;
 import java.net.URI;
 import java.time.LocalDate;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.Nonempty;
 import com.helger.base.string.StringHelper;
 import com.helger.base.url.URLHelper;
@@ -34,7 +36,6 @@ import com.helger.xml.microdom.MicroElement;
 import eu.peppol.codelist.field.ECodeListDataType;
 import eu.peppol.codelist.gc.GCHelper;
 import eu.peppol.codelist.gc.GCRowExt;
-import jakarta.annotation.Nonnull;
 
 /**
  * Single row of a SPIS Use Case in a code list version independent format.
@@ -62,7 +63,7 @@ public final class SPISUseCaseRow extends AbstractModelRow
   private LocalDate m_aRemovalDate;
   private String m_sComment;
 
-  @Nonnull
+  @NonNull
   public ERowState getState ()
   {
     return m_eState;
@@ -91,7 +92,7 @@ public final class SPISUseCaseRow extends AbstractModelRow
       throw new IllegalStateException ("Code list entry has state 'removed' but there is no Removal date set");
   }
 
-  @Nonnull
+  @NonNull
   public IMicroElement getAsElement ()
   {
     // Must differ from root element
@@ -108,7 +109,7 @@ public final class SPISUseCaseRow extends AbstractModelRow
     return ret;
   }
 
-  @Nonnull
+  @NonNull
   public IJsonObject getAsJson ()
   {
     final IJsonObject ret = new JsonObject ();
@@ -124,7 +125,7 @@ public final class SPISUseCaseRow extends AbstractModelRow
     return ret;
   }
 
-  public static void addGCColumns (@Nonnull final CodeListDocument aCLDoc)
+  public static void addGCColumns (@NonNull final CodeListDocument aCLDoc)
   {
     final ColumnSet aColumnSet = aCLDoc.getColumnSet ();
     GCHelper.addHeaderColumn (aColumnSet, USE_CASE_ID, false, true, "Use Case ID", ECodeListDataType.STRING);
@@ -140,8 +141,8 @@ public final class SPISUseCaseRow extends AbstractModelRow
     GCHelper.addHeaderColumn (aColumnSet, COMMENT, false, false, "Comment", ECodeListDataType.STRING);
   }
 
-  @Nonnull
-  public Row getAsGCRow (@Nonnull final ColumnSet aColumnSet)
+  @NonNull
+  public Row getAsGCRow (@NonNull final ColumnSet aColumnSet)
   {
     // Create Genericode row
     final GCRowExt ret = new GCRowExt (aColumnSet);
@@ -154,7 +155,7 @@ public final class SPISUseCaseRow extends AbstractModelRow
     return ret;
   }
 
-  @Nonnull
+  @NonNull
   public static HCRow getAsHtmlTableHeaderRow ()
   {
     final HCRow aRow = new HCRow (true);
@@ -167,7 +168,7 @@ public final class SPISUseCaseRow extends AbstractModelRow
     return aRow;
   }
 
-  @Nonnull
+  @NonNull
   public HCRow getAsHtmlTableBodyRow ()
   {
     final HCRow aRow = new HCRow ();
@@ -188,8 +189,8 @@ public final class SPISUseCaseRow extends AbstractModelRow
     return aRow;
   }
 
-  @Nonnull
-  public static SPISUseCaseRow createV9 (@Nonnull final String [] aRow)
+  @NonNull
+  public static SPISUseCaseRow createV9 (@NonNull final String [] aRow)
   {
     final SPISUseCaseRow ret = new SPISUseCaseRow ();
     ret.m_sUseCaseID = aRow[0];

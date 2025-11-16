@@ -15,14 +15,14 @@
  */
 package eu.peppol.codelist.model;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.Nonempty;
 import com.helger.genericode.v10.ColumnSet;
 import com.helger.genericode.v10.Row;
 import com.helger.html.hc.html.tabular.HCRow;
 import com.helger.json.IJsonObject;
 import com.helger.xml.microdom.IMicroElement;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Base interface for a single item in a code list.
@@ -35,7 +35,7 @@ public interface IModelRow
   /**
    * @return The state of this row. May not be <code>null</code>.
    */
-  @Nonnull
+  @NonNull
   ERowState getState ();
 
   /**
@@ -43,7 +43,7 @@ public interface IModelRow
    *         multiple columns, the parts should just be aggregated and combined
    *         with the colon (:) character.
    */
-  @Nonnull
+  @NonNull
   @Nonempty
   String getUniqueKey ();
 
@@ -56,27 +56,27 @@ public interface IModelRow
    * @return The representation of this code list row for the format XML. Never
    *         <code>null</code>
    */
-  @Nonnull
+  @NonNull
   IMicroElement getAsElement ();
 
   /**
    * @return The representation of this code list row for the format JSON. Never
    *         <code>null</code>
    */
-  @Nonnull
+  @NonNull
   IJsonObject getAsJson ();
 
   /**
    * @return The representation of this code list row for the format GeneriCode.
    *         Never <code>null</code>
    */
-  @Nonnull
-  Row getAsGCRow (@Nonnull ColumnSet aColumnSet);
+  @NonNull
+  Row getAsGCRow (@NonNull ColumnSet aColumnSet);
 
   /**
    * @return The representation of this code list row for the format HTML. Never
    *         <code>null</code>
    */
-  @Nonnull
+  @NonNull
   HCRow getAsHtmlTableBodyRow ();
 }

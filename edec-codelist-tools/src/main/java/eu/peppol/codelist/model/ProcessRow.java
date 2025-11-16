@@ -17,6 +17,8 @@ package eu.peppol.codelist.model;
 
 import java.net.URI;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.Nonempty;
 import com.helger.base.string.StringHelper;
 import com.helger.base.url.URLHelper;
@@ -36,7 +38,6 @@ import com.helger.xml.microdom.MicroElement;
 import eu.peppol.codelist.field.ECodeListDataType;
 import eu.peppol.codelist.gc.GCHelper;
 import eu.peppol.codelist.gc.GCRowExt;
-import jakarta.annotation.Nonnull;
 
 /**
  * Single row of a process in a code list version independent format.
@@ -58,13 +59,13 @@ public final class ProcessRow implements IModelRow
   private String m_sValue;
   private ERowState m_eState;
 
-  @Nonnull
+  @NonNull
   public ERowState getState ()
   {
     return m_eState;
   }
 
-  @Nonnull
+  @NonNull
   @Nonempty
   public String getUniqueKey ()
   {
@@ -86,7 +87,7 @@ public final class ProcessRow implements IModelRow
       throw new IllegalStateException ("Value does not match Peppol requirements");
   }
 
-  @Nonnull
+  @NonNull
   public IMicroElement getAsElement ()
   {
     final IMicroElement ret = new MicroElement ("process");
@@ -96,7 +97,7 @@ public final class ProcessRow implements IModelRow
     return ret;
   }
 
-  @Nonnull
+  @NonNull
   public IJsonObject getAsJson ()
   {
     final IJsonObject ret = new JsonObject ();
@@ -106,7 +107,7 @@ public final class ProcessRow implements IModelRow
     return ret;
   }
 
-  public static void addGCColumns (@Nonnull final CodeListDocument aCLDoc)
+  public static void addGCColumns (@NonNull final CodeListDocument aCLDoc)
   {
     final ColumnSet aColumnSet = aCLDoc.getColumnSet ();
     GCHelper.addHeaderColumn (aColumnSet, SCHEME, true, true, "Peppol Identifier Scheme", ECodeListDataType.STRING);
@@ -114,8 +115,8 @@ public final class ProcessRow implements IModelRow
     GCHelper.addHeaderColumn (aColumnSet, STATE, false, true, "State", ECodeListDataType.STRING);
   }
 
-  @Nonnull
-  public Row getAsGCRow (@Nonnull final ColumnSet aColumnSet)
+  @NonNull
+  public Row getAsGCRow (@NonNull final ColumnSet aColumnSet)
   {
     // Create Genericode row
     final GCRowExt ret = new GCRowExt (aColumnSet);
@@ -125,7 +126,7 @@ public final class ProcessRow implements IModelRow
     return ret;
   }
 
-  @Nonnull
+  @NonNull
   public static HCRow getAsHtmlTableHeaderRow ()
   {
     final HCRow aRow = new HCRow (true);
@@ -135,7 +136,7 @@ public final class ProcessRow implements IModelRow
     return aRow;
   }
 
-  @Nonnull
+  @NonNull
   public HCRow getAsHtmlTableBodyRow ()
   {
     final HCRow aRow = new HCRow ();
@@ -150,9 +151,9 @@ public final class ProcessRow implements IModelRow
     return aRow;
   }
 
-  @Nonnull
-  public static ProcessRow createFromID (@Nonnull final IProcessIdentifier aProcID,
-                                         @Nonnull @Nonempty final ICommonsList <DocTypeRow> aAllDocTypes)
+  @NonNull
+  public static ProcessRow createFromID (@NonNull final IProcessIdentifier aProcID,
+                                         @NonNull @Nonempty final ICommonsList <DocTypeRow> aAllDocTypes)
   {
     final ProcessRow ret = new ProcessRow ();
     ret.m_sScheme = aProcID.getScheme ();

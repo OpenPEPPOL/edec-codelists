@@ -18,6 +18,7 @@ package eu.peppol.codelist.main;
 import java.util.Map;
 
 import org.apache.poi.ss.usermodel.Sheet;
+import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.Nonempty;
 import com.helger.base.version.Version;
@@ -37,7 +38,6 @@ import eu.peppol.codelist.model.ParticipantIdentifierSchemeRow;
 import eu.peppol.codelist.model.ProcessRow;
 import eu.peppol.codelist.model.SPISUseCaseRow;
 import eu.peppol.codelist.model.TransportProfileRow;
-import jakarta.annotation.Nonnull;
 
 /**
  * Handle V8 code lists
@@ -48,14 +48,14 @@ public abstract class AbstractConvertV9 extends AbstractCodeListConverter
 {
   private final ICommonsMap <IProcessIdentifier, ICommonsList <DocTypeRow>> m_aProcIDs = new CommonsLinkedHashMap <> ();
 
-  public AbstractConvertV9 (@Nonnull final Version aCodeListVersion,
-                            @Nonnull @Nonempty final String sResultDir,
-                            @Nonnull final String sFilenameSuffix)
+  public AbstractConvertV9 (@NonNull final Version aCodeListVersion,
+                            @NonNull @Nonempty final String sResultDir,
+                            @NonNull final String sFilenameSuffix)
   {
     super (aCodeListVersion, sResultDir, sFilenameSuffix);
   }
 
-  private void _handleDocumentTypes (@Nonnull final Sheet aDocumentSheet)
+  private void _handleDocumentTypes (@NonNull final Sheet aDocumentSheet)
   {
     // Read Excel
     final InMemoryXLSX aXLSX = InMemoryXLSX.read (aDocumentSheet, 14);
@@ -84,7 +84,7 @@ public abstract class AbstractConvertV9 extends AbstractCodeListConverter
     createHtmlFile (aRows, DocTypeRow.CODE_LIST_NAME, DocTypeRow::getAsHtmlTableHeaderRow);
   }
 
-  private void _handleParticipantIdentifierSchemes (@Nonnull final Sheet aParticipantSheet)
+  private void _handleParticipantIdentifierSchemes (@NonNull final Sheet aParticipantSheet)
   {
     // Read Excel
     final InMemoryXLSX aXLSX = InMemoryXLSX.read (aParticipantSheet, 15);
@@ -115,7 +115,7 @@ public abstract class AbstractConvertV9 extends AbstractCodeListConverter
                     ParticipantIdentifierSchemeRow::getAsHtmlTableHeaderRow);
   }
 
-  private void _handleTransportProfileIdentifiers (@Nonnull final Sheet aTPSheet)
+  private void _handleTransportProfileIdentifiers (@NonNull final Sheet aTPSheet)
   {
     // Read Excel
     final InMemoryXLSX aXLSX = InMemoryXLSX.read (aTPSheet, 8);
@@ -165,7 +165,7 @@ public abstract class AbstractConvertV9 extends AbstractCodeListConverter
     createHtmlFile (aRows, ProcessRow.CODE_LIST_NAME, ProcessRow::getAsHtmlTableHeaderRow);
   }
 
-  private void _handleSPISUserCaseIdentifiers (@Nonnull final Sheet aTPSheet)
+  private void _handleSPISUserCaseIdentifiers (@NonNull final Sheet aTPSheet)
   {
     // Read Excel
     final InMemoryXLSX aXLSX = InMemoryXLSX.read (aTPSheet, 6);

@@ -19,6 +19,8 @@ import java.net.URI;
 
 import javax.xml.namespace.QName;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.base.version.Version;
 import com.helger.genericode.Genericode10Helper;
 import com.helger.genericode.v10.Annotation;
@@ -33,7 +35,6 @@ import com.helger.genericode.v10.UseType;
 
 import eu.peppol.codelist.AbstractCodeListConverter;
 import eu.peppol.codelist.field.ECodeListDataType;
-import jakarta.annotation.Nonnull;
 import jakarta.xml.bind.JAXBElement;
 
 public class GCHelper
@@ -44,10 +45,10 @@ public class GCHelper
   private GCHelper ()
   {}
 
-  @Nonnull
-  public static CodeListDocument createEmptyCodeList (@Nonnull final String sCodeListName,
-                                                      @Nonnull final Version aCodeListVersion,
-                                                      @Nonnull final URI aCanonicalUri)
+  @NonNull
+  public static CodeListDocument createEmptyCodeList (@NonNull final String sCodeListName,
+                                                      @NonNull final Version aCodeListVersion,
+                                                      @NonNull final URI aCanonicalUri)
   {
     final CodeListDocument ret = new CodeListDocument ();
 
@@ -75,12 +76,12 @@ public class GCHelper
     return ret;
   }
 
-  public static void addHeaderColumn (@Nonnull final ColumnSet aColumnSet,
-                                      @Nonnull final String sColumnID,
+  public static void addHeaderColumn (@NonNull final ColumnSet aColumnSet,
+                                      @NonNull final String sColumnID,
                                       final boolean bIsKeyColumn,
                                       final boolean bIsRequired,
-                                      @Nonnull final String sShortName,
-                                      @Nonnull final ECodeListDataType eDataType)
+                                      @NonNull final String sShortName,
+                                      @NonNull final ECodeListDataType eDataType)
   {
     // No long name
     final String sLongName = null;
