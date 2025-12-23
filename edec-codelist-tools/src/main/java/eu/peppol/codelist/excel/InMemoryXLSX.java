@@ -110,7 +110,7 @@ public class InMemoryXLSX
       aPayload.add (aRowData);
     }
 
-    LOGGER.info ("Successfully read " + aPayload.size () + " rows");
+    LOGGER.info ("Successfully read " + aPayload.size () + " rows from Excel");
 
     return new InMemoryXLSX (aShortNameRowData, aPayload);
   }
