@@ -270,7 +270,7 @@ public final class ParticipantIdentifierSchemeRow extends AbstractModelRow
     aRow.addCell (m_sISO6523);
     aRow.addCell (m_sCountry);
     aRow.addCell (m_sSchemeName);
-    aRow.addCell (m_sIssuingAgency);
+    aRow.addCell (HCExtHelper.nl2brList (m_sIssuingAgency));
     aRow.addAndReturnCell (m_sInitialRelease).addClass (ModelHelper.CSS_TEXT_END);
     aRow.addCell (m_eState.getDisplayName ());
     aRow.addAndReturnCell (m_sDeprecationRelease).addClass (ModelHelper.CSS_TEXT_END);
